@@ -5,9 +5,9 @@ import { AnimatePresence } from 'framer-motion';
 import Programacion from './components/ProgramarEnvio/Programacion';
 import Inicio from './components/Inicio/Inicio';
 import Seguimiento from './components/Seguimiento/Seguimiento';
-import Ayuda from './components/Ayuda/Ayuda';
-import Calculadora from './components/Calculadora/Calculadora';
-import Contacto from './components/Contacto/Contacto';
+import Ayuda from './components/Ayuda/PageAyuda';
+import Calculadora from './components/Calculadora/PageCalculadora';
+import Contacto from './components/Contacto/PageContacto';
 import 'animate.css';
 function AnimatedRoutes() {
   const location = useLocation();

@@ -11,7 +11,7 @@ import {
     colors,
     Typography
 } from '@mui/material'
-import Cobertura from '../Cobertura/Cobertura';
+import Cobertura from '../Cobertura/PageCobertura';
 import mundo from '../../assets/mundo.png';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
@@ -613,10 +613,10 @@ export default function Inicio() {
             </Box>
 
             {/*Quinto Box*/}
-            <AnimatedBox animation="animate__slideInUp" delay={3000} duration={2000}>
+            <AnimatedBox animation="animate__slideInUp" delay={0} duration={2000}>
                 <Ayuda />
             </AnimatedBox>
-            
+
             {/*Sextp Box*/}
             <Footer />
         </main>
