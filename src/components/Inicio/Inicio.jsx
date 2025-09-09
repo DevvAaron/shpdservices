@@ -1,0 +1,486 @@
+
+import { useState, useEffect } from 'react';
+import {
+    Button,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    TextField,
+    Box,
+    colors,
+    Typography
+} from '@mui/material'
+import fondo from '../../assets/fondo.jpg';
+import Cobertura from '../Cobertura/Cobertura';
+import mundo from '../../assets/mundo.png';
+import Footer from '../Footer/Footer';
+import Ayuda from '../Footer/Ayuda';
+import Navbar from '../Header/Navbar';
+import 'animate.css';
+import img1 from '../../assets/img1.jpg';
+import img2 from '../../assets/img2.jpg';
+import img3 from '../../assets/img3.jpg';
+import img4 from '../../assets/img4.jpg';
+
+import fondo1 from '../../assets/fondo.jpg';
+import fondo2 from '../../assets/fondo2.jpg';
+import fondo3 from '../../assets/fondo3.jpg';
+const imagenes = [fondo1, fondo2, fondo3];
+
+export default function Inicio() {
+
+
+    const [index, setIndex] = useState(0);
+    const fondoImages = [img1, img2, img3, img4]
+    const [tipoDoc, setTipoDoc] = useState('DNI');
+    const [numDoc, setNumDoc] = useState('');
+    const [verifDNI, setVerifDNI] = useState('');
+    const boxImg = [0, 3, 4, 7];
+
+
+    const tipos = ['DNI', 'CE', 'RUC', 'PASAPORTE'];
+    const titulot = [
+        "Programa tu envío",
+        "Sigue tu paquete",
+        "Recibe información",
+        "Recibe tu pago"];
+    const desc = [
+        "Crea tu cuenta, registra los datos del producto e iremos a recogerlo.",
+        "Te daremos un código de tracking para darle seguimiento.",
+        "Te confirmaremos cuando tu envío haya sido recibido.",
+        "Recogeremos el pago por el producto y te lo enviaremos de regreso."];
+
+
+    let tituloIndex = 0;
+    let descIndex = 0;
+    let imagenIndex = 0;
+
+    useEffect(() => {
+        const intervalo = setInterval(() => {
+            setIndex((prevIndex) => (prevIndex + 1) % imagenes.length);
+        }, 3000); // Cambia de imagen cada 5 segundos
+
+        return () => clearInterval(intervalo);
+    }, []);
+
+
+    // En el componente, antes del return:
+
+    // Separar items
+    const items = [...Array(8)].map((_, index) => {
+        const tieneImagen = boxImg.includes(index);
+        if (!tieneImagen) {
+            const fondoTexto = `${imagenIndex + 1}`;
+            const fondoActual = fondoImages[imagenIndex % fondoImages.length];
+            imagenIndex++;
+            return {
+                type: 'imagen',
+                index,
+                fondoTexto,
+                fondoActual,
+            };
+        } else {
+            const titulo = titulot[tituloIndex++];
+            const descripcion = desc[descIndex++];
+            return {
+                type: 'texto',
+                index,
+                titulo,
+                descripcion,
+            };
+        }
+    });
+
+    // Función para intercalar imagen-texto en móvil
+    const intercalarMobile = (items) => {
+        const imagenes = items.filter(i => i.type === 'imagen');
+        const textos = items.filter(i => i.type === 'texto');
+        const result = [];
+
+        const maxLen = Math.max(imagenes.length, textos.length);
+        for (let i = 0; i < maxLen; i++) {
+            if (i < imagenes.length) result.push(imagenes[i]);
+            if (i < textos.length) result.push(textos[i]);
+        }
+        return result;
+    };
+
+    // Luego, dentro del componente principal:
+
+    // Estado para detectar móvil
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // En el render:
+    const itemsToRender = isMobile ? intercalarMobile(items) : items;
+
+    return (
+        <main
+            style={{
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                backgroundColor: '#ff000000',
+            }}
+        >
+            <Navbar />
+
+            {/* Espacio para compensar el Navbar fijo */}
+            <Box sx={{ height: '80px' }} />
+
+
+            {/* Primer Box */}
+            <Box
+                name="Primer Box"
+                sx={{
+                    position: 'relative',
+                    padding: '0.8rem',
+                    overflow: 'hidden',
+                    backgroundImage: `url(${imagenes[index]})`,
+                    transition: 'background-image 1s ease-in-out',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                }}
+            >
+                {/* Capa de desenfoque */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backdropFilter: 'blur(5px)',
+                        WebkitBackdropFilter: 'blur(5px)', // Safari support
+                        zIndex: 1,
+                    }}
+                />
+
+                {/* Contenido principal */}
+                <Box
+                    className="animated-box"
+                    sx={{
+                        position: 'relative',
+                        zIndex: 2,
+                        bgcolor: 'rgba(255, 255, 255, 0)',
+                        minHeight: '200px',
+                        width: {
+                            xs: '100%',   // móviles
+                            sm: '80%',    // tablets
+                            md: '25rem',  // escritorios
+                        },
+                        p: {
+                            xs: 2,
+                            sm: 3,
+                            md: 4,
+                        },
+                        fontFamily: 'fantasy',
+                        alignItems: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        borderRadius: 10,
+                        textAlign: 'center',
+                        gap: 2,
+                        margin: '0 auto',
+                        boxShadow: '0 4px 60px rgba(0, 0, 0, 0.5)',
+                    }}
+                >
+                    <Typography
+                        variant="h3"
+                        component="div"
+                        sx={{
+                            fontSize: {
+                                xs: '1.6rem',
+                                sm: '2rem',
+                                md: '2.5rem',
+                            },
+                            textAlign: 'center',
+                            fontFamily: 'fantasy',
+                        }}
+                    >
+                        Programa tu envío desde aquí
+                    </Typography>
+
+                    <Typography
+                        variant="body2"
+                        component="div"
+                        sx={{
+                            fontSize: {
+                                xs: '0.9rem',
+                                sm: '1rem',
+                            },
+                            textAlign: 'center',
+                        }}
+                    >
+                        Sin registros. Solo ingresa con tu DNI y los datos de tu envío. Nosotros nos encargamos del resto.
+                    </Typography>
+
+                    <Box
+                        sx={{
+                            display: 'grid',
+                            gridTemplateColumns: {
+                                xs: '1fr',          // móvil: 1 columna
+                                sm: tipoDoc === 'DNI' ? '1fr 1fr' : '1fr 1fr',  // tablets: 2 columnas
+                                md: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr', // escritorio: 3 columnas o 2
+                            },
+                            gap: 2,
+                            width: '100%',
+                        }}
+                    >
+                        {/* Select tipo de documento */}
+                        <FormControl fullWidth sx={{ minWidth: '80px' }}>
+                            <InputLabel id="tipo-label">Tipo Doc</InputLabel>
+                            <Select
+                                labelId="tipo-label"
+                                id="tipo-select"
+                                value={tipoDoc}
+                                label="Tipo Doc"
+                                onChange={(e) => setTipoDoc(e.target.value)}
+                            >
+                                {tipos.map((tipo) => (
+                                    <MenuItem key={tipo} value={tipo}>
+                                        {tipo}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+
+                        {/* Campo número de documento */}
+                        <TextField
+                            label="NRO. DOC"
+                            variant="outlined"
+                            value={numDoc}
+                            onChange={(e) => setNumDoc(e.target.value)}
+                            fullWidth
+                            sx={{
+                                gridColumn: {
+                                    xs: 'auto',
+                                    sm: tipoDoc === 'DNI' ? 'auto' : 'span 2',
+                                    md: tipoDoc === 'DNI' ? 'auto' : 'span 2',
+                                },
+                            }}
+                        />
+
+                        {/* Campo verificador (solo visible si tipoDoc === 'DNI') */}
+                        {tipoDoc === 'DNI' && (
+                            <TextField
+                                label="CUI"
+                                variant="outlined"
+                                value={verifDNI}
+                                onChange={(e) => setVerifDNI(e.target.value)}
+                                fullWidth
+                            />
+                        )}
+                    </Box>
+
+                    <Box>
+                        <Button
+                            variant="text"
+                            sx={{
+                                fontSize: 20,
+                                color: colors.common.black,
+                                borderColor: colors.common.black,
+                                '&:hover': {
+                                    color: 'white',
+                                    borderColor: colors.common.black,
+                                },
+                            }}
+                        >
+                            Realizar Envío
+                        </Button>
+                    </Box>
+                </Box>
+            </Box>
+
+            {/* Segundo Box */}
+            <Box
+                name="Segundo box"
+                sx={{
+                    padding: 2,
+                    backgroundColor: '#ffffff',
+                }}
+            ><Box
+                sx={{
+                    display: 'grid',
+                    gridTemplateColumns: {
+                        xs: '1fr',
+                        sm: '1fr 1fr',
+                        md: '1fr 1fr',
+                    },
+                    gap: 2,
+                    justifyItems: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    margin: '0 auto',
+                    maxWidth: '1000px',
+                    width: '100%',
+                    boxSizing: 'border-box',
+                }}
+            >
+                    {itemsToRender.map((item, idx) => {
+                        if (item.type === 'imagen') {
+                            return (
+                                <Box
+                                    className="animated-box"
+                                    key={`img-${item.index}`}
+                                    sx={{
+                                        height: {
+                                            xs: 200,
+                                            sm: 250,
+                                            md: 300,
+                                        },
+                                        width: '100%',
+                                        maxWidth: {
+                                            xs: '100%',
+                                            sm: '400px',
+                                            md: '450px',
+                                        },
+                                        borderRadius: 5,
+                                        display: 'flex',
+                                        alignItems: 'flex-end',
+                                        justifyContent: [1, 5].includes(item.index) ? 'flex-start' : 'flex-end',
+                                        fontWeight: 'bold',
+                                        fontSize: 24,
+                                        backgroundImage: `url(${item.fondoActual})`,
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        backgroundRepeat: 'no-repeat',
+                                        textShadow: '0 1px 3px rgba(0,0,0,0.6)',
+                                        boxSizing: 'border-box',
+                                        position: 'relative',
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            position: 'absolute',
+                                            top: 16,
+                                            left: 16,
+                                            width: 60,
+                                            height: 60,
+                                            backgroundColor: 'white',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            fontWeight: 'bold',
+                                            fontSize: 20,
+                                            color: '#333',
+                                            boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
+                                        }}
+                                    >
+                                        {item.fondoTexto}
+                                    </Box>
+                                </Box>
+                            );
+                        } else {
+                            return (
+                                <Box className="animated-box"
+                                    key={`txt-${item.index}`}
+                                    sx={{
+                                        width: '100%',
+                                        maxWidth: {
+                                            xs: '100%',
+                                            sm: '380px',
+                                            md: '400px',
+                                        },
+                                        height: 'auto',
+                                        borderRadius: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'center',
+                                        padding: 2,
+                                        color: '#333',
+                                        backgroundColor: '#f9f9f9',
+                                        boxSizing: 'border-box',
+                                    }}
+                                >
+                                    <Box className="animated-box" sx={{ fontSize: 22, fontWeight: 'bold', mb: 0.5 }}>
+                                        {item.titulo}
+                                    </Box>
+                                    <Box className="animated-box" sx={{ fontSize: 14 }}>{item.descripcion}</Box>
+                                </Box>
+                            );
+                        }
+                    })}
+                </Box>
+            </Box>
+
+
+
+            {/*Tercer Box*/}
+            <Box name="Tercer box" sx={{
+                position: "relative",
+                overflow: 'hidden',
+                backgroundImage: `url(${mundo})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                color: '#000000ff',
+                py: { xs: 4, sm: 6, md: 8 },
+                px: { xs: 2, sm: 4, md: 6 },
+                minHeight: { xs: '150px', sm: '200px', md: '350px' },
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
+                {/* Capa de desenfoque */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backdropFilter: 'blur(0.5px)',
+                        WebkitBackdropFilter: 'blur(0.5px)',
+                        zIndex: 1, background: 'linear-gradient(to top, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
+                    }}
+                />
+                <Box
+                    sx={{
+                        position: 'relative',
+                        zIndex: 2,
+                        width: '100%',
+                        maxWidth: '1200px',
+                        margin: '0 auto',
+                        boxSizing: 'border-box',
+                        px: { xs: 2, sm: 4 }
+                    }}
+                >
+                    <Cobertura />
+                </Box>
+            </Box>{/* nuevo Box */}
+            <Box
+                sx={{
+                    flexDirection: "row",
+                    display: "flex",
+                    justifyContent: "space-around",
+                    margin: 5,
+                }}
+            >
+                <Box height={100} width={100} bgcolor="red"
+                    className="animate__animated animate__fadeIn" sx={{display: "flex",}}>
+
+                </Box>
+
+                <Box height={100} width={100} bgcolor="red">
+
+                </Box>
+            </Box>
+
+            {/*Cuarto Box*/}
+            <Ayuda />
+            {/*Quinto Box*/}
+            <Footer />
+        </main>
+    );
+};
