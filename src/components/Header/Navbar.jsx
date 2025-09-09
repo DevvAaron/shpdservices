@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png';
 import { Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { linearGradient } from 'motion/react-client';
+import HelpIcon from '../../assets/ayuda.png';
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -24,7 +24,10 @@ const Navbar = () => {
     { to: '/', label: 'Funcionamiento' },
     { to: '/programacion', label: 'Programación' },
     { to: '/seguimiento', label: 'Seguimiento' },
-    { to: '/ayuda', label: 'IconoAyuda' },
+    {
+      to: '/ayuda',
+      label: <img src={HelpIcon} alt="Ayuda" style={{ height: '1.7rem' }} />
+    },
     { to: '/calculadora', label: 'ModalCalculadora' },
     { to: '/contacto', label: 'Contacto' },
   ];
@@ -42,7 +45,7 @@ const Navbar = () => {
         top: 0,
         left: 0,
         zIndex: 1000,
-        height: '80px',        
+        height: '80px',
       }}
     >
       {/* Logo */}
@@ -89,7 +92,7 @@ const Navbar = () => {
               transition: '0.3s',
               width: isMobile ? '100%' : 'auto',
               display: 'block',
-              textAlign: isMobile ? 'left' : 'center',
+              textAlign: isMobile ? 'center' : 'center',
               paddingLeft: isMobile ? '1rem' : 0, // ✅ Alineación sin romper layout
               paddingRight: isMobile ? '1rem' : 0,
             })}

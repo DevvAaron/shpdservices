@@ -39,7 +39,11 @@ const Footer = () => {
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
-          alignItems: "flex-start",
+          alignItems: {
+            xs: 'center',
+            sm: 'center',
+            md: 'center',
+          },
           maxWidth: 1200,
           mx: "auto",
         }}
@@ -97,7 +101,7 @@ const Footer = () => {
           px: 1,
         }}
       >
-        <Typography variant="body2" sx={{ fontSize: "0.75rem" ,p:"0.5rem"}}>
+        <Typography variant="body2" sx={{ fontSize: "0.75rem", p: "0.5rem" }}>
           © {new Date().getFullYear()} JER Courier. Todos los derechos reservados.
         </Typography>
       </Box>

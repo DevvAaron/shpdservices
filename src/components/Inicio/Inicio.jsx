@@ -19,8 +19,6 @@ import Navbar from '../Header/Navbar';
 import AnimatedBox from '../Hoocks/AnimatedBox'; // 👈 importa el nuevo componente
 import { Contenido, Subtitulo, Titulo1 } from '../Hoocks/Titulos';
 import 'animate.css';
-import useAnimateOnScroll from '../hoocks/useAnimateOnScroll';
-
 import img1 from '../../assets/img1.jpg';
 import img2 from '../../assets/img2.jpg';
 import img3 from '../../assets/img3.jpg';
@@ -230,15 +228,21 @@ export default function Inicio() {
                                 display: 'grid',
                                 gridTemplateColumns: {
                                     xs: '1fr',          // móvil: 1 columna
-                                    sm: tipoDoc === 'DNI' ? '1fr 1fr' : '1fr 1fr',  // tablets: 2 columnas
-                                    md: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr', // escritorio: 3 columnas o 2
+                                    sm: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr', // tablets igual que desktop
+                                    md: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr',
                                 },
                                 gap: 2,
                                 width: '100%',
                             }}
                         >
                             {/* Select tipo de documento */}
-                            <FormControl fullWidth sx={{ minWidth: '80px' }}>
+                            <FormControl fullWidth sx={{
+                                maxWidth: {
+                                    xs: '100%',   // móviles
+                                    sm: '100%',    // tablets
+                                    md: '12rem',
+                                }
+                            }}>
                                 <InputLabel id="tipo-label">Tipo Doc</InputLabel>
                                 <Select
                                     labelId="tipo-label"
@@ -263,12 +267,18 @@ export default function Inicio() {
                                 onChange={(e) => setNumDoc(e.target.value)}
                                 fullWidth
                                 sx={{
+                                    width: {
+                                        xs: '100%',   // móviles
+                                        sm: '100%',    // tablets
+                                        md: '12rem',
+                                    },
                                     gridColumn: {
                                         xs: 'auto',
                                         sm: tipoDoc === 'DNI' ? 'auto' : 'span 2',
                                         md: tipoDoc === 'DNI' ? 'auto' : 'span 2',
                                     },
-                                }}
+                                }
+                                }
                             />
 
                             {/* Campo verificador (solo visible si tipoDoc === 'DNI') */}
@@ -309,24 +319,25 @@ export default function Inicio() {
                     padding: 2,
                     backgroundColor: '#ffffff',
                 }}
-            ><Box
-                sx={{
-                    display: 'grid',
-                    gridTemplateColumns: {
-                        xs: '1fr',
-                        sm: '1fr 1fr',
-                        md: '1fr 1fr',
-                    },
-                    gap: 2,
-                    justifyItems: 'center',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    margin: '0 auto',
-                    maxWidth: '1000px',
-                    width: '100%',
-                    boxSizing: 'border-box',
-                }}
             >
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gridTemplateColumns: {
+                            xs: '1fr',
+                            sm: '1fr 1fr',
+                            md: '1fr 1fr',
+                        },
+                        gap: 2,
+                        justifyItems: 'center',
+                        alignItems: 'center',
+                        textAlign: 'center',
+                        margin: '0 auto',
+                        maxWidth: '1000px',
+                        width: '100%',
+                        boxSizing: 'border-box',
+                    }}
+                >
                     {itemsToRender.map((item, idx) => {
                         if (item.type === 'imagen') {
                             return (
@@ -432,20 +443,21 @@ export default function Inicio() {
             </Box>
 
             {/*Tercer Box*/}
-            <Box name="Tercer box" sx={{
-                position: "relative",
-                overflow: 'hidden',
-                backgroundImage: `url(${mundo})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                color: '#000000ff',
-                py: { xs: 4, sm: 6, md: 8 },
-                px: { xs: 2, sm: 4, md: 6 },
-                minHeight: { xs: '150px', sm: '200px', md: '350px' },
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}>
+            <Box
+                sx={{
+                    position: "relative",
+                    overflow: 'hidden',
+                    backgroundImage: `url(${mundo})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    color: '#000000ff',
+                    py: { xs: 4, sm: 6, md: 8 },
+                    px: { xs: 2, sm: 4, md: 6 },
+                    minHeight: { xs: '150px', sm: '200px', md: '350px' },
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
                 {/* Capa de desenfoque */}
                 <Box
                     sx={{
@@ -475,7 +487,7 @@ export default function Inicio() {
             </Box>
 
 
-            {/* nuevo Box */}
+            {/*Cuarto Box */}
             <Box
                 sx={{
                     flexDirection: "row",
@@ -496,9 +508,9 @@ export default function Inicio() {
                             flexDirection: "column",
                             overflow: "hidden",
                             width: {
-                                xs: '100%',   // móviles
+                                xs: '90%',   // móviles
                                 sm: '80%',    // tablets
-                                md: '45rem',  // escritorios
+                                md: '40rem',  // escritorios
                             },
                             p: {
                                 xs: 2,
@@ -575,10 +587,14 @@ export default function Inicio() {
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             borderRadius: '1rem',
-                            minHeight: { xs: '15rem', sm: '20rem', md: '20rem' },
+                            minHeight: {
+                                xs: '15rem',
+                                sm: '20rem',
+                                md: '20rem'
+                            },
                             width: {
-                                xs: '100%',   // móviles
-                                sm: '60%',    // tablets
+                                xs: '15rem',   // móviles
+                                sm: '20rem',    // tablets
                                 md: '20rem',  // escritorios
                             },
                             p: {
@@ -596,12 +612,12 @@ export default function Inicio() {
                 </AnimatedBox>
             </Box>
 
-            {/*Cuarto Box*/}
-
+            {/*Quinto Box*/}
             <AnimatedBox animation="animate__slideInUp" delay={3000} duration={2000}>
                 <Ayuda />
             </AnimatedBox>
-            {/*Quinto Box*/}
+            
+            {/*Sextp Box*/}
             <Footer />
         </main>
     );

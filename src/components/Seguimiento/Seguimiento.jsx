@@ -15,7 +15,7 @@ import { useState, useEffect } from 'react';
 import { Titulo1 } from "../Hoocks/Titulos";
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
-
+import AnimatedBox from '../Hoocks/AnimatedBox';
 export default function Seguimiento() {
 
     const tipos = ['DNI', 'CE', 'RUC', 'PASAPORTE'];
@@ -43,6 +43,11 @@ export default function Seguimiento() {
                     position: 'relative',
                     padding: '0.8rem',
                     overflow: 'hidden',
+                    minHeight: {
+                        xs: '15rem',
+                        sm: '15rem',
+                        md: '20rem'
+                    },
                     backgroundImage: `url(${fondo})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -74,7 +79,7 @@ export default function Seguimiento() {
                         },
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        maxWidth: '1200px',
+                        maxWidth: '40rem',
                         margin: '0 auto',
                         width: '100%',
                         gap: 4,
@@ -82,166 +87,43 @@ export default function Seguimiento() {
                         px: { xs: 2, sm: 4 },
                     }}
                 >
-                    {/* 📌 Nuevo Box (izquierda) */}
                     <Box
-                        className={"animated-box"}
                         sx={{
-                            flex: 1,
-                            color: 'white',
-                            fontFamily: 'fantasy',
-                            textAlign: {
-                                xs: 'center',
-                                md: 'left'
-                            },
-                        }}
-                    >
-                        <Titulo1 titulo={"Envía tus productos y recibe el pago contra entrega"} subtitulo={"Recogemos el pedido, lo llevamos a tu cliente, recibimos el pago y te enviamos el dinero de forma segura"}
-                            style={{
-                                textAlign: 'left', color: '#263D4F'
-                            }} />
-                    </Box>
-
-                    {/* Contenido principal */}
-                    <Box
-                        className="animated-box"
-                        sx={{
-                            position: 'relative',
-                            zIndex: 2,
-                            bgcolor: 'rgba(255, 255, 255, 0)',
-                            minHeight: '200px',
-                            width: {
-                                xs: '100%',   // móviles
-                                sm: '80%',    // tablets
-                                md: '25rem',  // escritorios
-                            },
-                            p: {
-                                xs: 2,
-                                sm: 3,
-                                md: 4,
-                            },
-                            fontFamily: 'fantasy',
-                            alignItems: 'center',
                             display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            borderRadius: 10,
-                            textAlign: 'center',
+                            flexDirection: {
+                                xs: 'column',
+                                sm: 'row',
+                            },
+                            alignItems: 'center',
                             gap: 2,
-                            margin: '0 auto',
-                            boxShadow: '0 4px 60px rgba(0, 0, 0, 0.5)',
+                            mt: 2,
+                            width: '100%',
                         }}
                     >
-                        <Typography
-                            variant="h3"
-                            component="div"
+                        <TextField
+                            label="Buscar Tracking ID"
                             sx={{
-                                fontSize: {
-                                    xs: '1.6rem',
-                                    sm: '2rem',
-                                    md: '2.5rem',
-                                },
-                                textAlign: 'center',
-                                fontFamily: 'fantasy',
+                                flex:2,
+                            }}
+                        />
+
+                        <Button
+                            sx={{
+                                whiteSpace: 'nowrap',
+                                fontWeight: 'bold',
+                                px: 3,
+                                py: 1,
                             }}
                         >
-                            Programa tu envío desde aquí
-                        </Typography>
-
-                        <Typography
-                            variant="body2"
-                            component="div"
-                            sx={{
-                                fontSize: {
-                                    xs: '0.9rem',
-                                    sm: '1rem',
-                                },
-                                textAlign: 'center',
-                            }}
-                        >
-                            Sin registros. Solo ingresa con tu DNI y los datos de tu envío. Nosotros nos encargamos del resto.
-                        </Typography>
-
-                        <Box
-                            sx={{
-                                display: 'grid',
-                                gridTemplateColumns: {
-                                    xs: '1fr',          // móvil: 1 columna
-                                    sm: tipoDoc === 'DNI' ? '1fr 1fr' : '1fr 1fr',  // tablets: 2 columnas
-                                    md: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr', // escritorio: 3 columnas o 2
-                                },
-                                gap: 2,
-                                width: '100%',
-                            }}
-                        >
-                            {/* Select tipo de documento */}
-                            <FormControl fullWidth sx={{ minWidth: '80px' }}>
-                                <InputLabel id="tipo-label">Tipo Doc</InputLabel>
-                                <Select
-                                    labelId="tipo-label"
-                                    id="tipo-select"
-                                    value={tipoDoc}
-                                    label="Tipo Doc"
-                                    onChange={(e) => setTipoDoc(e.target.value)}
-                                >
-                                    {tipos.map((tipo) => (
-                                        <MenuItem key={tipo} value={tipo}>
-                                            {tipo}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-
-                            {/* Campo número de documento */}
-                            <TextField
-                                label="NRO. DOC"
-                                variant="outlined"
-                                value={numDoc}
-                                onChange={(e) => setNumDoc(e.target.value)}
-                                fullWidth
-                                sx={{
-                                    gridColumn: {
-                                        xs: 'auto',
-                                        sm: tipoDoc === 'DNI' ? 'auto' : 'span 2',
-                                        md: tipoDoc === 'DNI' ? 'auto' : 'span 2',
-                                    },
-                                }}
-                            />
-
-                            {/* Campo verificador (solo visible si tipoDoc === 'DNI') */}
-                            {tipoDoc === 'DNI' && (
-                                <TextField
-                                    label="CUI"
-                                    variant="outlined"
-                                    value={verifDNI}
-                                    onChange={(e) => setVerifDNI(e.target.value)}
-                                    fullWidth
-                                />
-                            )}
-                        </Box>
-
-                        <Box>
-                            <Button
-                                variant="text"
-                                sx={{
-                                    fontSize: 20,
-                                    color: colors.common.black,
-                                    borderColor: colors.common.black,
-                                    '&:hover': {
-                                        color: 'white',
-                                        borderColor: colors.common.black,
-                                    },
-                                }}
-                            >
-                                Realizar Envío
-                            </Button>
-                        </Box>
+                            Buscar
+                        </Button>
                     </Box>
+
                 </Box>
             </Box>
-
-            {/*Segundo Box*/}
-            <Ayuda />
-            {/*Tercer Box*/}
+            {/*Quinto Box*/}
+                <Ayuda />
+            {/*Sextp Box*/}
             <Footer />
         </main>
     )

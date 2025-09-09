@@ -17,21 +17,24 @@ export const Titulo2 = ({ titulo }) => {
     );
 };
 
-export const Titulo3 = ({ titulo, subtitulo, mostrarLink = false }) => {
+export const Titulo3 = ({ titulo, subtitulo, style, mostrarLink = false }) => {
     return (
         <div className="titulo-animado" style={{
             textAlign: 'center', display: "flex", flexDirection: "column", alignItems: "center",
             maxWidth: '25rem',
         }}>
             <h2 style={{
-                fontSize: '2rem',
+                ...style,
                 margin: 0,
                 fontWeight: 'bold'
             }}>
                 {titulo}
             </h2>
             {subtitulo && (
-                <p style={{ fontSize: '1.2rem' }}>
+                <p style={{
+                    ...style,
+                    fontSize: '1.2rem'
+                }}>
                     {subtitulo}
                     {mostrarLink && <a href="/contacto"> aquí</a>}
                 </p>
@@ -50,13 +53,15 @@ export const Contenido = ({ contenido }) => {
         </div>
     );
 };
-export const Subtitulo = ({ subtitulo, style}) => {
+export const Subtitulo = ({ subtitulo, style }) => {
     return (
         <div style={{
             textAlign: 'left', display: "flex", flexDirection: "column", alignItems: "center"
         }}>
-            <p style={{ fontSize: '1rem',
-                fontWeight: 'bold' }}>
+            <p style={{
+                fontSize: '1rem',
+                fontWeight: 'bold'
+            }}>
                 {subtitulo}
             </p>
         </div>

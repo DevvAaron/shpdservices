@@ -75,7 +75,11 @@ export default function Programacion() {
                         justifyContent: 'space-between',
                         maxWidth: '1200px',
                         margin: '0 auto',
-                        width: '100%',
+                        width: {
+                            xs: '20rem',
+                            sm: '40rem',
+                            md: '60rem'
+                        },
                         gap: 4,
                         py: 4,
                         px: { xs: 2, sm: 4 },
@@ -87,9 +91,12 @@ export default function Programacion() {
                         <Box
                             sx={{
                                 flex: 1,
-                                color: 'white',
+                                color: 'black bold',
                                 borderRadius: 5,
-                                padding: 2,
+                                padding: {
+                                    xs: 0,
+                                    md: 2
+                                },
                                 backdropFilter: 'blur(90px)',
                                 WebkitBackdropFilter: 'blur(20px)', // Safari support
                                 boxShadow: '0 4px 60px #0a5393da',
@@ -117,6 +124,7 @@ export default function Programacion() {
                                     },
                                     textAlign: 'left',
                                     marginTop: 5,
+                                    color: '263D4F bold'
                                 }}
                             >
                                 Sin registros. Solo ingresa con tu DNI y los datos de tu envío. Nosotros nos encargamos del resto.
@@ -124,145 +132,157 @@ export default function Programacion() {
                         </Box>
                     </AnimatedBox>
                     {/* Contenido principal */}
-                    
+
                     <AnimatedBox animation="animate__fadeInUp" delay={300} duration={3000}>
-                    <Box
-                        sx={{
-                            position: 'relative',
-                            zIndex: 2,
-                            bgcolor: 'rgba(255, 255, 255, 0)',
-                            minHeight: '200px',
-                            width: {
-                                xs: '100%',   // móviles
-                                sm: '80%',    // tablets
-                                md: '25rem',  // escritorios
-                            },
-
-                            backdropFilter: 'blur(90px)',
-                            WebkitBackdropFilter: 'blur(20px)', // Safari support
-                            zIndex: 1,
-                            p: {
-                                xs: 2,
-                                sm: 3,
-                                md: 4,
-                            },
-                            fontFamily: 'fantasy',
-                            alignItems: 'center',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            borderRadius: 10,
-                            textAlign: 'center',
-                            gap: 2,
-                            margin: '0 auto',
-                            boxShadow: '0 4px 60px #0088ff80',
-                        }}
-                    >
-                        <Typography
-                            variant="h3"
-                            component="div"
-                            sx={{
-                                fontSize: {
-                                    xs: '1.6rem',
-                                    sm: '2rem',
-                                    md: '2.5rem',
-                                },
-                                textAlign: 'center',
-                                fontFamily: 'fantasy',
-                            }}
-                        >
-                            Programa tu envío desde aquí
-                        </Typography>
-
-                        <Typography
-                            variant="body2"
-                            component="div"
-                            sx={{
-                                fontSize: {
-                                    xs: '0.9rem',
-                                    sm: '1rem',
-                                },
-                                textAlign: 'center',
-                            }}
-                        >
-                            Sin registros. Solo ingresa con tu DNI y los datos de tu envío. Nosotros nos encargamos del resto.
-                        </Typography>
 
                         <Box
                             sx={{
-                                display: 'grid',
-                                gridTemplateColumns: {
-                                    xs: '1fr',          // móvil: 1 columna
-                                    sm: tipoDoc === 'DNI' ? '1fr 1fr' : '1fr 1fr',  // tablets: 2 columnas
-                                    md: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr', // escritorio: 3 columnas o 2
+                                position: 'relative',
+                                zIndex: 2,
+                                bgcolor: 'rgba(255, 255, 255, 0)',
+                                minHeight: '200px',
+                                width: {
+                                    xs: '100%',   // móviles
+                                    sm: '80%',    // tablets
+                                    md: '25rem',  // escritorios
                                 },
+                                p: {
+                                    xs: 0.5,
+                                    sm: 1,
+                                    md: 4,
+                                },
+                                fontFamily: 'fantasy',
+                                alignItems: 'center',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                borderRadius: 10,
+                                textAlign: 'center',
                                 gap: 2,
-                                width: '100%',
+                                margin: '0 auto',
+                                boxShadow: '0 4px 60px rgba(0, 0, 0, 0.5)',
+                                fontSize: {
+                                    sm: "5px"
+                                }
                             }}
                         >
-                            {/* Select tipo de documento */}
-                            <FormControl fullWidth sx={{ minWidth: '80px' }}>
-                                <InputLabel id="tipo-label">Tipo Doc</InputLabel>
-                                <Select
-                                    labelId="tipo-label"
-                                    id="tipo-select"
-                                    value={tipoDoc}
-                                    label="Tipo Doc"
-                                    onChange={(e) => setTipoDoc(e.target.value)}
-                                >
-                                    {tipos.map((tipo) => (
-                                        <MenuItem key={tipo} value={tipo}>
-                                            {tipo}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-
-                            {/* Campo número de documento */}
-                            <TextField
-                                label="NRO. DOC"
-                                variant="outlined"
-                                value={numDoc}
-                                onChange={(e) => setNumDoc(e.target.value)}
-                                fullWidth
+                            <Typography
+                                variant="h3"
+                                component="div"
                                 sx={{
-                                    gridColumn: {
-                                        xs: 'auto',
-                                        sm: tipoDoc === 'DNI' ? 'auto' : 'span 2',
-                                        md: tipoDoc === 'DNI' ? 'auto' : 'span 2',
+                                    fontSize: {
+                                        xs: '1.6rem',
+                                        sm: '2rem',
+                                        md: '2.5rem',
                                     },
-                                }}
-                            />
-
-                            {/* Campo verificador (solo visible si tipoDoc === 'DNI') */}
-                            {tipoDoc === 'DNI' && (
-                                <TextField
-                                    label="CUI"
-                                    variant="outlined"
-                                    value={verifDNI}
-                                    onChange={(e) => setVerifDNI(e.target.value)}
-                                    fullWidth
-                                />
-                            )}
-                        </Box>
-
-                        <Box>
-                            <Button
-                                variant="text"
-                                sx={{
-                                    fontSize: 20,
-                                    color: colors.common.black,
-                                    borderColor: colors.common.black,
-                                    '&:hover': {
-                                        color: 'white',
-                                        borderColor: colors.common.black,
-                                    },
+                                    textAlign: 'center',
+                                    fontFamily: 'fantasy',
                                 }}
                             >
-                                Realizar Envío
-                            </Button>
+                                Programa tu envío desde aquí
+                            </Typography>
+
+                            <Typography
+                                variant="body2"
+                                component="div"
+                                sx={{
+                                    fontSize: {
+                                        xs: '0.9rem',
+                                        sm: '1rem',
+                                    },
+                                    textAlign: 'center',
+                                }}
+                            >
+                                Sin registros. Solo ingresa con tu DNI y los datos de tu envío. Nosotros nos encargamos del resto.
+                            </Typography>
+
+                            <Box
+                                sx={{
+                                    display: 'grid',
+                                    gridTemplateColumns: {
+                                        xs: '1fr',          // móvil: 1 columna
+                                        sm: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr', // tablets igual que desktop
+                                        md: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr',
+                                    },
+                                    gap: 2,
+                                    width: '100%',
+                                }}
+                            >
+                                {/* Select tipo de documento */}
+                                <FormControl fullWidth sx={{
+                                    maxWidth: {
+                                        xs: '100%',   // móviles
+                                        sm: '100%',    // tablets
+                                        md: '12rem',
+                                    }
+                                }}>
+                                    <InputLabel id="tipo-label">Tipo Doc</InputLabel>
+                                    <Select
+                                        labelId="tipo-label"
+                                        id="tipo-select"
+                                        value={tipoDoc}
+                                        label="Tipo Doc"
+                                        onChange={(e) => setTipoDoc(e.target.value)}
+                                    >
+                                        {tipos.map((tipo) => (
+                                            <MenuItem key={tipo} value={tipo}>
+                                                {tipo}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+
+                                {/* Campo número de documento */}
+                                <TextField
+                                    label="NRO. DOC"
+                                    variant="outlined"
+                                    value={numDoc}
+                                    onChange={(e) => setNumDoc(e.target.value)}
+                                    fullWidth
+                                    sx={{
+                                        width: {
+                                            xs: '100%',   // móviles
+                                            sm: '100%',    // tablets
+                                            md: '12rem',
+                                        },
+                                        gridColumn: {
+                                            xs: 'auto',
+                                            sm: tipoDoc === 'DNI' ? 'auto' : 'span 2',
+                                            md: tipoDoc === 'DNI' ? 'auto' : 'span 2',
+                                        },
+                                    }
+                                    }
+                                />
+
+                                {/* Campo verificador (solo visible si tipoDoc === 'DNI') */}
+                                {tipoDoc === 'DNI' && (
+                                    <TextField
+                                        label="CUI"
+                                        variant="outlined"
+                                        value={verifDNI}
+                                        onChange={(e) => setVerifDNI(e.target.value)}
+                                        fullWidth
+                                    />
+                                )}
+                            </Box>
+
+                            <Box>
+                                <Button
+                                    variant="text"
+                                    sx={{
+                                        fontSize: 20,
+                                        color: colors.common.black,
+                                        borderColor: colors.common.black,
+                                        '&:hover': {
+                                            color: 'white',
+                                            borderColor: colors.common.black,
+                                        },
+                                    }}
+                                >
+                                    Realizar Envío
+                                </Button>
+                            </Box>
                         </Box>
-                    </Box>
                     </AnimatedBox>
                 </Box>
             </Box>
@@ -271,7 +291,7 @@ export default function Programacion() {
             <Ayuda />
             {/*Quinto Box*/}
 
-            <Footer ></Footer>
+            <Footer/>
         </main>
     )
 }

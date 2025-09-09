@@ -25,8 +25,8 @@ const Ayuda = () => {
                 gap: { xs: 3, md: 6 },
                 width: '100%',
                 opacity: 0.95,
-                py: { xs: 1.5, md: 3.5 },  // padding vertical responsivo
-                px: { xs: 0.5, md: 2.5 },  // padding horizontal responsivo
+                py: { xs: 1.5, sm:2,md: 3.5 },  // padding vertical responsivo
+                px: { xs: 0.5, sm:2,md: 2.5 },  // padding horizontal responsivo
                 boxSizing: 'border-box',
             }}
         >
@@ -60,7 +60,7 @@ const Ayuda = () => {
                     gap: 3,
                 }}
             >
-                <img src={notificon} alt="notificación" style={{ maxWidth: '7rem', height: 'auto' }} />
+                <img src={notificon} alt="notificación" style={{ maxWidth: '7rem', height: 'auto',  }} />
                 {tituloTexto.slice(1).map((titulo, index) => (
                     <Titulo3
                         key={index}

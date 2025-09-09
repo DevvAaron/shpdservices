@@ -1,5 +1,6 @@
 // src/components/AnimatedBox.jsx
 import React from 'react';
+import { Box } from '@mui/material';
 import useAnimateOnScroll from '../hoocks/useAnimateOnScroll';
 
 const AnimatedBox = ({
@@ -15,14 +16,14 @@ const AnimatedBox = ({
   const [ref, className, style] = useAnimateOnScroll(animation, { delay, duration, once, threshold });
 
   return (
-    <div
+    <Box
       ref={ref}
       className={`animate__animated ${className}`}
-      style={style}
+      sx={style}
       {...rest}
     >
       {children}
-    </div>
+    </Box>
   );
 };
 
