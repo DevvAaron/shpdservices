@@ -12,7 +12,7 @@ import {
 import Navbar from "../Header/Navbar"
 import fondo from '../../assets/fondo.jpg';
 import { useState, useEffect } from 'react';
-import { Titulo1 } from "../hoocks/Titulos";
+import { Titulo1 } from "../Hoocks/Titulos";
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
 

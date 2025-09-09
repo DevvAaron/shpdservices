@@ -11,12 +11,12 @@ import {
 } from '@mui/material'
 import Navbar from "../Header/Navbar"
 import { useState, useEffect } from 'react';
-import { Titulo1 } from "../hoocks/Titulos";
+import { Titulo1 } from "../Hoocks/Titulos";
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
 import fondo1 from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
-
+import AnimatedBox from '../Hoocks/AnimatedBox';
 const imagenes = [fondo1, fondo2];
 
 export default function Programacion() {
@@ -82,49 +82,51 @@ export default function Programacion() {
                     }}
                 >
                     {/* 📌 Nuevo Box (izquierda) */}
-                    <Box
-                        className={"animated-box"}
-                        sx={{
-                            flex: 1,
-                            color: 'white',
-                            borderRadius: 5,
-                            padding: 2,
-                            backdropFilter: 'blur(90px)',
-                            WebkitBackdropFilter: 'blur(20px)', // Safari support
-                            boxShadow: '0 4px 60px #0088ff80',
-                            zIndex: 1,
-                            textAlign: {
-                                xs: 'center',
-                                md: 'left'
-                            },
-                        }}
-                    >
-                        <Titulo1 titulo={"Envía tus productos y recibe el pago contra entrega"} 
-                            style={{
-                                textAlign: 'left', color: '#263D4F',
-                                fontFamily: 'fantasy'
-                            }} />
-                            
 
-                        <Typography
-                            variant="body2"
-                            component="div"
+                    <AnimatedBox animation="animate__fadeInUp" delay={300} duration={3000}>
+                        <Box
                             sx={{
-                                fontSize: {
-                                    xs: '0.9rem',
-                                    sm: '1rem',
+                                flex: 1,
+                                color: 'white',
+                                borderRadius: 5,
+                                padding: 2,
+                                backdropFilter: 'blur(90px)',
+                                WebkitBackdropFilter: 'blur(20px)', // Safari support
+                                boxShadow: '0 4px 60px #0a5393da',
+                                zIndex: 1,
+                                textAlign: {
+                                    xs: 'center',
+                                    md: 'left'
                                 },
-                                textAlign: 'left',
-                                marginTop:5,
                             }}
                         >
-                            Sin registros. Solo ingresa con tu DNI y los datos de tu envío. Nosotros nos encargamos del resto.
-                        </Typography>
-                    </Box>
+                            <Titulo1 titulo={"Envía tus productos y recibe el pago contra entrega"}
+                                style={{
+                                    textAlign: 'left', color: '#263D4F',
+                                    fontFamily: 'fantasy'
+                                }} />
 
+
+                            <Typography
+                                variant="body2"
+                                component="div"
+                                sx={{
+                                    fontSize: {
+                                        xs: '0.9rem',
+                                        sm: '1rem',
+                                    },
+                                    textAlign: 'left',
+                                    marginTop: 5,
+                                }}
+                            >
+                                Sin registros. Solo ingresa con tu DNI y los datos de tu envío. Nosotros nos encargamos del resto.
+                            </Typography>
+                        </Box>
+                    </AnimatedBox>
                     {/* Contenido principal */}
+                    
+                    <AnimatedBox animation="animate__fadeInUp" delay={300} duration={3000}>
                     <Box
-                        className="animated-box"
                         sx={{
                             position: 'relative',
                             zIndex: 2,
@@ -261,13 +263,15 @@ export default function Programacion() {
                             </Button>
                         </Box>
                     </Box>
+                    </AnimatedBox>
                 </Box>
             </Box>
 
             {/*Cuarto Box*/}
             <Ayuda />
             {/*Quinto Box*/}
-            <Footer />
+
+            <Footer ></Footer>
         </main>
     )
 }

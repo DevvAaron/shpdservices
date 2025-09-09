@@ -1,37 +1,37 @@
+// src/components/hoocks/useAnimateOnScroll.jsx
 import { useEffect, useRef, useState } from "react";
-export function useAnimateOnScroll(
-    animationClass,
-    options = {
-        threshold: 0.1,
-        once: true,
-        delay: 0,
-    }
+
+export default function useAnimateOnScroll(
+  inClass = '',
+  options = { threshold: 0.1, once: true, delay: 0, duration: 1000 }
 ) {
-    const ref = useRef();
-    const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef();
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasIntersected, setHasIntersected] = useState(false);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        setIsVisible(true);
-                    }, options.delay || 0);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && (!hasIntersected || !options.once)) {
+          setTimeout(() => {
+            setIsVisible(true);
+            setHasIntersected(true);
+          }, options.delay || 0);
+        }
+      },
+      { threshold: options.threshold || 0.1 }
+    );
 
-                    if (options.once) observer.disconnect();
-                }
-            },
-            { threshold: options.threshold || 0.1 }
-        );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [options, hasIntersected]);
 
-        if (ref.current) observer.observe(ref.current);
+  const className = isVisible ? inClass : '';
 
-        return () => observer.disconnect();
-    }, [options]);
+  const style = {
+    animationDuration: `${(options.duration || 1000) / 1000}s`,
+    animationFillMode: 'both',
+  };
 
-    const className = isVisible
-        ? `animate__animated ${animationClass}`
-        : '';
-
-    return [ref, className];
+  return [ref, className, style];
 }

@@ -1,6 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import ScrollToTop from './components/hoocks/ScrollToTop';
+import ScrollToTop from './components/Hoocks/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 import Programacion from './components/ProgramarEnvio/Programacion';
 import Inicio from './components/Inicio/Inicio';

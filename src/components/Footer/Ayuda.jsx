@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { Titulo3 } from "../hoocks/Titulos";
+import { Titulo3 } from "../Hoocks/Titulos";
 import notificon from '../../assets/notificacion.png';
 
 const tituloTexto = ["Atención al cliente", "946021240", "ventas@jercourier.com"];

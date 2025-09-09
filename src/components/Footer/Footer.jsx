@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { Titulo2 } from "../hoocks/Titulos";
+import { Titulo2 } from "../Hoocks/Titulos";
 
 const Footer = () => {
   const sections = [
