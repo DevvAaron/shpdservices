@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { Titulo3 } from "../Titulos";
+import { Titulo3 } from "../hoocks/Titulos";
 import notificon from '../../assets/notificacion.png';
 
 const tituloTexto = ["Atención al cliente", "946021240", "ventas@jercourier.com"];
@@ -60,7 +60,7 @@ const Ayuda = () => {
                     gap: 3,
                 }}
             >
-                <img src={notificon} alt="notificación" style={{ maxWidth: '100px', height: 'auto' }} />
+                <img src={notificon} alt="notificación" style={{ maxWidth: '7rem', height: 'auto' }} />
                 {tituloTexto.slice(1).map((titulo, index) => (
                     <Titulo3
                         key={index}

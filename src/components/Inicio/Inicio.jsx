@@ -11,17 +11,22 @@ import {
     colors,
     Typography
 } from '@mui/material'
-import fondo from '../../assets/fondo.jpg';
 import Cobertura from '../Cobertura/Cobertura';
 import mundo from '../../assets/mundo.png';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
 import Navbar from '../Header/Navbar';
+import { Contenido, Subtitulo, Titulo1 } from '../hoocks/Titulos';
 import 'animate.css';
+
+import { useAnimateOnScroll } from "../hoocks/useAnimateOnScroll";
+
+
 import img1 from '../../assets/img1.jpg';
 import img2 from '../../assets/img2.jpg';
 import img3 from '../../assets/img3.jpg';
 import img4 from '../../assets/img4.jpg';
+import img8 from '../../assets/img8.png';
 
 import fondo1 from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
@@ -29,10 +34,9 @@ import fondo3 from '../../assets/fondo3.jpg';
 const imagenes = [fondo1, fondo2, fondo3];
 
 export default function Inicio() {
-
-
+    const [boxRef, boxClass] = useAnimateOnScroll('animate__fadeInUp', { delay: 300 });
     const [index, setIndex] = useState(0);
-    const fondoImages = [img1, img2, img3, img4]
+    const fondoImages = [img1, img2, img3, img4, img8]
     const [tipoDoc, setTipoDoc] = useState('DNI');
     const [numDoc, setNumDoc] = useState('');
     const [verifDNI, setVerifDNI] = useState('');
@@ -179,8 +183,8 @@ export default function Inicio() {
                             md: '25rem',  // escritorios
                         },
                         p: {
-                            xs: 2,
-                            sm: 3,
+                            xs: 0.5,
+                            sm: 1,
                             md: 4,
                         },
                         fontFamily: 'fantasy',
@@ -415,8 +419,6 @@ export default function Inicio() {
                 </Box>
             </Box>
 
-
-
             {/*Tercer Box*/}
             <Box name="Tercer box" sx={{
                 position: "relative",
@@ -458,22 +460,126 @@ export default function Inicio() {
                 >
                     <Cobertura />
                 </Box>
-            </Box>{/* nuevo Box */}
+            </Box>
+
+
+            {/* nuevo Box */}
             <Box
                 sx={{
                     flexDirection: "row",
                     display: "flex",
                     justifyContent: "space-around",
-                    margin: 5,
+                    padding: "0.55rem",
+                    flexWrap: "wrap",
+
+                    backdropFilter: 'blur(0.5px)',
+                    WebkitBackdropFilter: 'blur(0.5px)',
+                    zIndex: 1, background: 'linear-gradient(180deg, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
                 }}
             >
-                <Box height={100} width={100} bgcolor="red"
-                    className="animate__animated animate__fadeIn" sx={{display: "flex",}}>
+                <Box
+                    ref={boxRef}
+                    className={`animate__animated ${boxClass}`}
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        overflow: "hidden",
+                        width: {
+                            xs: '100%',   // móviles
+                            sm: '80%',    // tablets
+                            md: '45rem',  // escritorios
+                        },
+                        p: {
+                            xs: 2,
+                            sm: 3,
+                            md: 4,
+                        },
+                        m: {
+                            xs: 1,
+                            sm: 2,
+                            md: 2,
+                        }
+                    }}>
+                    <Box sx={{
+                        display: "flex",
+                        flexDirection: "column"
+                    }}>
+                        <Titulo1 titulo={"Haz que tus clientes se sientan seguros comprando por internet"}
+                            style={{
+                                borderTop: '5px solid',
+                                borderTopLeftRadius: '15px',
+                                borderTopRightRadius: '15px',
+                                borderBottom: '5px solid',
+                                borderBottomLeftRadius: '15px',
+                                borderBottomRightRadius: '15px',
+                                textAlign: "center",
+                                padding: "1rem"
+                            }} />
+                        <Subtitulo subtitulo={"La solucion para negocios digitales:"}
+                            style={{ margin: "0.5rem" }} />
+                        <Contenido contenido={"No todos los clientes se sienten seguros pagando por internet antes de recibir su producto. Nosotros nos encargamos de llevar el pedido, recoger el pago y entregártelo con total seguridad."} />
+                    </Box>
+                    <Box name='hola' sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        borderBottom: '5px solid',
+                        borderBottomLeftRadius: '15px',
+                        borderBottomRightRadius: '15px',
+                    }}>
+                        <Subtitulo subtitulo={"Programa tu envío aquí"} style={{
+                            fontSize:'0.8rem'
+                        }} />
+                        <Box sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                        }}>
 
+                            <Button
+                                variant="text"
+                                sx={{
+                                    maxHeight: "1rem",
+                                    padding: 2,
+                                    fontSize: '0.8rem',
+                                    fontWeight: 'bold',
+                                    marginLeft:'1rem',
+                                    marginRight:'1rem',
+                                    '&:hover': {
+                                        fontWeight: 'bold',
+                                        color: 'white',
+                                    },
+                                }}
+                            >
+                                Realizar Envío
+                            </Button>
+                        </Box>
+                    </Box>
                 </Box>
 
-                <Box height={100} width={100} bgcolor="red">
-
+                <Box
+                    sx={{
+                        overflow: 'hidden',
+                        backgroundImage: `url(${img8})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: '1rem',
+                        minHeight: { xs: '15rem', sm: '20rem', md: '20rem' },
+                        width: {
+                            xs: '100%',   // móviles
+                            sm: '60%',    // tablets
+                            md: '20rem',  // escritorios
+                        },
+                        p: {
+                            xs: 2,
+                            sm: 3,
+                            md: 4,
+                        },
+                        m: {
+                            xs: 1,
+                            sm: 2,
+                            md: 2,
+                        }
+                    }}>
                 </Box>
             </Box>
 

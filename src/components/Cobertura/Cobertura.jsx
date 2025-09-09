@@ -1,5 +1,5 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material';
-import { Titulo1 } from './../Titulos';
+import { Titulo1 } from '../hoocks/Titulos';
 import flecha from '../../assets/flecha.png';
 const tituloTexto = "Llegamos a todas las ciudades";
 const ciudades = [

@@ -1,6 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './components/hoocks/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 import Programacion from './components/ProgramarEnvio/Programacion';
 import Inicio from './components/Inicio/Inicio';
@@ -14,6 +14,7 @@ function AnimatedRoutes() {
 
   return (
     <AnimatePresence  mode="sync" >
+      <ScrollToTop/>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Inicio />} />
         <Route path="/programacion" element={<Programacion />} />

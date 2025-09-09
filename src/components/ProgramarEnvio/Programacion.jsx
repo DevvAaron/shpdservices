@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import Navbar from "../Header/Navbar"
 import { useState, useEffect } from 'react';
-import { Titulo1 } from "../Titulos";
+import { Titulo1 } from "../hoocks/Titulos";
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
 import fondo1 from '../../assets/fondo.jpg';

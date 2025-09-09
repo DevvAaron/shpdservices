@@ -1,6 +1,4 @@
-// Titulo.jsx
-import React from 'react';
-import helpicon from '../assets/help.png';
+
 
 export const Titulo1 = ({ titulo, subtitulo, style }) => {
     return (
@@ -38,6 +36,29 @@ export const Titulo3 = ({ titulo, subtitulo, mostrarLink = false }) => {
                     {mostrarLink && <a href="/contacto"> aquí</a>}
                 </p>
             )}
+        </div>
+    );
+};
+export const Contenido = ({ contenido }) => {
+    return (
+        <div style={{
+            textAlign: 'left', display: "flex", flexDirection: "column", alignItems: "center",
+        }}>
+            <p style={{ fontSize: '1.2rem' }}>
+                {contenido}
+            </p>
+        </div>
+    );
+};
+export const Subtitulo = ({ subtitulo, style}) => {
+    return (
+        <div style={{
+            textAlign: 'left', display: "flex", flexDirection: "column", alignItems: "center"
+        }}>
+            <p style={{ fontSize: '1rem',
+                fontWeight: 'bold' }}>
+                {subtitulo}
+            </p>
         </div>
     );
 };
