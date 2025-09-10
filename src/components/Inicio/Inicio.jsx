@@ -174,11 +174,11 @@ export default function Inicio() {
                             minHeight: '200px',
                             maxWidth: {
                                 xs: '20rem',
-                                sm: '20rem',
-                                md: '20rem'
+                                sm: '25rem',
+                                md: '25rem'
                             },
                             p: {
-                                xs: 1,
+                                xs: 2,
                                 sm: 2,
                                 md: 4,
                             },

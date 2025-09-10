@@ -75,24 +75,34 @@ const Navbar = () => {
             flexDirection: 'row',
             gap: 3,
             paddingRight: '2rem',
+            alignItems: 'center'
           }}
         >
           {navigationLinks.map(({ to, label }) => (
             <NavLink
               key={to}
               to={to}
-              style={({ isActive }) => ({
-                textDecoration: 'none',
-                borderBottom: isActive ? '2px solid white' : '2px solid transparent',
-                fontWeight: isActive ? 'bold' : 'normal',
-                color: '#fff',
-                paddingBottom: '0.3rem',
-                transition: '0.3s',
-              })}
+              style={({ isActive }) => {
+                const isContacto = to === '/contacto';
+                return {
+                  textDecoration: 'none',
+                  color: '#fff',
+                  padding: '0.4rem 0.8rem',
+                  transition: '0.3s',
+                  border: isContacto
+                    ? '2px solid white' // Siempre borde blanco
+                    : isActive
+                      ? '2px solid white' // Borde blanco si está activo
+                      : '2px solid transparent',
+                  borderRadius: isContacto ? '5px' : '0px',
+                  fontWeight: isActive || isContacto ? 'bold' : 'normal',
+                };
+              }}
             >
               {label}
             </NavLink>
           ))}
+
         </Box>
       )}
 
@@ -109,7 +119,7 @@ const Navbar = () => {
               position: 'absolute',
               top: '80px',
               right: 0,
-              width: '16rem',
+              width: '8rem',
               backgroundColor: '#4e7da3',
               padding: '1rem',
               display: 'flex',
