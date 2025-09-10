@@ -63,15 +63,16 @@ export default function Seguimiento() {
                         height: '100%',
                         backdropFilter: 'blur(5px)',
                         WebkitBackdropFilter: 'blur(5px)', // Safari support
-                        zIndex: 1,
+                        zIndex: 0,
                     }}
                 />
 
-                {/* Contenedor de ambos lados */}
+                {/* Contenedor Buscador */}
                 <Box
+                    name="A"
                     sx={{
                         position: 'relative',
-                        zIndex: 2,
+                        zIndex: 1,
                         display: 'flex',
                         flexDirection: {
                             xs: 'column', // En móvil apilado
@@ -79,15 +80,19 @@ export default function Seguimiento() {
                         },
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        maxWidth: '40rem',
                         margin: '0 auto',
-                        width: '100%',
+                        maxWidth: {
+                            xs: '15rem',
+                            sm: '40rem',
+                            md: '55rem'
+                        },
                         gap: 4,
                         py: 4,
                         px: { xs: 2, sm: 4 },
                     }}
                 >
                     <Box
+                        name="B"
                         sx={{
                             display: 'flex',
                             flexDirection: {
@@ -96,17 +101,16 @@ export default function Seguimiento() {
                             },
                             alignItems: 'center',
                             gap: 2,
-                            mt: 2,
-                            width: '100%',
+                            width: "100%"
                         }}
                     >
                         <TextField
                             label="Buscar Tracking ID"
                             sx={{
-                                flex:2,
+                                flex: 2,
                             }}
                         />
-
+                        {/*Boton para buscar*/}
                         <Button
                             sx={{
                                 whiteSpace: 'nowrap',
@@ -122,7 +126,7 @@ export default function Seguimiento() {
                 </Box>
             </Box>
             {/*Quinto Box*/}
-                <Ayuda />
+            <Ayuda />
             {/*Sextp Box*/}
             <Footer />
         </main>

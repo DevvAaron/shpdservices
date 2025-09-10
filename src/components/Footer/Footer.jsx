@@ -31,6 +31,7 @@ const Footer = () => {
         width: "100%",
         backgroundColor: "#4e7da3",
         color: "#fff",
+        padding:1
       }}
     >
       {/* Secciones principales */}

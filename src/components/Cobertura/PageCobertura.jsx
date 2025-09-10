@@ -12,10 +12,11 @@ const ciudades = [
     "Morelia", "Chimalhuacán"
 ];
 
-const Cobertura = () => {
+export const Cobertura1 = () => {
     const theme = useTheme();
     const isXs = useMediaQuery(theme.breakpoints.down('sm'));
     const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+    
 
     let cantidadVisible = ciudades.length;
     if (isXs) cantidadVisible = 6;
@@ -33,7 +34,7 @@ const Cobertura = () => {
                 alignItems: 'center',
                 padding: '0.5rem',
                 opacity: 0.9,
-                width:"100%"
+                width: "100%"
             }}
         >
             <Titulo1 titulo={tituloTexto} subtitulo="Consulte nuestras zonas de cobertura" sx={{
@@ -83,4 +84,76 @@ const Cobertura = () => {
     );
 };
 
-export default Cobertura;
+export const Cobertura2 = () => {
+    const theme = useTheme();
+    const isXs = useMediaQuery(theme.breakpoints.down('sm'));
+    const isSm = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+
+    let cantidadVisible = ciudades.length;
+    if (isXs) cantidadVisible = 6;
+    else if (isSm) cantidadVisible = 10;
+    const ciudadesMostradas = ciudades.slice(0, cantidadVisible);
+
+    return (
+        <Box name="Cobertura"
+            sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '0.5rem',
+                opacity: 0.9,
+                width: "100%",
+            }}
+        >
+            <Box
+                name="1"
+                sx={{
+                    display: 'grid',
+                    gridTemplateColumns: {
+                        xs: '1fr',
+                        sm: '1fr 1fr',
+                        md: '1fr 1fr 1fr'
+                    },
+                    gap: 1,
+                    maxWidth: {sm:'50rem'},
+                    width: '100%',
+                    textAlign: 'center',
+                }}
+            >
+                {ciudadesMostradas.map((ciudad, index) => (
+                    <Box
+                        name="2"
+                        key={index}
+                        sx={{
+                            fontSize: '1rem',
+                            padding: '0.05rem',
+                            alignItems: 'center',
+                            display: 'flex',
+                            justifyContent: { xs: 'center',
+                                sm: 'center'
+                             },
+                            textAlign: { xs: 'left' },
+                            animation: `fadeScaleIn 0.4s ease-out ${index * 100}ms forwards`,
+                            transform: 'scale(0.9)',       // Estado inicial para animación
+                            transition: 'transform 0.3s ease',  // Suaviza el hover
+                            '&:hover': {
+                                transform: 'scale(1.05)',
+                            },
+                        }}
+                    >
+                        <img src={flecha} alt="" />
+                        <Box
+                        sx={{
+                            width:'8rem',
+                            textAlign:{xs:'center',sm:'left',md:'left'}
+                        }}>
+                            {ciudad}
+                        </Box>
+                    </Box>
+                ))}
+            </Box>
+        </Box>
+    );
+};
+

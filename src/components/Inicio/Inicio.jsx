@@ -11,7 +11,7 @@ import {
     colors,
     Typography
 } from '@mui/material'
-import Cobertura from '../Cobertura/PageCobertura';
+import {Cobertura1} from '../Cobertura/PageCobertura';
 import mundo from '../../assets/mundo.png';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
@@ -482,7 +482,7 @@ export default function Inicio() {
                         px: { xs: 2, sm: 4 }
                     }}
                 >
-                    <Cobertura />
+                    <Cobertura1 />
                 </Box>
             </Box>
 
