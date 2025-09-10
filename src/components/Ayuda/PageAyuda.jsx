@@ -7,7 +7,7 @@ import ComponentFooter from '../Footer/Footer'
 import Navbar from '../Header/Navbar'
 import { useState } from 'react'
 import { Cobertura2 } from '../Cobertura/PageCobertura'
-
+import helpicon from '../../assets/ayuda.png';
 // Motion wrapper
 const MotionContent = motion.create(Box)
 
@@ -39,6 +39,7 @@ function AccordionItem({ value, trigger, children, isOpen }) {
                                 margin: 1,
                                 overflow: 'hidden', px: 2, py: 1,
                                 backgroundColor: "#64d1f5ff",
+                                opacity: "0.9",
                                 border: "0.15rem solid #000000ff",
                                 borderRadius: "0.5rem ",
                                 display: "flex",
@@ -86,14 +87,37 @@ export default function Ayuda() {
             <Navbar />
             <Box sx={{ height: '80px' }} />
             {/*Primer Box */}
-            <Box sx={{
-                maxWidth: {
-                    sm: '30rem',
-                    md: '50rem',
-                },
-                margin: '0 auto',
-                p: 2
-            }}>
+            <Box
+                name='1' sx={{
+                    maxWidth: {
+                        sm: '30rem',
+                        md: '50rem',
+                    },
+                    margin: '0 auto',
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}>
+                <img src={helpicon} alt="notificación" style={{ maxWidth: '4rem', height: 'auto',margin:'1rem' }} />
+                <Typography
+                    variant="h3"
+                    component="div"
+                    sx={{
+                        fontSize: {
+                            xs: '1.6rem',
+                            sm: '2rem',
+                            md: '2.5rem',
+                        },
+                        textAlign: 'center',
+                        fontFamily: 'fantasy',
+                        mt: '0.5rem',
+                        marginBottom: '1.5rem',
+                        width: '15rem'
+                    }}
+                >
+                    Preguntas Frecuentes
+                </Typography>
                 <Accordion.Root
                     type="single"
                     collapsible

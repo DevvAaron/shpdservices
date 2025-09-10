@@ -60,7 +60,7 @@ const Ayuda = () => {
                     gap: 3,
                 }}
             >
-                <img src={notificon} alt="notificación" style={{ maxWidth: '7rem', height: 'auto',  }} />
+                <img src={notificon} alt="notificación" style={{ maxWidth: '6rem', height: 'auto',  }} />
                 {tituloTexto.slice(1).map((titulo, index) => (
                     <Titulo3
                         key={index}

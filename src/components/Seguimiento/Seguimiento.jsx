@@ -1,27 +1,14 @@
 import {
     Button,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
     TextField,
     Box,
-    colors,
-    Typography
 } from '@mui/material'
 import Navbar from "../Header/Navbar"
 import fondo from '../../assets/fondo.jpg';
-import { useState, useEffect } from 'react';
-import { Titulo1 } from "../Hoocks/Titulos";
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
-import AnimatedBox from '../Hoocks/AnimatedBox';
 export default function Seguimiento() {
 
-    const tipos = ['DNI', 'CE', 'RUC', 'PASAPORTE'];
-    const [tipoDoc, setTipoDoc] = useState('DNI');
-    const [numDoc, setNumDoc] = useState('');
-    const [verifDNI, setVerifDNI] = useState('');
     return (
         <main
             style={{
@@ -106,8 +93,15 @@ export default function Seguimiento() {
                     >
                         <TextField
                             label="Buscar Tracking ID"
+                            variant="outlined"
+                            fullWidth
                             sx={{
                                 flex: 2,
+                                backgroundColor: '#ffffff',
+                                borderRadius: '1.5rem',
+                                '& .MuiOutlinedInput-root': {
+                                    borderRadius: '1.5rem',
+                                },
                             }}
                         />
                         {/*Boton para buscar*/}

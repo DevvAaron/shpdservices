@@ -6,6 +6,7 @@ import { Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpIcon from '../../assets/ayuda.png';
+import CalcIcon from '../../assets/calculadora.png'
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -28,7 +29,10 @@ const Navbar = () => {
       to: '/ayuda',
       label: <img src={HelpIcon} alt="Ayuda" style={{ height: '1.7rem' }} />
     },
-    { to: '/calculadora', label: 'ModalCalculadora' },
+    {
+      to: '/calculadora',
+      label: <img src={CalcIcon} alt="Calculadora" style={{ height: '1.7rem' }} />
+    },
     { to: '/contacto', label: 'Contacto' },
   ];
 
@@ -50,7 +54,7 @@ const Navbar = () => {
     >
       {/* Logo */}
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <img src={logo} alt="Logo" style={{ height: '3.5rem' }} />
+        <img src={logo} alt="Logo" style={{ marginLeft: '1.5rem',height: '3.5rem' }} />
       </Box>
 
       {/* Botón de menú (solo en móvil) */}
