@@ -3,7 +3,7 @@
 export const Titulo1 = ({ titulo, subtitulo, style }) => {
     return (
         <div className="titulo-animado" style={{ textAlign: 'center', ...style }}>
-            <h1 style={{ fontSize: '2.5rem', margin: 0 }}>{titulo}</h1>
+            <h1 style={{fontSize: '2.5rem', margin: 0 }}>{titulo}</h1>
             {subtitulo && <p style={{ fontSize: '1.2rem' }}>{subtitulo}</p>}
         </div>
     );
@@ -56,7 +56,7 @@ export const Contenido = ({ contenido }) => {
 export const Subtitulo = ({ subtitulo, style }) => {
     return (
         <div style={{
-            textAlign: 'left', display: "flex", flexDirection: "column", alignItems: "center"
+            textAlign: 'left', display: "flex", flexDirection: "column", alignItems: "left"
         }}>
             <p style={{
                 fontSize: '1rem',
