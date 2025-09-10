@@ -1,4 +1,4 @@
-import { Box, Typography, Button, colors, FormControl, InputLabel, Select, MenuItem } from "@mui/material"
+import { Box, Typography, Button, colors, TextField, InputAdornment, FormControl, InputLabel, Select, MenuItem } from "@mui/material"
 import Navbar from "../Header/Navbar"
 import ComponentFooter from "../Footer/Footer"
 import { Cobertura1 } from "../Cobertura/PageCobertura"
@@ -6,6 +6,9 @@ import AnimatedBox from '../Hoocks/AnimatedBox'; // 👈 importa el nuevo compon
 import { useState } from "react";
 import mundo from '../../assets/mundo.png';
 import img from '../../assets/imgCalc.png'
+import OutlinedInput from '@mui/material/OutlinedInput';
+
+
 
 export default function Calculadora() {
 
@@ -90,7 +93,7 @@ export default function Calculadora() {
                 {/* Contenedor de ambos lados */}
                 <Box
                     sx={{
-                        name: '1',
+                        name: '1dsadsasd',
                         position: 'relative',
                         zIndex: 2,
                         display: 'flex',
@@ -99,14 +102,18 @@ export default function Calculadora() {
                             sm: 'row',
                             md: 'row'     // Desde desktop, lado a lado
                         },
+                        fontSize: {
+                            xs: '0.8rem',  // para móviles
+                            sm: '0.75rem', // tablets
+                            md: '0.7rem'   // escritorios
+                        },
                         alignItems: 'center',
                         justifyContent: 'space-evenly',
-                        maxWidth: '1200px',
                         margin: '0 auto',
                         width: {
                             xs: '20rem',
                             sm: '40rem',
-                            md: '60rem'
+                            md: '150rem'
                         },
                         gap: 4,
                         py: 4,
@@ -118,10 +125,9 @@ export default function Calculadora() {
                     <AnimatedBox animation="animate__fadeInUp" delay={300} duration={3000}
                         sx={{
                             name: '1',
-                            width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
                         }}>
 
                         <Box
@@ -130,15 +136,13 @@ export default function Calculadora() {
                                 zIndex: 2,
                                 bgcolor: 'rgba(255, 255, 255, 0)',
                                 minHeight: '200px',
-                                maxWidth: {
-                                    xs: '100%',   // móviles
-                                    sm: '80%',    // tablets
-                                    md: '25rem',  // escritorios
-                                },
                                 p: {
-                                    xs: 2,
-                                    sm: 3,
-                                    md: 5,
+                                    xs: 3,
+                                    sm: 4,
+                                    md: 2,
+                                },
+                                minWidth:{
+                                    md:'30rem'
                                 },
                                 fontFamily: 'fantasy',
                                 alignItems: 'center',
@@ -150,9 +154,6 @@ export default function Calculadora() {
                                 gap: 2,
                                 margin: '0 auto',
                                 boxShadow: '0 4px 60px rgba(0, 0, 0, 0.5)',
-                                fontSize: {
-                                    sm: "1rem"
-                                }
                             }}
                         >
                             <Typography
@@ -171,110 +172,219 @@ export default function Calculadora() {
                                 Calculadora de precios
                             </Typography>
 
-                            {/* Select Estados */}
-                            <FormControl
-                                fullWidth
-                            >
-                                <InputLabel id="municipio-label">Estados</InputLabel>
-                                <Select
-                                    labelId="municipio-label"
-                                    id="municipio-select"
-                                    value={estado}
-                                    label="Estados"
-                                    onChange={(e) => setEstado(e.target.value)}
-                                    MenuProps={{
-                                        PaperProps: {
-                                            sx: {
-                                                maxHeight: {
-                                                    xs: 200,  // aproximadamente 4 ítems (4 * 48px)
-                                                    sm: 300,
-                                                    md: 400,
-                                                },
-                                            },
-                                        },
-                                    }}
-                                >
-                                    {estados.map((estadoItem) => (
-                                        <MenuItem key={estadoItem} value={estadoItem}>
-                                            {estadoItem}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-                            {/* Select Municipios */}
-                            <FormControl
-                                fullWidth
+
+                            <Box
                                 sx={{
-                                    maxWidth: {
-                                        xs: '100%',
-                                        sm: '100%',
-                                        md: '12rem',
+                                    display: 'grid',
+                                    gap: 2,
+                            minWidth: {
+                                sm:'20rem',
+                                md:'30rem'
+                            },
+                                    gridTemplateColumns: {
+                                        xs: '1fr',           // 1 columna en pantallas pequeñas
+                                        sm: 'repeat(3, 1fr)' // 3 columnas desde sm en adelante
+                                    },
+                                    gridTemplateRows: {
+                                        xs: 'auto', // auto filas en xs
+                                        sm: 'auto auto' // 2 filas desde sm
                                     },
                                 }}
                             >
-                                <InputLabel id="municipio-label">Municipios</InputLabel>
-                                <Select
-                                    labelId="municipio-label"
-                                    id="municipio-select"
-                                    value={munucipio}
-                                    label="Municipios"
-                                    onChange={(e) => setMunicipio(e.target.value)}
-                                    MenuProps={{
-                                        PaperProps: {
-                                            sx: {
-                                                maxHeight: {
-                                                    xs: 200, // Muestra 4 items aprox. (48px * 4)
-                                                    sm: 300,
-                                                    md: 400,
-                                                },
-                                            },
-                                        },
+                                {/* Select Estados */}
+                                <FormControl
+                                    fullWidth
+                                    sx={{
+                                        maxWidth: '100%',
                                     }}
                                 >
-                                    {municipios.map((municipioItem) => (
-                                        <MenuItem key={municipioItem} value={municipioItem}>
-                                            {municipioItem}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-                            {/* Select Localidad */}
-                            <FormControl
-                                fullWidth
-                                sx={{
-                                    maxWidth: {
-                                        xs: '100%',
-                                        sm: '100%',
-                                        md: '12rem',
-                                    },
-                                }}
-                            >
-                                <InputLabel id="localidad-label">Localidades</InputLabel>
-                                <Select
-                                    labelId="localidad-label"
-                                    id="localidad-select"
-                                    value={localidad}
-                                    label="Localidades"
-                                    onChange={(e) => setLocalidad(e.target.value)}
-                                    MenuProps={{
-                                        PaperProps: {
-                                            sx: {
-                                                maxHeight: {
-                                                    xs: 200,  // ≈ 4 ítems de 48px
-                                                    sm: 300,
-                                                    md: 400,
+                                    <InputLabel id="estado-label">Estados</InputLabel>
+                                    <Select
+                                        labelId="estado-label"
+                                        id="estado-select"
+                                        value={estado}
+                                        label="Estados"
+                                        onChange={(e) => setEstado(e.target.value)}
+                                        input={
+                                            <OutlinedInput
+                                                label="Estados"
+                                                sx={{
+                                                    borderRadius: '0.5rem',
+                                                    '& fieldset': {
+                                                        borderColor: 'black',
+                                                        borderWidth: '1px',
+                                                    },
+                                                    '&:hover fieldset': {
+                                                        borderColor: 'black',
+                                                    },
+                                                    '&.Mui-focused fieldset': {
+                                                        borderColor: 'black',
+                                                    },
+                                                }}
+                                            />
+                                        }
+                                        MenuProps={{
+                                            PaperProps: {
+                                                sx: {
+                                                    maxHeight: {
+                                                        xs: 200,
+                                                        sm: 300,
+                                                        md: 400,
+                                                    },
                                                 },
                                             },
-                                        },
+                                        }}
+                                    >
+                                        {estados.map((estadoItem) => (
+                                            <MenuItem key={estadoItem} value={estadoItem}>
+                                                {estadoItem}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+
+                                {/* Select Municipios */}
+                                <FormControl
+                                    fullWidth
+                                    sx={{
+                                        maxWidth: '100%',
                                     }}
                                 >
-                                    {localidades.map((localidadItem) => (
-                                        <MenuItem key={localidadItem} value={localidadItem}>
-                                            {localidadItem}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
+                                    <InputLabel id="municipio-label">Municipios</InputLabel>
+                                    <Select
+                                        labelId="municipio-label"
+                                        id="municipio-select"
+                                        value={munucipio}
+                                        label="Municipios"
+                                        onChange={(e) => setMunicipio(e.target.value)}
+                                        input={
+                                            <OutlinedInput
+                                                label="Municipios"
+                                                sx={{
+                                                    borderRadius: '0.5rem',
+                                                    '& fieldset': {
+                                                        borderColor: 'black',
+                                                        borderWidth: '1px',
+                                                    },
+                                                    '&:hover fieldset': {
+                                                        borderColor: 'black',
+                                                    },
+                                                    '&.Mui-focused fieldset': {
+                                                        borderColor: 'black',
+                                                    },
+                                                }}
+                                            />
+                                        }
+                                        MenuProps={{
+                                            PaperProps: {
+                                                sx: {
+                                                    maxHeight: {
+                                                        xs: 200,
+                                                        sm: 300,
+                                                        md: 400,
+                                                    },
+                                                },
+                                            },
+                                        }}
+                                    >
+                                        {municipios.map((municipioItem) => (
+                                            <MenuItem key={municipioItem} value={municipioItem}>
+                                                {municipioItem}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+
+                                {/* Select Localidades */}
+                                <FormControl
+                                    fullWidth
+                                    sx={{
+                                        maxWidth: '100%',
+                                    }}
+                                >
+                                    <InputLabel id="localidad-label">Localidades</InputLabel>
+                                    <Select
+                                        labelId="localidad-label"
+                                        id="localidad-select"
+                                        value={localidad}
+                                        label="Localidades"
+                                        onChange={(e) => setLocalidad(e.target.value)}
+                                        input={
+                                            <OutlinedInput
+                                                label="Localidades"
+                                                sx={{
+                                                    borderRadius: '0.5rem',
+                                                    '& fieldset': {
+                                                        borderColor: 'black',
+                                                        borderWidth: '1px',
+                                                    },
+                                                    '&:hover fieldset': {
+                                                        borderColor: 'black',
+                                                    },
+                                                    '&.Mui-focused fieldset': {
+                                                        borderColor: 'black',
+                                                    },
+                                                }}
+                                            />
+                                        }
+                                        MenuProps={{
+                                            PaperProps: {
+                                                sx: {
+                                                    maxHeight: {
+                                                        xs: 200,
+                                                        sm: 300,
+                                                        md: 400,
+                                                    },
+                                                },
+                                            },
+                                        }}
+                                    >
+                                        {localidades.map((localidadItem) => (
+                                            <MenuItem key={localidadItem} value={localidadItem}>
+                                                {localidadItem}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+
+                                {/* Campo de peso (ocupa toda la segunda fila en sm/md) */}
+                                <TextField
+                                    label="Peso"
+                                    id="outlined-start-adornment"
+                                    sx={{
+                                        gridColumn: {
+                                            xs: 'auto',
+                                            sm: '1 / span 3', // desde columna 1, ocupa 3 columnas
+                                        },
+                                        '& .MuiOutlinedInput-root': {
+                                            borderRadius: '0.5rem',
+                                            '& fieldset': {
+                                                borderColor: 'black',
+                                                borderWidth: '1px',
+                                            },
+                                            '&:hover fieldset': {
+                                                borderColor: 'black',
+                                            },
+                                            '&.Mui-focused fieldset': {
+                                                borderColor: 'black',
+                                            },
+                                        },
+                                        '& .MuiInputAdornment-root': {
+                                            borderLeft: '1px solid black',
+                                            marginLeft: '8px',
+                                            paddingLeft: '8px',
+                                        },
+                                    }}
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                kg
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                            </Box>
+
 
                             <Box>
                                 <Button
@@ -284,6 +394,7 @@ export default function Calculadora() {
                                         color: colors.common.black,
                                         borderColor: colors.common.black,
                                         '&:hover': {
+                                            backgroundColor: '#4e7da3',
                                             color: 'white',
                                             borderColor: colors.common.black,
                                         },
@@ -298,32 +409,27 @@ export default function Calculadora() {
                     {/* 2 columna */}
                     <AnimatedBox animation="animate__fadeInUp" delay={300} duration={3000}>
                         <Box
+                            component="img"
+                            src={img}
+                            alt=""
                             sx={{
-                                name: '2',
-                                flex: 1,
-                                color: 'black bold',
-                                padding: {
-                                    xs: 0,
-                                    md: 2
+                                width: {
+                                    xs: '300px', // 👈 ancho en móviles
+                                    sm: '400px', // 👈 ancho en tablets
+                                    md: '500px'  // 👈 ancho en escritorios (opcional)
                                 },
-                                maxWidth: { xs: '100%' },
-                                WebkitBackdropFilter: 'blur(20px)', // Safari support
-                                zIndex: 1,
-                                textAlign: {
-                                    xs: 'center',
-                                    md: 'left'
-                                },
+                                maxWidth: '100%', // evita que se desborde
+                                height: 'auto',
                             }}
                         >
-                            <img src={img} alt="" width='300rem' />
                         </Box>
                     </AnimatedBox>
 
                 </Box>
-            </Box>
+            </Box >
 
             {/*Tercer Box*/}
-            <Box
+            < Box
                 sx={{
                     position: "relative",
                     overflow: 'hidden',
@@ -337,9 +443,10 @@ export default function Calculadora() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                }}>
+                }
+                }>
                 {/* Capa de desenfoque */}
-                <Box
+                < Box
                     sx={{
                         position: 'absolute',
                         top: 0,
@@ -351,7 +458,7 @@ export default function Calculadora() {
                         zIndex: 1, background: 'linear-gradient(to top, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
                     }}
                 />
-                <Box
+                < Box
                     sx={{
                         position: 'relative',
                         zIndex: 2,
@@ -363,11 +470,11 @@ export default function Calculadora() {
                     }}
                 >
                     <Cobertura1 />
-                </Box>
-            </Box>
+                </Box >
+            </Box >
 
             {/*Tercer Box */}
-            <ComponentFooter />
+            < ComponentFooter />
         </main >
     )
 }

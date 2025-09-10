@@ -11,7 +11,7 @@ import {
     colors,
     Typography
 } from '@mui/material'
-import {Cobertura1} from '../Cobertura/PageCobertura';
+import { Cobertura1 } from '../Cobertura/PageCobertura';
 import mundo from '../../assets/mundo.png';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
@@ -147,6 +147,7 @@ export default function Inicio() {
                     transition: 'background-image 2s ease-in-out',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
+
                 }}
             >
                 {/* Capa de desenfoque */}
@@ -171,14 +172,14 @@ export default function Inicio() {
                             zIndex: 2,
                             bgcolor: 'rgba(255, 255, 255, 0)',
                             minHeight: '200px',
-                            width: {
-                                xs: '100%',   // móviles
-                                sm: '80%',    // tablets
-                                md: '25rem',  // escritorios
+                            maxWidth: {
+                                xs: '20rem',
+                                sm: '20rem',
+                                md: '20rem'
                             },
                             p: {
-                                xs: 0.5,
-                                sm: 1,
+                                xs: 1,
+                                sm: 2,
                                 md: 4,
                             },
                             fontFamily: 'fantasy',
@@ -494,14 +495,14 @@ export default function Inicio() {
                     display: "flex",
                     justifyContent: "space-around",
                     padding: "0.55rem",
-                    flexWrap: "wrap",
+                    flexWrap: "wrap",justifyContent:'center',
 
                     backdropFilter: 'blur(0.5px)',
                     WebkitBackdropFilter: 'blur(0.5px)',
                     zIndex: 1, background: 'linear-gradient(180deg, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
                 }}
             >
-                <AnimatedBox animation="animate__slideInLeft" delay={2000} duration={5000}>
+                <AnimatedBox animation="animate__slideInLeft" delay={2000} duration={5000} >
                     <Box
                         sx={{
                             display: "flex",
@@ -617,7 +618,7 @@ export default function Inicio() {
                 <Ayuda />
             </AnimatedBox>
 
-            {/*Sextp Box*/}
+            {/*Sexto Box*/}
             <Footer />
         </main>
     );
