@@ -6,7 +6,9 @@ import { Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpIcon from '../../assets/ayuda.png';
-import CalcIcon from '../../assets/calculadora.png'
+import CalcIcon from '../../assets/calculadora.png';
+import { motion, AnimatePresence } from 'framer-motion'; // 👈 al inicio del archivo
+
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -54,7 +56,7 @@ const Navbar = () => {
     >
       {/* Logo */}
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <img src={logo} alt="Logo" style={{ marginLeft: '1.5rem',height: '3.5rem' }} />
+        <img src={logo} alt="Logo" style={{ marginLeft: '1.5rem', height: '3.5rem' }} />
       </Box>
 
       {/* Botón de menú (solo en móvil) */}
@@ -65,46 +67,82 @@ const Navbar = () => {
       )}
 
       {/* Navegación */}
-      <Box
-        sx={{
-          display: isMobile ? (menuOpen ? 'flex' : 'none') : 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          position: isMobile ? 'absolute' : 'static',
-          top: isMobile ? '80px' : 'auto',
-          left: 0,
-          right: 0,
-          width: '100%',
-          backgroundColor: isMobile ? '#4e7da3' : 'transparent',
-          gap: 3,
-          paddingY: isMobile ? 2 : 0,
-          paddingX: isMobile ? 2 : 0, // ❌ No uses px: 3 aquí
-          boxSizing: 'border-box',
-          justifyContent: 'center'
-        }}
-      >
-        {navigationLinks.map(({ to, label }) => (
-          <NavLink
-            key={to}
-            to={to}
-            onClick={() => isMobile && setMenuOpen(false)}
-            style={({ isActive }) => ({
-              textDecoration: 'none',
-              borderBottom: isActive ? '2px solid white' : '2px solid transparent',
-              fontWeight: isActive ? 'bold' : 'normal',
-              color: '#fff',
-              paddingBottom: '0.3rem',
-              transition: '0.3s',
-              width: isMobile ? '100%' : 'auto',
-              display: 'block',
-              textAlign: isMobile ? 'center' : 'center',
-              paddingLeft: isMobile ? '1rem' : 0, // ✅ Alineación sin romper layout
-              paddingRight: isMobile ? '1rem' : 0,
-            })}
+      {/* Navegación: Desktop */}
+      {!isMobile && (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: 3,
+            paddingRight: '2rem',
+          }}
+        >
+          {navigationLinks.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              style={({ isActive }) => ({
+                textDecoration: 'none',
+                borderBottom: isActive ? '2px solid white' : '2px solid transparent',
+                fontWeight: isActive ? 'bold' : 'normal',
+                color: '#fff',
+                paddingBottom: '0.3rem',
+                transition: '0.3s',
+              })}
+            >
+              {label}
+            </NavLink>
+          ))}
+        </Box>
+      )}
+
+      {/* Navegación: Mobile animado */}
+      <AnimatePresence>
+        {isMobile && menuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ x: '100%', opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: '100%', opacity: 0 }}
+            transition={{ type: 'tween', duration: 0.3 }}
+            style={{
+              position: 'absolute',
+              top: '80px',
+              right: 0,
+              width: '16rem',
+              backgroundColor: '#4e7da3',
+              padding: '1rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem',
+              zIndex: 999,
+              boxShadow: '-2px 0 8px rgba(0, 0, 0, 0.2)',
+            }}
           >
-            {label}
-          </NavLink>
-        ))}
-      </Box>
+            {navigationLinks.map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                onClick={() => setMenuOpen(false)}
+                style={({ isActive }) => ({
+                  textDecoration: 'none',
+                  borderBottom: isActive ? '2px solid white' : '2px solid transparent',
+                  fontWeight: isActive ? 'bold' : 'normal',
+                  color: '#fff',
+                  paddingBottom: '0.3rem',
+                  transition: '0.3s',
+                  width: '100%',
+                  display: 'block',
+                  textAlign: 'right',
+                })}
+              >
+                {label}
+              </NavLink>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </Box>
   );
 };

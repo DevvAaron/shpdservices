@@ -59,7 +59,19 @@ export default function Programacion() {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
-            >
+            >{/* Capa de desenfoque */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backdropFilter: 'blur(20px)',
+                        WebkitBackdropFilter: 'blur(20px)',
+                        zIndex: 0,
+                    }}
+                />
 
                 {/* Contenedor de ambos lados */}
                 <Box
@@ -291,7 +303,7 @@ export default function Programacion() {
             <Ayuda />
             {/*Quinto Box*/}
 
-            <Footer/>
+            <Footer />
         </main>
     )
 }
