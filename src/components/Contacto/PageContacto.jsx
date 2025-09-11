@@ -173,7 +173,7 @@ export default function Contacto() {
                             color: colors.common.black,
                             borderColor: colors.common.black,
                             '&:hover': {
-                                backgroundColor: '#4e7da3',
+                                backgroundColor: '#13B5EA',
                                 color: 'white',
                                 borderColor: colors.common.black,
                             },

@@ -2,23 +2,22 @@
 import { useState, useEffect } from 'react';
 import {
     Button,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
-    TextField,
-    Box,
-    colors,
-    Typography
+    Box, IconButton
 } from '@mui/material'
 import { Cobertura1 } from '../Cobertura/PageCobertura';
 import mundo from '../../assets/mundo.png';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
 import Navbar from '../Header/Navbar';
-import AnimatedBox from '../Hoocks/AnimatedBox'; // 👈 importa el nuevo componente
+import AnimatedBox from '../Hoocks/AnimatedBox';
 import { Contenido, Subtitulo, Titulo1 } from '../Hoocks/Titulos';
 import 'animate.css';
+
+
+import { motion } from 'framer-motion';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 import img1 from '../../assets/img1.jpg';
 import img2 from '../../assets/img2.jpg';
 import img3 from '../../assets/img3.jpg';
@@ -28,6 +27,7 @@ import img8 from '../../assets/img8.png';
 import fondo1 from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
 import fondo3 from '../../assets/fondo3.jpg';
+
 const imagenes = [fondo1, fondo2, fondo3];
 
 export default function Inicio() {
@@ -35,7 +35,6 @@ export default function Inicio() {
     //Colecciones
     const fondoImages = [img1, img2, img3, img4, img8]
     const boxImg = [0, 3, 4, 7];
-    const tipos = ['DNI', 'CE', 'RUC', 'PASAPORTE'];
     const titulot = [
         "Programa tu envío",
         "Sigue tu paquete",
@@ -50,23 +49,30 @@ export default function Inicio() {
 
     //Estados
     const [index, setIndex] = useState(0);
-    const [tipoDoc, setTipoDoc] = useState('DNI');
-    const [numDoc, setNumDoc] = useState('');
-    const [verifDNI, setVerifDNI] = useState('');
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
     let tituloIndex = 0;
     let descIndex = 0;
     let imagenIndex = 0;
 
-    useEffect(() => {
-        const intervalo = setInterval(() => {
-            setIndex((prevIndex) => (prevIndex + 1) % imagenes.length);
-        }, 3000); // Cambia de imagen cada 5 segundos
 
-        return () => clearInterval(intervalo);
-    }, []);
+    const changeImage = (direction) => {
+        setIndex((prev) => {
+            const nextIndex = (prev + direction + imagenes.length) % imagenes.length;
+            return nextIndex;
+        });
+    };
 
+    const handleHold = (direction) => {
+        // Cambiar imagen al mantener presionado
+        holdTimeout.current = setTimeout(() => {
+            changeImage(direction);
+        }, 200); // Cambia después de 200ms manteniendo el clic
+    };
+
+    const clearHold = () => {
+        clearTimeout(holdTimeout.current);
+    };
 
     // En el componente, antes del return:
 
@@ -135,183 +141,59 @@ export default function Inicio() {
             {/* Espacio para compensar el Navbar fijo */}
             <Box sx={{ height: '80px' }} />
 
-
-            {/* Primer Box */}
             <Box
-                name="Primer Box"
-                sx={{
-                    position: 'relative',
-                    padding: '0.8rem',
-                    overflow: 'hidden',
-                    backgroundImage: `url(${imagenes[index]})`,
-                    transition: 'background-image 2s ease-in-out',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-
-                }}
+                name='hola'
+                position="relative"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
             >
-                {/* Capa de desenfoque */}
-                <Box
-                    sx={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        backdropFilter: 'blur(5px)',
-                        WebkitBackdropFilter: 'blur(5px)', // Safari support
-                        zIndex: 0,
-                    }}
-                />
+                {/* Flecha Izquierda */}
+                <IconButton
+                    onMouseDown={() => handleHold(-1)}
+                    onMouseUp={clearHold}
+                    onMouseLeave={clearHold}
+                    onClick={() => changeImage(-1)}
+                    sx={{ position: 'absolute', left: 10, zIndex: 2 }}
+                >
+                    <ArrowBackIosIcon sx={{ color: 'black' }} />
+                </IconButton>
 
-                <AnimatedBox animation="animate__slideInLeft" delay={300} duration={3000}>
-                    {/* Contenido principal */}
+                {/* Primer Box (Imagen Actual) */}
+                <motion.div
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.8 }}
+                    style={{ width: "100%" , height:{xs:'60vh'}}}
+                >
                     <Box
+                        name="Primer Box"
                         sx={{
                             position: 'relative',
-                            zIndex: 2,
-                            bgcolor: 'rgba(255, 255, 255, 0)',
-                            minHeight: '200px',
-                            maxWidth: {
-                                xs: '20rem',
-                                sm: '25rem',
-                                md: '25rem'
-                            },
-                            p: {
-                                xs: 2,
-                                sm: 2,
-                                md: 4,
-                            },
-                            fontFamily: 'fantasy',
-                            alignItems: 'center',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            borderRadius: 10,
-                            textAlign: 'center',
-                            gap: 2,
-                            margin: '0 auto',
-                            boxShadow: '0 4px 60px rgba(0, 0, 0, 0.5)',
+                            padding: '0.8rem',
+                            overflow: 'hidden',
+                            backgroundImage: `url(${imagenes[index]})`,
+                            transition: 'background-image 2s ease-in-out',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            minWidth: { xs: '15rem', sm: '50rem', md: '60rem' },
+                            minHeight: { xs: '40vh', sm: '60vh', md: '80vh' },
                         }}
-                    >
-                        <Typography
-                            variant="h3"
-                            component="div"
-                            sx={{
-                                fontSize: {
-                                    xs: '1.6rem',
-                                    sm: '2rem',
-                                    md: '2.5rem',
-                                },
-                                textAlign: 'center',
-                                fontFamily: 'fantasy',
-                            }}
-                        >
-                            Programa tu envío desde aquí
-                        </Typography>
+                    />
+                </motion.div>
 
-                        <Typography
-                            variant="body2"
-                            component="div"
-                            sx={{
-                                fontSize: {
-                                    xs: '0.9rem',
-                                    sm: '1rem',
-                                },
-                                textAlign: 'center',
-                            }}
-                        >
-                            Sin registros. Solo ingresa con tu DNI y los datos de tu envío. Nosotros nos encargamos del resto.
-                        </Typography>
-
-                        <Box
-                            sx={{
-                                display: 'grid',
-                                gridTemplateColumns: {
-                                    xs: '1fr',          // móvil: 1 columna
-                                    sm: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr', // tablets igual que desktop
-                                    md: tipoDoc === 'DNI' ? '1fr 2fr 1fr' : '1fr 2fr',
-                                },
-                                gap: 2,
-                                width: '100%',
-                            }}
-                        >
-                            {/* Select tipo de documento */}
-                            <FormControl fullWidth sx={{
-                                maxWidth: {
-                                    xs: '100%',   // móviles
-                                    sm: '100%',    // tablets
-                                    md: '12rem',
-                                }
-                            }}>
-                                <InputLabel id="tipo-label">Tipo Doc</InputLabel>
-                                <Select
-                                    labelId="tipo-label"
-                                    id="tipo-select"
-                                    value={tipoDoc}
-                                    label="Tipo Doc"
-                                    onChange={(e) => setTipoDoc(e.target.value)}
-                                >
-                                    {tipos.map((tipo) => (
-                                        <MenuItem key={tipo} value={tipo}>
-                                            {tipo}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            </FormControl>
-
-                            {/* Campo número de documento */}
-                            <TextField
-                                label="NRO. DOC"
-                                variant="outlined"
-                                value={numDoc}
-                                onChange={(e) => setNumDoc(e.target.value)}
-                                fullWidth
-                                sx={{
-                                    width: {
-                                        xs: '100%',   // móviles
-                                        sm: '100%',    // tablets
-                                        md: '12rem',
-                                    },
-                                    gridColumn: {
-                                        xs: 'auto',
-                                        sm: tipoDoc === 'DNI' ? 'auto' : 'span 2',
-                                        md: tipoDoc === 'DNI' ? 'auto' : 'span 2',
-                                    },
-                                }
-                                }
-                            />
-
-                            {/* Campo verificador (solo visible si tipoDoc === 'DNI') */}
-                            {tipoDoc === 'DNI' && (
-                                <TextField
-                                    label="CUI"
-                                    variant="outlined"
-                                    value={verifDNI}
-                                    onChange={(e) => setVerifDNI(e.target.value)}
-                                    fullWidth
-                                />
-                            )}
-                        </Box>
-
-                        <Box>
-                            <Button
-                                variant="text"
-                                sx={{
-                                    fontSize: 20,
-                                    color: colors.common.black,
-                                    borderColor: colors.common.black,
-                                    '&:hover': {
-                                        color: 'white',
-                                        borderColor: colors.common.black,
-                                    },
-                                }}
-                            >
-                                Realizar Envío
-                            </Button>
-                        </Box>
-                    </Box>
-                </AnimatedBox>
+                {/* Flecha Derecha */}
+                <IconButton
+                    onMouseDown={() => handleHold(1)}
+                    onMouseUp={clearHold}
+                    onMouseLeave={clearHold}
+                    onClick={() => changeImage(1)}
+                    sx={{ position: 'absolute', right: 10, zIndex: 2 }}
+                >
+                    <ArrowForwardIosIcon sx={{ color: 'black' }} />
+                </IconButton>
             </Box>
             {/* Segundo Box */}
             <Box
@@ -495,7 +377,7 @@ export default function Inicio() {
                     display: "flex",
                     justifyContent: "space-around",
                     padding: "0.55rem",
-                    flexWrap: "wrap",justifyContent:'center',
+                    flexWrap: "wrap", justifyContent: 'center',
 
                     backdropFilter: 'blur(0.5px)',
                     WebkitBackdropFilter: 'blur(0.5px)',
@@ -620,6 +502,6 @@ export default function Inicio() {
 
             {/*Sexto Box*/}
             <Footer />
-        </main>
+        </main >
     );
 };

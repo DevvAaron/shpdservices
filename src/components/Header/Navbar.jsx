@@ -36,13 +36,14 @@ const Navbar = () => {
       label: <img src={CalcIcon} alt="Calculadora" style={{ height: '1.7rem' }} />
     },
     { to: '/contacto', label: 'Contacto' },
+    { to: '/zonaClientes', label: 'Zona de Clientes'}
   ];
 
   return (
     <Box className="animated-navbar"
       sx={{
         width: '100%',
-        backgroundColor: '#4e7da3',
+        backgroundColor: '#13B5EA',
         color: '#fff',
         display: 'flex',
         justifyContent: 'space-between',
@@ -120,7 +121,7 @@ const Navbar = () => {
               top: '80px',
               right: 0,
               width: '8rem',
-              backgroundColor: '#4e7da3',
+              backgroundColor: '#13B5EA',
               padding: '1rem',
               display: 'flex',
               flexDirection: 'column',

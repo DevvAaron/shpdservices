@@ -8,6 +8,7 @@ import Seguimiento from './components/Seguimiento/Seguimiento';
 import Ayuda from './components/Ayuda/PageAyuda';
 import Calculadora from './components/Calculadora/PageCalculadora';
 import Contacto from './components/Contacto/PageContacto';
+import ZonaClientes from './components/ZonaClientes/ZonaClientes';
 import 'animate.css';
 function AnimatedRoutes() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function AnimatedRoutes() {
         <Route path="/ayuda" element={<Ayuda />} />
         <Route path="/calculadora" element={<Calculadora />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/zonaClientes" element={<ZonaClientes />} />
       </Routes>
     </AnimatePresence>
   );

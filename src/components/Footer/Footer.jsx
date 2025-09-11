@@ -29,7 +29,7 @@ const Footer = () => {
       component="footer"
       sx={{
         width: "100%",
-        backgroundColor: "#4e7da3",
+        backgroundColor: "#13B5EA",
         color: "#fff",
         padding:1
       }}
