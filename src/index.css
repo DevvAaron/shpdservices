@@ -53,13 +53,11 @@ button {
 }
 
 button:hover {
-  background-color: #ffffff;
+  background-color: #13B5EA;
+  color: white !important;
 }
 
 @media (prefers-color-scheme: light) {
-  html {
-    background-color: #13B5EA;
-  }
 
   body {
     background-color: #ffffff00;

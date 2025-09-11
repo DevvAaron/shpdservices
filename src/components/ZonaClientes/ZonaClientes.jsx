@@ -1,13 +1,13 @@
-import {useState }from "react";
+import { useState } from "react";
 import { motion } from 'framer-motion';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import Navbar from "../Header/Navbar";
 import Footer from "../Footer/Footer";
+import { Cobertura1 } from '../Cobertura/PageCobertura'
 import { Titulo1 } from "../Hoocks/Titulos";
-import AnimatedBox from '../Hoocks/AnimatedBox';
+import mundo from '../../assets/mundo.png'
 export default function ZonaClientes() {
 
-    const [tipoDoc, setTipoDoc] = useState('DNI');
     return (
         <motion.div
             style={{
@@ -19,25 +19,101 @@ export default function ZonaClientes() {
             }}>
             <Navbar />
             {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px' }} />
+            <Box sx={{ height: '80px'}} />
 
             <Box
+                name='Box1'
                 sx={{
                     bgcolor: 'white',
+                    padding: '1rem',
+                }}
+            >
+                <Box sx={{
+                    margin: '5rem',
+                    gap: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
                     maxWidth: {
                         xs: '25rem',
                         sm: '46rem',
                         md: '90rem'
                     },
-                    height: '100vh',
-                    padding: '1rem'
-                }}
-            >
-                <Titulo1 titulo={'Zona de Clientes'} style={{ fontSize: '1rem' }} />
+                    alignItems: 'center'
+                }}>
 
-               
+                    <Titulo1 titulo={'Zona de Clientes'} style={{ fontSize: '1rem', marginBottom: 'rem' }} />
+
+                    <Button
+                        sx={{
+                            whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                            px: 3,
+                            py: 1,
+                            width: '9rem'
+                        }}
+                    >
+                        Clientes
+                    </Button>
+                    <Button
+                        sx={{
+                            whiteSpace: 'nowrap',
+                            fontWeight: 'bold',
+                            px: 3,
+                            py: 1,
+                            width: '9rem'
+                        }}
+                    >
+                        Agentes
+                    </Button>
+                </Box>
             </Box>
+            <Box sx={{ height: '80px', backgroundColor:'#13B5EA'}} />
+            {/*Tercer Box*/}
+            < Box
+                sx={{
+                    position: "relative",
+                    overflow: 'hidden',
+                    backgroundImage: `url(${mundo})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    color: '#000000ff',
+                    py: { xs: 4, sm: 6, md: 8 },
+                    px: { xs: 2, sm: 4, md: 6 },
+                    minHeight: { xs: '150px', sm: '200px', md: '350px' },
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }
+                }>
+                {/* Capa de desenfoque */}
+                < Box
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backdropFilter: 'blur(0.5px)',
+                        WebkitBackdropFilter: 'blur(0.5px)',
+                        zIndex: 1, background: 'linear-gradient(to top, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
+                    }}
+                />
+                < Box
+                    sx={{
+                        position: 'relative',
+                        zIndex: 2,
+                        width: '100%',
+                        maxWidth: '1200px',
+                        margin: '0 auto',
+                        boxSizing: 'border-box',
+                        px: { xs: 2, sm: 4 }
+                    }}
+                >
+                    <Cobertura1 />
+                </Box >
+            </Box >
 
+            {/* Espacio para compensar el Navbar fijo */}
             <Footer />
         </motion.div>
     )

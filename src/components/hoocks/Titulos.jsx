@@ -3,8 +3,8 @@
 export const Titulo1 = ({ titulo, subtitulo, style }) => {
     return (
         <div className="titulo-animado" style={{ textAlign: 'center', ...style }}>
-            <h1 style={{fontSize: '2.5rem', margin: 0 }}>{titulo}</h1>
-            {subtitulo && <p style={{ fontSize: '1.2rem' }}>{subtitulo}</p>}
+            <h1 style={{ margin: 0 }}>{titulo}</h1>
+            {subtitulo && <p style={{ fontSize: '1.2rem'  }}>{subtitulo}</p>}
         </div>
     );
 };

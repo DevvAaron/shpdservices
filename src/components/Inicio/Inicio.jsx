@@ -28,8 +28,10 @@ import fondo1 from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
 import fondo3 from '../../assets/fondo3.jpg';
 
+import png1 from '../../assets/pngImg1.png';
+import png2 from '../../assets/pngImg2.png'
 const imagenes = [fondo1, fondo2, fondo3];
-
+const imgpng = [png1,png2,png2]
 export default function Inicio() {
 
     //Colecciones
@@ -59,6 +61,7 @@ export default function Inicio() {
     const changeImage = (direction) => {
         setIndex((prev) => {
             const nextIndex = (prev + direction + imagenes.length) % imagenes.length;
+
             return nextIndex;
         });
     };
@@ -139,7 +142,7 @@ export default function Inicio() {
             <Navbar />
 
             {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px' }} />
+            <Box sx={{ height: '80px', backgroundColor: '#13B5EA' }} />
 
             <Box
                 name='hola'
@@ -147,6 +150,8 @@ export default function Inicio() {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
+                overflow='hidden'
+                width='100%'
             >
                 {/* Flecha Izquierda */}
                 <IconButton
@@ -161,29 +166,70 @@ export default function Inicio() {
 
                 {/* Primer Box (Imagen Actual) */}
                 <motion.div
+                    name='hola'
                     key={index}
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    animate={{ opacity: 0.5 }}
                     transition={{ duration: 0.8 }}
-                    style={{ width: "100%" , height:{xs:'60vh'}}}
+                    sx={{
+                        width: "100%",
+                    }}
                 >
                     <Box
                         name="Primer Box"
                         sx={{
-                            position: 'relative',
+                            position: 'relative', zIndex: 1,
                             padding: '0.8rem',
                             overflow: 'hidden',
                             backgroundImage: `url(${imagenes[index]})`,
                             transition: 'background-image 2s ease-in-out',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            minWidth: { xs: '15rem', sm: '50rem', md: '60rem' },
-                            minHeight: { xs: '40vh', sm: '60vh', md: '80vh' },
+                            height: {
+                                xs: '16rem',
+                                sm: '25rem',
+                                md: '30rem',
+                            },
+                            minWidth: {
+                                xs: '30rem',   // móviles
+                                sm: '50rem',    // tablets
+                                md: '90rem',  // escritorios
+                            },
+                            maxWidth: '100%'
                         }}
                     />
                 </motion.div>
 
+                <Box
+                    name="20"
+                    sx={{
+                        position: 'absolute',
+                        zIndex: 2,
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        padding: '1rem',
+                        overflow: 'hidden',
+                        border: '5px solid',
+                        backgroundImage: `url(${imgpng[index]})`,
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center',
+                        borderBottomLeftRadius: '5rem ',
+                        borderTopRightRadius: '5rem',
+                        height: {
+                            xs: '14rem',
+                            sm: '20rem',
+                            md: '28rem',
+                        },
+                        width: '100%',
+                        maxWidth: {
+                            xs: '70%',
+                            sm: '35rem',
+                            md: '34rem',
+                        },
+                    }}
+                />
                 {/* Flecha Derecha */}
                 <IconButton
                     onMouseDown={() => handleHold(1)}
@@ -194,6 +240,7 @@ export default function Inicio() {
                 >
                     <ArrowForwardIosIcon sx={{ color: 'black' }} />
                 </IconButton>
+
             </Box>
             {/* Segundo Box */}
             <Box
@@ -377,7 +424,8 @@ export default function Inicio() {
                     display: "flex",
                     justifyContent: "space-around",
                     padding: "0.55rem",
-                    flexWrap: "wrap", justifyContent: 'center',
+                    flexWrap: "wrap",
+                    justifyContent: 'center',
 
                     backdropFilter: 'blur(0.5px)',
                     WebkitBackdropFilter: 'blur(0.5px)',

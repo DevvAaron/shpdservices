@@ -48,8 +48,8 @@ export default function Seguimiento() {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        backdropFilter: 'blur(50px)',
-                        WebkitBackdropFilter: 'blur(50px)', // Safari support
+                        backgroundColor:'white',
+                        opacity:'0.6', 
                         zIndex: 0,
                     }}
                 />

@@ -77,8 +77,7 @@ export default function Calculadora() {
                     justifyContent: 'center'
                 }}
             >{/* Capa de desenfoque */}
-                <Box
-                    sx={{
+                <Box sx={{
                         position: 'absolute',
                         top: 0,
                         left: 0,
