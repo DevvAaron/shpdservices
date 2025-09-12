@@ -10,6 +10,7 @@ import fondo2 from '../../assets/fondo2.jpg';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
 import ResultadoSeg from './ResultadoSeg';
+
 const InfoEnvio = [
     {
         id: 1,
@@ -36,7 +37,7 @@ const InfoEnvio = [
             id: 2,
             nombre: 'Producto2',
             monto: 20,
-            img: fondo
+            img: [fondo]
         }
     },
     {
@@ -50,7 +51,7 @@ const InfoEnvio = [
             id: 3,
             nombre: 'Producto3',
             monto: 100,
-            img: fondo
+            img: [fondo]
         }
     },
 ];
@@ -95,7 +96,7 @@ export default function Seguimiento() {
                     position: 'relative',
                     padding: '0.8rem',
                     overflow: 'hidden',
-                    height: '30vh',
+                    height: '40vh',
                     backgroundImage: `url(${fondo})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -190,7 +191,7 @@ export default function Seguimiento() {
 
             {/* Secciones finales */}
             {/*Quinto Box*/}
-            <Ayuda />
+            <Ayuda />   
             {/*Sextp Box*/}
             <Footer />
         </main >

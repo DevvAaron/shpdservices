@@ -8,6 +8,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ImageViewerModal from '../Hoocks/ImageViewerModel';
 const HistorialEstd = [
     {
         id: 1,
@@ -501,60 +502,12 @@ export default function ResultadoSeg({ data }) {
                     />
                 </Box>
             )}
-            <Modal
+            <ImageViewerModal
                 open={openImg}
-                onClose={handleCloseImg}
-                closeAfterTransition
-                BackdropComponent={Backdrop}
-                BackdropProps={{
-                    timeout: 300,
-                    sx: { backgroundColor: 'rgba(0, 0, 0, 0.9)' }
-                }}
-            >
-                <Fade in={openImg}>
-                    <Box
-                        sx={{
-                            position: 'absolute',
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            outline: 'none',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 2,
-                        }}
-                    >
-                        {/* Botón anterior */}
-                        <IconButton
-                            onClick={handlePrev}
-                            sx={{ color: 'white', backgroundColor: 'rgba(0,0,0,0.3)' }}
-                        >
-                            <ChevronLeftIcon fontSize="large" />
-                        </IconButton>
-
-                        {/* Imagen */}
-                        <Box
-                            component="img"
-                            src={imagenes[selectedImgIndex]}
-                            alt="Imagen ampliada"
-                            sx={{
-                                maxWidth: '80vw',
-                                maxHeight: '80vh',
-                                borderRadius: 2,
-                                boxShadow: 5,
-                            }}
-                        />
-
-                        {/* Botón siguiente */}
-                        <IconButton
-                            onClick={handleNext}
-                            sx={{ color: 'white', backgroundColor: 'rgba(0,0,0,0.3)' }}
-                        >
-                            <ChevronRightIcon fontSize="large" />
-                        </IconButton>
-                    </Box>
-                </Fade>
-            </Modal>
+                handleClose={handleCloseImg}
+                imagenes={imagenes}
+                selectedImgIndex={selectedImgIndex}
+            />
         </Box>
 
     )

@@ -5,8 +5,8 @@ import logo from '../../assets/logo.png';
 import { Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import HelpIcon from '../../assets/ayuda.png';
-import CalcIcon from '../../assets/calculadora.png';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import CalculateIcon from '@mui/icons-material/Calculate';
 import { motion, AnimatePresence } from 'framer-motion'; // 👈 al inicio del archivo
 
 
@@ -29,11 +29,11 @@ const Navbar = () => {
     { to: '/seguimiento', label: 'Seguimiento' },
     {
       to: '/ayuda',
-      label: <img src={HelpIcon} alt="Ayuda" style={{ height: '1.7rem' }} />
+      label:<HelpOutlineIcon sx={{fontSize:'3rem'}}/>
     },
     {
       to: '/calculadora',
-      label: <img src={CalcIcon} alt="Calculadora" style={{ height: '1.7rem' }} />
+      label: <CalculateIcon sx={{fontSize:'3rem'}}/>
     },
     { to: '/contacto', label: 'Contacto' },
     { to: '/zonaClientes', label: 'Zona de Clientes'}
@@ -56,9 +56,9 @@ const Navbar = () => {
       }}
     >
       {/* Logo */}
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <img src={logo} alt="Logo" style={{ marginLeft: '1.5rem', height: '3.5rem' }} />
-      </Box>
+      <NavLink to="/"  sx={{ display: 'flex', alignItems: 'center' }}>
+        <img src={logo} alt="Logo" style={{ marginLeft: '1.5rem', height: '3.5rem', cursor:'pointer'}} />
+      </NavLink >
 
       {/* Botón de menú (solo en móvil) */}
       {isMobile && (
