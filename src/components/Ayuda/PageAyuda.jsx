@@ -71,7 +71,6 @@ const StyledTrigger = styled(Accordion.Trigger)(({ theme }) => ({
     margin: 2,
     textAlign: 'left',
     backgroundColor: "#ffffffff",
-    border: 'none',
     cursor: 'pointer',
     outline: 'none',
     fontWeight: 600,

@@ -429,7 +429,6 @@ export default function Inicio() {
                     justifyContent: "space-around",
                     padding: "0.55rem",
                     flexWrap: "wrap",
-                    justifyContent: 'center',
 
                     backdropFilter: 'blur(0.5px)',
                     WebkitBackdropFilter: 'blur(0.5px)',
