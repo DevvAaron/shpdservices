@@ -3,12 +3,75 @@ import {
     TextField,
     Box,
 } from '@mui/material'
+import { useState } from 'react';
 import Navbar from "../Header/Navbar"
 import fondo from '../../assets/fondo.jpg';
+import fondo2 from '../../assets/fondo2.jpg';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
-export default function Seguimiento() {
+import ResultadoSeg from './ResultadoSeg';
+const InfoEnvio = [
+    {
+        id: 1,
+        nroTracking: '87755',
+        reminente: 'CARAZ COMPANY S.A.C.',
+        destinatario: 'ANA ISABEL BALBIN TORRES',
+        direccion: 'JAVIER CORREA ELIAS 137-DPTO 402 SAN MIGUEL-LIMA-LIMA',
+        dtproducto:
+        {
+            id: 1,
+            nombre: 'Producto1',
+            monto: 50,
+            img: [fondo,fondo2]
+        },
+    },
+    {
+        id: 2,
+        nroTracking: '87754',
+        reminente: 'Reminente 2',
+        destinatario: 'Destinatario2',
+        direccion: 'Dirección 2',
+        dtproducto:
+        {
+            id: 2,
+            nombre: 'Producto2',
+            monto: 20,
+            img: fondo
+        }
+    },
+    {
+        id: 3,
+        nroTracking: '87753',
+        reminente: 'Reminente 3',
+        destinatario: 'Destinario 3',
+        direccion: 'Dirección 3',
+        dtproducto:
+        {
+            id: 3,
+            nombre: 'Producto3',
+            monto: 100,
+            img: fondo
+        }
+    },
+];
 
+export default function Seguimiento() {
+    const [trackingID, setTrackingID] = useState('');
+    const [resultado, setResultado] = useState(null);
+    const [mostrarResultado, setMostrarResultado] = useState(false);
+
+    const handleBuscar = () => {
+        const info = InfoEnvio.find((envio) => envio.nroTracking === trackingID.trim());
+
+        if (info) {
+            setResultado(info);
+            setMostrarResultado(true);
+        } else {
+            // Opcional: podrías mostrar una alerta o mensaje
+            alert('Número de Tracking no encontrado.');
+            setMostrarResultado(false);
+        }
+    };
     return (
         <main
             style={{
@@ -27,16 +90,12 @@ export default function Seguimiento() {
             <Box
                 name="Primer Box"
                 sx={{
-                    display:'flex',
-                    alignItems:'center',
+                    display: 'flex',
+                    alignItems: 'center',
                     position: 'relative',
                     padding: '0.8rem',
                     overflow: 'hidden',
-                    minHeight: {
-                        xs: '20rem',
-                        sm: '30rem',
-                        md: '35rem'
-                    },
+                    height: '30vh',
                     backgroundImage: `url(${fondo})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -50,8 +109,8 @@ export default function Seguimiento() {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        backgroundColor:'white',
-                        opacity:'0.6', 
+                        backgroundColor: 'white',
+                        opacity: '0.6',
                         zIndex: 0,
                     }}
                 />
@@ -90,16 +149,18 @@ export default function Seguimiento() {
                             },
                             alignItems: 'center',
                             gap: 2,
-                        minWidth: {
-                            xs: '15rem',
-                            sm: '40rem',
-                        },
+                            minWidth: {
+                                xs: '15rem',
+                                sm: '40rem',
+                            },
                         }}
                     >
                         <TextField
                             label="Buscar Tracking ID"
                             variant="outlined"
                             fullWidth
+                            value={trackingID}
+                            onChange={(e) => setTrackingID(e.target.value)}
                             sx={{
                                 flex: 2,
                                 backgroundColor: '#ffffff',
@@ -111,6 +172,7 @@ export default function Seguimiento() {
                         />
                         {/*Boton para buscar*/}
                         <Button
+                            onClick={handleBuscar}
                             sx={{
                                 whiteSpace: 'nowrap',
                                 fontWeight: 'bold',
@@ -121,13 +183,16 @@ export default function Seguimiento() {
                             Buscar
                         </Button>
                     </Box>
-
                 </Box>
             </Box>
+            {mostrarResultado && resultado && <ResultadoSeg data={resultado} />}
+
+
+            {/* Secciones finales */}
             {/*Quinto Box*/}
             <Ayuda />
             {/*Sextp Box*/}
             <Footer />
-        </main>
+        </main >
     )
 }
