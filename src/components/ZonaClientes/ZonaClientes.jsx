@@ -19,12 +19,11 @@ export default function ZonaClientes() {
             }}>
             <Navbar />
             {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px'}} />
+            <Box sx={{ height: '80px' }} />
 
             <Box
                 name='Box1'
                 sx={{
-                    bgcolor: 'white',
                     padding: '1rem',
                 }}
             >
@@ -36,12 +35,18 @@ export default function ZonaClientes() {
                     maxWidth: {
                         xs: '25rem',
                         sm: '46rem',
-                        md: '90rem'
+                        md: '100%'
                     },
                     alignItems: 'center'
                 }}>
 
-                    <Titulo1 titulo={'Zona de Clientes'} style={{ fontSize: '1rem', marginBottom: 'rem' }} />
+                    <Titulo1 titulo={'Zona de Clientes'} style={{
+                        fontSize: '1rem', marginBottom: 'rem',
+                        padding:'1rem',
+                        borderBottom: '5px solid',
+                        borderBottomLeftRadius: '15px',
+                        borderBottomRightRadius: '15px',
+                    }} />
 
                     <Button
                         sx={{
@@ -49,7 +54,10 @@ export default function ZonaClientes() {
                             fontWeight: 'bold',
                             px: 3,
                             py: 1,
-                            width: '9rem'
+                            width: '9rem',
+                            borderBottom: '5px solid',
+                            borderBottomLeftRadius: '15px',
+                            borderBottomRightRadius: '15px',
                         }}
                     >
                         Clientes
@@ -60,14 +68,17 @@ export default function ZonaClientes() {
                             fontWeight: 'bold',
                             px: 3,
                             py: 1,
-                            width: '9rem'
+                            width: '9rem',
+
+                            borderBottom: '5px solid',
+                            borderBottomLeftRadius: '15px',
+                            borderBottomRightRadius: '15px',
                         }}
                     >
                         Agentes
                     </Button>
                 </Box>
             </Box>
-            <Box sx={{ height: '80px', backgroundColor:'#13B5EA'}} />
             {/*Tercer Box*/}
             < Box
                 sx={{

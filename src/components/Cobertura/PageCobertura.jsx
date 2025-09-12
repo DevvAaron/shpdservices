@@ -37,13 +37,14 @@ export const Cobertura1 = () => {
                 width: "100%"
             }}
         >
-            <Titulo1 titulo={tituloTexto} subtitulo="Consulte nuestras zonas de cobertura" sx={{
+            <Titulo1 titulo={tituloTexto} subtitulo="Consulte nuestras zonas de cobertura" style={{
                 animation: `fadeScaleIn 0.4s ease-out 100ms forwards`,
                 transform: 'scale(0.9)',       // Estado inicial para animación
                 transition: 'transform 0.3s ease',  // Suaviza el hover
                 '&:hover': {
                     transform: 'scale(1.05)',
                 },
+                fontSize:'0.6rem'
             }} />
             <Box
                 sx={{

@@ -29,9 +29,10 @@ import fondo2 from '../../assets/fondo2.jpg';
 import fondo3 from '../../assets/fondo3.jpg';
 
 import png1 from '../../assets/pngImg1.png';
-import png2 from '../../assets/pngImg2.png'
+import png2 from '../../assets/pngImg3.png';
+import png3 from '../../assets/pngImg2.png';
 const imagenes = [fondo1, fondo2, fondo3];
-const imgpng = [png1,png2,png2]
+const imgpng = [png1, png2, png3]
 export default function Inicio() {
 
     //Colecciones
@@ -145,7 +146,7 @@ export default function Inicio() {
             <Box sx={{ height: '80px', backgroundColor: '#13B5EA' }} />
 
             <Box
-                name='hola'
+                name='hola1'
                 position="relative"
                 display="flex"
                 alignItems="center"
@@ -159,7 +160,11 @@ export default function Inicio() {
                     onMouseUp={clearHold}
                     onMouseLeave={clearHold}
                     onClick={() => changeImage(-1)}
-                    sx={{ position: 'absolute', left: 10, zIndex: 2 }}
+                    sx={{
+                        position: 'absolute',
+                        left: 10,
+                        zIndex: 2
+                    }}
                 >
                     <ArrowBackIosIcon sx={{ color: 'black' }} />
                 </IconButton>
@@ -171,9 +176,6 @@ export default function Inicio() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 0.5 }}
                     transition={{ duration: 0.8 }}
-                    sx={{
-                        width: "100%",
-                    }}
                 >
                     <Box
                         name="Primer Box"
@@ -195,7 +197,6 @@ export default function Inicio() {
                                 sm: '50rem',    // tablets
                                 md: '90rem',  // escritorios
                             },
-                            maxWidth: '100%'
                         }}
                     />
                 </motion.div>
@@ -210,7 +211,6 @@ export default function Inicio() {
                         transform: 'translate(-50%, -50%)',
                         padding: '1rem',
                         overflow: 'hidden',
-                        border: '5px solid',
                         backgroundImage: `url(${imgpng[index]})`,
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
@@ -219,7 +219,7 @@ export default function Inicio() {
                         borderTopRightRadius: '5rem',
                         height: {
                             xs: '14rem',
-                            sm: '20rem',
+                            sm: '25rem',
                             md: '28rem',
                         },
                         width: '100%',
@@ -272,10 +272,14 @@ export default function Inicio() {
                         if (item.type === 'imagen') {
                             return (
                                 <AnimatedBox
+                                    name='243'
                                     key={`img-${item.index}`}
                                     animation="animate__fadeInUp"
                                     delay={500}
                                     duration={3000}
+                                    sx={{
+                                        maxWidth: { xs: '1rem' }
+                                    }}
                                 >
                                     <Box
                                         key={`img${item.index}`}
@@ -286,7 +290,7 @@ export default function Inicio() {
                                                 md: 300,
                                             },
                                             width: {
-                                                xs: '20rem',   // móviles
+                                                xs: '15rem',   // móviles
                                                 sm: '50rem',    // tablets
                                                 md: '20rem',  // escritorios
                                             },

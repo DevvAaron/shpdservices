@@ -35,7 +35,7 @@ export default function Contacto() {
                     maxWidth: {
                         xs: '30rem',
                         sm: '60rem',
-                        md: '120rem'
+                        md: '100%'
                     },
                     height: {
                         xs: '60rem',

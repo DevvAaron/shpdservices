@@ -21,19 +21,21 @@ export default function Seguimiento() {
         >
             <Navbar />
             {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px' }} />
+            <Box sx={{ height: '80px', backgroundColor: '#13B5EA' }} />
 
             {/* Primer Box */}
             <Box
                 name="Primer Box"
                 sx={{
+                    display:'flex',
+                    alignItems:'center',
                     position: 'relative',
                     padding: '0.8rem',
                     overflow: 'hidden',
                     minHeight: {
-                        xs: '15rem',
-                        sm: '15rem',
-                        md: '20rem'
+                        xs: '20rem',
+                        sm: '30rem',
+                        md: '35rem'
                     },
                     backgroundImage: `url(${fondo})`,
                     backgroundSize: 'cover',
@@ -71,7 +73,7 @@ export default function Seguimiento() {
                         maxWidth: {
                             xs: '15rem',
                             sm: '40rem',
-                            md: '55rem'
+                            md: '100%'
                         },
                         gap: 4,
                         py: 4,
@@ -88,7 +90,10 @@ export default function Seguimiento() {
                             },
                             alignItems: 'center',
                             gap: 2,
-                            width: "100%"
+                        minWidth: {
+                            xs: '15rem',
+                            sm: '40rem',
+                        },
                         }}
                     >
                         <TextField

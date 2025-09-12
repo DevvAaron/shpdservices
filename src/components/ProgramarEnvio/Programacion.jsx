@@ -9,16 +9,16 @@ import { motion } from 'framer-motion';
 import Footer from '../Footer/Footer';
 import Navbar from "../Header/Navbar"
 import Ayuda from '../Footer/Ayuda';
-import AnimatedBox from '../Hoocks/AnimatedBox';
 
 import fondo1 from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
+import fondo3 from '../../assets/fondo3.jpg'
 import { Titulo1 } from '../Hoocks/Titulos';
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const imagenes = [fondo1, fondo2];
+const imagenes = [fondo1, fondo2, fondo3];
 
 export default function Programacion() {
 
@@ -52,7 +52,7 @@ export default function Programacion() {
         >
             <Navbar />
             {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px' }} />
+            <Box sx={{ height: '80px', backgroundColor: '#13B5EA' }} />
 
             {/* Primer Box */}
 
@@ -86,9 +86,9 @@ export default function Programacion() {
                 <motion.div
                     key={index}
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    animate={{ opacity: 0.5 }}
                     transition={{ duration: 0.8 }}
-                    style={{ width: "100%", height: { xs: '80vh' } }}
+                    style={{ width: "100%"}}
                 >
                     <Box
                         name="BoxContenido"
@@ -99,12 +99,8 @@ export default function Programacion() {
                             transition: 'background-image 2s ease-in-out',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            minWidth: {
-                                xs: '15rem',
-                                sm: '40rem',
-                                md: '60rem'
-                            },
-                            minHeight: { xs: '40vh', sm: '40vh', md: '70vh' },
+                            minWidth: { xs: '15rem', sm: '40rem', md: '60rem' },
+                            minHeight: { xs: '50vh', sm: '55vh', md: '55vh' },
                         }}
                     />
 
@@ -159,7 +155,7 @@ export default function Programacion() {
                                 padding: 15,
                                 color: '#263D4F',
                                 fontFamily: 'fantasy',
-                                fontSize: '0.5rem',
+                                fontSize: '0.8rem',
                             }}
                         />
 
