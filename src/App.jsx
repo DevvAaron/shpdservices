@@ -14,7 +14,7 @@ function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence  mode="sync" >
+    <AnimatePresence mode="sync" >
       <ScrollToTop />
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Inicio />} />
@@ -24,6 +24,12 @@ function AnimatedRoutes() {
         <Route path="/calculadora" element={<Calculadora />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/zonaClientes" element={<ZonaClientes />} />
+        <Route path='/nosotros' element={<Programacion />} />
+        <Route path='/contacto' element={<Programacion />} />
+        <Route path='/terminos' element={<Programacion />} />
+        <Route path='/brouchers' element={<Programacion />} />
+        <Route path='/politica' element={<Programacion />} />
+        <Route path='/programacion'  element={<Programacion />} />
       </Routes>
     </AnimatePresence>
   );
@@ -35,8 +41,8 @@ function App() {
       width: '100%', minHeight: '100vh',
       backgroundColor: "#ffffff00"
     }}>
-      <Router>
-        <AnimatedRoutes/>
+      <Router basename="/">
+        <AnimatedRoutes />
       </Router>
     </div >
   );

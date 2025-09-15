@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Titulo2 } from "../Hoocks/Titulos";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   const sections = [
     {
@@ -12,14 +12,19 @@ const Footer = () => {
     },
     {
       titulo: "Información",
-      items: ["Nosotros", "Contacto", "Términos y condiciones", "Brouchers"],
+      items: [
+        { text: "Nosotros", link: '/nosotros' },
+        { text: "Contacto", link: '/contacto' },
+        { text: "Términos y condiciones", link: '/terminos' },
+        { text: "Brouchers", link: '/brouchers' }
+      ],
     },
     {
       titulo: "Sobre el servicio",
       items: [
-        "Tracking / Seguimiento",
-        "¿Cómo funciona?",
-        "Política de privacidad",
+        { text: "Tracking / Seguimiento", link: '/seguimiento' },
+        { text: "¿Cómo funciona?", link: '/programacion' },
+        { text: "Política de privacidad", link: '/politica' }
       ],
     },
   ];
@@ -31,7 +36,7 @@ const Footer = () => {
         width: "100%",
         backgroundColor: "#13B5EA",
         color: "#fff",
-        padding:1
+        padding: 1
       }}
     >
       {/* Secciones principales */}
@@ -54,30 +59,61 @@ const Footer = () => {
             key={index}
             sx={{
               flex: 1,
+              display:'flex',
+              flexDirection:'column',
               minWidth: { xs: "100%", sm: "250px" },
             }}
           >
             <Titulo2 titulo={section.titulo} />
-            {section.items.map((item, i) => (
-              <Typography
-                key={i}
-                variant="body2"
-                sx={{
-                  mt: 0.5,
-                  mb: 1.5,
-                  fontSize: "0.85rem",
-                  ...(i > 0 && {
-                    cursor: "pointer",
-                    textDecoration: "underline",
-                    "&:hover": {
-                      textDecoration: "none",
-                    },
-                  }),
-                }}
-              >
-                {item}
-              </Typography>
-            ))}
+            {section.items.map((item, i) => {
+              const isObject = typeof item === "object" && item !== null;
+              const text = isObject ? item.text : item;
+              const link = isObject ? item.link : null;
+
+              return link ? (
+                <Typography
+                  key={i}
+                  component={Link}
+                  to={link}
+                  variant="body2"
+                  sx={{
+                    mt: 0.5,
+                    mb: 1.5,
+                        color: "white",
+                    fontSize: "0.85rem",
+                    ...(i > 0 && {
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                      "&:hover": {
+                        textDecoration: "none",
+                      },
+                    }),
+                  }}
+                >
+                  {text}
+                </Typography>
+              ) : (
+                <Typography
+                  key={i}
+                  variant="body2"
+                  sx={{
+                    mt: 0.5,
+                    mb: 1.5,
+                    fontSize: "0.85rem",
+                    ...(i > 0 && {
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                      "&:hover": {
+                        textDecoration: "none",
+                      },
+                    }),
+                  }}
+                >
+                  {text}
+                </Typography>
+              );
+            })}
+
           </Box>
         ))}
       </Box>
