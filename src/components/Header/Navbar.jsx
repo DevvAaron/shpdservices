@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CalculateIcon from '@mui/icons-material/Calculate';
-import { motion, AnimatePresence } from 'framer-motion'; // 👈 al inicio del archivo
+import { motion, AnimatePresence, hover } from 'framer-motion'; // 👈 al inicio del archivo
 
 
 const Navbar = () => {
@@ -24,26 +24,28 @@ const Navbar = () => {
   }, []);
 
   const navigationLinks = [
-    { to: '/', label: 'Funcionamiento' },
-    { to: '/programacion', label: 'Programación' },
+    { to: '/', label: 'Principal' },// Antes era Funcionamiento
+    { to: '/programacion', label: 'Programación' }, // Ya no estara operativo
+    { to: '/seguimiento', label: 'Acerca de' },
     { to: '/seguimiento', label: 'Seguimiento' },
     {
       to: '/ayuda',
-      label:<HelpOutlineIcon sx={{fontSize:'3rem'}}/>
+      label: <HelpOutlineIcon sx={{ fontSize: '3rem' }} />
     },
     {
       to: '/calculadora',
-      label: <CalculateIcon sx={{fontSize:'3rem'}}/>
+      label: <CalculateIcon sx={{ fontSize: '3rem' }} />
     },
     { to: '/contacto', label: 'Contacto' },
-    { to: '/zonaClientes', label: 'Zona de Clientes'}
+    { to: '/zonaClientes', label: 'Zona de Clientes' }
   ];
 
   return (
     <Box className="animated-navbar"
       sx={{
         width: '100%',
-        backgroundColor: '#13B5EA',
+        backgroundColor: '#ffffff00',
+        opacity: 0,
         color: '#fff',
         display: 'flex',
         justifyContent: 'space-between',
@@ -56,8 +58,8 @@ const Navbar = () => {
       }}
     >
       {/* Logo */}
-      <NavLink to="/"  sx={{ display: 'flex', alignItems: 'center' }}>
-        <img src={logo} alt="Logo" style={{ marginLeft: '1.5rem', height: '3.5rem', cursor:'pointer'}} />
+      <NavLink to="/" sx={{ display: 'flex', alignItems: 'center' }}>
+        <img src={logo} alt="Logo" style={{ marginLeft: '1.5rem', height: '3.5rem', cursor: 'pointer' }} />
       </NavLink >
 
       {/* Botón de menú (solo en móvil) */}
@@ -80,29 +82,28 @@ const Navbar = () => {
           }}
         >
           {navigationLinks.map(({ to, label }) => (
-            <NavLink
+            <Box
               key={to}
+              component={NavLink}
               to={to}
-              style={({ isActive }) => {
-                const isContacto = to === '/contacto';
-                return {
-                  textDecoration: 'none',
-                  color: '#fff',
-                  padding: '0.4rem 0.8rem',
-                  transition: '0.3s',
-                  border: isContacto
-                    ? '2px solid white' // Siempre borde blanco
-                    : isActive
-                      ? '2px solid white' // Borde blanco si está activo
-                      : '2px solid transparent',
-                  borderRadius: isContacto ? '5px' : '0px',
-                  fontWeight: isActive || isContacto ? 'bold' : 'normal',
-                };
-              }}
+              sx={({ isActive }) => ({
+                textDecoration: 'none',
+                color: '#fff',
+                padding: '0.1rem 0.2rem',
+                transition: '0.3s',
+                backgroundColor: '#13B5EA',
+                borderTopLeftRadius: '5px',
+                borderTopRightRadius: '5px',
+                fontWeight: isActive || to === '/contacto' ? 'bold' : 'normal',
+                '&:hover': {
+                  borderBottom: '4px solid white',
+                },
+              })}
             >
               {label}
-            </NavLink>
+            </Box>
           ))}
+
 
         </Box>
       )}

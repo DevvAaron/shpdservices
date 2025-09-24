@@ -140,10 +140,14 @@ export default function Inicio() {
                 backgroundColor: '#ff000000',
             }}
         >
-            <Navbar />
+            <Navbar sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 1000, // asegúrate que esté encima de todo
+            }} />
 
-            {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px', backgroundColor: '#13B5EA' }} />
 
             <Box
                 name='hola1'
@@ -181,16 +185,16 @@ export default function Inicio() {
                         name="Primer Box"
                         sx={{
                             position: 'relative', zIndex: 1,
-                            padding: '0.8rem',
                             overflow: 'hidden',
                             backgroundImage: `url(${imagenes[index]})`,
                             transition: 'background-image 2s ease-in-out',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            height: {
+                            height: '100%',
+                            minHeight: {
                                 xs: '16rem',
                                 sm: '25rem',
-                                md: '30rem',
+                                md: '35rem',
                             },
                             minWidth: {
                                 xs: '30rem',   // móviles
@@ -206,10 +210,10 @@ export default function Inicio() {
                     sx={{
                         position: 'absolute',
                         zIndex: 2,
-                        top: '50%',
+                        top: '60%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
-                        padding: '1rem',
+                        paddingTop: '1rem',
                         overflow: 'hidden',
                         backgroundImage: `url(${imgpng[index]})`,
                         backgroundSize: 'cover',
@@ -217,10 +221,12 @@ export default function Inicio() {
                         backgroundPosition: 'center',
                         borderBottomLeftRadius: '5rem ',
                         borderTopRightRadius: '5rem',
-                        height: {
-                            xs: '14rem',
-                            sm: '25rem',
-                            md: '28rem',
+                        height: imgpng[index] === png1 ? {
+                            xs: '9.5rem',
+                            sm: '18.5rem',
+                            md: '18rem',
+                        } : {
+                            xs: '14rem', sm: '25rem', md: '28rem'
                         },
                         width: '100%',
                         maxWidth: {

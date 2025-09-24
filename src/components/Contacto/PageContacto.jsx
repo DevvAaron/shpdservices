@@ -5,6 +5,7 @@ import { Subtitulo, Titulo1 } from '../Hoocks/Titulos';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import img1 from '../../assets/fondoContac.jpg'
 export default function Contacto() {
     return (
         <main
@@ -23,15 +24,18 @@ export default function Contacto() {
 
             <Box
                 sx={{
-                    name: 'holdasdasdasa',
+                    position: 'relative',
+                    name: 'primero',
                     display: 'flex',
                     flexDirection: {
                         xs: 'column',
                         sm: 'row'
                     },
                     justifyContent: 'space-evenly',
+                    backgroundImage: `url(${img1})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
                     alignItems: 'center',
-                    backgroundColor: "#f5f5f5",
                     maxWidth: {
                         xs: '30rem',
                         sm: '60rem',
@@ -46,8 +50,20 @@ export default function Contacto() {
                     flexWrap: 'wrap',
                     overflow: 'hidden'
                 }}
-            >
-                <Box name='BoxFormulario'>
+            >{/* Overlay difuminado */}
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        background: "rgba(255,255,255,0.7)", // capa translúcida
+                        backdropFilter: "blur(2px)", // difuminado
+                        zIndex: 1,
+                    }}
+                />
+                <Box name='BoxFormulario' sx={{ position: "relative", zIndex: 2 }}>
                     <Titulo1 titulo={'Contactanos'} style={{ paddingBottom: '2rem' }} />
                     <Box
                         sx={{
@@ -186,7 +202,7 @@ export default function Contacto() {
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: 1,
+                        gap: 1, position: "relative", zIndex: 2
                     }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <LocationOnIcon sx={{ color: 'black' }} />
