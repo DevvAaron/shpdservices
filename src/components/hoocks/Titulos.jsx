@@ -1,11 +1,28 @@
+import { Box, Typography } from '@mui/material'
 
-
-export const Titulo1 = ({ titulo, subtitulo, style }) => {
+export const Titulo1 = ({ titulo, subtitulo, sx = {}, sxSubtitulo = {} }) => {
     return (
-        <div className="titulo-animado" style={{ textAlign: 'center', ...style }}>
-            <h1 style={{ margin: 0 }}>{titulo}</h1>
-            {subtitulo && <p style={{ fontSize: '1.2rem'  }}>{subtitulo}</p>}
-        </div>
+        <Box sx={{ textAlign: 'center', ...sx }}>
+            <Typography component="h1" sx={{
+                m: 0, fontFamily: 'fantasy',
+                fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.5rem' }, ...sx
+            }}>
+                {titulo}
+            </Typography>
+
+            {
+                subtitulo && (
+                    <Typography component="p" sx={{
+                        mt: 1,
+                        lineHeight: 1.4,
+                        ...sxSubtitulo,
+                        ...sx
+                    }}>
+                        {subtitulo}
+                    </Typography>
+                )
+            }
+        </Box >
     );
 };
 
@@ -46,6 +63,7 @@ export const Contenido = ({ contenido }) => {
     return (
         <div style={{
             textAlign: 'left', display: "flex", flexDirection: "column", alignItems: "center",
+            whiteSpace: 'pre-line'
         }}>
             <p style={{ fontSize: '1.2rem' }}>
                 {contenido}

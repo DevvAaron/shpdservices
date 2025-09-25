@@ -9,6 +9,9 @@ import Ayuda from './components/Ayuda/PageAyuda';
 import Calculadora from './components/Calculadora/PageCalculadora';
 import Contacto from './components/Contacto/PageContacto';
 import ZonaClientes from './components/ZonaClientes/ZonaClientes';
+
+import AcercaDe from './components/Acercade/Acerca';
+import ServiciosPage from './components/Servicios/ServicioPage';
 import 'animate.css';
 function AnimatedRoutes() {
   const location = useLocation();
@@ -23,13 +26,15 @@ function AnimatedRoutes() {
         <Route path="/ayuda" element={<Ayuda />} />
         <Route path="/calculadora" element={<Calculadora />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/acercaDe" element={<AcercaDe />} />
+        <Route path='/servicios' element={<ServiciosPage />} />
         <Route path="/zonaClientes" element={<ZonaClientes />} />
         <Route path='/nosotros' element={<Programacion />} />
         <Route path='/contacto' element={<Programacion />} />
         <Route path='/terminos' element={<Programacion />} />
         <Route path='/brouchers' element={<Programacion />} />
         <Route path='/politica' element={<Programacion />} />
-        <Route path='/programacion'  element={<Programacion />} />
+        <Route path='/programacion' element={<Programacion />} />
       </Routes>
     </AnimatePresence>
   );

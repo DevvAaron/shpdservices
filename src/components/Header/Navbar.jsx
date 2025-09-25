@@ -1,114 +1,226 @@
 // src/components/Header/Navbar.jsx
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+import logo2 from '../../assets/logo2.png';
 import { Box, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import CalculateIcon from '@mui/icons-material/Calculate';
-import { motion, AnimatePresence, hover } from 'framer-motion'; // 👈 al inicio del archivo
-
+import { motion, AnimatePresence } from 'framer-motion';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 const Navbar = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null); // móvil
+  const [openDesktopSubmenu, setOpenDesktopSubmenu] = useState(null); // desktop
+
+  const handleSubmenuClick = (label) => {
+    setOpenSubmenu(prev => (prev === label ? null : label));
+  };
+
+  const handleDoubleClick = (to) => {
+    if (to) navigate(to);
+  };
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); setMenuOpen(false);
+    // Detecta contenedor con scroll (soporta body / document.scrollingElement / window)
+    const getScrollContainer = () => {
+      const body = document.body;
+      const bodyStyle = getComputedStyle(body);
+      if ((bodyStyle.overflowY === 'auto' || bodyStyle.overflowY === 'scroll') && body.scrollHeight > body.clientHeight) {
+        return body;
+      }
+      if (document.scrollingElement && document.scrollingElement.scrollHeight > document.scrollingElement.clientHeight) {
+        return document.scrollingElement;
+      }
+      const possible = [...document.querySelectorAll('#root, main, .app-container, div')]
+        .find(el => {
+          const s = getComputedStyle(el);
+          return (s.overflowY === 'auto' || s.overflowY === 'scroll') && el.scrollHeight > el.clientHeight;
+        });
+      return possible || window;
     };
 
+    const scrollEl = getScrollContainer();
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      setMenuOpen(false);
+      setOpenSubmenu(null);
+    };
+
+    const getY = () => (scrollEl === window ? window.scrollY : scrollEl.scrollTop);
+    const handleScroll = () => setScrolled(getY() > 50);
+
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    if (scrollEl === window) {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    } else {
+      scrollEl.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    // inicializa
+    handleResize();
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (scrollEl === window) {
+        window.removeEventListener('scroll', handleScroll);
+      } else {
+        scrollEl.removeEventListener('scroll', handleScroll);
+      }
+    };
   }, []);
 
+  const navbarHeight = scrolled ? 60 : 80;
+
   const navigationLinks = [
-    { to: '/', label: 'Principal' },// Antes era Funcionamiento
-    { to: '/programacion', label: 'Programación' }, // Ya no estara operativo
-    { to: '/seguimiento', label: 'Acerca de' },
+    { to: '/', label: 'Principal' },
+    { to: '/programacion', label: 'Programación' },
+    { to: '/acercaDe', label: 'Acerca de' },
+    {
+      label: 'Servicios',
+      to: '/servicios',
+      subItems: [
+        { to: '/servicios/distribucion', label: 'Distribución' },
+        { to: '/servicios/almacen', label: 'Almacén' },
+        { to: '/servicios/mudanzas', label: 'Mudanzas' }
+      ]
+    },
     { to: '/seguimiento', label: 'Seguimiento' },
-    {
-      to: '/ayuda',
-      label: <HelpOutlineIcon sx={{ fontSize: '3rem' }} />
-    },
-    {
-      to: '/calculadora',
-      label: <CalculateIcon sx={{ fontSize: '3rem' }} />
-    },
+    { to: '/ayuda', label: <HelpOutlineIcon sx={{ fontSize: '1.8rem' }} /> },
+    { to: '/calculadora', label: <CalculateIcon sx={{ fontSize: '1.8rem' }} /> },
     { to: '/contacto', label: 'Contacto' },
     { to: '/zonaClientes', label: 'Zona de Clientes' }
   ];
 
   return (
-    <Box className="animated-navbar"
+    <Box
       sx={{
+        boxSizing:'border-box',
         width: '100%',
-        backgroundColor: '#ffffff00',
-        opacity: 0,
+        backgroundColor: scrolled ? '#13B5EA' : 'transparent',
         color: '#fff',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        transition: 'background-color 0.25s ease, height 0.2s ease, box-shadow 0.2s ease',
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 1000,
-        height: '80px',
+        zIndex: 1200,
+        height: `${navbarHeight}px`,
+        px: { xs: 1.5, sm: 3 },
+        boxShadow: scrolled ? '0 6px 18px rgba(0,0,0,0.12)' : 'none'
       }}
     >
       {/* Logo */}
-      <NavLink to="/" sx={{ display: 'flex', alignItems: 'center' }}>
-        <img src={logo} alt="Logo" style={{ marginLeft: '1.5rem', height: '3.5rem', cursor: 'pointer' }} />
-      </NavLink >
+      <Box component={NavLink} to="/" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+        <img
+          src={scrolled ? logo2 : logo}
+          alt="Logo"
+          style={{
+            marginLeft: '1rem',
+            height: scrolled ? 40 : 56,
+            transition: 'height 0.2s ease, transform 0.2s ease'
+          }}
+        />
+      </Box>
 
-      {/* Botón de menú (solo en móvil) */}
+      {/* Desktop links */}
+      {!isMobile && (
+        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', paddingRight: '2rem' }}>
+          {navigationLinks.map(({ to, label, subItems }) => (
+            <Box
+              key={to || label}
+              sx={{ position: 'relative' }}
+              onMouseEnter={() => subItems && setOpenDesktopSubmenu(label)}
+              onMouseLeave={() => subItems && setOpenDesktopSubmenu(null)}
+              onDoubleClick={() => subItems && handleDoubleClick(to)}
+            >
+              {/* main label */}
+              {subItems ? (
+                <Box sx={{ cursor: 'pointer', padding: '0.3rem 0.6rem' }}>{label}</Box>
+              ) : (
+                <Box
+                  component={NavLink}
+                  to={to}
+                  sx={({ isActive }) => ({
+                    textDecoration: 'none',
+                    color: '#fff',
+                    padding: '0.3rem 0.6rem',
+                    fontWeight: isActive ? '700' : '500',
+                    '&:hover': { borderBottom: '3px solid rgba(0,0,0,0.25)' }
+                  })}
+                >
+                  {label}
+                </Box>
+              )}
+
+              {/* submenu desktop (controlado por estado) */}
+              {subItems && (
+                <AnimatePresence>
+                  {openDesktopSubmenu === label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.18 }}
+                      style={{
+                        position: 'absolute',
+                        top: '100%',
+                        left: 0,
+                        background: '#13B5EA',
+                        minWidth: 180,
+                        borderRadius: 6,
+                        boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
+                        zIndex: 1300,
+                        padding: '6px 8px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 6
+                      }}
+                    >
+                      {subItems.map(sub => (
+                        <Box
+                          key={sub.to}
+                          component={NavLink}
+                          to={sub.to}
+                          sx={{
+                            textDecoration: 'none',
+                            color: '#fff',
+                            padding: '0.45rem 0.8rem',
+                            borderRadius: 4,
+                            '&:hover': { background: '#0f9ccd' }
+                          }}
+                        >
+                          {sub.label}
+                        </Box>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              )}
+            </Box>
+          ))}
+        </Box>
+      )}
+
+      {/* Mobile menu button */}
       {isMobile && (
-        <IconButton onClick={() => setMenuOpen(!menuOpen)} sx={{ color: 'white' }}>
+        <IconButton onClick={() => setMenuOpen(s => !s)} sx={{ color: '#fff' }}>
           {menuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
       )}
 
-      {/* Navegación */}
-      {/* Navegación: Desktop */}
-      {!isMobile && (
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 3,
-            paddingRight: '2rem',
-            alignItems: 'center'
-          }}
-        >
-          {navigationLinks.map(({ to, label }) => (
-            <Box
-              key={to}
-              component={NavLink}
-              to={to}
-              sx={({ isActive }) => ({
-                textDecoration: 'none',
-                color: '#fff',
-                padding: '0.1rem 0.2rem',
-                transition: '0.3s',
-                backgroundColor: '#13B5EA',
-                borderTopLeftRadius: '5px',
-                borderTopRightRadius: '5px',
-                fontWeight: isActive || to === '/contacto' ? 'bold' : 'normal',
-                '&:hover': {
-                  borderBottom: '4px solid white',
-                },
-              })}
-            >
-              {label}
-            </Box>
-          ))}
-
-
-        </Box>
-      )}
-
-      {/* Navegación: Mobile animado */}
+      {/* Mobile drawer */}
       <AnimatePresence>
         {isMobile && menuOpen && (
           <motion.div
@@ -116,45 +228,54 @@ const Navbar = () => {
             initial={{ x: '100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '100%', opacity: 0 }}
-            transition={{ type: 'tween', duration: 0.3 }}
+            transition={{ type: 'tween', duration: 0.28 }}
             style={{
               position: 'absolute',
-              top: '80px',
+              top: `${navbarHeight}px`,
               right: 0,
-              width: '8rem',
+              width: 260,
+              maxWidth: '80vw',
               backgroundColor: '#13B5EA',
-              padding: '1rem',
+              padding: 12,
               display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
-              zIndex: 999,
-              boxShadow: '-2px 0 8px rgba(0, 0, 0, 0.2)',
+              gap: 8,
+              zIndex: 1199,
+              boxShadow: '-6px 0 20px rgba(0,0,0,0.18)'
             }}
           >
-            {navigationLinks.map(({ to, label }) => (
-              <NavLink
-                key={to}
-                to={to}
-                onClick={() => setMenuOpen(false)}
-                style={({ isActive }) => ({
-                  textDecoration: 'none',
-                  borderBottom: isActive ? '2px solid white' : '2px solid transparent',
-                  fontWeight: isActive ? 'bold' : 'normal',
-                  color: '#fff',
-                  paddingBottom: '0.3rem',
-                  transition: '0.3s',
-                  width: '100%',
-                  display: 'block',
-                  textAlign: 'right',
-                })}
-              >
-                {label}
-              </NavLink>
+            {navigationLinks.map(({ to, label, subItems }) => (
+              <React.Fragment key={to || label}>
+                {subItems ? (
+                  <Box
+                    onClick={() => handleSubmenuClick(label)}
+                    onDoubleClick={() => handleDoubleClick(to)}
+                    sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', color: '#fff', padding: '6px 4px', fontWeight: 700 }}
+                  >
+                    <span>{label}</span>
+                    {openSubmenu === label ? <ExpandLessIcon sx={{ color: '#fff' }} /> : <ExpandMoreIcon sx={{ color: '#fff' }} />}
+                  </Box>
+                ) : (
+                  <Box component={NavLink} to={to} onClick={() => setMenuOpen(false)} sx={{ textDecoration: 'none', color: '#fff', textAlign: 'right', padding: '6px 4px' }}>
+                    {label}
+                  </Box>
+                )}
+
+                {/* submenu móvil */}
+                {subItems && openSubmenu === label && (
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} style={{ overflow: 'hidden', paddingLeft: 8 }}>
+                    {subItems.map(sub => (
+                      <Box component={NavLink} key={sub.to} to={sub.to} onClick={() => setMenuOpen(false)} sx={{ display: 'block', color: '#fff', textDecoration: 'none', padding: '6px 4px' }}>
+                        {sub.label}
+                      </Box>
+                    ))}
+                  </motion.div>
+                )}
+              </React.Fragment>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
-
     </Box>
   );
 };

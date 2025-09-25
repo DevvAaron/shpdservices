@@ -31,6 +31,7 @@ import fondo3 from '../../assets/fondo3.jpg';
 import png1 from '../../assets/pngImg1.png';
 import png2 from '../../assets/pngImg3.png';
 import png3 from '../../assets/pngImg2.png';
+
 const imagenes = [fondo1, fondo2, fondo3];
 const imgpng = [png1, png2, png3]
 export default function Inicio() {
@@ -140,14 +141,9 @@ export default function Inicio() {
                 backgroundColor: '#ff000000',
             }}
         >
-            <Navbar sx={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                zIndex: 1000, // asegúrate que esté encima de todo
-            }} />
+            <Navbar />
 
+            {/* Primer Box (Imagen Actual) */}
 
             <Box
                 name='hola1'
@@ -156,7 +152,8 @@ export default function Inicio() {
                 alignItems="center"
                 justifyContent="center"
                 overflow='hidden'
-                width='100%'
+                width='100vw'
+                height='100%'
             >
                 {/* Flecha Izquierda */}
                 <IconButton
@@ -180,6 +177,9 @@ export default function Inicio() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 0.5 }}
                     transition={{ duration: 0.8 }}
+                    sx={{
+                        height: '100vh'
+                    }}
                 >
                     <Box
                         name="Primer Box"
@@ -190,16 +190,16 @@ export default function Inicio() {
                             transition: 'background-image 2s ease-in-out',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            height: '100%',
-                            minHeight: {
-                                xs: '16rem',
+                            height: '100vh',
+                            maxHeight: {
+                                xs: '70vh',
                                 sm: '25rem',
-                                md: '35rem',
+                                md: '100vh',
                             },
                             minWidth: {
-                                xs: '30rem',   // móviles
+                                xs: '100vw',   // móviles
                                 sm: '50rem',    // tablets
-                                md: '90rem',  // escritorios
+                                md: '100vw',  // escritorios
                             },
                         }}
                     />
@@ -522,7 +522,6 @@ export default function Inicio() {
                 <AnimatedBox animation="animate__slideInRight" delay={2000} duration={2000}>
                     <Box
                         sx={{
-                            overflow: 'hidden',
                             backgroundImage: `url(${img8})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
@@ -530,7 +529,7 @@ export default function Inicio() {
                             minHeight: {
                                 xs: '15rem',
                                 sm: '20rem',
-                                md: '20rem'
+                                md: '25rem'
                             },
                             width: {
                                 xs: '15rem',   // móviles

@@ -17,10 +17,13 @@ export default function Contacto() {
                 backgroundColor: "#ff000000",
             }}
         >
-            <Navbar />
-
-            {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: "80px" }} />
+            <Navbar sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 1000, // asegúrate que esté encima de todo
+            }} />
 
             <Box
                 sx={{
@@ -29,7 +32,8 @@ export default function Contacto() {
                     display: 'flex',
                     flexDirection: {
                         xs: 'column',
-                        sm: 'row'
+                        sm: 'column',
+                        md: 'row'
                     },
                     justifyContent: 'space-evenly',
                     backgroundImage: `url(${img1})`,
@@ -41,16 +45,30 @@ export default function Contacto() {
                         sm: '60rem',
                         md: '100%'
                     },
-                    height: {
+                    MaxHeight: {
                         xs: '60rem',
                         sm: '30rem',
                         md: '30rem'
                     },
+                    height: '100vh',
                     px: { xs: 2, sm: 4, md: 8 },
-                    flexWrap: 'wrap',
                     overflow: 'hidden'
                 }}
-            >{/* Overlay difuminado */}
+            >
+                {/* Overlay difuminado */}
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        background: "rgba(0, 0, 0, 0.52)", // capa translúcida
+                        backdropFilter: "blur(2px)", // difuminado
+                        clipPath: 'inset(20% 45% 5% 10%)',
+                        zIndex: 1,
+                    }}
+                />
                 <Box
                     sx={{
                         position: "absolute",
@@ -60,11 +78,12 @@ export default function Contacto() {
                         height: "100%",
                         background: "rgba(255,255,255,0.7)", // capa translúcida
                         backdropFilter: "blur(2px)", // difuminado
+                        clipPath: 'inset(20% 10% 20% 50rem);',
                         zIndex: 1,
                     }}
                 />
-                <Box name='BoxFormulario' sx={{ position: "relative", zIndex: 2 }}>
-                    <Titulo1 titulo={'Contactanos'} style={{ paddingBottom: '2rem' }} />
+                <Box name='BoxFormulario' sx={{ position: "relative", zIndex: 2, color: 'white' }}>
+                    <Titulo1 titulo={'Contactanos'} sx={{ marginTop: { xs: '5rem' }, paddingBottom: '2rem' }} />
                     <Box
                         sx={{
                             maxWidth: {
@@ -91,15 +110,23 @@ export default function Contacto() {
                                 '& .MuiOutlinedInput-root': {
                                     borderRadius: '0.5rem',
                                     '& fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                         borderWidth: '1px',
                                     },
                                     '&:hover fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                     },
                                     '&.Mui-focused fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                     },
+                                },
+                            }}
+                            slotProps={{
+                                input: {
+                                    sx: { color: "white" }, // color del texto que escribe el usuario
+                                },
+                                inputLabel: {
+                                    sx: { color: "white" }, // color del label
                                 },
                             }}
                         />
@@ -109,19 +136,28 @@ export default function Contacto() {
                             label="Teléfono"
                             variant="outlined"
                             fullWidth
+                            color="#ffffffff"
                             sx={{
                                 '& .MuiOutlinedInput-root': {
                                     borderRadius: '0.5rem',
                                     '& fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                         borderWidth: '1px',
                                     },
                                     '&:hover fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                     },
                                     '&.Mui-focused fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                     },
+                                },
+                            }}
+                            slotProps={{
+                                input: {
+                                    sx: { color: "white" }, // color del texto que escribe el usuario
+                                },
+                                inputLabel: {
+                                    sx: { color: "white" }, // color del label
                                 },
                             }}
                         />
@@ -140,15 +176,23 @@ export default function Contacto() {
                                 '& .MuiOutlinedInput-root': {
                                     borderRadius: '0.5rem',
                                     '& fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                         borderWidth: '1px',
                                     },
                                     '&:hover fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                     },
                                     '&.Mui-focused fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                     },
+                                },
+                            }}
+                            slotProps={{
+                                input: {
+                                    sx: { color: "white" }, // color del texto que escribe el usuario
+                                },
+                                inputLabel: {
+                                    sx: { color: "white" }, // color del label
                                 },
                             }}
                         />
@@ -168,15 +212,24 @@ export default function Contacto() {
                                 '& .MuiOutlinedInput-root': {
                                     borderRadius: '0.5rem',
                                     '& fieldset': {
-                                        borderColor: 'black',
+                                        color: 'white',
+                                        borderColor: 'white',
                                         borderWidth: '1px',
                                     },
                                     '&:hover fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                     },
                                     '&.Mui-focused fieldset': {
-                                        borderColor: 'black',
+                                        borderColor: 'white',
                                     },
+                                },
+                            }}
+                            slotProps={{
+                                input: {
+                                    sx: { color: "white" }, // color del texto que escribe el usuario
+                                },
+                                inputLabel: {
+                                    sx: { color: "white" }, // color del label
                                 },
                             }}
                         />
@@ -186,13 +239,6 @@ export default function Contacto() {
                         sx={{
                             marginTop: 2,
                             fontSize: 20,
-                            color: colors.common.black,
-                            borderColor: colors.common.black,
-                            '&:hover': {
-                                backgroundColor: '#13B5EA',
-                                color: 'white',
-                                borderColor: colors.common.black,
-                            },
                         }}
                     >
                         Realizar Envío

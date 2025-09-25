@@ -50,9 +50,13 @@ export default function Programacion() {
                 backgroundColor: '#ff000000',
             }}
         >
-            <Navbar />
-            {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px', backgroundColor: '#13B5EA' }} />
+            <Navbar sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 1000, // asegúrate que esté encima de todo
+            }} />
 
             {/* Primer Box */}
 
@@ -62,7 +66,8 @@ export default function Programacion() {
                 alignItems="center"
                 justifyContent="center"
                 sx={{
-                    width: '100%'
+                    width: '100%',
+                    height: '100vh'
                 }}
             >
                 {/* Flecha Izquierda */}
@@ -86,9 +91,11 @@ export default function Programacion() {
                 <motion.div
                     key={index}
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.5 }}
+                    animate={{ opacity: 0.2 }}
                     transition={{ duration: 0.8 }}
-                    style={{ width: "100%"}}
+                    style={{ width: "100%", 
+                        height:'100vh'
+                    }}
                 >
                     <Box
                         name="BoxContenido"
@@ -99,8 +106,9 @@ export default function Programacion() {
                             transition: 'background-image 2s ease-in-out',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
+                            height:'100vh',
                             minWidth: { xs: '15rem', sm: '40rem', md: '60rem' },
-                            minHeight: { xs: '50vh', sm: '55vh', md: '55vh' },
+                            maxHeight: { xs: '90vh', sm: '95vh', md: '100vh' },
                         }}
                     />
 

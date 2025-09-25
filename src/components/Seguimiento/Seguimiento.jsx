@@ -23,7 +23,7 @@ const InfoEnvio = [
             id: 1,
             nombre: 'Producto1',
             monto: 50,
-            img: [fondo,fondo2]
+            img: [fondo, fondo2]
         },
     },
     {
@@ -83,10 +83,13 @@ export default function Seguimiento() {
                 backgroundColor: '#ff000000',
             }}
         >
-            <Navbar />
-            {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px', backgroundColor: '#13B5EA' }} />
-
+            <Navbar sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 1000, // asegúrate que esté encima de todo
+            }} />
             {/* Primer Box */}
             <Box
                 name="Primer Box"
@@ -96,7 +99,8 @@ export default function Seguimiento() {
                     position: 'relative',
                     padding: '0.8rem',
                     overflow: 'hidden',
-                    height: '40vh',
+                    height: '100vh',
+                    maxHeight:{xs:'50vh',md:'60vh',sm:'70vh'},
                     backgroundImage: `url(${fondo})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
@@ -191,7 +195,7 @@ export default function Seguimiento() {
 
             {/* Secciones finales */}
             {/*Quinto Box*/}
-            <Ayuda />   
+            <Ayuda />
             {/*Sextp Box*/}
             <Footer />
         </main >
