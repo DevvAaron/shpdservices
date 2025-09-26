@@ -1,8 +1,10 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { Titulo3 } from "../Hoocks/Titulos";
-import notificon from '../../assets/notificacion.png';
-
+import wspwhite from '../../assets/wspwhite.png';
+import emailwhite from '../../assets/emailwhite.png';
+import wspblack from '../../assets/wspblack.png';
+import emailblack from '../../assets/emailblack.png';
 const tituloTexto = ["Atención al cliente", "946021240", "ventas@jercourier.com"];
 const subtitulo = [
     "Para más información sobre nuestros servicios o reportar algún problema puede llamarnos",
@@ -24,9 +26,11 @@ const Ayuda = () => {
                 alignItems: 'center',
                 gap: { xs: 3, md: 6 },
                 width: '100%',
+                height: '100%',
+                minHeight: '60vh',
                 opacity: 0.95,
-                py: { xs: 1.5, sm:2,md: 3.5 },  // padding vertical responsivo
-                px: { xs: 0.5, sm:2,md: 2.5 },  // padding horizontal responsivo
+                py: { xs: 1.5, sm: 2, md: 3.5 },  // padding vertical responsivo
+                px: { xs: 0.5, sm: 2, md: 2.5 },  // padding horizontal responsivo
                 boxSizing: 'border-box',
             }}
         >
@@ -45,29 +49,18 @@ const Ayuda = () => {
             >
                 <Titulo3 titulo={tituloTexto[0]} subtitulo={subtitulo[0]} mostrarLink={true} />
             </Box>
+            <Box sx={{
 
-            {/* Bloque 2 - Info de contacto */}
-            <Box
-                name="block2"
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                    maxWidth: { xs: '100%', md: '40%' }, // simétrico al bloque 1
-                    px: 2,
-                    gap: 3,
-                }}
-            >
-                <img src={notificon} alt="notificación" style={{ maxWidth: '6rem', height: 'auto',  }} />
-                {tituloTexto.slice(1).map((titulo, index) => (
-                    <Titulo3
-                        key={index}
-                        titulo={titulo}
-                        subtitulo={subtitulo[index + 1]}
-                    />
-                ))}
+                px: 2,
+            }}>
+                <img src={wspblack} alt="notificación" style={{ maxWidth: '6rem', height: 'auto', }} />
+                <Titulo3 titulo={tituloTexto[1]} />
+            </Box>
+            <Box sx={{
+                px: 2,
+            }}>
+                <img src={emailblack} alt="notificación" style={{ maxWidth: '6rem', height: 'auto', }} />
+                <Titulo3 titulo={tituloTexto[2]} />
             </Box>
         </Box >
     );

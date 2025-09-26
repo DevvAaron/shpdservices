@@ -1,4 +1,4 @@
-import { Box, TextField, Button, colors } from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import Navbar from "../Header/Navbar";
 import Footer from "../Footer/Footer";
 import { Subtitulo, Titulo1 } from '../Hoocks/Titulos';
@@ -6,7 +6,17 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import img1 from '../../assets/fondoContac.jpg'
+import { useState, useEffect } from 'react';
 export default function Contacto() {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return (
         <main
             style={{
@@ -27,7 +37,6 @@ export default function Contacto() {
 
             <Box
                 sx={{
-                    position: 'relative',
                     name: 'primero',
                     display: 'flex',
                     flexDirection: {
@@ -35,8 +44,8 @@ export default function Contacto() {
                         sm: 'column',
                         md: 'row'
                     },
-                    justifyContent: 'space-evenly',
                     backgroundImage: `url(${img1})`,
+                    justifyContent: 'space-evenly',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     alignItems: 'center',
@@ -55,214 +64,240 @@ export default function Contacto() {
                     overflow: 'hidden'
                 }}
             >
-                {/* Overlay difuminado */}
-                <Box
-                    sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        background: "rgba(0, 0, 0, 0.52)", // capa translúcida
-                        backdropFilter: "blur(2px)", // difuminado
-                        clipPath: 'inset(20% 45% 5% 10%)',
-                        zIndex: 1,
-                    }}
-                />
-                <Box
-                    sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        background: "rgba(255,255,255,0.7)", // capa translúcida
-                        backdropFilter: "blur(2px)", // difuminado
-                        clipPath: 'inset(20% 10% 20% 50rem);',
-                        zIndex: 1,
-                    }}
-                />
-                <Box name='BoxFormulario' sx={{ position: "relative", zIndex: 2, color: 'white' }}>
-                    <Titulo1 titulo={'Contactanos'} sx={{ marginTop: { xs: '5rem' }, paddingBottom: '2rem' }} />
+                <Box sx={{
+                    position: 'relative',
+                }}>
+
+                    {/* Overlay difuminado */}
                     <Box
                         sx={{
-                            maxWidth: {
-                                xs: '100%',
-                                sm: '20rem',
-                                md: '40rem'
-                            },
-                            margin: "0 auto",
-                            display: "grid",
-                            gap: 3,
-                            gridTemplateColumns: {
-                                xs: "1fr",
-                                sm: "repeat(2, 1fr)",
-                            },
-                            gridAutoRows: "auto",
+
+                            position: "absolute",
+                            width: "100%",
+                            height: "80%",
+                            marginTop: '4rem',
+                            background: "rgba(0, 0, 0, 0.52)", // capa translúcida
+                            backdropFilter: "blur(2px)", // difuminado
+                            zIndex: 1,
+                            p: 2
                         }}
-                    >
-                        {/* Nombre */}
-                        <TextField
-                            label="Nombre"
-                            variant="outlined"
-                            fullWidth
-                            sx={{
-                                '& .MuiOutlinedInput-root': {
-                                    borderRadius: '0.5rem',
-                                    '& fieldset': {
-                                        borderColor: 'white',
-                                        borderWidth: '1px',
-                                    },
-                                    '&:hover fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                    '&.Mui-focused fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                },
-                            }}
-                            slotProps={{
-                                input: {
-                                    sx: { color: "white" }, // color del texto que escribe el usuario
-                                },
-                                inputLabel: {
-                                    sx: { color: "white" }, // color del label
-                                },
-                            }}
-                        />
-
-                        {/* Teléfono */}
-                        <TextField
-                            label="Teléfono"
-                            variant="outlined"
-                            fullWidth
-                            color="#ffffffff"
-                            sx={{
-                                '& .MuiOutlinedInput-root': {
-                                    borderRadius: '0.5rem',
-                                    '& fieldset': {
-                                        borderColor: 'white',
-                                        borderWidth: '1px',
-                                    },
-                                    '&:hover fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                    '&.Mui-focused fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                },
-                            }}
-                            slotProps={{
-                                input: {
-                                    sx: { color: "white" }, // color del texto que escribe el usuario
-                                },
-                                inputLabel: {
-                                    sx: { color: "white" }, // color del label
-                                },
-                            }}
-                        />
-
-                        {/* Correo: Ocupa ambas columnas desde sm */}
-                        <TextField
-                            label="Correo"
-                            variant="outlined"
-                            fullWidth
-                            type="email"
-                            sx={{
-                                gridColumn: {
-                                    xs: "auto",
-                                    sm: "1 / span 2",
-                                },
-                                '& .MuiOutlinedInput-root': {
-                                    borderRadius: '0.5rem',
-                                    '& fieldset': {
-                                        borderColor: 'white',
-                                        borderWidth: '1px',
-                                    },
-                                    '&:hover fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                    '&.Mui-focused fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                },
-                            }}
-                            slotProps={{
-                                input: {
-                                    sx: { color: "white" }, // color del texto que escribe el usuario
-                                },
-                                inputLabel: {
-                                    sx: { color: "white" }, // color del label
-                                },
-                            }}
-                        />
-
-                        {/* Mensaje: Ocupa ambas columnas desde sm */}
-                        <TextField
-                            label="Mensaje"
-                            variant="outlined"
-                            fullWidth
-                            multiline
-                            rows={4}
-                            sx={{
-                                gridColumn: {
-                                    xs: "auto",
-                                    sm: "1 / span 2",
-                                },
-                                '& .MuiOutlinedInput-root': {
-                                    borderRadius: '0.5rem',
-                                    '& fieldset': {
-                                        color: 'white',
-                                        borderColor: 'white',
-                                        borderWidth: '1px',
-                                    },
-                                    '&:hover fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                    '&.Mui-focused fieldset': {
-                                        borderColor: 'white',
-                                    },
-                                },
-                            }}
-                            slotProps={{
-                                input: {
-                                    sx: { color: "white" }, // color del texto que escribe el usuario
-                                },
-                                inputLabel: {
-                                    sx: { color: "white" }, // color del label
-                                },
-                            }}
-                        />
-                    </Box>
-                    <Button
-                        variant="text"
-                        sx={{
-                            marginTop: 2,
-                            fontSize: 20,
-                        }}
-                    >
-                        Realizar Envío
-                    </Button>
-                </Box>
-                <Box name='BoxDatos'
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 1, position: "relative", zIndex: 2
+                    />
+                    <Box name='BoxFormulario' sx={{
+                        position: "relative",
+                        left: { xs: '7%', sm: '5%', md: '3%' },
+                        zIndex: 2, color: 'white'
                     }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <LocationOnIcon sx={{ color: 'black' }} />
-                        <Subtitulo subtitulo={'Dirección fisica de SHPD Services Mexico'} style={{ paddingBottom: '3rem' }} />
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <PhoneIcon sx={{ color: 'black' }} />
-                        <Subtitulo subtitulo={'946 021 240'} style={{ paddingBottom: '3rem' }} />
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <EmailIcon sx={{ color: 'black' }} />
-                        <Subtitulo subtitulo={'ventas@jercourier.com'} style={{ paddingBottom: '3rem' }} />
+                        <Titulo1 titulo={'Contactanos'}
+                            sx={{
+                                marginTop: {
+                                    xs: '2rem'
+                                },
+                                p: '1rem',
+                                my: '1rem',
+                                color: '#13B5EA'
+                            }}
+                            style={{
+                                border:'3px solid #13B5EA',
+                                borderRadius: '0.5rem',
+                                backgroundColor: 'white',
+                            }} />
+                        <Box
+                            sx={{
+                                maxWidth: {
+                                    xs: '100%',
+                                    sm: '20rem',
+                                    md: '40rem'
+                                },
+                                margin: "0 auto",
+                                display: "grid",
+                                gap: 3,
+                                gridTemplateColumns: {
+                                    xs: "1fr",
+                                    sm: "repeat(2, 1fr)",
+                                },
+                                gridAutoRows: "auto",
+                            }}
+                        >
+                            {/* Nombre */}
+                            <TextField
+                                label="Nombre"
+                                variant="outlined"
+                                fullWidth
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        backgroundColor: 'white',
+                                        borderRadius: '0.5rem',
+                                        '& fieldset': {
+                                            borderColor: '#13B5EA',
+                                            borderWidth: '2px',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#13B5EA',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#13B5EA',
+                                        },
+                                    },
+                                }}
+                                slotProps={{
+                                    input: {
+                                        sx: {
+                                            color: "#13B5EA",
+                                        }, // color del texto que escribe el usuario
+
+                                    },
+                                    inputLabel: {
+                                        sx: { color: "#13B5EA" }, // color del label
+                                    },
+                                }}
+                            />
+
+                            {/* Teléfono */}
+                            <TextField
+                                label="Teléfono"
+                                variant="outlined"
+                                fullWidth
+                                color="#ffffffff"
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        backgroundColor: 'white',
+                                        borderRadius: '0.5rem',
+                                        '& fieldset': {
+                                            borderColor: '#13B5EA',
+                                            borderWidth: '2px',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#13B5EA',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#13B5EA',
+                                        },
+                                    },
+                                }}
+                                slotProps={{
+                                    input: {
+                                        sx: {
+                                            color: "#13B5EA",
+                                        }, // color del texto que escribe el usuario
+
+                                    },
+                                    inputLabel: {
+                                        sx: { color: "#13B5EA" }, // color del label
+                                    },
+                                }}
+                            />
+
+                            {/* Correo: Ocupa ambas columnas desde sm */}
+                            <TextField
+                                label="Correo"
+                                variant="outlined"
+                                fullWidth
+                                type="email"
+                                sx={{
+                                    gridColumn: {
+                                        xs: "auto",
+                                        sm: "1 / span 2",
+                                    },
+                                    '& .MuiOutlinedInput-root': {
+                                        backgroundColor: 'white',
+                                        borderRadius: '0.5rem',
+                                        '& fieldset': {
+                                            borderColor: '#13B5EA',
+                                            borderWidth: '2px',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#13B5EA',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#13B5EA',
+                                        },
+                                    },
+                                }}
+                                slotProps={{
+                                    input: {
+                                        sx: {
+                                            color: "#13B5EA",
+                                        }, // color del texto que escribe el usuario
+
+                                    },
+                                    inputLabel: {
+                                        sx: { color: "#13B5EA" }, // color del label
+                                    },
+                                }}
+                            />
+
+                            {/* Mensaje: Ocupa ambas columnas desde sm */}
+                            <TextField
+                                label="Mensaje"
+                                variant="outlined"
+                                fullWidth
+                                multiline
+                                rows={4}
+                                sx={{
+                                    gridColumn: {
+                                        xs: "auto",
+                                        sm: "1 / span 2",
+                                    },
+                                    '& .MuiOutlinedInput-root': {
+                                        backgroundColor: 'white',
+                                        borderRadius: '0.5rem',
+                                        '& fieldset': {
+                                            borderColor: '#13B5EA',
+                                            borderWidth: '2px',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#13B5EA',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#13B5EA',
+                                        },
+                                    },
+                                }}
+                                slotProps={{
+                                    input: {
+                                        sx: {
+                                            color: "#13B5EA",
+                                        }, // color del texto que escribe el usuario
+
+                                    },
+                                    inputLabel: {
+                                        sx: { color: "#13B5EA" }, // color del label
+                                    },
+                                }}
+                            />
+                        </Box>
+                        <Button
+                            variant="text"
+                            sx={{
+                                marginTop: 2,
+                                fontSize: 20,
+                            }}
+                        >
+                            Realizar Envío
+                        </Button>
                     </Box>
                 </Box>
+                {!isMobile && (
+                    <Box name='BoxDatos'
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 1, position: "relative", zIndex: 2
+                        }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'white' }}>
+                            <LocationOnIcon />
+                            <Subtitulo subtitulo={'Dirección fisica de SHPD Services Mexico'} style={{ paddingBottom: '3rem' }} />
+                        </Box>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'white' }}>
+                            <PhoneIcon />
+                            <Subtitulo subtitulo={'946 021 240'} style={{ paddingBottom: '3rem' }} />
+                        </Box>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'white' }}>
+                            <EmailIcon />
+                            <Subtitulo subtitulo={'ventas@jercourier.com'} style={{ paddingBottom: '3rem' }} />
+                        </Box>
+                    </Box>
+                )}
             </Box>
             <Box
                 sx={{

@@ -1,11 +1,11 @@
 import { Box, Typography } from '@mui/material'
 
-export const Titulo1 = ({ titulo, subtitulo, sx = {}, sxSubtitulo = {} }) => {
+export const Titulo1 = ({ titulo, subtitulo, style={},sx = {}, sxSubtitulo = {} }) => {
     return (
         <Box sx={{ textAlign: 'center', ...sx }}>
             <Typography component="h1" sx={{
                 m: 0, fontFamily: 'fantasy',
-                fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.5rem' }, ...sx
+                fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.5rem' }, ...sx,...style
             }}>
                 {titulo}
             </Typography>

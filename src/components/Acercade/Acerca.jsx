@@ -2,15 +2,34 @@ import {
     Box,
 } from '@mui/material'
 import Navbar from "../Header/Navbar"
-import fondo from '../../assets/fondo.jpg';
 import Footer from '../Footer/Footer';
 import { Titulo1, Subtitulo, Contenido } from '../Hoocks/Titulos';
 import AnimatedBox from '../Hoocks/AnimatedBox';
+import tri4 from '../../assets/triangulo-4.png'
 
-import img8 from '../../assets/img8.png';
+import img8 from '../../assets/sobrenosotros.png';
 import Valores from './Valores';
+import FondoInicio from '../hoocks/FondoInicio';
+import BarraProgresiva from '../hoocks/BarraProgresiva';
+import { useEffect, useState } from 'react';
 
 export default function AcercaDe() {
+    
+        const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+    const stepsMap = {
+        "/": 1,
+        "/acercaDe": 2,
+        "/servicios": 3,
+        "/seguimiento": 4,
+        "/contacto": 5,
+    };
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return (
         <main
             style={{
@@ -28,66 +47,54 @@ export default function AcercaDe() {
                 width: '100%',
                 zIndex: 1000, // asegúrate que esté encima de todo
             }} />
-            {/* Primer Box */}
             <Box
-                name="Primer Box"
+                name='controlador'
                 sx={{
-                    display: 'flex',
-                    alignItems: 'center',
                     position: 'relative',
-                    padding: '0.8rem',
-                    overflow: 'hidden',
+                    zIndex: 5,
                     height: '100vh',
-                    maxHeight: { xs: '50vh', sm: '50vh', md: '70vh' },
-                    backgroundImage: `url(${fondo})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            >
-                {/* Capa de desenfoque */}
-                <Box
+                    width: '100%'
+                }}>
+                <>
+                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
+                        position: 'absolute',
+                        top: '70%',
+                        left: { xs: '0%', sm: '0%', md: '-40%' },
+                        zIndex: '2',
+                        height: '50%',
+                        width: '100%'
+                    }} />
+                </>
+                {!isMobile && (<Box
+                    name='TrianguloAbajo'
                     sx={{
                         position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        backgroundColor: 'rgba(0, 134, 244, 0.48)',
-                        opacity: '0.7',
-                        zIndex: 0,
+                        zIndex: 2,
+                        top: '-4%',
+                        left: '0%',
+                        backgroundImage: `url(${tri4})`,
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center',
+                        height: '40rem',
+                        width: '35rem'
                     }}
-                />
-                {/* Contenedor Acerca de */}
-                <Box
-                    name="ContenedorPrincipal"
-                    sx={{
+                />)}
+                <FondoInicio>
+
+                    <Titulo1 titulo={'Acerca de'} sx={{
                         position: 'relative',
+                        fontSize: '3rem',
                         zIndex: 1,
-                        display: 'flex',
-                        flexDirection: {
-                            xs: 'column', // En móvil apilado
-                            md: 'row'     // Desde desktop, lado a lado
-                        },
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        margin: '0 auto',
-                        maxWidth: {
-                            xs: '15rem',
-                            sm: '40rem',
-                            md: '100%'
-                        },
-                        gap: 4,
-                        py: 4,
-                        px: { xs: 2, sm: 4 },
-                    }}
-                >
-                    <Titulo1 titulo={'Acerca De'} sx={{
-                        position: 'relative',
-                        zIndex: 1,
-                        color: '#ffffff9f'
-                    }}></Titulo1>
-                </Box>
+                        top: '-1rem',
+                        left: '0.5rem',
+                        color: '#ffffff9f',
+                        transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
+                        display: 'inline-block'
+                    }} />
+                </FondoInicio>
             </Box>
+            {/* Primer Box */}
             {/*Segundo Box */}
             <Box
                 sx={{
@@ -103,8 +110,8 @@ export default function AcercaDe() {
                 }}
             >
                 <AnimatedBox animation="animate__slideInLeft" delay={2000} duration={2000} style={{
-                    display:'flex',
-                    alignItems:'center'
+                    display: 'flex',
+                    alignItems: 'center'
                 }}>
                     <Box
                         sx={{
@@ -112,16 +119,16 @@ export default function AcercaDe() {
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             borderRadius: '1rem',
-                            height:'100vh',
+                            height: '100vh',
                             maxHeight: {
                                 xs: '15rem',
                                 sm: '25rem',
                                 md: '25rem'
                             },
                             width: {
-                                xs: '15rem',   // móviles
-                                sm: '20rem',    // tablets
-                                md: '20rem',  // escritorios
+                                xs: '17rem',   // móviles
+                                sm: '30rem',    // tablets
+                                md: '30rem',  // escritorios
                             },
                             p: {
                                 xs: 2,
@@ -161,13 +168,17 @@ export default function AcercaDe() {
                         <Box sx={{
                             display: "flex",
                             flexDirection: "column",
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            
+                            borderBottom: '5px solid',
+                            borderTop: '5px solid',
+                            borderTopLeftRadius: '15px',
+                            borderTopRightRadius: '15px',
+                            borderBottomLeftRadius: '15px',
+                            borderBottomRightRadius: '15px',
                         }}>
                             <Titulo1 titulo={"SPHD SERVICE"}
                                 style={{
-                                    borderTop: '5px solid',
-                                    borderTopLeftRadius: '15px',
-                                    borderTopRightRadius: '15px',
                                     borderBottom: '5px solid',
                                     borderBottomLeftRadius: '15px',
                                     borderBottomRightRadius: '15px',
@@ -185,7 +196,7 @@ export default function AcercaDe() {
                     </Box>
                 </AnimatedBox>
             </Box>
-            <Valores/>
+            <Valores />
             {/*Cuarto Box*/}
             <Footer />
         </main >

@@ -3,11 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Tooltip } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import CalculateIcon from '@mui/icons-material/Calculate';
+import contactoIcon from '../../assets/wspblack.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -83,7 +82,6 @@ const Navbar = () => {
 
   const navigationLinks = [
     { to: '/', label: 'Principal' },
-    { to: '/programacion', label: 'Programación' },
     { to: '/acercaDe', label: 'Acerca de' },
     {
       label: 'Servicios',
@@ -95,16 +93,13 @@ const Navbar = () => {
       ]
     },
     { to: '/seguimiento', label: 'Seguimiento' },
-    { to: '/ayuda', label: <HelpOutlineIcon sx={{ fontSize: '1.8rem' }} /> },
-    { to: '/calculadora', label: <CalculateIcon sx={{ fontSize: '1.8rem' }} /> },
-    { to: '/contacto', label: 'Contacto' },
     { to: '/zonaClientes', label: 'Zona de Clientes' }
   ];
 
   return (
     <Box
       sx={{
-        boxSizing:'border-box',
+        boxSizing: 'border-box',
         width: '100%',
         backgroundColor: scrolled ? '#13B5EA' : 'transparent',
         color: '#fff',
@@ -276,6 +271,32 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <Tooltip title="Contacto" placement="right">
+        <IconButton
+          onClick={() => navigate('/contacto')}
+          aria-label="Contacto"
+          sx={{
+            position: 'fixed',
+            left: { xs: 12, sm: 16 },
+            bottom: { xs: 12, sm: 16 },
+            zIndex: 1400,
+            backgroundColor: '#13B5EA',
+            color: '#fff',
+            width: 56,
+            height: 56,
+            borderRadius: '999px',
+            boxShadow: '0 6px 18px rgba(0,0,0,0.2)',
+            '&:hover': { backgroundColor: '#0fa6d6' },
+            p: 1,
+          }}
+        >
+          {/* Si tu icono es una img */}
+          <Box component="img" src={contactoIcon} alt="Contacto" sx={{ width: '70%', height: '70%' }} />
+
+          {/* O si prefieres usar un ícono de MUI, comenta la línea anterior y usa: */}
+          {/* <MailOutlineIcon /> */}
+        </IconButton>
+      </Tooltip>
     </Box>
   );
 };

@@ -5,9 +5,8 @@ import { styled } from '@mui/system'
 import ComponentAyuda from '../Footer/Ayuda'
 import ComponentFooter from '../Footer/Footer'
 import Navbar from '../Header/Navbar'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Cobertura2 } from '../Cobertura/PageCobertura'
-import { useEffect } from 'react'
 
 import helpicon from '../../assets/ayuda.png';
 

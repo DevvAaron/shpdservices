@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Box, Button } from '@mui/material';
 import Navbar from "../Header/Navbar";
@@ -6,7 +7,27 @@ import Footer from "../Footer/Footer";
 import { Cobertura1 } from '../Cobertura/PageCobertura'
 import { Titulo1 } from "../Hoocks/Titulos";
 import mundo from '../../assets/mundo.png'
+import BarraProgresiva from '../hoocks/BarraProgresiva';
+import FondoInicio from '../hoocks/FondoInicio';
+import tri5 from '../../assets/triangulo-5.png'
 export default function ZonaClientes() {
+    //Estados
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+    const stepsMap = {
+        "/": 1,
+        "/acercaDe": 2,
+        "/servicios": 3,
+        "/seguirmiento": 4,
+        "/zonaClientes": 5
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <motion.div
@@ -17,10 +38,65 @@ export default function ZonaClientes() {
                 width: "100%",
                 backgroundColor: "#ff000000",
             }}>
-            <Navbar />
-            {/* Espacio para compensar el Navbar fijo */}
-            <Box sx={{ height: '80px' }} />
+            <Navbar sx={{
+                position: 'fixed',
+                justifyContent: 'center',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 1000, // asegúrate que esté encima de todo
+            }} />
+            <Box
+                name='controlador'
+                sx={{
+                    position: 'relative',
+                    zIndex: 5,
+                    height: '100vh',
+                    width: '100%'
+                }}>
+                <>
+                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
+                        position: 'absolute',
+                        top: '92.5%',
+                        left: { xs: '0%', sm: '0%', md: '-40%' },
+                        zIndex: '2',
+                        width: '100%'
+                    }} />
+                </>
+                {!isMobile && (
 
+                    <Box
+                        name='TrianguloArriba'
+                        sx={{
+                            position: 'absolute',
+                            zIndex: 2,
+                            top: '10%',
+                            left: '5%',
+                            backgroundImage: `url(${tri5})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            height: '35rem',
+                            width: '35rem'
+                        }}
+                    />
+                )}
+
+
+                <FondoInicio>
+
+                    <Titulo1 titulo={'Zona de clientes'} sx={{
+                        position: 'relative',
+                        fontSize: '3rem',
+                        zIndex: 1,
+                        top: '-1rem',
+                        left: '0.5rem',
+                        color: '#ffffff9f',
+                        transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
+                        display: 'inline-block'
+                    }} />
+                </FondoInicio>
+            </Box>
             <Box
                 name='Box1'
                 sx={{
@@ -42,7 +118,7 @@ export default function ZonaClientes() {
 
                     <Titulo1 titulo={'Zona de Clientes'} style={{
                         fontSize: '1rem', marginBottom: 'rem',
-                        padding:'1rem',
+                        padding: '1rem',
                         borderBottom: '5px solid',
                         borderBottomLeftRadius: '15px',
                         borderBottomRightRadius: '15px',

@@ -59,8 +59,8 @@ const Footer = () => {
             key={index}
             sx={{
               flex: 1,
-              display:'flex',
-              flexDirection:'column',
+              display: 'flex',
+              flexDirection: 'column',
               minWidth: { xs: "100%", sm: "250px" },
             }}
           >
@@ -79,13 +79,13 @@ const Footer = () => {
                   sx={{
                     mt: 0.5,
                     mb: 1.5,
-                        color: "white",
+                    color: "white",
                     fontSize: "0.85rem",
                     ...(i > 0 && {
                       cursor: "pointer",
-                      textDecoration: "underline",
+                      textDecoration: "none",
                       "&:hover": {
-                        textDecoration: "none",
+                        textDecoration: "underline",
                       },
                     }),
                   }}

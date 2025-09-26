@@ -14,9 +14,6 @@ import { Contenido, Subtitulo, Titulo1 } from '../Hoocks/Titulos';
 import 'animate.css';
 
 
-import { motion } from 'framer-motion';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import img1 from '../../assets/img1.jpg';
 import img2 from '../../assets/img2.jpg';
@@ -24,16 +21,11 @@ import img3 from '../../assets/img3.jpg';
 import img4 from '../../assets/img4.jpg';
 import img8 from '../../assets/img8.png';
 
-import fondo1 from '../../assets/fondo.jpg';
-import fondo2 from '../../assets/fondo2.jpg';
-import fondo3 from '../../assets/fondo3.jpg';
+import tri3 from '../../assets/triangulo-3.png'
 
-import png1 from '../../assets/pngImg1.png';
-import png2 from '../../assets/pngImg3.png';
-import png3 from '../../assets/pngImg2.png';
+import FondoInicio from '../hoocks/FondoInicio';
+import BarraProgresiva from '../hoocks/BarraProgresiva';
 
-const imagenes = [fondo1, fondo2, fondo3];
-const imgpng = [png1, png2, png3]
 export default function Inicio() {
 
     //Colecciones
@@ -49,35 +41,25 @@ export default function Inicio() {
         "Te daremos un código de tracking para darle seguimiento.",
         "Te confirmaremos cuando tu envío haya sido recibido.",
         "Recogeremos el pago por el producto y te lo enviaremos de regreso."];
+    const stepsMap = {
+        "/": 1,
+        "/acercaDe": 2,
+        "/servicios": 3,
+        "/seguimiento": 4,
+        "/contacto": 5,
+    };
 
 
     //Estados
-    const [index, setIndex] = useState(0);
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
 
     let tituloIndex = 0;
     let descIndex = 0;
     let imagenIndex = 0;
 
 
-    const changeImage = (direction) => {
-        setIndex((prev) => {
-            const nextIndex = (prev + direction + imagenes.length) % imagenes.length;
 
-            return nextIndex;
-        });
-    };
 
-    const handleHold = (direction) => {
-        // Cambiar imagen al mantener presionado
-        holdTimeout.current = setTimeout(() => {
-            changeImage(direction);
-        }, 200); // Cambia después de 200ms manteniendo el clic
-    };
-
-    const clearHold = () => {
-        clearTimeout(holdTimeout.current);
-    };
 
     // En el componente, antes del return:
 
@@ -143,116 +125,66 @@ export default function Inicio() {
         >
             <Navbar />
 
-            {/* Primer Box (Imagen Actual) */}
-
             <Box
-                name='hola1'
-                position="relative"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                overflow='hidden'
-                width='100vw'
-                height='100%'
-            >
-                {/* Flecha Izquierda */}
-                <IconButton
-                    onMouseDown={() => handleHold(-1)}
-                    onMouseUp={clearHold}
-                    onMouseLeave={clearHold}
-                    onClick={() => changeImage(-1)}
-                    sx={{
+                name='controlador'
+                sx={{
+                    position: 'relative',
+                    zIndex: 5,
+                    height: '100vh',
+                    width: '100%'
+                }}>
+                <>
+                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
                         position: 'absolute',
-                        left: 10,
-                        zIndex: 2
-                    }}
-                >
-                    <ArrowBackIosIcon sx={{ color: 'black' }} />
-                </IconButton>
-
-                {/* Primer Box (Imagen Actual) */}
-                <motion.div
-                    name='hola'
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.5 }}
-                    transition={{ duration: 0.8 }}
-                    sx={{
-                        height: '100vh'
-                    }}
-                >
+                        top: '92%',
+                        left: { xs: '0%', sm: '0%', md: '-40%' },
+                        zIndex: 4,
+                        width: '100%'
+                    }} />
+                </>
+                {!isMobile && (
                     <Box
-                        name="Primer Box"
+                        name='TrianguloArriba'
                         sx={{
-                            position: 'relative', zIndex: 1,
-                            overflow: 'hidden',
-                            backgroundImage: `url(${imagenes[index]})`,
-                            transition: 'background-image 2s ease-in-out',
-                            backgroundSize: 'cover',
+                            position: 'absolute',
+                            zIndex: 1,
+                            top: '10%',
+                            left: '5%',
+                            backgroundImage: `url(${tri3})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
                             backgroundPosition: 'center',
-                            height: '100vh',
-                            maxHeight: {
-                                xs: '70vh',
-                                sm: '25rem',
-                                md: '100vh',
-                            },
-                            minWidth: {
-                                xs: '100vw',   // móviles
-                                sm: '50rem',    // tablets
-                                md: '100vw',  // escritorios
-                            },
+                            height: '35rem',
+                            width: '35rem'
                         }}
                     />
-                </motion.div>
+                )}
 
-                <Box
-                    name="20"
-                    sx={{
-                        position: 'absolute',
-                        zIndex: 2,
-                        top: '60%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        paddingTop: '1rem',
-                        overflow: 'hidden',
-                        backgroundImage: `url(${imgpng[index]})`,
-                        backgroundSize: 'cover',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                        borderBottomLeftRadius: '5rem ',
-                        borderTopRightRadius: '5rem',
-                        height: imgpng[index] === png1 ? {
-                            xs: '9.5rem',
-                            sm: '18.5rem',
-                            md: '18rem',
-                        } : {
-                            xs: '14rem', sm: '25rem', md: '28rem'
-                        },
-                        width: '100%',
-                        maxWidth: {
-                            xs: '70%',
-                            sm: '35rem',
-                            md: '34rem',
-                        },
-                    }}
-                />
-                {/* Flecha Derecha */}
-                <IconButton
-                    onMouseDown={() => handleHold(1)}
-                    onMouseUp={clearHold}
-                    onMouseLeave={clearHold}
-                    onClick={() => changeImage(1)}
-                    sx={{ position: 'absolute', right: 10, zIndex: 2 }}
-                >
-                    <ArrowForwardIosIcon sx={{ color: 'black' }} />
-                </IconButton>
 
+
+                {/* Primer Box (Imagen Actual) */}
+                <FondoInicio>
+
+                    <Titulo1 titulo={'Servicio de Mensajeria'} sx={{
+                        position: 'relative',
+                        fontSize: '3rem',
+                        zIndex: 1,
+                        top: '-1rem',
+                        left: '0.5rem',
+                        color: '#0000009f',
+                        transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
+                        display: 'inline-block'
+                    }} />
+                </FondoInicio>
             </Box>
+
             {/* Segundo Box */}
             <Box
                 name="Segundo box"
                 sx={{
-                    padding: 2,
+                    position: 'relative',
+                    zIndex: 20,
+                    padding: 5,
                     backgroundColor: '#ffffff',
                 }}
             >
@@ -323,18 +255,18 @@ export default function Inicio() {
                                         <Box
                                             sx={{
                                                 position: 'absolute',
-                                                top: 16,
-                                                left: 16,
+                                                top: -16,
+                                                left: -16,
                                                 width: 60,
                                                 height: 60,
-                                                backgroundColor: 'white',
+                                                backgroundColor: '#6e92fdff',
                                                 borderRadius: '50%',
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
                                                 fontWeight: 'bold',
                                                 fontSize: 20,
-                                                color: '#333',
+                                                color: '#ffffffff',
                                                 boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
                                             }}
                                         >
@@ -351,8 +283,10 @@ export default function Inicio() {
                                     delay={500}
                                     duration={3000}>
                                     <Box
+
                                         key={`txt${item.index}`}
                                         sx={{
+                                            position: 'relative',
                                             width: '100%',
                                             maxWidth: {
                                                 xs: '100%',
@@ -363,17 +297,28 @@ export default function Inicio() {
                                             borderRadius: 2,
                                             display: 'flex',
                                             flexDirection: 'column',
-                                            justifyContent: 'center',
                                             padding: 2,
-                                            color: '#333',
-                                            backgroundColor: '#f9f9f9',
+                                            color: '#ffffffff',
                                             boxSizing: 'border-box',
+                                            alignItems: 'center'
                                         }}
                                     >
-                                        <Box sx={{ fontSize: 22, fontWeight: 'bold', mb: 0.5 }}>
+                                        <Box sx={{
+                                            width: '15rem',
+                                            backgroundColor: '#3098f8ff',
+                                            borderRadius: '50px',
+                                            fontSize: 22, fontWeight: 'bold', mb: 0.5
+                                        }}>
                                             {item.titulo}
                                         </Box>
-                                        <Box sx={{ fontSize: 14 }}>{item.descripcion}</Box>
+                                        <Box sx={{
+                                            fontSize: 14, backgroundColor: '#9cc3e7ff',
+                                            borderTopLeftRadius: '50px',
+                                            borderBottomLeftRadius: '50px',
+                                            p: '1rem',
+                                            clipPath: 'polygon(0 0, 100% 0, 89% 100%, 0 100%);',
+                                            paddingRight: '3rem'
+                                        }}>{item.descripcion}</Box>
                                     </Box>
                                 </AnimatedBox>
                             );
@@ -387,9 +332,7 @@ export default function Inicio() {
                 sx={{
                     position: "relative",
                     overflow: 'hidden',
-                    backgroundImage: `url(${mundo})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    backgroundColor:'#59c3eaff',
                     color: '#000000ff',
                     py: { xs: 4, sm: 6, md: 8 },
                     px: { xs: 2, sm: 4, md: 6 },
@@ -465,7 +408,15 @@ export default function Inicio() {
                         }}>
                         <Box sx={{
                             display: "flex",
-                            flexDirection: "column"
+                            flexDirection: "column",
+                            p:2,
+                            backgroundColor:'#8cc5ffff',
+                            borderBottom: '5px solid',
+                            borderTop: '5px solid',
+                            borderTopLeftRadius: '15px',
+                            borderTopRightRadius: '15px',
+                            borderBottomLeftRadius: '15px',
+                            borderBottomRightRadius: '15px',
                         }}>
                             <Titulo1 titulo={"Haz que tus clientes se sientan seguros comprando por internet"}
                                 style={{
@@ -485,9 +436,6 @@ export default function Inicio() {
                         <Box name='hola' sx={{
                             display: "flex",
                             justifyContent: "space-between",
-                            borderBottom: '5px solid',
-                            borderBottomLeftRadius: '15px',
-                            borderBottomRightRadius: '15px',
                         }}>
                             <Subtitulo subtitulo={"Programa tu envío aquí"} style={{
                                 fontSize: '0.8rem'

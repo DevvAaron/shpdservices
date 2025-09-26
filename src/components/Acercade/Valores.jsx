@@ -3,6 +3,7 @@ import { Titulo1 } from '../Hoocks/Titulos'
 import AssistantPhotoOutlinedIcon from '@mui/icons-material/AssistantPhotoOutlined';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
+import repetir from '../../assets/wspblack.png'
 export default function Valores() {
     return (
         <Box
@@ -17,13 +18,15 @@ export default function Valores() {
             }
             }>
             <Titulo1 titulo={'Nuestros Valores'} style={{
-                width: '100vw', textAlign: 'center'
+                height: { md: '20rem' }, writingMode: { md: 'vertical-lr' }, textOrientation: 'upright',
+                fontSize: '2rem'
             }} />
             <Box name='Contenedor Valores'
                 sx={{
                     flexDirection: 'column',
                 }}>
                 <Box sx={{
+                    position: 'relative',
                     alignItems: 'center',
                     backgroundColor: '#54f9ff41',
                     borderRadius: '3rem',
@@ -34,7 +37,25 @@ export default function Valores() {
                     maxHeight: { xs: '30vh', sm: '25vh', md: '15vw' },
                     flex: 1,
                     m: 2,
-                    p: 2
+                    p: 2,
+
+                    // pseudo-elemento que repite el icono y está rotado -25deg
+                    '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        inset: '-50%',               // cubre más allá para evitar cortes al rotar
+                        backgroundImage: `url('${repetir}')`, // <-- tu icono aquí
+                        backgroundRepeat: 'repeat',
+                        backgroundSize: '2rem 2rem', // tamaño/espaciado de cada icono
+                        transform: 'rotate(-25deg)',
+                        transformOrigin: 'center',
+                        opacity: 0.14,               // ajusta la visibilidad del patrón
+                        zIndex: 0,
+                        pointerEvents: 'none',       // deja interactuar con el contenido
+                    },
+
+                    // contenido dentro visible encima
+                    '& > *': { position: 'relative', zIndex: 1 }
                 }}>
                     <AssistantPhotoOutlinedIcon sx={{ fontSize: { xs: '10vw', sm: '5vw', md: '5vw' } }} />
                     <Titulo1

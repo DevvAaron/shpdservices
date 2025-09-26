@@ -3,14 +3,17 @@ import {
     TextField,
     Box,
 } from '@mui/material'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from "../Header/Navbar"
 import fondo from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
 import ResultadoSeg from './ResultadoSeg';
-
+import { Titulo1 } from '../Hoocks/Titulos';
+import BarraProgresiva from '../hoocks/BarraProgresiva';
+import FondoInicio from '../hoocks/FondoInicio';
+import tri2 from '../../assets/triangulo-2.png'
 const InfoEnvio = [
     {
         id: 1,
@@ -57,10 +60,20 @@ const InfoEnvio = [
 ];
 
 export default function Seguimiento() {
+
+    //Estados
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
     const [trackingID, setTrackingID] = useState('');
     const [resultado, setResultado] = useState(null);
     const [mostrarResultado, setMostrarResultado] = useState(false);
 
+    const stepsMap = {
+        "/": 1,
+        "/acercaDe": 2,
+        "/servicios": 3,
+        "/seguimiento": 4,
+        "/contacto": 5,
+    };
     const handleBuscar = () => {
         const info = InfoEnvio.find((envio) => envio.nroTracking === trackingID.trim());
 
@@ -73,6 +86,14 @@ export default function Seguimiento() {
             setMostrarResultado(false);
         }
     };
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <main
             style={{
@@ -90,6 +111,56 @@ export default function Seguimiento() {
                 width: '100%',
                 zIndex: 1000, // asegúrate que esté encima de todo
             }} />
+            <Box
+                name='controlador'
+                sx={{
+                    position: 'relative',
+                    zIndex: 5,
+                    height: '100vh',
+                    width: '100%'
+                }}>
+                <>
+                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
+                        position: 'absolute',
+                        top: '92%',
+                        left: { xs: '0%', sm: '0%', md: '-40%' },
+                        zIndex: '2',
+                        width: '100%'
+                    }} />
+                </>
+                {!isMobile && (
+
+                    <Box
+                        name='TrianguloArriba'
+                        sx={{
+                            position: 'absolute',
+                            zIndex: 2,
+                            top: '5%',
+                            left: '-2%',
+                            backgroundImage: `url(${tri2})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            height: '35rem',
+                            width: '35rem'
+                        }}
+                    />
+                )}
+
+                <FondoInicio>
+
+                    <Titulo1 titulo={'Seguimiento'} sx={{
+                        position: 'relative',
+                        fontSize: '3rem',
+                        zIndex: 1,
+                        top: '-1rem',
+                        left: '0.5rem',
+                        color: '#ffffff9f',
+                        transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
+                        display: 'inline-block'
+                    }} />
+                </FondoInicio>
+            </Box>
             {/* Primer Box */}
             <Box
                 name="Primer Box"
@@ -100,10 +171,8 @@ export default function Seguimiento() {
                     padding: '0.8rem',
                     overflow: 'hidden',
                     height: '100vh',
-                    maxHeight:{xs:'50vh',md:'60vh',sm:'70vh'},
-                    backgroundImage: `url(${fondo})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
+                    maxHeight: { xs: '50vh', md: '60vh', sm: '70vh' },
+                    backgroundColor: '#00bfffff',
                 }}
             >
                 {/* Capa de desenfoque */}
@@ -168,7 +237,7 @@ export default function Seguimiento() {
                             onChange={(e) => setTrackingID(e.target.value)}
                             sx={{
                                 flex: 2,
-                                backgroundColor: '#ffffff',
+                                backgroundColor: '#ffffff7d',
                                 borderRadius: '1.5rem',
                                 '& .MuiOutlinedInput-root': {
                                     borderRadius: '1.5rem',

@@ -8,12 +8,31 @@ import serv1 from '../../assets/servAlmace.jpg'
 import serv2 from '../../assets/servMudanza.jpg'
 import serv3 from '../../assets/servDistri.jpg'
 
-
+import tri1 from '../../assets/triangulo-1.png'
+import BarraProgresiva from '../hoocks/BarraProgresiva';
+import FondoInicio from '../hoocks/FondoInicio';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import InicioPrueba from '../Acercade/InicioPrueba';
+import { useEffect, useState } from 'react';
 export default function ServiciosPage() {
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+
     const router = useNavigate();
+    const stepsMap = {
+        "/": 1,
+        "/acercaDe": 2,
+        "/servicios": 3,
+        "/seguirmiento": 4,
+        "/contacto": 5
+    };
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return (
         <main>
             <Navbar sx={{
@@ -24,77 +43,59 @@ export default function ServiciosPage() {
                 width: '100%',
                 zIndex: 1000, // asegúrate que esté encima de todo
             }} />
-            <InicioPrueba />
 
-            {/* Primer Box */}
             <Box
-                name="Primer Box"
+                name='controlador'
                 sx={{
-                    display: 'flex',
-                    alignItems: 'center',
                     position: 'relative',
-                    padding: '0.8rem',
-                    overflow: 'hidden',
+                    zIndex: 5,
                     height: '100vh',
-                    maxHeight: { xs: '50vh', sm: '50vh', md: '30vh' },
-                    backgroundImage: `url(${fondo})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}
-            >
-                {/* Capa de desenfoque */}
-                <Box
+                    width: '100%'
+                }}>
+                <>
+                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
+                        position: 'absolute',
+                        top: '92.5%',
+                        left: { xs: '0%', sm: '0%', md: '-40%' },
+                        zIndex: '2',
+                        width: '100%'
+                    }} />
+                </>
+                {!isMobile && (<Box
+                    name='TrianguloIzquierda'
                     sx={{
                         position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        backgroundColor: 'rgba(0, 134, 244, 0.48)',
-                        opacity: '0.7',
-                        zIndex: 0,
+                        zIndex: 2,
+                        top: '10%',
+                        left: '2%',
+                        backgroundImage: `url(${tri1})`,
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center',
+                        height: '35rem',
+                        width: '35rem'
                     }}
-                />
-                {/* Contenedor Acerca de */}
-                <Box
-                    name="ContenedorPrincipal"
-                    sx={{
-                        position: 'relative',
-                        zIndex: 1,
-                        display: 'flex',
-                        flexDirection: {
-                            xs: 'column', // En móvil apilado
-                            md: 'row'     // Desde desktop, lado a lado
-                        },
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        margin: '0 auto',
-                        maxWidth: {
-                            xs: '15rem',
-                            sm: '40rem',
-                            md: '100%'
-                        },
-                        gap: 4,
-                        py: 4,
-                        px: { xs: 2, sm: 4 },
-                    }}
-                >
+                />)}
+                <FondoInicio>
+
                     <Titulo1 titulo={'Servicios'} sx={{
                         position: 'relative',
+                        fontSize: '3rem',
                         zIndex: 1,
-                        top: '1.5rem',
-                        left: 0,
+                        top: '-1rem',
+                        left: '0.5rem',
                         color: '#ffffff9f',
-                        transform: 'rotate(-25deg)', // 👈 gira 25° hacia la izquierda
+                        transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
                         display: 'inline-block'
                     }} />
-                </Box>
+                </FondoInicio>
             </Box>
+
             {/*Segundo Box */}
             <Box name='Segundo Box'
                 sx={{
                     display: 'flex',
-                    backgroundColor: '#cceaffff',
+                    backgroundColor: '#aedcffa7',
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     height: '100%',
