@@ -1,15 +1,14 @@
 import { Box, Typography } from '@mui/material'
 
-export const Titulo1 = ({ titulo, subtitulo, style={},sx = {}, sxSubtitulo = {} }) => {
+export const Titulo1 = ({ titulo, subtitulo, style = {}, sx = {}, sxSubtitulo = {}, children }) => {
     return (
         <Box sx={{ textAlign: 'center', ...sx }}>
             <Typography component="h1" sx={{
                 m: 0, fontFamily: 'fantasy',
-                fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.5rem' }, ...sx,...style
+                fontSize: { xs: '1.2rem', sm: '1.5rem', md: '1.5rem' }, ...sx, ...style
             }}>
                 {titulo}
             </Typography>
-
             {
                 subtitulo && (
                     <Typography component="p" sx={{
@@ -22,15 +21,18 @@ export const Titulo1 = ({ titulo, subtitulo, style={},sx = {}, sxSubtitulo = {} 
                     </Typography>
                 )
             }
+            {children}
         </Box >
     );
 };
 
-export const Titulo2 = ({ titulo }) => {
+export const Titulo2 = ({ titulo, sx = {} }) => {
     return (
-        <div className="titulo-animado" style={{ textAlign: 'center' }}>
-            <h2 style={{ fontSize: '1.2rem', margin: 15 }}>{titulo}</h2>
-        </div>
+        <Box className="titulo-animado" sx={{ textAlign: 'center', }}>
+            <Typography component="h2" sx={{ fontSize: '1.2rem', margin: 5, fontFamily: 'fantasy', ...sx }}>
+                {titulo}
+            </Typography>
+        </Box>
     );
 };
 

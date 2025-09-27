@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 
 import fondo1 from '../../assets/fondo.png';
 
-export default function FondoInicio({ children }) {
+export default function FondoInicio({ children }, nombre ={}) {
     return (<Box
-        name='hola1'
+        name={nombre}
         position="relative"
         display="flex"
         alignItems="center"
@@ -37,8 +37,7 @@ export default function FondoInicio({ children }) {
                     backgroundPosition: 'center',
                     height: '100vh',
                     maxHeight: {
-                        xs: '70vh',
-                        sm: '25rem',
+                        xs: '80vh',
                         md: '100vh',
                     },
                     minWidth: {
@@ -56,7 +55,7 @@ export default function FondoInicio({ children }) {
                 position: "absolute",
                 inset: 0,
                 backgroundColor: "#23cfffa9",
-                clipPath: { xs: "polygon(0 0, 100% 0, 100% 60%, 0 60%)", sm: "polygon(0 0, 100% 0, 100% 50%, 0 50%)", md: "polygon(31% 100%, 72% 0, 0 0, 0 100%);" }, // Triángulo diagonal
+                clipPath: { xs: "polygon(0 0, 100% 0, 100% 90%, 0 90%)", sm: "polygon(0 0, 100% 0, 100% 95%, 0 95%)", md: "polygon(31% 100%, 72% 0, 0 0, 0 100%);" }, // Triángulo diagonal
 
             }}
         />
@@ -67,7 +66,6 @@ export default function FondoInicio({ children }) {
                 zIndex: 2,
             }}
         >
-
             {children}
         </Box>
 

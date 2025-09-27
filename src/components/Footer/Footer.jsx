@@ -13,18 +13,18 @@ const Footer = () => {
     {
       titulo: "Información",
       items: [
-        { text: "Nosotros", link: '/nosotros' },
+        { text: "Nosotros", link: '/' },
         { text: "Contacto", link: '/contacto' },
-        { text: "Términos y condiciones", link: '/terminos' },
-        { text: "Brouchers", link: '/brouchers' }
+        { text: "Términos y condiciones", link: '/#' },
+        { text: "Brouchers", link: '/#' }
       ],
     },
     {
       titulo: "Sobre el servicio",
       items: [
         { text: "Tracking / Seguimiento", link: '/seguimiento' },
-        { text: "¿Cómo funciona?", link: '/programacion' },
-        { text: "Política de privacidad", link: '/politica' }
+        { text: "¿Cómo funciona?", link: '/#' },
+        { text: "Política de privacidad", link: '/#' }
       ],
     },
   ];

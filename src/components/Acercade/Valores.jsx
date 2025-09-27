@@ -38,24 +38,6 @@ export default function Valores() {
                     flex: 1,
                     m: 2,
                     p: 2,
-
-                    // pseudo-elemento que repite el icono y está rotado -25deg
-                    '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        inset: '-50%',               // cubre más allá para evitar cortes al rotar
-                        backgroundImage: `url('${repetir}')`, // <-- tu icono aquí
-                        backgroundRepeat: 'repeat',
-                        backgroundSize: '2rem 2rem', // tamaño/espaciado de cada icono
-                        transform: 'rotate(-25deg)',
-                        transformOrigin: 'center',
-                        opacity: 0.14,               // ajusta la visibilidad del patrón
-                        zIndex: 0,
-                        pointerEvents: 'none',       // deja interactuar con el contenido
-                    },
-
-                    // contenido dentro visible encima
-                    '& > *': { position: 'relative', zIndex: 1 }
                 }}>
                     <AssistantPhotoOutlinedIcon sx={{ fontSize: { xs: '10vw', sm: '5vw', md: '5vw' } }} />
                     <Titulo1

@@ -76,8 +76,10 @@ export default function ZonaClientes() {
                             backgroundSize: 'contain',
                             backgroundRepeat: 'no-repeat',
                             backgroundPosition: 'center',
-                            height: '35rem',
-                            width: '35rem'
+                            height:'100%',
+                            maxHeight:'35rem',
+                            width:'100%',
+                            maxWidth:'35rem',
                         }}
                     />
                 )}
@@ -160,7 +162,7 @@ export default function ZonaClientes() {
                 sx={{
                     position: "relative",
                     overflow: 'hidden',
-                    backgroundImage: `url(${mundo})`,
+                    backgroundColor: '#59c3eaff',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     color: '#000000ff',

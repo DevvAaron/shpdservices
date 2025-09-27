@@ -13,6 +13,7 @@ import ZonaClientes from './components/ZonaClientes/ZonaClientes';
 import AcercaDe from './components/Acercade/Acerca';
 import ServiciosPage from './components/Servicios/ServicioPage';
 import 'animate.css';
+import ContactoPage from './components/Contacto/ContactoPage';
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -25,7 +26,7 @@ function AnimatedRoutes() {
         <Route path="/seguimiento" element={<Seguimiento />} />
         <Route path="/ayuda" element={<Ayuda />} />
         <Route path="/calculadora" element={<Calculadora />} />
-        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/contacto" element={<ContactoPage />} />
         <Route path="/acercaDe" element={<AcercaDe />} />
         <Route path='/servicios' element={<ServiciosPage />} />
         <Route path="/zonaClientes" element={<ZonaClientes />} />

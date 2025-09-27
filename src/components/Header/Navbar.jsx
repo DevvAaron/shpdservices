@@ -245,7 +245,15 @@ const Navbar = () => {
                   <Box
                     onClick={() => handleSubmenuClick(label)}
                     onDoubleClick={() => handleDoubleClick(to)}
-                    sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', color: '#fff', padding: '6px 4px', fontWeight: 700 }}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                      alignItems: 'center',
+                      cursor: 'pointer',
+                      color: '#fff',
+                      padding: '6px 4px',
+                      fontWeight: 700
+                    }}
                   >
                     <span>{label}</span>
                     {openSubmenu === label ? <ExpandLessIcon sx={{ color: '#fff' }} /> : <ExpandMoreIcon sx={{ color: '#fff' }} />}
@@ -258,9 +266,9 @@ const Navbar = () => {
 
                 {/* submenu móvil */}
                 {subItems && openSubmenu === label && (
-                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} style={{ overflow: 'hidden', paddingLeft: 8 }}>
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} style={{ overflow: 'hidden', display: 'flex', flexDirection : 'column', alignItems: 'flex-end', paddingLeft: 8 }}>
                     {subItems.map(sub => (
-                      <Box component={NavLink} key={sub.to} to={sub.to} onClick={() => setMenuOpen(false)} sx={{ display: 'block', color: '#fff', textDecoration: 'none', padding: '6px 4px' }}>
+                      <Box component={NavLink} key={sub.to} to={sub.to} onClick={() => setMenuOpen(false)} sx={{ display: 'flex', color: '#fff', textDecoration: 'none', padding: '6px 4px' }}>
                         {sub.label}
                       </Box>
                     ))}

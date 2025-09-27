@@ -170,7 +170,6 @@ export default function Inicio() {
                         fontSize: '3rem',
                         zIndex: 1,
                         top: '-1rem',
-                        left: '0.5rem',
                         color: '#0000009f',
                         transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
                         display: 'inline-block'
@@ -420,9 +419,6 @@ export default function Inicio() {
                         }}>
                             <Titulo1 titulo={"Haz que tus clientes se sientan seguros comprando por internet"}
                                 style={{
-                                    borderTop: '5px solid',
-                                    borderTopLeftRadius: '15px',
-                                    borderTopRightRadius: '15px',
                                     borderBottom: '5px solid',
                                     borderBottomLeftRadius: '15px',
                                     borderBottomRightRadius: '15px',
