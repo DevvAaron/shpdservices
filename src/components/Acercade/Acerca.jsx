@@ -1,17 +1,23 @@
+import { useEffect, useState } from 'react';
 import {
     Box,
 } from '@mui/material'
-import Navbar from "../Header/Navbar"
-import Footer from '../Footer/Footer';
-import { Titulo1, Subtitulo, Contenido } from '../Hoocks/Titulos';
-import AnimatedBox from '../Hoocks/AnimatedBox';
-import tri4 from '../../assets/triangulo-4.png'
 
-import img8 from '../../assets/sobrenosotros.png';
-import Valores from './Valores';
+//Hoocks
+import { Titulo1, Contenido } from '../Hoocks/Titulos';
+import AnimatedBox from '../Hoocks/AnimatedBox';
 import FondoInicio from '../hoocks/FondoInicio';
 import BarraProgresiva from '../hoocks/BarraProgresiva';
-import { useEffect, useState } from 'react';
+
+//Componentes
+import Navbar from "../Header/Navbar"
+import Footer from '../Footer/Footer';
+import Valores from './Valores';
+
+//Imagenes
+import tri4 from '../../assets/triangulo-4.png'
+import img8 from '../../assets/sobrenosotros.png';
+
 
 export default function AcercaDe() {
     
@@ -20,8 +26,7 @@ export default function AcercaDe() {
         "/": 1,
         "/acercaDe": 2,
         "/servicios": 3,
-        "/seguimiento": 4,
-        "/contacto": 5,
+        "/contacto": 4,
     };
     useEffect(() => {
         const handleResize = () => {
@@ -56,7 +61,7 @@ export default function AcercaDe() {
                     width: '100%'
                 }}>
                 <>
-                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
+                    <BarraProgresiva steps={4} activeStep={stepsMap[location.pathname] || 1} sx={{
                         position: 'absolute',
                         top: '70%',
                         left: { xs: '0%', sm: '0%', md: '-40%' },
@@ -88,13 +93,12 @@ export default function AcercaDe() {
                         zIndex: 1,
                         top: '-1rem',
                         left: '0.5rem',
-                        color: '#ffffff9f',
+                        color: '#0000009f',
                         transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
                         display: 'inline-block'
                     }} />
                 </FondoInicio>
             </Box>
-            {/* Primer Box */}
             {/*Segundo Box */}
             <Box
                 sx={{
@@ -177,7 +181,7 @@ export default function AcercaDe() {
                             borderBottomLeftRadius: '15px',
                             borderBottomRightRadius: '15px',
                         }}>
-                            <Titulo1 titulo={"SPHD SERVICE"}
+                            <Titulo1 titulo={"SOBRE NOSOTROS"}
                                 style={{
                                     borderBottom: '5px solid',
                                     borderBottomLeftRadius: '15px',
@@ -185,7 +189,6 @@ export default function AcercaDe() {
                                     textAlign: "center",
                                     padding: "1rem"
                                 }} />
-                            <Subtitulo subtitulo={"Sobre Nosotros:"} />
                             <Contenido contenido={`Somos una empresa peruana especializada en el transporte de carga aérea, terrestre y marítima, a destinos nacionales e internacionales.
 
                                 El profesionalismo de nuestro personal y la calidad de nuestras operaciones aseguran un servicio con los estándares internacionales en transporte de carga. 

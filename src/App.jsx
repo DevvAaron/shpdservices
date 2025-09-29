@@ -14,6 +14,7 @@ import AcercaDe from './components/Acercade/Acerca';
 import ServiciosPage from './components/Servicios/ServicioPage';
 import 'animate.css';
 import ContactoPage from './components/Contacto/ContactoPage';
+import ResultadoSeg from './components/Seguimiento/ResultadoSeg';
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -36,6 +37,7 @@ function AnimatedRoutes() {
         <Route path='/brouchers' element={<Programacion />} />
         <Route path='/politica' element={<Programacion />} />
         <Route path='/programacion' element={<Programacion />} />
+        <Route path="/seguimiento/:trackingID" element={<ResultadoSeg />} />
       </Routes>
     </AnimatePresence>
   );

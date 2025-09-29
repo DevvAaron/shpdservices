@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import {
     Box,
     Typography, Modal, Backdrop, Fade, IconButton
 } from '@mui/material';
+import tri1 from '../../assets/triangulo-2.png'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ImageViewerModal from '../Hoocks/ImageViewerModel';
+import { InfoEnvio } from '../../data/envios'; // ajusta la ruta si es necesario
+import { Titulo1 } from '../Hoocks/Titulos';
+import FondoInicio from '../hoocks/FondoInicio';
+import Navbar from '../Header/Navbar';
+
 const HistorialEstd = [
     {
         id: 1,
@@ -28,33 +33,51 @@ const HistorialEstd = [
         fecha: '2024-12-17 20:28:29'
     }
 ]
-const pasos = [
-    {
-        id: 1,
-        texto: 'Gestionado',
-        icono: <InventoryIcon />,
-        activo: false,
-    },
-    {
-        id: 2,
-        texto: '¡En camino!',
-        icono: <LocalShippingIcon />,
-        activo: false,
-    },
-    {
-        id: 3,
-        texto: 'Entregado',
-        icono: <MoveToInboxIcon />,
-        activo: true,
-    },
-];
+export default function ResultadoSeg({ data: propData }) {
+    const { trackingID } = useParams(); // puede ser undefined si llamas pasando props
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
 
-export default function ResultadoSeg({ data }) {
-    const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(data.direccion)}&output=embed`;
+    const idToLookup = trackingID || (propData && propData.nroTracking);
+
+    const envio = propData || InfoEnvio.find(e => e.nroTracking === idToLookup);
+
+    if (!envio) {
+        return (
+            <Box sx={{ width: '100%', py: 6, display: 'flex', justifyContent: 'center' }}>
+                <Typography variant="h6" sx={{ color: '#333' }}>
+                    🚫 No se encontró el envío {trackingID ? `con tracking ${trackingID}` : ''}.
+                </Typography>
+            </Box>
+        );
+    }
+    const imagenes = envio.dtproducto.img;
+    const mapUrl = envio.direccion ? `https://www.google.com/maps?q=${encodeURIComponent(envio.direccion)}&output=embed` : null;
+
+
+    const pasos = [
+        {
+            id: 1,
+            texto: 'Gestionado',
+            icono: <InventoryIcon />,
+            activo: false,
+        },
+        {
+            id: 2,
+            texto: '¡En camino!',
+            icono: <LocalShippingIcon />,
+            activo: false,
+        },
+        {
+            id: 3,
+            texto: 'Entregado',
+            icono: <MoveToInboxIcon />,
+            activo: true,
+        },
+    ];
+
+
     const [openImg, setOpenImg] = useState(false);
     const [selectedImgIndex, setSelectedImgIndex] = useState(0);
-
-    const imagenes = data.dtproducto.img;
 
     // Abrir modal con imagen seleccionada
     const handleOpenImg = (index) => {
@@ -65,23 +88,10 @@ export default function ResultadoSeg({ data }) {
     const handleCloseImg = () => {
         setOpenImg(false);
     };
-
-    const handlePrev = () => {
-        setSelectedImgIndex((prev) =>
-            prev === 0 ? imagenes.length - 1 : prev - 1
-        );
-    };
-    const handleNext = () => {
-        setSelectedImgIndex((prev) =>
-            prev === imagenes.length - 1 ? 0 : prev + 1
-        );
-    };
-
     return (
 
         <Box
             name='Fondo'
-
             sx={{
                 width: '100%',
                 py: 2, // padding vertical
@@ -95,6 +105,56 @@ export default function ResultadoSeg({ data }) {
                     md: 5
                 },
             }}>
+            <Navbar sx={{
+                position: 'fixed',
+                justifyContent: 'center',
+                top: 0,
+                left: 0,
+                width: '100%',
+                zIndex: 1000, // asegúrate que esté encima de todo
+            }} />
+
+            <Box
+                name='controlador'
+                sx={{
+                    position: 'relative',
+                    zIndex: 5,
+                    height: '100vh',
+                    width: '100%'
+                }}>
+                {!isMobile && (
+
+                    <Box
+                        name='TrianguloArriba'
+                        sx={{
+                            position: 'absolute',
+                            zIndex: 2,
+                            top: '5%',
+                            left: '-2%',
+                            backgroundImage: `url(${tri1})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            height: '35rem',
+                            width: '35rem'
+                        }}
+                    />
+                )}
+
+                <FondoInicio>
+
+                    <Titulo1 titulo={'Seguimiento'} sx={{
+                        position: 'relative',
+                        fontSize: '3rem',
+                        zIndex: 1,
+                        top: '-1rem',
+                        left: '0.5rem',
+                        color: '#ffffff9f',
+                        transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
+                        display: 'inline-block'
+                    }} />
+                </FondoInicio>
+            </Box>
             <Box name='Cont1'
                 sx={{
                     padding: '1rem',
@@ -298,7 +358,7 @@ export default function ResultadoSeg({ data }) {
                             sm: '1rem',    // tablets
                             md: '1rem',  // pantallas mediana
                         },
-                    }}>{data.nroTracking}</Typography>
+                    }}>{envio.nroTracking}</Typography>
                     <Typography sx={{
                         fontSize: {
                             xs: '0.8rem',  // móviles
@@ -313,7 +373,7 @@ export default function ResultadoSeg({ data }) {
                             sm: '1rem',    // tablets
                             md: '1rem',  // pantallas mediana
                         },
-                    }}>{data.reminente}</Typography>
+                    }}>{envio.reminente}</Typography>
 
                     <Typography
                         sx={{
@@ -330,7 +390,7 @@ export default function ResultadoSeg({ data }) {
                             sm: '1rem',    // tablets
                             md: '1rem',  // pantallas mediana
                         },
-                    }}>{data.destinatario}</Typography>
+                    }}>{envio.destinatario}</Typography>
 
                     <Typography sx={{
                         fontSize: {
@@ -346,7 +406,7 @@ export default function ResultadoSeg({ data }) {
                             sm: '1rem',    // tablets
                             md: '1rem',  // pantallas mediana
                         },
-                    }}>{data.direccion}</Typography>
+                    }}>{envio.direccion}</Typography>
                     {/* Título */}
                     <Typography
                         sx={{
@@ -383,7 +443,7 @@ export default function ResultadoSeg({ data }) {
                                 sm: '1rem',    // tablets
                                 md: '1rem',  // pantallas mediana
                             },
-                        }}>{data.dtproducto.nombre} | {data.dtproducto.id}</Typography>
+                        }}>{envio.dtproducto?.nombre} | {envio.dtproducto?.id}</Typography>
                         <Typography></Typography>
                     </Box>
 
@@ -415,7 +475,7 @@ export default function ResultadoSeg({ data }) {
                             },
                             fontWeight: 'bold'
                         }}>
-                            {data.dtproducto.monto.toFixed(2)}
+                            {envio.dtproducto.monto.toFixed(2)}
                         </Typography>
                     </Box>
                     {/* Título */}
@@ -476,7 +536,7 @@ export default function ResultadoSeg({ data }) {
             </Box>
 
             {/* Sección de Mapa */}
-            {data?.direccion && (
+            {mapUrl && (
                 <Box
                     sx={{
                         width: '100%',
@@ -492,7 +552,7 @@ export default function ResultadoSeg({ data }) {
                 >
                     <iframe
                         title="Mapa de Google"
-                        src={`https://www.google.com/maps?q=${encodeURIComponent(data.direccion)}&output=embed`}
+                        src={`https://www.google.com/maps?q=${encodeURIComponent(envio.direccion)}&output=embed`}
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}

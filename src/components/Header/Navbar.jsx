@@ -3,22 +3,31 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
-import { Box, IconButton, Tooltip } from '@mui/material';
+import { Box, IconButton, Tooltip, TextField, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import contactoIcon from '../../assets/wspblack.png';
 import { motion, AnimatePresence } from 'framer-motion';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-
+import SearchIcon from '@mui/icons-material/Search';
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const [trackingID, setTrackingID] = useState("");
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null); // móvil
   const [openDesktopSubmenu, setOpenDesktopSubmenu] = useState(null); // desktop
 
+
+  const handleBuscar = () => {
+    if (trackingID.trim() !== "") {
+      navigate(`/seguimiento/${trackingID.trim()}`);
+      setTrackingID(""); // limpiar después de buscar
+    }
+  };
   const handleSubmenuClick = (label) => {
     setOpenSubmenu(prev => (prev === label ? null : label));
   };
@@ -92,7 +101,6 @@ const Navbar = () => {
         { to: '/servicios/mudanzas', label: 'Mudanzas' }
       ]
     },
-    { to: '/seguimiento', label: 'Seguimiento' },
     { to: '/zonaClientes', label: 'Zona de Clientes' }
   ];
 
@@ -207,6 +215,26 @@ const Navbar = () => {
           ))}
         </Box>
       )}
+      {/* --- BUSCADOR: solo se muestra cuando NO es mobile --- */}
+      {!isMobile && (
+        <Box sx={{ display: "flex", gap: 1, alignItems: 'center' }}>
+          <TextField
+            variant="outlined"
+            size="small"
+            placeholder="Tracking ID"
+            value={trackingID}
+            onChange={(e) => setTrackingID(e.target.value)}
+            sx={{
+              backgroundColor: "white",
+              borderRadius: "0.5rem",
+              width: "10rem"
+            }}
+          />
+          <IconButton onClick={handleBuscar} size="small" sx={{ bgcolor: 'white', '&:hover': { bgcolor: '#f0f0f0' } }}>
+            <SearchIcon />
+          </IconButton>
+        </Box>
+      )}
 
       {/* Mobile menu button */}
       {isMobile && (
@@ -239,6 +267,19 @@ const Navbar = () => {
               boxShadow: '-6px 0 20px rgba(0,0,0,0.18)'
             }}
           >
+            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+              <TextField
+                variant="outlined"
+                size="small"
+                placeholder="Tracking ID"
+                value={trackingID}
+                onChange={(e) => setTrackingID(e.target.value)}
+                sx={{ backgroundColor: "white", borderRadius: "0.5rem", width: '100%' }}
+              />
+              <IconButton onClick={() => { handleBuscar(); setMenuOpen(false); }} size="small" sx={{ bgcolor: 'white' }}>
+                <SearchIcon />
+              </IconButton>
+            </Box>
             {navigationLinks.map(({ to, label, subItems }) => (
               <React.Fragment key={to || label}>
                 {subItems ? (
@@ -266,7 +307,7 @@ const Navbar = () => {
 
                 {/* submenu móvil */}
                 {subItems && openSubmenu === label && (
-                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} style={{ overflow: 'hidden', display: 'flex', flexDirection : 'column', alignItems: 'flex-end', paddingLeft: 8 }}>
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }} style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', paddingLeft: 8 }}>
                     {subItems.map(sub => (
                       <Box component={NavLink} key={sub.to} to={sub.to} onClick={() => setMenuOpen(false)} sx={{ display: 'flex', color: '#fff', textDecoration: 'none', padding: '6px 4px' }}>
                         {sub.label}

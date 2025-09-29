@@ -6,10 +6,12 @@ import Navbar from "../Header/Navbar";
 import Footer from "../Footer/Footer";
 import { Cobertura1 } from '../Cobertura/PageCobertura'
 import { Titulo1 } from "../Hoocks/Titulos";
-import mundo from '../../assets/mundo.png'
 import BarraProgresiva from '../hoocks/BarraProgresiva';
 import FondoInicio from '../hoocks/FondoInicio';
-import tri5 from '../../assets/triangulo-5.png'
+import img1 from '../../assets/fondo.png'
+import form1 from '../../assets/form1.jpg'
+import form2 from '../../assets/form2.jpg'
+import formfond from '../../assets/formfond.png'
 export default function ZonaClientes() {
     //Estados
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
@@ -17,8 +19,7 @@ export default function ZonaClientes() {
         "/": 1,
         "/acercaDe": 2,
         "/servicios": 3,
-        "/seguirmiento": 4,
-        "/zonaClientes": 5
+        "/zonaClientes": 4
     };
 
     useEffect(() => {
@@ -55,7 +56,7 @@ export default function ZonaClientes() {
                     width: '100%'
                 }}>
                 <>
-                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
+                    <BarraProgresiva steps={4} activeStep={stepsMap[location.pathname] || 1} sx={{
                         position: 'absolute',
                         top: '92.5%',
                         left: { xs: '0%', sm: '0%', md: '-40%' },
@@ -63,98 +64,136 @@ export default function ZonaClientes() {
                         width: '100%'
                     }} />
                 </>
-                {!isMobile && (
-
-                    <Box
-                        name='TrianguloArriba'
-                        sx={{
-                            position: 'absolute',
-                            zIndex: 2,
-                            top: '10%',
-                            left: '5%',
-                            backgroundImage: `url(${tri5})`,
-                            backgroundSize: 'contain',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'center',
-                            height:'100%',
-                            maxHeight:'35rem',
-                            width:'100%',
-                            maxWidth:'35rem',
-                        }}
-                    />
-                )}
 
 
                 <FondoInicio>
+                    <Box
+                        sx={{
+                            position: 'relative',
+                            display: 'flex',
+                            width: '100%',
+                            height: '100%',
+                            zIndex: 1, gap: '10rem',
+                            left: '-0.7%',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Titulo1 titulo={'Zona de clientes'} sx={{
+                            position: 'relative',
+                            fontSize: '3rem',
+                            zIndex: 1,
+                            top: '-1rem',
+                            left: '0.5rem',
+                            color: '#0000009f',
+                            transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
+                            display: 'inline-block'
+                        }} />
 
-                    <Titulo1 titulo={'Zona de clientes'} sx={{
-                        position: 'relative',
-                        fontSize: '3rem',
-                        zIndex: 1,
-                        top: '-1rem',
-                        left: '0.5rem',
-                        color: '#ffffff9f',
-                        transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
-                        display: 'inline-block'
-                    }} />
+                    </Box>
                 </FondoInicio>
             </Box>
             <Box
                 name='Box1'
                 sx={{
+                    display: 'flex',
                     padding: '1rem',
+                    width: '95vw',
+                    height: '100%',
+                    justifyContent: 'center'
                 }}
             >
                 <Box sx={{
-                    margin: '5rem',
-                    gap: 2,
+                    position: 'relative',
+                    height: { xs: '150vh', sm: '100vh' },
+                    width: '100vw',
                     display: 'flex',
-                    flexDirection: 'column',
-                    maxWidth: {
-                        xs: '25rem',
-                        sm: '46rem',
-                        md: '100%'
-                    },
+                    flexDirection: { xs: 'column', sm: 'row' },
+                    zIndex: 1,
+                    justifyContent: 'space-around',
                     alignItems: 'center'
                 }}>
-
-                    <Titulo1 titulo={'Zona de Clientes'} style={{
-                        fontSize: '1rem', marginBottom: 'rem',
-                        padding: '1rem',
-                        borderBottom: '5px solid',
-                        borderBottomLeftRadius: '15px',
-                        borderBottomRightRadius: '15px',
-                    }} />
-
-                    <Button
+                    <Box
                         sx={{
-                            whiteSpace: 'nowrap',
-                            fontWeight: 'bold',
-                            px: 3,
-                            py: 1,
-                            width: '9rem',
-                            borderBottom: '5px solid',
-                            borderBottomLeftRadius: '15px',
-                            borderBottomRightRadius: '15px',
+                            height: '100vh',
+                            width: '95vw',
+                            position: 'absolute',
+                            zIndex: 1,
+                            backgroundImage: `url(${formfond})`,
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
                         }}
-                    >
-                        Clientes
-                    </Button>
-                    <Button
-                        sx={{
-                            whiteSpace: 'nowrap',
-                            fontWeight: 'bold',
-                            px: 3,
-                            py: 1,
-                            width: '9rem',
+                    />
+                    <Box sx={{
+                        position: 'relative',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '2rem',
+                        zIndex: 5
+                    }}>
+                        <Box sx={{
+                            border: '0.5rem solid #13B5EA',
+                            backgroundImage: `url(${form1})`,
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            height: '100vh',
+                            width: '100vw',
+                            maxHeight: { xs: '15rem', sm: '20rem' },
+                            maxWidth: { xs: '15rem', sm: '20rem' },
+                        }} />
+                        <Button
+                            sx={{
+                                whiteSpace: 'nowrap',
+                                fontWeight: 'bold',
+                                px: 3,
+                                py: 1,
+                                borderBottom: '5px solid',
+                                borderBottomLeftRadius: '15px',
+                                borderBottomRightRadius: '15px',
+                            }}
+                        >
+                            Clientes
+                        </Button>
 
-                            borderBottom: '5px solid',
-                            borderBottomLeftRadius: '15px',
-                            borderBottomRightRadius: '15px',
-                        }}
-                    >
-                        Agentes
-                    </Button>
+
+                    </Box>
+
+                    <Box sx={{
+                        display: 'flex', flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: { xs: '1rem', sm: '2rem' },
+                        zIndex: 5
+                    }}>
+
+                        <Box sx={{
+                            border: '0.5rem solid #13B5EA',
+                            backgroundImage: `url(${form2})`,
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            height: '100vh',
+                            width: '100vw',
+                            maxHeight: { xs: '15rem', sm: '20rem' },
+                            maxWidth: { xs: '15rem', sm: '20rem' },
+                        }} />
+
+                        <Button
+                            sx={{
+                                whiteSpace: 'nowrap',
+                                fontWeight: 'bold',
+                                px: 3,
+                                py: 1,
+
+                                borderBottom: '5px solid',
+                                borderBottomLeftRadius: '15px',
+                                borderBottomRightRadius: '15px',
+                            }}
+                        >
+                            Agentes
+                        </Button>
+                    </Box>
                 </Box>
             </Box>
             {/*Tercer Box*/}

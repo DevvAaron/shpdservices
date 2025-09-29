@@ -296,12 +296,13 @@ export default function ContactoPage() {
                             </Button>
 
                         </Box>
+
                         {!isMobile && (
 
                             <Box sx={{
                                 boxSizing: 'border-box',
-                                height: '95vh',
-                                width: '40%',
+                                height: '85vh',
+                                width: '30%',
                                 display: 'flex',
                                 alignItems: 'center',
                                 flexDirection: 'column',
@@ -329,9 +330,6 @@ export default function ContactoPage() {
                                         backgroundSize: 'cover',
                                         boxSizing: 'border-box',
                                         height: '100%',
-                                        maxHeight: {
-                                            sm: '40vh'
-                                        },
                                         width: '100%',
                                         display: 'flex',
                                         alignItems: 'center',
@@ -389,12 +387,12 @@ export default function ContactoPage() {
                                             titulo={'HORARIOS DE ATENCIÓN:'}
                                             sx={{ color: '#34bfedff' }}
                                             style={{
-                                                fontSize: '1.5rem',
+                                                fontSize: '1rem',
                                                 margin: '0'
                                             }}
                                             subtitulo={'De lunes a sabado 9 a.m a 6 p.m'}
                                             sxSubtitulo={{
-                                                fontSize: '1rem',
+                                                fontSize: '0.8rem',
                                             }}>
                                             <Horario />
                                         </Titulo1>
@@ -404,7 +402,7 @@ export default function ContactoPage() {
                                         boxSizing: 'border-box',
                                         height: '100%',
                                         maxHeight: {
-                                            sm: '15vh'
+                                            sm: '12vh'
                                         },
                                         width: '100%', ":hover": {
                                             borderBottom: '3px solid #13B5EA',
@@ -419,12 +417,12 @@ export default function ContactoPage() {
                                             titulo={'DIRECCIÓN:'}
                                             sx={{ color: '#34bfedff' }}
                                             style={{
-                                                fontSize: '1.5rem',
+                                                fontSize: '1rem',
                                                 margin: '0'
                                             }}
                                             subtitulo={'Dirección fisica de SHPD Services Mexico'}
                                             sxSubtitulo={{
-                                                fontSize: '1rem',
+                                                fontSize: '0.8rem',
                                             }} />
                                     </Box>
                                     <Box sx={{
@@ -432,7 +430,7 @@ export default function ContactoPage() {
                                         boxSizing: 'border-box',
                                         height: '100%',
                                         maxHeight: {
-                                            sm: '15vh'
+                                            sm: '12vh'
                                         },
                                         width: '100%', ":hover": {
                                             borderBottom: '3px solid #13B5EA',
@@ -447,12 +445,12 @@ export default function ContactoPage() {
                                             titulo={'TELEFONO:'}
                                             sx={{ color: '#34bfedff' }}
                                             style={{
-                                                fontSize: '1.5rem',
+                                                fontSize: '1rem',
                                                 margin: '0'
                                             }}
                                             subtitulo={'+52 946 021 240'}
                                             sxSubtitulo={{
-                                                fontSize: '1rem',
+                                                fontSize: '0.8rem',
                                             }} />
                                     </Box>
                                     <Box sx={{
@@ -460,7 +458,7 @@ export default function ContactoPage() {
                                         boxSizing: 'border-box',
                                         height: '100%',
                                         maxHeight: {
-                                            sm: '15vh'
+                                            sm: '12vh'
                                         },
                                         width: '100%', ":hover": {
                                             borderBottom: '3px solid #13B5EA',
@@ -476,12 +474,12 @@ export default function ContactoPage() {
                                             titulo={'CORREO ELECTRONICO:'}
                                             sx={{ color: '#34bfedff' }}
                                             style={{
-                                                fontSize: '1.5rem',
+                                                fontSize: '1rem',
                                                 margin: '0'
                                             }}
                                             subtitulo={'ventas@jercourier.com'}
                                             sxSubtitulo={{
-                                                fontSize: '1rem',
+                                                fontSize: '0.8rem',
                                             }} />
                                     </Box>
 

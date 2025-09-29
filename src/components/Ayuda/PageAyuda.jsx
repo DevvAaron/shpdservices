@@ -1,18 +1,22 @@
-import * as Accordion from '@radix-ui/react-accordion'
+
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import * as Accordion from '@radix-ui/react-accordion'
 import { Box, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import ComponentAyuda from '../Footer/Ayuda'
 import ComponentFooter from '../Footer/Footer'
 import Navbar from '../Header/Navbar'
-import { useState, useEffect } from 'react'
 import { Cobertura2 } from '../Cobertura/PageCobertura'
 
+//Iconos
 import helpicon from '../../assets/ayuda.png';
 
+//Imagenes
 import fondo1 from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
 import fondo3 from '../../assets/fondo3.jpg';
+
 // Motion wrapper
 const MotionContent = motion.create(Box)
 const imagenes = [fondo1, fondo2, fondo3];

@@ -4,10 +4,13 @@ import Navbar from '../Header/Navbar'
 import fondo from '../../assets/fondo.jpg';
 import Footer from '../Footer/Footer'
 
+import icon1 from '../../assets/icon1.png'
+import icon2 from '../../assets/icon2.png'
+import icon3 from '../../assets/icon3.png'
+
 import serv1 from '../../assets/servAlmace.jpg'
 import serv2 from '../../assets/servMudanza.jpg'
 import serv3 from '../../assets/servDistri.jpg'
-
 import tri1 from '../../assets/triangulo-1.png'
 import BarraProgresiva from '../hoocks/BarraProgresiva';
 import FondoInicio from '../hoocks/FondoInicio';
@@ -23,8 +26,7 @@ export default function ServiciosPage() {
         "/": 1,
         "/acercaDe": 2,
         "/servicios": 3,
-        "/seguirmiento": 4,
-        "/contacto": 5
+        "/contacto": 4
     };
     useEffect(() => {
         const handleResize = () => {
@@ -53,7 +55,7 @@ export default function ServiciosPage() {
                     width: '100%'
                 }}>
                 <>
-                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
+                    <BarraProgresiva steps={4} activeStep={stepsMap[location.pathname] || 1} sx={{
                         position: 'absolute',
                         top: '92.5%',
                         left: { xs: '0%', sm: '0%', md: '-40%' },
@@ -84,7 +86,7 @@ export default function ServiciosPage() {
                         zIndex: 1,
                         top: '-1rem',
                         left: '0.5rem',
-                        color: '#ffffff9f',
+                        color: '#0000009f',
                         transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
                         display: 'inline-block'
                     }} />
@@ -95,7 +97,7 @@ export default function ServiciosPage() {
             <Box name='Segundo Box'
                 sx={{
                     display: 'flex',
-                    backgroundColor: '#aedcffa7',
+                    backgroundColor: '#54f9ff41',
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     height: '100%',
@@ -113,7 +115,8 @@ export default function ServiciosPage() {
                         width: '100%',
                         maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
                         display: 'flex',
-                        flexDirection: 'row'
+                        flexDirection: 'row',
+                        alignItems:'center'
                     }}
                 >
                     <Box name='Imagen' sx={{
@@ -134,18 +137,37 @@ export default function ServiciosPage() {
                     </Box>
                     <Box sx={{
                         position: 'absolute',
-                        height: '70%',
-                        top: { xs: '20%', sm: '15%' },
-                        left: { xs: '5%', sm: '20%', md: '25%' },
+                        height: '20%',
+                        width: '15%',
+                        top: { xs: '10%', sm: '5%' },
+                        left: { xs: '5%', sm: '20%', md: '5%' },
                         right: { xs: '5%', sm: '5%' },
                         zIndex: '2',
                         "&::before": {
                             content: '""',
                             position: "absolute",
                             inset: 0,
+                            backgroundImage: `url(${icon1})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            zIndex: 1
+                        }
+                    }} />
+                    <Box sx={{
+                        position: 'absolute',
+                        height: '70%',
+                        top: { xs: '20%', sm: '15%' },
+                        left: { xs: '5%', sm: '20%', md: '25%' },
+                        right: { xs: '5%', sm: '5%' },
+                        color: '#fff',
+                        zIndex: '2',
+                        "&::before": {
+                            content: '""',
+                            position: "absolute",
+                            inset: 0,
                             borderRadius: '2rem',
-                            backgroundColor: "white",
-                            opacity: 0.8,
+                            backgroundColor: "#13B5EA",
+                            opacity: 0.7,
                             zIndex: 1
                         }
                     }}>
@@ -153,11 +175,12 @@ export default function ServiciosPage() {
                             subtitulo={'Entrega puntual en todo destino'}
                             sxSubtitulo={{
                                 paddingBottom: { xs: '2rem', sm: '1rem' },
+                                fontSize: { xs: '1rem', sm: '1.2rem', md: '1.2rem' },
                             }}
                             sx={{
                                 position: 'relative',
                                 alignItems: 'initial',
-                                paddingTop: '1rem', fontSize: { xs: '1rem', sm: '1.2rem', md: '1.5rem' },
+                                paddingTop: '1rem',
                                 paddingLeft: '1.5rem',
                                 textAlign: 'left',
                                 zIndex: 2, // 👈 el texto queda encima
@@ -170,13 +193,17 @@ export default function ServiciosPage() {
                                 position: 'relative',
                                 borderRadius: ' 8px',
                                 FontFamily: "Barlow",
-                                bgcolor: 'transparent',
+                                fontWeight: 'bold',
+                                bgcolor: '#fff',
                                 fontFamily: 'Barlow',
-                                color: '#000000ff',
+                                color: '#13B5EA',
                                 cursor: 'pointer',
                                 zIndex: 2, // 👈 también encima
                                 ":hover": {
-                                    bgcolor: '#13B5EA'
+                                    bgcolor: '#13B5EA',
+                                    border: '2px solid #fff',
+                                    fontWeight: 'bold',
+                                    color: '#fff',
                                 }
                             }}
                         >
@@ -214,17 +241,36 @@ export default function ServiciosPage() {
                     </Box>
                     <Box sx={{
                         position: 'absolute',
-                        height: '70%',
-                        top: { xs: '20%', sm: '15%' },
-                        left: { xs: '5%', sm: '20%', md: '25%' },
+                        height: '20%',
+                        width: '15%',
+                        top: { xs: '10%', sm: '5%' },
+                        left: { xs: '5%', sm: '20%', md: '5%' },
                         right: { xs: '5%', sm: '5%' },
                         zIndex: '2',
                         "&::before": {
                             content: '""',
                             position: "absolute",
                             inset: 0,
+                            backgroundImage: `url(${icon2})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            zIndex: 1
+                        }
+                    }} />
+                    <Box sx={{
+                        position: 'absolute',
+                        height: '70%',
+                        top: { xs: '20%', sm: '15%' },
+                        left: { xs: '5%', sm: '20%', md: '25%' },
+                        right: { xs: '5%', sm: '5%' },
+                        color: '#fff',
+                        zIndex: '2',
+                        "&::before": {
+                            content: '""',
+                            position: "absolute",
+                            inset: 0,
                             borderRadius: '2rem',
-                            backgroundColor: "white",
+                            backgroundColor: "#13B5EA",
                             opacity: 0.8,
                             zIndex: 1
                         }
@@ -233,11 +279,12 @@ export default function ServiciosPage() {
                             subtitulo={'Servicio integral puerta a puerta'}
                             sxSubtitulo={{
                                 paddingBottom: { xs: '2rem', sm: '1rem' },
+                                fontSize: { xs: '1rem', sm: '1.2rem', md: '1.2rem' },
                             }}
                             sx={{
                                 position: 'relative',
                                 alignItems: 'initial',
-                                paddingTop: '1rem', fontSize: { xs: '1rem', sm: '1.2rem', md: '1.5rem' },
+                                paddingTop: '1rem',
                                 paddingLeft: '1.5rem',
                                 textAlign: 'left',
                                 zIndex: 2, // 👈 el texto queda encima
@@ -250,13 +297,17 @@ export default function ServiciosPage() {
                                 position: 'relative',
                                 borderRadius: ' 8px',
                                 FontFamily: "Barlow",
-                                bgcolor: 'transparent',
+                                fontWeight: 'bold',
+                                bgcolor: '#fff',
                                 fontFamily: 'Barlow',
-                                color: '#000000ff',
+                                color: '#13B5EA',
                                 cursor: 'pointer',
                                 zIndex: 2, // 👈 también encima
                                 ":hover": {
-                                    bgcolor: '#13B5EA'
+                                    bgcolor: '#13B5EA',
+                                    border: '2px solid #fff',
+                                    fontWeight: 'bold',
+                                    color: '#fff',
                                 }
                             }}
                         >
@@ -294,17 +345,36 @@ export default function ServiciosPage() {
                     </Box>
                     <Box sx={{
                         position: 'absolute',
-                        height: '70%',
-                        top: { xs: '20%', sm: '15%' },
-                        left: { xs: '5%', sm: '20%', md: '25%' },
+                        height: '20%',
+                        width: '15%',
+                        top: { xs: '10%', sm: '5%' },
+                        left: { xs: '5%', sm: '20%', md: '5%' },
                         right: { xs: '5%', sm: '5%' },
                         zIndex: '2',
                         "&::before": {
                             content: '""',
                             position: "absolute",
                             inset: 0,
+                            backgroundImage: `url(${icon3})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            zIndex: 1
+                        }
+                    }} />
+                    <Box sx={{
+                        position: 'absolute',
+                        height: '70%',
+                        top: { xs: '20%', sm: '15%' },
+                        left: { xs: '5%', sm: '20%', md: '25%' },
+                        right: { xs: '5%', sm: '5%' },
+                        color: '#fff',
+                        zIndex: '2',
+                        "&::before": {
+                            content: '""',
+                            position: "absolute",
+                            inset: 0,
                             borderRadius: '2rem',
-                            backgroundColor: "white",
+                            backgroundColor: "#13B5EA",
                             opacity: 0.8,
                             zIndex: 1
                         }
@@ -313,11 +383,12 @@ export default function ServiciosPage() {
                             subtitulo={'Gestión eficiente de inventarios'}
                             sxSubtitulo={{
                                 paddingBottom: { xs: '2rem', sm: '1rem' },
+                                fontSize: { xs: '1rem', sm: '1.2rem', md: '1.2rem' },
                             }}
                             sx={{
                                 position: 'relative',
                                 alignItems: 'initial',
-                                paddingTop: '1rem', fontSize: { xs: '1rem', sm: '1.2rem', md: '1.5rem' },
+                                paddingTop: '1rem',
                                 paddingLeft: '1.5rem',
                                 textAlign: 'left',
                                 zIndex: 2, // 👈 el texto queda encima
@@ -330,13 +401,17 @@ export default function ServiciosPage() {
                                 position: 'relative',
                                 borderRadius: ' 8px',
                                 FontFamily: "Barlow",
-                                bgcolor: 'transparent',
+                                fontWeight: 'bold',
+                                bgcolor: '#fff',
                                 fontFamily: 'Barlow',
-                                color: '#000000ff',
+                                color: '#13B5EA',
                                 cursor: 'pointer',
                                 zIndex: 2, // 👈 también encima
                                 ":hover": {
-                                    bgcolor: '#13B5EA'
+                                    bgcolor: '#13B5EA',
+                                    border: '2px solid #fff',
+                                    fontWeight: 'bold',
+                                    color: '#fff',
                                 }
                             }}
                         >

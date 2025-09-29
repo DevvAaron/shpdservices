@@ -139,7 +139,7 @@ const Footer = () => {
         }}
       >
         <Typography variant="body2" sx={{ fontSize: "0.75rem", p: "0.5rem" }}>
-          © {new Date().getFullYear()} JER Courier. Todos los derechos reservados.
+          © {new Date().getFullYear()} SPHD Services. Todos los derechos reservados.
         </Typography>
       </Box>
     </Box>

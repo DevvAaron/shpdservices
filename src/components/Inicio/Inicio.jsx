@@ -45,8 +45,7 @@ export default function Inicio() {
         "/": 1,
         "/acercaDe": 2,
         "/servicios": 3,
-        "/seguimiento": 4,
-        "/contacto": 5,
+        "/contacto": 4,
     };
 
 
@@ -134,7 +133,7 @@ export default function Inicio() {
                     width: '100%'
                 }}>
                 <>
-                    <BarraProgresiva steps={5} activeStep={stepsMap[location.pathname] || 1} sx={{
+                    <BarraProgresiva steps={4} activeStep={stepsMap[location.pathname] || 1} sx={{
                         position: 'absolute',
                         top: '92%',
                         left: { xs: '0%', sm: '0%', md: '-40%' },
