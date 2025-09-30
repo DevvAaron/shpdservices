@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { Modal, Box, Fade, Backdrop, ButtonGroup, Button } from '@mui/material';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
@@ -6,7 +7,6 @@ import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import RotateRightIcon from '@mui/icons-material/RotateRight'
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
 const ImageViewerModal = ({ open, handleClose, imagenes, selectedImgIndex }) => {
   const [rotation, setRotation] = useState(0);
   const [scale, setScale] = useState(1);

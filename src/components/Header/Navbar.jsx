@@ -180,7 +180,6 @@ const Navbar = () => {
                         position: 'absolute',
                         top: '100%',
                         left: 0,
-                        background: '#13B5EA',
                         minWidth: 180,
                         borderRadius: 6,
                         boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
@@ -230,7 +229,11 @@ const Navbar = () => {
               width: "10rem"
             }}
           />
-          <IconButton onClick={handleBuscar} size="small" sx={{ bgcolor: 'white', '&:hover': { bgcolor: '#f0f0f0' } }}>
+          <IconButton onClick={handleBuscar} size="small" sx={{
+            bgcolor: 'white', '&:hover': {
+              background: '#13B5EA',
+              }
+          }}>
             <SearchIcon />
           </IconButton>
         </Box>
@@ -329,8 +332,8 @@ const Navbar = () => {
             left: { xs: 12, sm: 16 },
             bottom: { xs: 12, sm: 16 },
             zIndex: 1400,
-            backgroundColor: '#13B5EA',
-            color: '#fff',
+            backgroundColor: '#fff',
+            color: '#13B5EA',
             width: 56,
             height: 56,
             borderRadius: '999px',

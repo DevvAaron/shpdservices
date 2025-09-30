@@ -1,9 +1,9 @@
+import { useState, useEffect } from 'react'
 import { Box, TextField, Button } from '@mui/material'
 import Navbar from '../Header/Navbar'
 import Footer from '../Footer/Footer'
 import FondoInicio from '../hoocks/FondoInicio'
 import { Titulo1 } from '../Hoocks/Titulos'
-import { useState, useEffect } from 'react'
 import fondo1 from '../../assets/contactimg.png';
 import Horario from '../hoocks/Horario'
 
@@ -513,7 +513,6 @@ export default function ContactoPage() {
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.516896411934!2d-99.13320858462996!3d19.43260798688548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff1a5b5b0f5b%3A0xabc1234567890!2sCiudad%20de%20México!5e0!3m2!1ses!2smx!4v1694305600000!5m2!1ses!2smx"
                         width="100%"
                         height="100%"
-                        style={{ border: 0 }}
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"

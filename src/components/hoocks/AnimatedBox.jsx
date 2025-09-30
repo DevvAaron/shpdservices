@@ -1,5 +1,4 @@
 // src/components/AnimatedBox.jsx
-import React from 'react';
 import { Box } from '@mui/material';
 import useAnimateOnScroll from '../hoocks/useAnimateOnScroll';
 
