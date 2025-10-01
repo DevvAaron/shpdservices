@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
-import { Box, IconButton, Tooltip, TextField, Button } from '@mui/material';
+import { Box, IconButton, Tooltip, TextField } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import contactoIcon from '../../assets/wspblack.png';

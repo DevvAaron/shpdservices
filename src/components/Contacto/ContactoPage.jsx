@@ -4,8 +4,8 @@ import Navbar from '../Header/Navbar'
 import Footer from '../Footer/Footer'
 import FondoInicio from '../hoocks/FondoInicio'
 import { Titulo1 } from '../Hoocks/Titulos'
-import fondo1 from '../../assets/contactimg.png';
 import Horario from '../hoocks/Horario'
+import fondo1 from '../../assets/contactimg.png';
 
 export default function ContactoPage() {
 

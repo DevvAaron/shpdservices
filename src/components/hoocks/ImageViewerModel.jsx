@@ -36,10 +36,11 @@ const ImageViewerModal = ({ open, handleClose, imagenes, selectedImgIndex }) => 
       open={open}
       onClose={handleClose}
       closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 300,
-        sx: { backgroundColor: 'rgba(0, 0, 0, 0.9)' }
+      slots={{ backdrop: CustomBackdrop }}
+      slotProps={{
+        backdrop: {
+          timeout: 500, // ejemplo, igual que BackdropProps antes
+        },
       }}
     >
       <Fade in={open}>
@@ -77,9 +78,9 @@ const ImageViewerModal = ({ open, handleClose, imagenes, selectedImgIndex }) => 
             <Button onClick={handleRotateLeft}><RotateLeftIcon /></Button>
             <Button onClick={handleZoomIn}><ZoomInIcon /></Button>
             <Button onClick={handleZoomOut}><ZoomOutIcon /></Button>
-            <Button onClick={handleFlipH}><SyncAltIcon/></Button>
-            <Button onClick={handleFlipV}><SwapVertIcon/></Button>
-            <Button onClick={resetTransforms}><RestartAltIcon/></Button>
+            <Button onClick={handleFlipH}><SyncAltIcon /></Button>
+            <Button onClick={handleFlipV}><SwapVertIcon /></Button>
+            <Button onClick={resetTransforms}><RestartAltIcon /></Button>
           </ButtonGroup>
         </Box>
       </Fade>

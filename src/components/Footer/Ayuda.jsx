@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import React from "react";
 import { Titulo3 } from "../Hoocks/Titulos";
 import wspwhite from '../../assets/wspwhite.png';
 import emailwhite from '../../assets/emailwhite.png';

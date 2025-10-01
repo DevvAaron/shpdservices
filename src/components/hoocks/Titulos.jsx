@@ -76,11 +76,11 @@ export const Contenido = ({ contenido }) => {
 export const Subtitulo = ({ subtitulo, style }) => {
     return (
         <div style={{
-            textAlign: 'left', display: "flex", flexDirection: "column", alignItems: "left"
+            textAlign: 'left', display: "flex", flexDirection: "column", alignItems: "left", ...style
         }}>
             <p style={{
                 fontSize: '1rem',
-                fontWeight: 'bold'
+                fontWeight: 'bold', ...style
             }}>
                 {subtitulo}
             </p>

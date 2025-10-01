@@ -164,7 +164,7 @@ export default function Inicio() {
                 {/* Primer Box (Imagen Actual) */}
                 <FondoInicio>
 
-                    <Titulo1 titulo={'Servicio de Mensajeria'} sx={{
+                    <Titulo1 titulo={'Servicio Contra Entrega'} sx={{
                         position: 'relative',
                         fontSize: '3rem',
                         zIndex: 1,
