@@ -20,8 +20,8 @@ import img8 from '../../assets/sobrenosotros.png';
 
 
 export default function AcercaDe() {
-    
-        const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
     const stepsMap = {
         "/": 1,
         "/acercaDe": 2,
@@ -173,7 +173,7 @@ export default function AcercaDe() {
                             display: "flex",
                             flexDirection: "column",
                             alignItems: 'center',
-                            
+
                             borderBottom: '5px solid',
                             borderTop: '5px solid',
                             borderTopLeftRadius: '15px',
@@ -189,11 +189,10 @@ export default function AcercaDe() {
                                     textAlign: "center",
                                     padding: "1rem"
                                 }} />
-                            <Contenido contenido={`Somos una empresa peruana especializada en el transporte de carga aérea, terrestre y marítima, a destinos nacionales e internacionales.
+                            <Contenido contenido={`Somos una empresa, con un staff de profesionales altamente calificados,
+                            comprometidos con tu gestión, marcando una ventaja comparativa diferencial positiva: 
 
-                                El profesionalismo de nuestro personal y la calidad de nuestras operaciones aseguran un servicio con los estándares internacionales en transporte de carga. 
-                                
-                                Como empresa responsable, contamos con el certificado emtido por el Ministerio de Transportes y comunicaciones (MTC) , a traves de la Dirección general de aeronáutica civil (DGAC).`}
+                            BRINDAR UN SERVICIO DE ALTA CALIDAD Y SER TU PRINCIPAL SOCIO ESTRATÉGICO.`}
                             />
                         </Box>
                     </Box>

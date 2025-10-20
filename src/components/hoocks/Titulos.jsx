@@ -25,7 +25,6 @@ export const Titulo1 = ({ titulo, subtitulo, style = {}, sx = {}, sxSubtitulo = 
         </Box >
     );
 };
-
 export const Titulo2 = ({ titulo, sx = {} }) => {
     return (
         <Box className="titulo-animado" sx={{ textAlign: 'center', }}>

@@ -16,12 +16,12 @@ export default function Valores() {
             }>
             <Box name='Contenedor Valores'
                 sx={{
-                    backgroundColor:'#0000000d',
+                    backgroundColor: '#0000000d',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     boxSizing: 'border-box',
-                    pt:'30px'
+                    pt: '30px'
                 }}>
                 <Titulo1 titulo={'Nuestros Valores'} sx={{
                     fontSize: '2rem',
@@ -33,7 +33,7 @@ export default function Valores() {
                     },
                 }} />
                 <Box sx={{
-                    mt:'2rem',
+                    mt: '2rem',
                     width: '100vw',
                     height: { xs: '100vh', sm: '50vh' },
                     display: 'flex',
@@ -57,14 +57,14 @@ export default function Valores() {
                         <AssistantPhotoOutlinedIcon sx={{ fontSize: { xs: '10vw', sm: '5vw', md: '5vw' } }} />
                         <Titulo1
                             titulo={'Mision'}
-                            subtitulo={'Nuestra mision es facilitar el transporte de la carga de nuestros clientes, asegurando la calidad de cada procedimiento que permita el adecuado uso de tiempo y recursos, optimizando así los costos en las operaciones'}
+                            subtitulo={'Ofrecemos logística integral (courier, encomiendas y express) con calidad y ética para satisfacer a nuestros clientes; garantizamos a nuestros colaboradores un entorno justo y de desarrollo con retribución por productividad; y mantenemos con proveedores relaciones leales y cumplimiento de acuerdos para impulsar mejoras.'}
                             sx={{
                                 whiteSpace: 'normal',
                                 overflowWrap: 'break-word',
                                 wordBreak: 'break-word',
-                                fontSize: { xs: '0.6rem', md: '0.9rem' }
                             }}
                             sxSubtitulo={{
+                                fontSize: { xs: '0.6rem', sm: '0.8rem' },
                                 textAlign: 'justify',
                             }} />
                     </Box>
@@ -84,44 +84,18 @@ export default function Valores() {
                         <RemoveRedEyeOutlinedIcon sx={{ fontSize: { xs: '10vw', sm: '5vw', md: '5vw' } }} />
                         <Titulo1
                             titulo={'Vision'}
-                            subtitulo={'Nuestra vision es llegar a ser una empresa lider en el transporte de carga, ofreciendo un servicio diferencial para nuestros clientes, ser pionera en la innovación y uso de la tecnologia para agilizar la logística de cada embarque.'}
+                            subtitulo={'Que SPHD Jer Courier sea reconocida como una empresa de clase mundial, dando soluciones logísticas y de comunicación contando con el compromiso de nuestros representantes nacionales y con nuestra propia flota terrestre y aérea en el ámbito nacional e incursionando en el mercado internacional mediante sucursales propias y franquicias, basadas en la filosofía de servicio.'}
                             sx={{
                                 whiteSpace: 'normal',
                                 overflowWrap: 'break-word',
                                 wordBreak: 'break-word',
-                                fontSize: { xs: '0.6rem', md: '0.9rem' }
                             }}
                             sxSubtitulo={{
+                                fontSize: { xs: '0.6rem', sm: '0.8rem' },
                                 textAlign: 'justify',
                             }} />
                     </Box>
-                    <Box sx={{
-                        alignItems: 'center',
-                        backgroundColor: '#54f9ff41',
-                        borderRadius: '3rem',
-                        overflow: 'hidden',
-                        width: '100vw',
-                        maxWidth: { xs: '80vw', sm: '60vw', md: '50vw' },
-                        height: '100vh',
-                        maxHeight: { xs: '30vh', sm: '25vh', md: '15vw' },
-                        flex: 1,
-                        m: 2,
-                        p: 2
-                    }}>
-                        <TaskAltOutlinedIcon sx={{ fontSize: { xs: '10vw', sm: '5vw', md: '5vw' } }} />
-                        <Titulo1
-                            titulo={'Objetivo'}
-                            subtitulo={'Aspiramos a lograr la máxima satisfacción del cliente, analizando, estudiando y monitoreando sus necesidades a través de nuestro recurso humano y tecnológico, entendiendo las necesidades particulares de cada cargamento.'}
-                            sx={{
-                                whiteSpace: 'normal',
-                                overflowWrap: 'break-word',
-                                wordBreak: 'break-word',
-                                fontSize: { xs: '0.6rem', md: '0.9rem' }
-                            }}
-                            sxSubtitulo={{
-                                textAlign: 'justify',
-                            }} />
-                    </Box>
+
                 </Box>
             </Box>
         </Box >

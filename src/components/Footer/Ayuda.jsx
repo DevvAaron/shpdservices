@@ -4,9 +4,9 @@ import wspwhite from '../../assets/wspwhite.png';
 import emailwhite from '../../assets/emailwhite.png';
 import wspblack from '../../assets/wspblack.png';
 import emailblack from '../../assets/emailblack.png';
-const tituloTexto = ["Atención al cliente", "946021240", "ventas@jercourier.com"];
+const tituloTexto = ["Atención al cliente", "767-53322", " informes@sphdservices.com", " ventas@sphdservices.com"];
 const subtitulo = [
-    "Para más información sobre nuestros servicios o reportar algún problema puede llamarnos",
+    "Somos una empresa, con un staff de profesionales altamente calificados, puedes comunicarte",
     "Oficina principal",
     "Correo electrónico"
 ];
@@ -52,14 +52,21 @@ const Ayuda = () => {
 
                 px: 2,
             }}>
-                <img src={wspblack} alt="notificación" style={{ maxWidth: '6rem', height: 'auto', }} />
+                <img src={wspblack} alt="wsp" style={{ maxWidth: '6rem', height: 'auto', }} />
                 <Titulo3 titulo={tituloTexto[1]} />
             </Box>
             <Box sx={{
                 px: 2,
             }}>
-                <img src={emailblack} alt="notificación" style={{ maxWidth: '6rem', height: 'auto', }} />
-                <Titulo3 titulo={tituloTexto[2]} />
+                <img src={emailblack} alt="email" style={{ maxWidth: '6rem', height: 'auto', }} />
+
+                <div className="titulo-animado" style={{
+                    textAlign: 'center', display: "flex", flexDirection: "column", alignItems: "center",
+                    maxWidth: '25rem',
+                }}>
+                    <a href="mailto:informes@sphdservices.com">{tituloTexto[2]}</a>
+                    <a href="mailto:ventas@sphdservices.com">{tituloTexto[3]}</a>
+                </div>
             </Box>
         </Box >
     );

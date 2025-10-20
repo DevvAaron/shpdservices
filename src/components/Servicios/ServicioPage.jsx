@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { Titulo1 } from '../Hoocks/Titulos'
 import Navbar from '../Header/Navbar'
 import fondo from '../../assets/fondo.jpg';
@@ -93,6 +93,70 @@ export default function ServiciosPage() {
                 </FondoInicio>
             </Box>
 
+            <Box name='Servicio Box'
+                sx={{
+                    display: 'flex',
+                    backgroundColor: '#ffe10041',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    height: '100%',
+                    boxSizing: 'border-box',
+                    justifyContent: 'center',
+                    p: { xs: '1rem', sm: '2rem' },
+                    gap: '2rem',
+                    width: '100%'
+                }}
+            >
+                <Box sx={{
+                    display: 'flex',
+                    backgroundColor: '#fff',
+                    width: '100%',
+                    height: '35vh'
+                }}
+                >
+                    <Box sx={{
+                        backgroundColor: 'white',
+                        width: "30%",
+                        height: '100%'
+                    }} >
+                        Imagen1
+                    </Box>
+                    <Box sx={{
+                        position: 'relative',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        backgroundColor: '#ff0000ff',
+                        overflow: 'hidden',
+                        width: "70%",
+                        height: '100%',
+                    }}>
+                        <Typography sx={{
+                            mt: 2
+                        }}
+                            variant='h3'>
+                            Diseño y Distribución
+                        </Typography>
+                        <Typography sx={{
+                            padding: '1rem',
+                            width: '80%',
+                            fontSize: '0.9rem',
+                            textAlign: 'initial'
+                        }} variant='body'>
+                            Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos, trabajando este proceso integral con un solo proveedor, nosotros nos encargamos de la impresión y distribución ya sea empaquetada o habilitada individualmente en Lima y provincias para sus sucursales, oficinas o clientes. Contamos con alianzas con diferentes imprentas de prestigio que por el volumen consolidado de servicios de todos nuestros clientes, nos permiten atenderlo con costos altamente competitivos.
+                        </Typography>
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                inset: 0,
+                                opacity: '0.5',
+                                backgroundColor: "#ffffffa9",
+                                clipPath: 'polygon(100% 0, 80% 100%, 100% 100%);',
+                            }}
+                        />
+                    </Box>
+                </Box>
+
+            </Box>
             {/*Segundo Box */}
             <Box name='Segundo Box'
                 sx={{
@@ -116,7 +180,7 @@ export default function ServiciosPage() {
                         maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
                         display: 'flex',
                         flexDirection: 'row',
-                        alignItems:'center'
+                        alignItems: 'center'
                     }}
                 >
                     <Box name='Imagen' sx={{

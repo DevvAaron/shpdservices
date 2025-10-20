@@ -32,15 +32,15 @@ export default function Inicio() {
     const fondoImages = [img1, img2, img3, img4, img8]
     const boxImg = [0, 3, 4, 7];
     const titulot = [
-        "Programa tu envío",
-        "Sigue tu paquete",
-        "Recibe información",
-        "Recibe tu pago"];
+        "Servicios urgentes",
+        "Servicio las 24 Horas",
+        "Encomiendas",
+        "Impresión y Distribución"];
     const desc = [
-        "Crea tu cuenta, registra los datos del producto e iremos a recogerlo.",
-        "Te daremos un código de tracking para darle seguimiento.",
-        "Te confirmaremos cuando tu envío haya sido recibido.",
-        "Recogeremos el pago por el producto y te lo enviaremos de regreso."];
+        "Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos rápidos.",
+        "Servicio de calidad y responsabilidad, brindamos soluciones adecuadas a sus necesidades.",
+        "Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos a bajo costo.",
+        "Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos."];
     const stepsMap = {
         "/": 1,
         "/acercaDe": 2,
@@ -164,7 +164,7 @@ export default function Inicio() {
                 {/* Primer Box (Imagen Actual) */}
                 <FondoInicio>
 
-                    <Titulo1 titulo={'Servicio Contra Entrega'} sx={{
+                    <Titulo1 titulo={'SERVICIO COURIRER'} sx={{
                         position: 'relative',
                         fontSize: '3rem',
                         zIndex: 1,
@@ -330,7 +330,7 @@ export default function Inicio() {
                 sx={{
                     position: "relative",
                     overflow: 'hidden',
-                    backgroundColor:'#59c3eaff',
+                    backgroundColor: '#59c3eaff',
                     color: '#000000ff',
                     py: { xs: 4, sm: 6, md: 8 },
                     px: { xs: 2, sm: 4, md: 6 },
@@ -407,8 +407,8 @@ export default function Inicio() {
                         <Box sx={{
                             display: "flex",
                             flexDirection: "column",
-                            p:2,
-                            backgroundColor:'#8cc5ffff',
+                            p: 2,
+                            backgroundColor: '#8cc5ffff',
                             borderBottom: '5px solid',
                             borderTop: '5px solid',
                             borderTopLeftRadius: '15px',
@@ -416,49 +416,40 @@ export default function Inicio() {
                             borderBottomLeftRadius: '15px',
                             borderBottomRightRadius: '15px',
                         }}>
-                            <Titulo1 titulo={"Haz que tus clientes se sientan seguros comprando por internet"}
+                            <Titulo1 titulo={"¡BIENVENIDOS!"}
+                                sx={{ fontSize: '3rem' }}
                                 style={{
                                     borderBottom: '5px solid',
                                     borderBottomLeftRadius: '15px',
                                     borderBottomRightRadius: '15px',
                                     textAlign: "center",
-                                    padding: "1rem"
                                 }} />
-                            <Subtitulo subtitulo={"La solucion para negocios digitales:"}
-                                style={{ margin: "0.5rem" }} />
-                            <Contenido contenido={"No todos los clientes se sienten seguros pagando por internet antes de recibir su producto. Nosotros nos encargamos de llevar el pedido, recoger el pago y entregártelo con total seguridad."} />
+                            <Subtitulo subtitulo={"Somos su mejor aliado"}
+                            />
+                            <Contenido contenido={"Somos una empresa, con un staff de profesionales altamente calificados, comprometidos con tu gestión, marcando una ventaja comparativa diferencial positiva."} />
                         </Box>
                         <Box name='hola' sx={{
                             display: "flex",
-                            justifyContent: "space-between",
+                            justifyContent: "flex-end",
+                            p: 1
                         }}>
-                            <Subtitulo subtitulo={"Programa tu envío aquí"} style={{
-                                fontSize: '0.8rem'
-                            }} />
-                            <Box sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "center",
-                            }}>
-
-                                <Button
-                                    variant="text"
-                                    sx={{
-                                        maxHeight: "1rem",
-                                        padding: 2,
-                                        fontSize: '0.8rem',
+                            <Button
+                                variant="text"
+                                sx={{
+                                    maxHeight: "1rem",
+                                    padding: 2,
+                                    fontSize: '0.8rem',
+                                    fontWeight: 'bold',
+                                    marginLeft: '1rem',
+                                    marginRight: '1rem',
+                                    '&:hover': {
                                         fontWeight: 'bold',
-                                        marginLeft: '1rem',
-                                        marginRight: '1rem',
-                                        '&:hover': {
-                                            fontWeight: 'bold',
-                                            color: 'white',
-                                        },
-                                    }}
-                                >
-                                    Realizar Envío
-                                </Button>
-                            </Box>
+                                        color: 'white',
+                                    },
+                                }}
+                            >
+                                Realizar Envío
+                            </Button>
                         </Box>
                     </Box>
                 </AnimatedBox>
