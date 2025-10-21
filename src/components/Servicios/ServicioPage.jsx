@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, Typography, Stack, Grid } from '@mui/material'
 import { Titulo1 } from '../Hoocks/Titulos'
 import Navbar from '../Header/Navbar'
 import fondo from '../../assets/fondo.jpg';
@@ -11,6 +11,12 @@ import icon3 from '../../assets/icon3.png'
 import serv1 from '../../assets/servAlmace.jpg'
 import serv2 from '../../assets/servMudanza.jpg'
 import serv3 from '../../assets/servDistri.jpg'
+
+import img1 from '../../assets/impresionDistribucion.png'
+import img2 from '../../assets/volantesDistribucion.png'
+import img3 from '../../assets/mensajeriaMasiva.png'
+import img4 from '../../assets/mensajeriaExpress.png'
+
 import tri1 from '../../assets/triangulo-1.png'
 import BarraProgresiva from '../hoocks/BarraProgresiva';
 import FondoInicio from '../hoocks/FondoInicio';
@@ -93,70 +99,7 @@ export default function ServiciosPage() {
                 </FondoInicio>
             </Box>
 
-            <Box name='Servicio Box'
-                sx={{
-                    display: 'flex',
-                    backgroundColor: '#ffe10041',
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    height: '100%',
-                    boxSizing: 'border-box',
-                    justifyContent: 'center',
-                    p: { xs: '1rem', sm: '2rem' },
-                    gap: '2rem',
-                    width: '100%'
-                }}
-            >
-                <Box sx={{
-                    display: 'flex',
-                    backgroundColor: '#fff',
-                    width: '100%',
-                    height: '35vh'
-                }}
-                >
-                    <Box sx={{
-                        backgroundColor: 'white',
-                        width: "30%",
-                        height: '100%'
-                    }} >
-                        Imagen1
-                    </Box>
-                    <Box sx={{
-                        position: 'relative',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        backgroundColor: '#ff0000ff',
-                        overflow: 'hidden',
-                        width: "70%",
-                        height: '100%',
-                    }}>
-                        <Typography sx={{
-                            mt: 2
-                        }}
-                            variant='h3'>
-                            Diseño y Distribución
-                        </Typography>
-                        <Typography sx={{
-                            padding: '1rem',
-                            width: '80%',
-                            fontSize: '0.9rem',
-                            textAlign: 'initial'
-                        }} variant='body'>
-                            Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos, trabajando este proceso integral con un solo proveedor, nosotros nos encargamos de la impresión y distribución ya sea empaquetada o habilitada individualmente en Lima y provincias para sus sucursales, oficinas o clientes. Contamos con alianzas con diferentes imprentas de prestigio que por el volumen consolidado de servicios de todos nuestros clientes, nos permiten atenderlo con costos altamente competitivos.
-                        </Typography>
-                        <Box
-                            sx={{
-                                position: "absolute",
-                                inset: 0,
-                                opacity: '0.5',
-                                backgroundColor: "#ffffffa9",
-                                clipPath: 'polygon(100% 0, 80% 100%, 100% 100%);',
-                            }}
-                        />
-                    </Box>
-                </Box>
 
-            </Box>
             {/*Segundo Box */}
             <Box name='Segundo Box'
                 sx={{
@@ -235,44 +178,18 @@ export default function ServiciosPage() {
                             zIndex: 1
                         }
                     }}>
-                        <Titulo1 titulo={'Servicio de distribucion'}
-                            subtitulo={'Entrega puntual en todo destino'}
+                        <Titulo1 titulo={'Rapidez'}
+                            subtitulo={'Nos esforzamos por cumplir los plazos establecidos en nuestras entregas'}
                             sxSubtitulo={{
-                                paddingBottom: { xs: '2rem', sm: '1rem' },
-                                fontSize: { xs: '1rem', sm: '1.2rem', md: '1.2rem' },
+                                fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
                             }}
                             sx={{
                                 position: 'relative',
                                 alignItems: 'initial',
-                                paddingTop: '1rem',
-                                paddingLeft: '1.5rem',
+                                p: 2,
                                 textAlign: 'left',
                                 zIndex: 2, // 👈 el texto queda encima
                             }} />
-                        {/*Boton para ver mas*/}
-                        <Button
-                            component={Link}
-                            onClick={() => router.push("/servicios/distribucion")}
-                            sx={{
-                                position: 'relative',
-                                borderRadius: ' 8px',
-                                FontFamily: "Barlow",
-                                fontWeight: 'bold',
-                                bgcolor: '#fff',
-                                fontFamily: 'Barlow',
-                                color: '#13B5EA',
-                                cursor: 'pointer',
-                                zIndex: 2, // 👈 también encima
-                                ":hover": {
-                                    bgcolor: '#13B5EA',
-                                    border: '2px solid #fff',
-                                    fontWeight: 'bold',
-                                    color: '#fff',
-                                }
-                            }}
-                        >
-                            Ver Más
-                        </Button>
                     </Box>
 
 
@@ -339,44 +256,18 @@ export default function ServiciosPage() {
                             zIndex: 1
                         }
                     }}>
-                        <Titulo1 titulo={'Servicio de mudanza'}
-                            subtitulo={'Servicio integral puerta a puerta'}
+                        <Titulo1 titulo={'Responsabilidad'}
+                            subtitulo={'Contamos con personal calificado y con experiencia el cual garantiza una entrega al tiempo señalado'}
                             sxSubtitulo={{
-                                paddingBottom: { xs: '2rem', sm: '1rem' },
-                                fontSize: { xs: '1rem', sm: '1.2rem', md: '1.2rem' },
+                                fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
                             }}
                             sx={{
                                 position: 'relative',
                                 alignItems: 'initial',
-                                paddingTop: '1rem',
-                                paddingLeft: '1.5rem',
+                                p: 2,
                                 textAlign: 'left',
                                 zIndex: 2, // 👈 el texto queda encima
                             }} />
-                        {/*Boton para ver mas*/}
-                        <Button
-                            component={Link}
-                            onClick={() => router.push("/servicios/mudanza")}
-                            sx={{
-                                position: 'relative',
-                                borderRadius: ' 8px',
-                                FontFamily: "Barlow",
-                                fontWeight: 'bold',
-                                bgcolor: '#fff',
-                                fontFamily: 'Barlow',
-                                color: '#13B5EA',
-                                cursor: 'pointer',
-                                zIndex: 2, // 👈 también encima
-                                ":hover": {
-                                    bgcolor: '#13B5EA',
-                                    border: '2px solid #fff',
-                                    fontWeight: 'bold',
-                                    color: '#fff',
-                                }
-                            }}
-                        >
-                            Ver Más
-                        </Button>
                     </Box>
 
 
@@ -443,50 +334,392 @@ export default function ServiciosPage() {
                             zIndex: 1
                         }
                     }}>
-                        <Titulo1 titulo={'Servicio de almacenaje'}
-                            subtitulo={'Gestión eficiente de inventarios'}
+                        <Titulo1 titulo={'Eficiencia'}
+                            subtitulo={'Aplicamos tecnologías que van de acuerdo al mercado más exigente esto garantiza eficiencia'}
                             sxSubtitulo={{
-                                paddingBottom: { xs: '2rem', sm: '1rem' },
-                                fontSize: { xs: '1rem', sm: '1.2rem', md: '1.2rem' },
+                                fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
                             }}
                             sx={{
                                 position: 'relative',
                                 alignItems: 'initial',
-                                paddingTop: '1rem',
-                                paddingLeft: '1.5rem',
+                                p: 2,
                                 textAlign: 'left',
                                 zIndex: 2, // 👈 el texto queda encima
                             }} />
-                        {/*Boton para ver mas*/}
-                        <Button
-                            component={Link}
-                            onClick={() => router.push("/servicios/almacenaje")}
-                            sx={{
-                                position: 'relative',
-                                borderRadius: ' 8px',
-                                FontFamily: "Barlow",
-                                fontWeight: 'bold',
-                                bgcolor: '#fff',
-                                fontFamily: 'Barlow',
-                                color: '#13B5EA',
-                                cursor: 'pointer',
-                                zIndex: 2, // 👈 también encima
-                                ":hover": {
-                                    bgcolor: '#13B5EA',
-                                    border: '2px solid #fff',
-                                    fontWeight: 'bold',
-                                    color: '#fff',
-                                }
-                            }}
-                        >
-                            Ver Más
-                        </Button>
                     </Box>
 
 
                 </Box>
             </Box>
+            <Box name='Servicio Box'
+                sx={{
+                    display: 'flex',
+                    backgroundColor: '#fff',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    height: '100%',
+                    boxSizing: 'border-box',
+                    justifyContent: 'center',
+                    p: { xs: '1rem', sm: '2rem' },
+                    gap: '2rem',
+                    width: '100%'
+                }}
+            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '2rem',
+                        backgroundColor: "#54f9ff41",
+                        maxHeight: { xs: '45vh', sm: '50vh', md: '60vh' }
+                    }}
+                >{!isMobile && (
+                    <Box sx={{
+                        backgroundImage: `url(${img1})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        width: "30%",
+                        minHeight: '25.5vh',
+                        maxHeight: '100vh',
+                    }} />
+                )}
+                    <Box sx={{
+                        position: 'relative',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        overflow: 'hidden',
+                        width: isMobile ? "100%" : "70%",
+                        padding: '1rem',
+                        height: '100%',
+                    }}>
+                        <Typography sx={{
+                            fontWeight: 'bold',
+                            fontSize: { xs: '1rem', sm: '1.6rem' }
+                        }}
+                            variant='h5'>
+                            Impresión y Distribución
+                        </Typography>
+                        <Typography sx={{
+                            height: '100%',
+                            fontSize: { xs: '0.7rem', sm: '0.9rem', md: '1rem' },
+                            textAlign: 'justify'
+                        }} variant='body'>
+                            Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos, trabajando este proceso
+                            integral con un solo proveedor, nosotros nos encargamos de la impresión y distribución ya sea empaquetada o
+                            habilitada individualmente en Lima y provincias para sus sucursales, oficinas o clientes. Contamos con alianzas
+                            con diferentes imprentas de prestigio que por el volumen consolidado de servicios de todos nuestros clientes,
+                            nos permiten atenderlo con costos altamente competitivos.
+                        </Typography>
+                    </Box>
+                </Box>
 
+                <Grid container sx={{
+                    borderRadius: '2rem',
+                    backgroundColor: "#54f9ff41",
+                    width: '100%',
+                    height: '100%',
+                    maxHeight: { xs: '60vh', md: '85vh' }
+                }}>
+                    <Grid name='Distribución de volantes' size={{ xs: 12, md: 8 }} >
+                        <Stack spacing={2} sx={{
+                            p: '1rem',
+                        }}>
+                            <Typography sx={{
+                                fontWeight: 'bold',
+                                fontSize: { xs: '1rem', sm: '1.6rem' }
+                            }}
+                                variant='h5'>
+                                Distribución de volantes
+                            </Typography>
+                            <Typography sx={{
+                                height: '100%',
+                                fontSize: { xs: '0.7rem', sm: '0.9rem', md: '1rem' },
+                                textAlign: 'justify'
+                            }} variant='body'>
+                                Este tipo de publicidad es utilizado por importantes empresas nacionales e internacionales de servicios,
+                                de artículos del hogar u oficina, farmacéuticas, automotrices, productos de consumo masivo, restaurantes,
+                                comidas rápidas, mueblerías, constructoras y promotoras de vivienda, apertura de tiendas, ofertas especiales de nuevos productos, etc.
+                            </Typography>
+                            <Grid container spacing={2} sx={{
+                                justifyContent: 'center'
+                            }}>
+                                <Grid size={5}>
+                                    <Stack spacing={2}>
+                                        <Typography sx={{
+                                            fontWeight: 'bold',
+                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                        }}
+                                            variant='subtitle1'>
+                                            Volanteo Personalizado
+                                        </Typography>
+                                        {!isMobile && (
+                                            <Typography sx={{
+                                                fontSize: { xs: '0.7rem', sm: '0.8rem' },
+                                            }}
+                                                variant='body'>
+                                                Cuenta con base de datos proporcionada por el cliente a nivel Local, no tiene cargo ni del cliente ni de JER COURIER.
+                                            </Typography>
+                                        )}
+                                    </Stack>
+                                </Grid>
+                                <Grid size={5}>
+                                    <Stack spacing={2}>
+                                        <Typography sx={{
+                                            fontWeight: 'bold',
+                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                        }}
+                                            variant='subtitle1'>
+                                            Volanteo Simple
+                                        </Typography>
+                                        {!isMobile && (
+                                            <Typography sx={{
+                                                fontSize: { xs: '0.7rem', sm: '0.8rem' },
+                                            }}
+                                                variant='body'>
+                                                Cuenta con base de datos proporcionada por el cliente a nivel Local, no tiene cargo ni del cliente ni de JER COURIER.
+                                            </Typography>
+                                        )}
+                                    </Stack>
+                                </Grid>
+                                <Grid size={{ xs: 8, sm: 9 }}>
+                                    <Stack spacing={2}>
+                                        <Typography sx={{
+                                            fontWeight: 'bold',
+                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                        }}
+                                            variant='subtitle1'>
+                                            Modalidades de entrega volanteo
+                                        </Typography>
+                                        {!isMobile && (
+                                            <Typography sx={{
+                                                fontSize: { xs: '0.7rem', sm: '0.8rem' },
+                                            }}
+                                                variant='body'>
+                                                Establecido por el cliente, público objetivo a quien va dirigido dicha publicidad,
+                                                volantes, catálogos, etc. Bajo Puerta uno a uno en zonas o cuadrantes solicitadas
+                                                por el cliente. Transeúntes en zonas o cuadrantes solicitadas por el cliente.
+                                            </Typography>
+                                        )}
+                                    </Stack>
+                                </Grid>
+                            </Grid>
+                        </Stack>
+                    </Grid>
+                    {!isMobile && (
+                        <Box sx={{
+                            backgroundImage: `url(${img2})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            width: "33%",
+                            minHeight: '25.5vh',
+                            maxHeight: '100vh',
+                        }} />
+                    )}
+                </Grid>
+                <Grid container sx={{
+                    borderRadius: '2rem',
+                    backgroundColor: "#54f9ff41",
+                    width: '100%',
+                    height: '100%',
+                    maxHeight: { xs: '60vh', md: '85vh' }
+                }}>
+                    {!isMobile && (
+                        <Box sx={{
+                            backgroundImage: `url(${img3})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            width: "30%",
+                            minHeight: '25.5vh',
+                            maxHeight: '100vh',
+                        }} />
+                    )}
+                    <Grid name='MensajeriaMasivos' size={{ xs: 12, md: 8 }} >
+                        <Stack spacing={2} sx={{
+                            p: '1rem',
+                        }}>
+                            <Typography sx={{
+                                fontWeight: 'bold',
+                                fontSize: { xs: '1rem', sm: '1.6rem' }
+                            }}
+                                variant='h5'>
+                                Mensajeria Masivos
+                            </Typography>
+                            <Typography sx={{
+                                height: '100%',
+                                fontSize: { xs: '0.7rem', sm: '0.9rem', md: '1rem' },
+                                textAlign: 'justify'
+                            }} variant='body'>
+                                Servicio especializado en entrega de grandes volúmenes de envíos con peso entre 20 a 500 grs.
+                                tales como revistas, catálogos, boletines, invitaciones, Mailing, Estados de Cuentas, etc.
+                            </Typography>
+                            <Grid container spacing={2} sx={{
+                                justifyContent: 'center'
+                            }}>
+                                <Grid size={12}>
+                                    <Stack spacing={2}>
+                                        <Typography sx={{
+                                            fontWeight: 'bold',
+                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                        }}
+                                            variant='subtitle1'>
+                                            Tipos de Servicio:
+                                        </Typography>
+                                        <Grid container sx={{
+                                            justifyContent: 'center'
+                                        }}>
+                                            <Grid size={{ xs: 6, md: 4 }}>
+                                                <Typography sx={{
+                                                    fontWeight: 'bold',
+                                                    fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                }}
+                                                    variant='subtitle2'>
+                                                    - Servicio de 1, 2, 3 y 4 días.
+                                                </Typography>
+                                            </Grid>
+                                            <Grid size={{ xs: 6, md: 4 }}>
+                                                <Typography sx={{
+                                                    fontWeight: 'bold',
+                                                    fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                }}
+                                                    variant='subtitle2'>
+                                                    - Volanteo personalizado
+                                                </Typography>
+                                            </Grid>
+                                            <Grid size={{ xs: 8, md: 4 }}>
+                                                <Typography sx={{
+                                                    fontWeight: 'bold',
+                                                    fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                }}
+                                                    variant='subtitle2'>
+                                                    - Volanteo Simple
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
+                                    </Stack>
+                                </Grid>
+
+                            </Grid>
+                        </Stack>
+                    </Grid>
+                </Grid>
+
+                <Grid container sx={{
+                    borderRadius: '2rem',
+                    backgroundColor: "#54f9ff41",
+                    width: '100%',
+                    height: '100%',
+                    maxHeight: { xs: '60vh', md: '85vh' }
+                }}>
+                    <Stack direction={'row'}>
+                        <Grid name='Mensajeria Express' size={{ xs: 12, md: 8 }} >
+                            <Stack spacing={2} sx={{
+                                p: '1rem',
+                            }}>
+                                <Typography sx={{
+                                    fontWeight: 'bold',
+                                    fontSize: { xs: '1rem', sm: '1.6rem' }
+                                }}
+                                    variant='h5'>
+                                    Mensajeria Express
+                                </Typography>
+                                <Typography sx={{
+                                    height: '100%',
+                                    fontSize: { xs: '0.7rem', sm: '0.9rem', md: '1rem' },
+                                    textAlign: 'justify'
+                                }} variant='body'>
+                                    Distribución Urgente de sus documentos y/o paquetes, a nivel Local en tiempos reales de tránsito, con la confirmación de entrega vía teléfono para su tranquilidad y satisfacción.
+                                    Entrega certificada puerta a puerta con una orden de servicio JER COURIER.
+                                </Typography>
+                            </Stack>
+                            <Stack spacing={2} sx={{
+                                px: '1rem',
+                                pb: '1rem'
+                            }}>
+                                <Grid container spacing={2} sx={{
+                                    justifyContent: 'center'
+                                }}>
+                                    <Grid size={{ xs: 6, }}>
+                                        <Typography sx={{
+                                            fontWeight: 'bold',
+                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                        }}
+                                            variant='subtitle1'>
+                                            Tiempos de Distribución:
+                                        </Typography>
+                                    </Grid>
+                                    <Grid size={{ xs: 6, }}>
+                                        <Typography sx={{
+                                            fontWeight: 'bold',
+                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                        }}
+                                            variant='subtitle1'>
+                                            Zonas de Distribución
+                                        </Typography>
+                                    </Grid>
+                                    <Grid size={{ xs: 6, }}>
+                                        <Stack spacing={1}>
+                                            <Typography sx={{
+                                                fontWeight: 'bold',
+                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            }}
+                                                variant='subtitle2'>
+                                                - Servicio Express (04 a 06 hrs)
+                                            </Typography>
+                                            <Typography sx={{
+                                                fontWeight: 'bold',
+                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            }}
+                                                variant='subtitle2'>
+                                                - Servicio Express (05 a 07 hrs)
+                                            </Typography>
+                                        </Stack>
+                                    </Grid>
+                                    <Grid size={{ xs: 6, }} >
+                                        <Stack spacing={1}>
+                                            <Typography sx={{
+                                                fontWeight: 'bold',
+                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            }}
+                                                variant='subtitle2'>
+                                                - Urbana
+                                            </Typography>
+                                            <Typography sx={{
+                                                fontWeight: 'bold',
+                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            }}
+                                                variant='subtitle2'>
+                                                - Periférica
+                                            </Typography>
+                                            <Typography sx={{
+                                                fontWeight: 'bold',
+                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            }}
+                                                variant='subtitle2'>
+                                                - Extrema
+                                            </Typography>
+                                        </Stack>
+                                    </Grid>
+                                </Grid>
+                            </Stack>
+                        </Grid>
+                        {!isMobile && (
+                            <Box sx={{
+                                backgroundImage: `url(${img4})`,
+                                backgroundSize: 'contain',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: 'center',
+                                width: "40%",
+                                minHeight: '25.5vh',
+                                maxHeight: '100vh',
+                            }} />
+                        )}
+                    </Stack>
+                </Grid>
+
+            </Box>
             {/*Footer */}
             <Footer />
         </main >

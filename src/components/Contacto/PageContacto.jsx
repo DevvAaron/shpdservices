@@ -97,7 +97,7 @@ export default function Contacto() {
                                 color: '#13B5EA'
                             }}
                             style={{
-                                border:'3px solid #13B5EA',
+                                border: '3px solid #13B5EA',
                                 borderRadius: '0.5rem',
                                 backgroundColor: 'white',
                             }} />
@@ -286,7 +286,7 @@ export default function Contacto() {
                         }}>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'white' }}>
                             <LocationOnIcon />
-                            <Subtitulo subtitulo={'Dirección fisica de SHPD Services Mexico'} style={{ paddingBottom: '3rem' }} />
+                            <Subtitulo subtitulo={'Avenida Morelos 163 A101 Congreso de la unión y la Viga Jamaica C.P. 15800 VENUSTIANO CARRANZA, CDMX'} style={{ paddingBottom: '3rem' }} />
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'white' }}>
                             <PhoneIcon />

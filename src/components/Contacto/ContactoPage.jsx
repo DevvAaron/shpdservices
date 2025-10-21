@@ -420,7 +420,7 @@ export default function ContactoPage() {
                                                 fontSize: '1rem',
                                                 margin: '0'
                                             }}
-                                            subtitulo={'Dirección fisica de SHPD Services Mexico'}
+                                            subtitulo={'Avenida Morelos 163 A101 Congreso de la unión y la Viga Jamaica C.P. 15800 VENUSTIANO CARRANZA, CDMX'}
                                             sxSubtitulo={{
                                                 fontSize: '0.8rem',
                                             }} />
@@ -448,7 +448,7 @@ export default function ContactoPage() {
                                                 fontSize: '1rem',
                                                 margin: '0'
                                             }}
-                                            subtitulo={'+52 946 021 240'}
+                                            subtitulo={'767-53322 // 767-53323'}
                                             sxSubtitulo={{
                                                 fontSize: '0.8rem',
                                             }} />
@@ -477,7 +477,7 @@ export default function ContactoPage() {
                                                 fontSize: '1rem',
                                                 margin: '0'
                                             }}
-                                            subtitulo={'ventas@jercourier.com'}
+                                            subtitulo={'informes@sphdservices.com // ventas@sphdservices.com'}
                                             sxSubtitulo={{
                                                 fontSize: '0.8rem',
                                             }} />
@@ -509,14 +509,15 @@ export default function ContactoPage() {
                     }}
                 >
                     <iframe
-                        title="Mapa de Google"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.516896411934!2d-99.13320858462996!3d19.43260798688548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff1a5b5b0f5b%3A0xabc1234567890!2sCiudad%20de%20México!5e0!3m2!1ses!2smx!4v1694305600000!5m2!1ses!2smx"
+                        title="Mapa - Avenida Morelos 163 A101, CDMX"
+                        src="https://www.google.com/maps?q=Avenida%20Morelos%20163%20A101%2C%20Congreso%20de%20la%20unión%20y%20la%20Viga%20Jamaica%2C%20C.P.%2015800%2C%20VENUSTIANO%20CARRANZA%2C%20CDMX&output=embed"
                         width="100%"
                         height="100%"
+                        style={{ border: 0 }}
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                    />
                 </Box>
             </Box>
             <Footer />
