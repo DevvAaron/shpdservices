@@ -1,11 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import {
-    Button,
-    Box, IconButton
+    Button, Stack,
+    Box, Grid
 } from '@mui/material'
 import { Cobertura1 } from '../Cobertura/PageCobertura';
-import mundo from '../../assets/mundo.png';
 import Footer from '../Footer/Footer';
 import Ayuda from '../Footer/Ayuda';
 import Navbar from '../Header/Navbar';
@@ -25,6 +24,7 @@ import tri3 from '../../assets/triangulo-3.png'
 
 import FondoInicio from '../hoocks/FondoInicio';
 import BarraProgresiva from '../hoocks/BarraProgresiva';
+import MuiImageCarousel from '../hoocks/Carrusel';
 
 export default function Inicio() {
 
@@ -132,16 +132,14 @@ export default function Inicio() {
                     height: '100vh',
                     width: '100%'
                 }}>
-                <>
-                    <BarraProgresiva steps={4} activeStep={stepsMap[location.pathname] || 1} sx={{
-                        position: 'absolute',
-                        top: '92%',
-                        left: { xs: '0%', sm: '0%', md: '-40%' },
-                        zIndex: 4,
-                        width: '100%'
-                    }} />
-                </>
-                {!isMobile && (
+                <BarraProgresiva steps={4} activeStep={stepsMap[location.pathname] || 1} sx={{
+                    position: 'absolute',
+                    top: '92%',
+                    left: { xs: '0%', sm: '0%', md: '-40%' },
+                    zIndex: 4,
+                    width: '100%'
+                }} />
+                {/* {!isMobile && (
                     <Box
                         name='TrianguloArriba'
                         sx={{
@@ -157,7 +155,7 @@ export default function Inicio() {
                             width: '35rem'
                         }}
                     />
-                )}
+                )} */}
 
 
 
@@ -175,153 +173,264 @@ export default function Inicio() {
                     }} />
                 </FondoInicio>
             </Box>
+            <Grid container name='Segundo Box'>
+                <Grid item xs={12} md={6} sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    backgroundColor: '#fff',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    height: '100%',
+                    boxSizing: 'border-box',
+                    p: { xs: '1rem', sm: '2rem' },
+                    gap: '2rem',
+                    width: '100vw'
+                }}>
+                    <Grid spacing={2} size={{ xs: 12, sm: 10, md: 5 }} >
+                        <Stack spacing={2} >
+                            <Box name='paso1'
+                                sx={{
+                                    position: 'relative',
+                                    height: '50vh',
+                                    width: '100%',
+                                    maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <Box name='Imagen' sx={{
+                                    borderTopLeftRadius: '30px ',
+                                    borderBottomLeftRadius: '30px ',
+                                    borderRadius: { xs: '30px' },
+                                    backgroundImage: `url(${img1})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '100%',
+                                    maxWidth: {
+                                        xs: '100%',
+                                        sm: '75%'
+                                    },
+                                    width: '100%',
+                                    zIndex: '1'
+                                }} />
 
-            {/* Segundo Box */}
-            <Box
-                name="Segundo box"
-                sx={{
-                    position: 'relative',
-                    zIndex: 20,
-                    padding: 5,
-                    backgroundColor: '#ffffff',
-                }}
-            >
-                <Box
-                    sx={{
-                        display: 'grid',
-                        gridTemplateColumns: {
-                            xs: '1fr',
-                            sm: '1fr 1fr',
-                            md: '1fr 1fr',
-                        },
-                        gap: 2,
-                        justifyItems: 'center',
-                        alignItems: 'center',
-                        textAlign: 'center',
-                        margin: '0 auto',
-                        maxWidth: '1000px',
-                        width: '100%',
-                        boxSizing: 'border-box',
-                    }}
-                >
-                    {itemsToRender.map((item, idx) => {
-                        if (item.type === 'imagen') {
-                            return (
-                                <AnimatedBox
-                                    name='243'
-                                    key={`img-${item.index}`}
-                                    animation="animate__fadeInUp"
-                                    delay={500}
-                                    duration={3000}
-                                    sx={{
-                                        maxWidth: { xs: '1rem' }
-                                    }}
-                                >
-                                    <Box
-                                        key={`img${item.index}`}
-                                        sx={{
-                                            height: {
-                                                xs: 200,
-                                                sm: 250,
-                                                md: 300,
-                                            },
-                                            width: {
-                                                xs: '15rem',   // móviles
-                                                sm: '50rem',    // tablets
-                                                md: '20rem',  // escritorios
-                                            },
-                                            maxWidth: {
-                                                xs: '100%',
-                                                sm: '400px',
-                                                md: '450px',
-                                            },
-                                            borderRadius: 5,
-                                            display: 'flex',
-                                            alignItems: 'flex-end',
-                                            justifyContent: [1, 5].includes(item.index) ? 'flex-start' : 'flex-end',
-                                            fontWeight: 'bold',
-                                            fontSize: 24,
-                                            backgroundImage: `url(${item.fondoActual})`,
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center',
-                                            backgroundRepeat: 'no-repeat',
-                                            textShadow: '0 1px 3px rgba(0,0,0,0.6)',
-                                            boxSizing: 'border-box',
-                                            position: 'relative',
+                                <Box sx={{
+                                    position: 'absolute',
+                                    height: '70%',
+                                    top: { xs: '20%', sm: '15%' },
+                                    left: { xs: '5%', sm: '20%', md: '25%' },
+                                    right: { xs: '5%', sm: '5%' },
+                                    color: '#fff',
+                                    zIndex: '2',
+                                    "&::before": {
+                                        content: '""',
+                                        position: "absolute",
+                                        inset: 0,
+                                        borderRadius: '2rem',
+                                        backgroundColor: "#5ed7ffff",
+                                        opacity: 0.7,
+                                        zIndex: 1
+                                    }
+                                }}>
+                                    <Titulo1 titulo={'Servicios Urgentes'}
+                                        subtitulo={'Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos rápidos.'}
+                                        sxSubtitulo={{
+                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
                                         }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                position: 'absolute',
-                                                top: -16,
-                                                left: -16,
-                                                width: 60,
-                                                height: 60,
-                                                backgroundColor: '#6e92fdff',
-                                                borderRadius: '50%',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                fontWeight: 'bold',
-                                                fontSize: 20,
-                                                color: '#ffffffff',
-                                                boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
-                                            }}
-                                        />
-                                    </Box>
-                                </AnimatedBox>
-                            );
-                        } else {
-                            return (
-                                <AnimatedBox
-                                    key={`txt-${item.index}`}
-                                    animation="animate__fadeInRight"
-                                    delay={500}
-                                    duration={3000}>
-                                    <Box
-
-                                        key={`txt${item.index}`}
                                         sx={{
                                             position: 'relative',
-                                            width: '100%',
-                                            maxWidth: {
-                                                xs: '100%',
-                                                sm: '380px',
-                                                md: '400px',
-                                            },
-                                            height: 'auto',
-                                            borderRadius: 2,
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            padding: 2,
-                                            color: '#ffffffff',
-                                            boxSizing: 'border-box',
-                                            alignItems: 'center'
+                                            alignItems: 'initial',
+                                            p: 2,
+                                            textAlign: 'right',
+                                            zIndex: 2, // 👈 el texto queda encima
+                                        }} />
+                                </Box>
+                            </Box>
+                            <Box name='paso2'
+                                sx={{
+                                    position: 'relative',
+                                    height: '50vh',
+                                    width: '100%',
+                                    maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <Box name='Imagen' sx={{
+                                    borderTopLeftRadius: '30px ',
+                                    borderBottomLeftRadius: '30px ',
+                                    borderRadius: { xs: '30px' },
+                                    backgroundImage: `url(${img3})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '100%',
+                                    maxWidth: {
+                                        xs: '100%',
+                                        sm: '75%'
+                                    },
+                                    width: '100%',
+                                    zIndex: '1'
+                                }} />
+                                <Box sx={{
+                                    position: 'absolute',
+                                    height: '70%',
+                                    top: { xs: '20%', sm: '15%' },
+                                    left: { xs: '5%', sm: '20%', md: '25%' },
+                                    right: { xs: '5%', sm: '5%' },
+                                    color: '#fff',
+                                    zIndex: '2',
+                                    "&::before": {
+                                        content: '""',
+                                        position: "absolute",
+                                        inset: 0,
+                                        borderRadius: '2rem',
+                                        backgroundColor: "#5ed7ffff",
+                                        opacity: 0.7,
+                                        zIndex: 1
+                                    }
+                                }}>
+                                    <Titulo1 titulo={'Encomiendas'}
+                                        subtitulo={'Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos a bajo costo.'}
+                                        sxSubtitulo={{
+                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
                                         }}
-                                    >
-                                        <Box sx={{
-                                            width: '15rem',
-                                            backgroundColor: '#3098f8ff',
-                                            borderRadius: '50px',
-                                            fontSize: 22, fontWeight: 'bold', mb: 0.5
-                                        }}>
-                                            {item.titulo}
-                                        </Box>
-                                        <Box sx={{
-                                            fontSize: 14, backgroundColor: '#9cc3e7ff',
-                                            borderTopLeftRadius: '50px',
-                                            borderBottomLeftRadius: '50px',
-                                            p: '1rem',
-                                            clipPath: 'polygon(0 0, 100% 0, 89% 100%, 0 100%);',
-                                            paddingRight: '3rem'
-                                        }}>{item.descripcion}</Box>
-                                    </Box>
-                                </AnimatedBox>
-                            );
-                        }
-                    })}
-                </Box>
-            </Box>
+                                        sx={{
+                                            position: 'relative',
+                                            alignItems: 'initial',
+                                            p: 2,
+                                            textAlign: 'right',
+                                            zIndex: 2, // 👈 el texto queda encima
+                                        }} />
+                                </Box>
+                            </Box>
+                        </Stack>
+                    </Grid>
+                    <Grid spacing={2} size={{ xs: 12, sm: 10, md: 5 }} >
+                        <Stack spacing={2} >
+                            <Box name='paso1'
+                                sx={{
+                                    position: 'relative',
+                                    height: '50vh',
+                                    width: '100%',
+                                    maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <Box name='Imagen' sx={{
+                                    borderTopLeftRadius: '30px ',
+                                    borderBottomLeftRadius: '30px ',
+                                    borderRadius: { xs: '30px' },
+                                    backgroundImage: `url(${img2})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '100%',
+                                    maxWidth: {
+                                        xs: '100%',
+                                        sm: '75%'
+                                    },
+                                    width: '100%',
+                                    zIndex: '1'
+                                }} />
+
+                                <Box sx={{
+                                    position: 'absolute',
+                                    height: '70%',
+                                    top: { xs: '20%', sm: '15%' },
+                                    left: { xs: '5%', sm: '20%', md: '25%' },
+                                    right: { xs: '5%', sm: '5%' },
+                                    color: '#fff',
+                                    zIndex: '2',
+                                    "&::before": {
+                                        content: '""',
+                                        position: "absolute",
+                                        inset: 0,
+                                        borderRadius: '2rem',
+                                        backgroundColor: "#5ed7ffff",
+                                        opacity: 0.7,
+                                        zIndex: 1
+                                    }
+                                }}>
+                                    <Titulo1 titulo={'Servicio las 24 Horas'}
+                                        subtitulo={'Servicio de calidad y responsabilidad, brindamos soluciones adecuadas a sus necesidades.'}
+                                        sxSubtitulo={{
+                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
+                                        }}
+                                        sx={{
+                                            position: 'relative',
+                                            alignItems: 'initial',
+                                            p: 2,
+                                            textAlign: 'right',
+                                            zIndex: 2, // 👈 el texto queda encima
+                                        }} />
+                                </Box>
+                            </Box>
+                            <Box name='paso1'
+                                sx={{
+                                    position: 'relative',
+                                    height: '50vh',
+                                    width: '100%',
+                                    maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <Box name='Imagen' sx={{
+                                    borderTopLeftRadius: '30px ',
+                                    borderBottomLeftRadius: '30px ',
+                                    borderRadius: { xs: '30px' },
+                                    backgroundImage: `url(${img4})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '100%',
+                                    maxWidth: {
+                                        xs: '100%',
+                                        sm: '75%'
+                                    },
+                                    width: '100%',
+                                    zIndex: '1'
+                                }} />
+                                <Box sx={{
+                                    position: 'absolute',
+                                    height: '70%',
+                                    top: { xs: '20%', sm: '15%' },
+                                    left: { xs: '5%', sm: '20%', md: '25%' },
+                                    right: { xs: '5%', sm: '5%' },
+                                    color: '#fff',
+                                    zIndex: '2',
+                                    "&::before": {
+                                        content: '""',
+                                        position: "absolute",
+                                        inset: 0,
+                                        borderRadius: '2rem',
+                                        backgroundColor: "#5ed7ffff",
+                                        opacity: 0.7,
+                                        zIndex: 1
+                                    }
+                                }}>
+                                    <Titulo1 titulo={'Impresion y Distribución'}
+                                        subtitulo={'Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos'}
+                                        sxSubtitulo={{
+                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
+                                        }}
+                                        sx={{
+                                            position: 'relative',
+                                            alignItems: 'initial',
+                                            p: 2,
+                                            textAlign: 'right',
+                                            zIndex: 2, // 👈 el texto queda encima
+                                        }} />
+                                </Box>
+                            </Box>
+                        </Stack>
+                    </Grid>
+                </Grid>
+            </Grid>
+
 
             {/*Tercer Box*/}
             <Box
@@ -380,113 +489,103 @@ export default function Inicio() {
                     zIndex: 1, background: 'linear-gradient(180deg, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
                 }}
             >
-                <AnimatedBox animation="animate__slideInLeft" delay={2000} duration={5000} >
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            overflow: "hidden",
-                            width: {
-                                xs: '90%',   // móviles
-                                sm: '80%',    // tablets
-                                md: '40rem',  // escritorios
-                            },
-                            p: {
-                                xs: 2,
-                                sm: 3,
-                                md: 4,
-                            },
-                            m: {
-                                xs: 1,
-                                sm: 2,
-                                md: 2,
-                            }
-                        }}>
-                        <Box sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            p: 2,
-                            backgroundColor: '#8cc5ffff',
-                            borderBottom: '5px solid',
-                            borderTop: '5px solid',
-                            borderTopLeftRadius: '15px',
-                            borderTopRightRadius: '15px',
-                            borderBottomLeftRadius: '15px',
-                            borderBottomRightRadius: '15px',
-                        }}>
-                            <Titulo1 titulo={"¡BIENVENIDOS!"}
-                                sx={{ fontSize: '3rem' }}
-                                style={{
-                                    borderBottom: '5px solid',
-                                    borderBottomLeftRadius: '15px',
-                                    borderBottomRightRadius: '15px',
-                                    textAlign: "center",
-                                }} />
-                            <Subtitulo subtitulo={"Somos su mejor aliado"}
-                            />
-                            <Contenido contenido={"Somos una empresa, con un staff de profesionales altamente calificados, comprometidos con tu gestión, marcando una ventaja comparativa diferencial positiva."} />
-                        </Box>
-                        <Box name='hola' sx={{
-                            display: "flex",
-                            justifyContent: "flex-end",
-                            p: 1
-                        }}>
-                            <Button
-                                variant="text"
-                                sx={{
-                                    maxHeight: "1rem",
-                                    padding: 2,
-                                    fontSize: '0.8rem',
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        overflow: "hidden",
+                        width: {
+                            xs: '90%',   // móviles
+                            sm: '80%',    // tablets
+                            md: '40rem',  // escritorios
+                        },
+                        p: {
+                            xs: 2,
+                            sm: 3,
+                            md: 4,
+                        },
+                        m: {
+                            xs: 1,
+                            sm: 2,
+                            md: 2,
+                        }
+                    }}>
+                    <Box sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        p: 2,
+                        borderBottom: '5px solid',
+                        borderTop: '5px solid',
+                        borderTopLeftRadius: '15px',
+                        borderTopRightRadius: '15px',
+                        borderBottomLeftRadius: '15px',
+                        borderBottomRightRadius: '15px',
+                    }}>
+                        <Titulo1 titulo={"¡BIENVENIDOS!"}
+                            sx={{ fontSize: '3rem' }}
+                            style={{
+                                textAlign: "center",
+                            }} />
+                        <Subtitulo subtitulo={"Somos su mejor aliado"}
+                        />
+                        <Contenido contenido={"Somos una empresa, con un staff de profesionales altamente calificados, comprometidos con tu gestión, marcando una ventaja comparativa diferencial positiva."} />
+                    </Box>
+                    <Box name='hola' sx={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        p: 1
+                    }}>
+                        <Button
+                            variant="text"
+                            sx={{
+                                maxHeight: "1rem",
+                                padding: 2,
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold',
+                                marginLeft: '1rem',
+                                marginRight: '1rem',
+                                '&:hover': {
                                     fontWeight: 'bold',
-                                    marginLeft: '1rem',
-                                    marginRight: '1rem',
-                                    '&:hover': {
-                                        fontWeight: 'bold',
-                                        color: 'white',
-                                    },
-                                }}
-                            >
-                                Realizar Envío
-                            </Button>
-                        </Box>
+                                    color: 'white',
+                                },
+                            }}
+                        >
+                            Realizar Envío
+                        </Button>
                     </Box>
-                </AnimatedBox>
-                <AnimatedBox animation="animate__slideInRight" delay={2000} duration={2000}>
-                    <Box
-                        sx={{
-                            backgroundImage: `url(${img8})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            borderRadius: '1rem',
-                            minHeight: {
-                                xs: '15rem',
-                                sm: '20rem',
-                                md: '25rem'
-                            },
-                            width: {
-                                xs: '15rem',   // móviles
-                                sm: '20rem',    // tablets
-                                md: '20rem',  // escritorios
-                            },
-                            p: {
-                                xs: 2,
-                                sm: 3,
-                                md: 4,
-                            },
-                            m: {
-                                xs: 1,
-                                sm: 2,
-                                md: 2,
-                            }
-                        }}>
-                    </Box>
-                </AnimatedBox>
+                </Box>
+                <Box
+                    sx={{
+                        backgroundImage: `url(${img8})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderRadius: '1rem',
+                        minHeight: {
+                            xs: '15rem',
+                            sm: '20rem',
+                            md: '25rem'
+                        },
+                        width: {
+                            xs: '15rem',   // móviles
+                            sm: '20rem',    // tablets
+                            md: '20rem',  // escritorios
+                        },
+                        p: {
+                            xs: 2,
+                            sm: 3,
+                            md: 4,
+                        },
+                        m: {
+                            xs: 1,
+                            sm: 2,
+                            md: 2,
+                        }
+                    }}>
+                </Box>
             </Box>
 
             {/*Quinto Box*/}
-            <AnimatedBox animation="animate__slideInUp" delay={0} duration={2000}>
-                <Ayuda />
-            </AnimatedBox>
+            <Ayuda />
 
             {/*Sexto Box*/}
             <Footer />

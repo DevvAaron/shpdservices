@@ -28,12 +28,13 @@ const Navbar = () => {
       setTrackingID(""); // limpiar después de buscar
     }
   };
-  const handleSubmenuClick = (label) => {
-    setOpenSubmenu(prev => (prev === label ? null : label));
-  };
-
-  const handleDoubleClick = (to) => {
-    if (to) navigate(to);
+  const handleMobileMenuClick = (to, label, hasSubItems) => {
+    if (hasSubItems) {
+      setOpenSubmenu(prev => (prev === label ? null : label));
+    } else if (to) {
+      navigate(to);
+      setMenuOpen(false); // Cierra el menú móvil al navegar
+    }
   };
 
   useEffect(() => {
@@ -59,7 +60,9 @@ const Navbar = () => {
 
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
-      setMenuOpen(false);
+      if (window.innerWidth > 768) {
+        setMenuOpen(false);
+      }
       setOpenSubmenu(null);
     };
 
@@ -97,8 +100,7 @@ const Navbar = () => {
       to: '/servicios',
       subItems: [
         { to: '/servicios/distribucion', label: 'Distribución' },
-        { to: '/servicios/almacen', label: 'Almacén' },
-        { to: '/servicios/mudanzas', label: 'Mudanzas' }
+        { to: '/servicios/mensajeria', label: 'Mensajeria' }
       ]
     },
     { to: '/zonaClientes', label: 'Zona de Clientes' }
@@ -146,26 +148,18 @@ const Navbar = () => {
               sx={{ position: 'relative' }}
               onMouseEnter={() => subItems && setOpenDesktopSubmenu(label)}
               onMouseLeave={() => subItems && setOpenDesktopSubmenu(null)}
-              onDoubleClick={() => subItems && handleDoubleClick(to)}
             >
               {/* main label */}
-              {subItems ? (
-                <Box sx={{ cursor: 'pointer', padding: '0.3rem 0.6rem' }}>{label}</Box>
-              ) : (
-                <Box
-                  component={NavLink}
-                  to={to}
-                  sx={({ isActive }) => ({
-                    textDecoration: 'none',
-                    color: '#fff',
-                    padding: '0.3rem 0.6rem',
-                    fontWeight: isActive ? '700' : '500',
-                    '&:hover': { borderBottom: '3px solid rgba(0,0,0,0.25)' }
-                  })}
-                >
-                  {label}
-                </Box>
-              )}
+              <Box
+                component={NavLink}
+                to={to}
+                // Si tiene subItems, prevenimos que el hover de NavLink añada la línea azul
+                sx={ {cursor: 'pointer', padding: '0.3rem 0.6rem', color: '#fff', textDecoration: 'none' 
+                  
+               } }
+              >
+                {label}
+              </Box>
 
               {/* submenu desktop (controlado por estado) */}
               {subItems && (
@@ -181,7 +175,7 @@ const Navbar = () => {
                         top: '100%',
                         left: 0,
                         minWidth: 180,
-                        borderRadius: 6,
+                        borderRadius: 6, background: "#13B5EA",
                         boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
                         zIndex: 1300,
                         padding: '6px 8px',
@@ -200,7 +194,7 @@ const Navbar = () => {
                             color: '#fff',
                             padding: '0.45rem 0.8rem',
                             borderRadius: 4,
-                            '&:hover': { background: '#0f9ccd' }
+                            '&:hover': { background: '#0fa6d6' } // Cambio de hover para que no sea blanco
                           }}
                         >
                           {sub.label}
@@ -232,7 +226,7 @@ const Navbar = () => {
           <IconButton onClick={handleBuscar} size="small" sx={{
             bgcolor: 'white', '&:hover': {
               background: '#13B5EA',
-              }
+            }
           }}>
             <SearchIcon />
           </IconButton>

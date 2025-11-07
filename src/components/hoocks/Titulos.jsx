@@ -14,6 +14,7 @@ export const Titulo1 = ({ titulo, subtitulo, style = {}, sx = {}, sxSubtitulo = 
                     <Typography component="p" sx={{
                         mt: 1,
                         lineHeight: 1.4,
+                        fontFamily: 'Mifuente',
                         ...sxSubtitulo,
                         ...sx
                     }}>

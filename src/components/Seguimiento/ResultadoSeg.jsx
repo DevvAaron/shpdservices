@@ -2,82 +2,73 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
     Box,
-    Typography, Modal, Backdrop, Fade, IconButton
+    Typography, Modal, Backdrop, Fade, IconButton, CircularProgress
 } from '@mui/material';
 import tri1 from '../../assets/triangulo-2.png'
+import axios from 'axios';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
-import ImageViewerModal from '../Hoocks/ImageViewerModel';
+import ImageViewerModal from '../hoocks/ImageViewerModel';
 import { InfoEnvio } from '../../data/envios'; // ajusta la ruta si es necesario
 import { Titulo1 } from '../Hoocks/Titulos';
 import FondoInicio from '../hoocks/FondoInicio';
 import Navbar from '../Header/Navbar';
+import { useEffect } from 'react';
 
-const HistorialEstd = [
-    {
-        id: 1,
-        texto: 'Entregado',
-        fecha: '2024-12-18 00:00:00'
-    }, {
-        id: 2,
-        texto: 'Transito',
-        fecha: '2024-12-18 07:57:44'
-    }, {
-        id: 3,
-        texto: 'En Gestion',
-        fecha: '2024-12-17 22:33:15'
-    }, {
-        id: 4,
-        texto: 'Registrado',
-        fecha: '2024-12-17 20:28:29'
+const getIconComponent = (iconName) => {
+    switch (iconName) {
+        case 'fa-box':
+            return <InventoryIcon />;
+        case 'fa-truck-moving':
+            return <LocalShippingIcon />;
+        case 'fa-box-open':
+            return <MoveToInboxIcon />;
+        default:
+            return <InventoryIcon />;
     }
-]
-export default function ResultadoSeg({ data: propData }) {
+}
+
+export default function ResultadoSeg() {
     const { trackingID } = useParams(); // puede ser undefined si llamas pasando props
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
 
-    const idToLookup = trackingID || (propData && propData.nroTracking);
+    const [trackingData, setTrackingData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const envio = propData || InfoEnvio.find(e => e.nroTracking === idToLookup);
-
-    if (!envio) {
-        return (
-            <Box sx={{ width: '100%', py: 6, display: 'flex', justifyContent: 'center' }}>
-                <Typography variant="h6" sx={{ color: '#333' }}>
-                    🚫 No se encontró el envío {trackingID ? `con tracking ${trackingID}` : ''}.
-                </Typography>
-            </Box>
-        );
-    }
-    const imagenes = envio.dtproducto.img;
-    const mapUrl = envio.direccion ? `https://www.google.com/maps?q=${encodeURIComponent(envio.direccion)}&output=embed` : null;
-
-
-    const pasos = [
-        {
-            id: 1,
-            texto: 'Gestionado',
-            icono: <InventoryIcon />,
-            activo: false,
-        },
-        {
-            id: 2,
-            texto: '¡En camino!',
-            icono: <LocalShippingIcon />,
-            activo: false,
-        },
-        {
-            id: 3,
-            texto: 'Entregado',
-            icono: <MoveToInboxIcon />,
-            activo: true,
-        },
-    ];
-
-
+    //Modal de imagenes
     const [openImg, setOpenImg] = useState(false);
     const [selectedImgIndex, setSelectedImgIndex] = useState(0);
+
+    useEffect(() => {
+        if (!trackingID) {
+            setError('No se proporcionó un N° de Tracking.');
+            setIsLoading(false);
+            return;
+        }
+        const fetchData = async () => {
+            setIsLoading(true);
+            setError(null);
+            try {
+                const response = await axios.post('http://localhost:3001/api/tracking/validar', {
+                    n_track: trackingID
+                });
+                setTrackingData(response.data);
+            } catch (err) {
+                if (err.response && err.response.status === 404) {
+                    setError(err.response.data.message); // "Código de seguimiento incorrecto"
+                } else {
+                    setError('Error al conectar con el servidor.');
+                }
+                console.error(err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [trackingID]);
+
 
     // Abrir modal con imagen seleccionada
     const handleOpenImg = (index) => {
@@ -88,6 +79,40 @@ export default function ResultadoSeg({ data: propData }) {
     const handleCloseImg = () => {
         setOpenImg(false);
     };
+
+    if (isLoading) {
+        return (
+            <Box sx={{ width: '100%', py: 10, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <CircularProgress />
+                <Typography variant="h6" sx={{ color: '#333', ml: 2 }}>
+                    Buscando envío...
+                </Typography>
+            </Box>
+        );
+    }
+    if (error) {
+        return (
+            <Box sx={{ width: '100%', py: 10, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                <ErrorOutlineIcon color="error" sx={{ fontSize: 60 }} />
+                <Typography variant="h6" sx={{ color: 'red', mt: 2 }}>
+                    🚫 {error}
+                </Typography>
+            </Box>
+        );
+    }
+
+
+    const { informacionEnvio, productos, imagenes, timeline } = trackingData;
+    const pasosUI = timeline.iconos.map(apiPaso => ({
+        id: apiPaso.order,
+        texto: apiPaso.text,
+        icono: getIconComponent(apiPaso.icon), // Usamos la función helper
+        activo: apiPaso.active === 'active',
+    }));
+    const historialUI = timeline.historial; // Este ya viene listo
+    const imagenesParaModal = imagenes.map(img => img.path);
+    const mapUrl = informacionEnvio.direccion ? `https://www.google.com/maps?q=${encodeURIComponent(informacionEnvio.direccion)}&output=embed` : null;
+
     return (
 
         <Box
@@ -122,7 +147,7 @@ export default function ResultadoSeg({ data: propData }) {
                     height: '100vh',
                     width: '100%'
                 }}>
-                {!isMobile && (
+                {/* {!isMobile && (
 
                     <Box
                         name='TrianguloArriba'
@@ -139,7 +164,7 @@ export default function ResultadoSeg({ data: propData }) {
                             width: '35rem'
                         }}
                     />
-                )}
+                )} */}
 
                 <FondoInicio>
 
@@ -222,7 +247,7 @@ export default function ResultadoSeg({ data: propData }) {
                             },
                             height: '100%',
                         }}>
-                        {pasos.map((paso) => (
+                        {pasosUI.map((paso) => (
                             <Box
                                 key={paso.id}
                                 className={`step ${paso.activo ? 'active' : ''}`}
@@ -286,8 +311,8 @@ export default function ResultadoSeg({ data: propData }) {
                     }}>
                         Historial
                     </Typography>
-                    {HistorialEstd.map((hEstado) => (
-                        <Box key={hEstado.id} sx={{
+                    {historialUI.map((hEstado, index) => (
+                        <Box key={index} sx={{
                             mb: 1,
                             width: '100%',
                             maxWidth: '20rem',
@@ -302,7 +327,7 @@ export default function ResultadoSeg({ data: propData }) {
                                         md: '1rem',  // pantallas mediana
                                     },
                                 }}>
-                                {hEstado.texto}
+                                {hEstado.text}
                             </Typography>
                             <Typography
                                 sx={{
@@ -358,7 +383,7 @@ export default function ResultadoSeg({ data: propData }) {
                             sm: '1rem',    // tablets
                             md: '1rem',  // pantallas mediana
                         },
-                    }}>{envio.nroTracking}</Typography>
+                    }}>{informacionEnvio.tracking}</Typography>
                     <Typography sx={{
                         fontSize: {
                             xs: '0.8rem',  // móviles
@@ -373,7 +398,7 @@ export default function ResultadoSeg({ data: propData }) {
                             sm: '1rem',    // tablets
                             md: '1rem',  // pantallas mediana
                         },
-                    }}>{envio.reminente}</Typography>
+                    }}>{informacionEnvio.enviadoPor}</Typography>
 
                     <Typography
                         sx={{
@@ -390,7 +415,7 @@ export default function ResultadoSeg({ data: propData }) {
                             sm: '1rem',    // tablets
                             md: '1rem',  // pantallas mediana
                         },
-                    }}>{envio.destinatario}</Typography>
+                    }}>{informacionEnvio.enviadoA}</Typography>
 
                     <Typography sx={{
                         fontSize: {
@@ -406,7 +431,7 @@ export default function ResultadoSeg({ data: propData }) {
                             sm: '1rem',    // tablets
                             md: '1rem',  // pantallas mediana
                         },
-                    }}>{envio.direccion}</Typography>
+                    }}>{informacionEnvio.direccion}</Typography>
                     {/* Título */}
                     <Typography
                         sx={{
@@ -428,24 +453,28 @@ export default function ResultadoSeg({ data: propData }) {
                     </Typography>
 
                     {/* Línea de Paquete */}
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            borderBottom: '1px solid #ffffffff',
-                            paddingY: 1,
-                            paddingX: 0.5,
-                        }}
-                    >
-                        <Typography sx={{
-                            fontSize: {
-                                xs: '0.8rem',  // móviles
-                                sm: '1rem',    // tablets
-                                md: '1rem',  // pantallas mediana
-                            },
-                        }}>{envio.dtproducto?.nombre} | {envio.dtproducto?.id}</Typography>
-                        <Typography></Typography>
-                    </Box>
+                    {productos.items.map((item, index) => (
+
+                        <Box
+                            key={index}
+                            sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                borderBottom: '1px solid #ffffffff',
+                                paddingY: 1,
+                                paddingX: 0.5,
+                            }}
+                        >
+                            <Typography sx={{
+                                fontSize: {
+                                    xs: '0.8rem',  // móviles
+                                    sm: '1rem',    // tablets
+                                    md: '1rem',  // pantallas mediana
+                                },
+                            }}>{item.campo13}</Typography>
+                            <Typography>{item.campo14}</Typography>
+                        </Box>
+                    ))}
 
                     {/* Línea de Monto */}
                     <Box
@@ -475,7 +504,7 @@ export default function ResultadoSeg({ data: propData }) {
                             },
                             fontWeight: 'bold'
                         }}>
-                            {envio.dtproducto.monto.toFixed(2)}
+                            {productos.montoTotal}
                         </Typography>
                     </Box>
                     {/* Título */}
@@ -513,8 +542,8 @@ export default function ResultadoSeg({ data: propData }) {
                                 key={index}
                                 onClick={() => handleOpenImg(index)}
                                 component="img"
-                                src={image}
-                                alt={`Producto ${index + 1}`}
+                                src={image.path}
+                                alt={image.nom_foto}
                                 sx={{
                                     width: 80,
                                     height: 80,
@@ -552,7 +581,7 @@ export default function ResultadoSeg({ data: propData }) {
                 >
                     <iframe
                         title="Mapa de Google"
-                        src={`https://www.google.com/maps?q=${encodeURIComponent(envio.direccion)}&output=embed`}
+                        src={mapUrl}
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
@@ -565,7 +594,7 @@ export default function ResultadoSeg({ data: propData }) {
             <ImageViewerModal
                 open={openImg}
                 handleClose={handleCloseImg}
-                imagenes={imagenes}
+                imagenes={imagenesParaModal}
                 selectedImgIndex={selectedImgIndex}
             />
         </Box>

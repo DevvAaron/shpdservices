@@ -133,6 +133,7 @@ export default function ZonaClientes() {
                         zIndex: 5
                     }}>
                         <Box sx={{
+                            borderRadius: '3rem',
                             border: '0.5rem solid #13B5EA',
                             backgroundImage: `url(${form1})`,
                             backgroundSize: 'cover',
@@ -143,19 +144,25 @@ export default function ZonaClientes() {
                             maxHeight: { xs: '15rem', sm: '20rem' },
                             maxWidth: { xs: '15rem', sm: '20rem' },
                         }} />
-                        <Button
-                            sx={{
-                                whiteSpace: 'nowrap',
-                                fontWeight: 'bold',
-                                px: 3,
-                                py: 1,
-                                borderBottom: '5px solid',
-                                borderBottomLeftRadius: '15px',
-                                borderBottomRightRadius: '15px',
-                            }}
+
+                        <a
+                            href="http://186.96.145.241:8181/Online_mx/"
+                            style={{ textDecoration: 'none' }} // Para quitar el subrayado de enlace si es necesario
                         >
-                            Clientes
-                        </Button>
+                            <Button
+                                sx={{
+                                    whiteSpace: 'nowrap',
+                                    fontWeight: 'bold',
+                                    px: 3,
+                                    py: 1,
+                                    borderBottom: '5px solid',
+                                    borderBottomLeftRadius: '15px',
+                                    borderBottomRightRadius: '15px',
+                                }}
+                            >
+                                Clientes
+                            </Button>
+                        </a>
 
 
                     </Box>
@@ -168,6 +175,7 @@ export default function ZonaClientes() {
                     }}>
 
                         <Box sx={{
+                            borderRadius: '3rem',
                             border: '0.5rem solid #13B5EA',
                             backgroundImage: `url(${form2})`,
                             backgroundSize: 'cover',
@@ -178,21 +186,24 @@ export default function ZonaClientes() {
                             maxHeight: { xs: '15rem', sm: '20rem' },
                             maxWidth: { xs: '15rem', sm: '20rem' },
                         }} />
-
-                        <Button
-                            sx={{
-                                whiteSpace: 'nowrap',
-                                fontWeight: 'bold',
-                                px: 3,
-                                py: 1,
-
-                                borderBottom: '5px solid',
-                                borderBottomLeftRadius: '15px',
-                                borderBottomRightRadius: '15px',
-                            }}
+                        <a
+                            href="http://186.96.145.241:8181/intranet_mx/"
+                            style={{ textDecoration: 'none' }} // Para quitar el subrayado de enlace si es necesario
                         >
-                            Agentes
-                        </Button>
+                            <Button
+                                sx={{
+                                    whiteSpace: 'nowrap',
+                                    fontWeight: 'bold',
+                                    px: 3,
+                                    py: 1,
+                                    borderBottom: '5px solid',
+                                    borderBottomLeftRadius: '15px',
+                                    borderBottomRightRadius: '15px',
+                                }}
+                            >
+                                Agentes
+                            </Button>
+                        </a>
                     </Box>
                 </Box>
             </Box>

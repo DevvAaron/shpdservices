@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
-import { Modal, Box, Fade, Backdrop, ButtonGroup, Button } from '@mui/material';
+import { Modal, Box, Fade, ButtonGroup, Button } from '@mui/material';
+import { Backdrop } from '@mui/material';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import RotateRightIcon from '@mui/icons-material/RotateRight'
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
-const ImageViewerModal = ({ open, handleClose, imagenes, selectedImgIndex }) => {
+
+export default function ImageViewerModal({ open, handleClose, imagenes, selectedImgIndex }) {
   const [rotation, setRotation] = useState(0);
   const [scale, setScale] = useState(1);
   const [flipH, setFlipH] = useState(false);
@@ -30,13 +32,11 @@ const ImageViewerModal = ({ open, handleClose, imagenes, selectedImgIndex }) => 
     rotate(${rotation}deg)
     scale(${flipH ? -scale : scale}, ${flipV ? -scale : scale})
   `;
-
   return (
     <Modal
       open={open}
       onClose={handleClose}
       closeAfterTransition
-      slots={{ backdrop: CustomBackdrop }}
       slotProps={{
         backdrop: {
           timeout: 500, // ejemplo, igual que BackdropProps antes
@@ -86,6 +86,4 @@ const ImageViewerModal = ({ open, handleClose, imagenes, selectedImgIndex }) => 
       </Fade>
     </Modal>
   );
-};
-
-export default ImageViewerModal;
+}

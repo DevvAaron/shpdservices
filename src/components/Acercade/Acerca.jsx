@@ -70,7 +70,7 @@ export default function AcercaDe() {
                         width: '100%'
                     }} />
                 </>
-                {!isMobile && (<Box
+                {/* {!isMobile && (<Box
                     name='TrianguloAbajo'
                     sx={{
                         position: 'absolute',
@@ -84,7 +84,7 @@ export default function AcercaDe() {
                         height: '40rem',
                         width: '35rem'
                     }}
-                />)}
+                />)} */}
                 <FondoInicio>
 
                     <Titulo1 titulo={'Acerca de'} sx={{
@@ -148,55 +148,50 @@ export default function AcercaDe() {
                     </Box>
                 </AnimatedBox>
 
-                <AnimatedBox animation="animate__slideInRight" delay={2000} duration={5000} >
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            width: {
-                                xs: '90%',   // móviles
-                                sm: '80%',    // tablets
-                                md: '40rem',  // escritorios
-                            },
-                            p: {
-                                xs: 2,
-                                sm: 3,
-                                md: 4,
-                            },
-                            m: {
-                                xs: 1,
-                                sm: 2,
-                                md: 2,
-                            }
-                        }}>
-                        <Box sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: 'center',
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: {
+                            xs: '90%',   // móviles
+                            sm: '80%',    // tablets
+                            md: '40rem',  // escritorios
+                        },
+                        p: {
+                            xs: 2,
+                            sm: 3,
+                            md: 4,
+                        },
+                        m: {
+                            xs: 1,
+                            sm: 2,
+                            md: 2,
+                        }
+                    }}>
+                    <Box sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: 'center',
 
-                            borderBottom: '5px solid',
-                            borderTop: '5px solid',
-                            borderTopLeftRadius: '15px',
-                            borderTopRightRadius: '15px',
-                            borderBottomLeftRadius: '15px',
-                            borderBottomRightRadius: '15px',
-                        }}>
-                            <Titulo1 titulo={"SOBRE NOSOTROS"}
-                                style={{
-                                    borderBottom: '5px solid',
-                                    borderBottomLeftRadius: '15px',
-                                    borderBottomRightRadius: '15px',
-                                    textAlign: "center",
-                                    padding: "1rem"
-                                }} />
-                            <Contenido contenido={`Somos una empresa, con un staff de profesionales altamente calificados,
+                        borderBottom: '5px solid',
+                        borderTop: '5px solid',
+                        borderTopLeftRadius: '15px',
+                        borderTopRightRadius: '15px',
+                        borderBottomLeftRadius: '15px',
+                        borderBottomRightRadius: '15px',
+                    }}>
+                        <Titulo1 titulo={"SOBRE NOSOTROS"}
+                            style={{
+                                textAlign: "center",
+                                padding: "1rem"
+                            }} />
+                        <Contenido contenido={`Somos una empresa, con un staff de profesionales altamente calificados,
                             comprometidos con tu gestión, marcando una ventaja comparativa diferencial positiva: 
 
                             BRINDAR UN SERVICIO DE ALTA CALIDAD Y SER TU PRINCIPAL SOCIO ESTRATÉGICO.`}
-                            />
-                        </Box>
+                        />
                     </Box>
-                </AnimatedBox>
+                </Box>
             </Box>
             <Valores />
             {/*Cuarto Box*/}

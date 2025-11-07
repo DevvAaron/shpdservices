@@ -128,7 +128,7 @@ export default function Seguimiento() {
                         width: '100%'
                     }} />
                 </>
-                {!isMobile && (
+                {/* {!isMobile && (
 
                     <Box
                         name='TrianguloArriba'
@@ -145,7 +145,7 @@ export default function Seguimiento() {
                             width: '35rem'
                         }}
                     />
-                )}
+                )} */}
 
                 <FondoInicio>
 
