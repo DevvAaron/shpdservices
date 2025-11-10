@@ -50,7 +50,7 @@ export default function ResultadoSeg() {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await axios.post('http://localhost:3001/api/tracking/validar', {
+                const response = await axios.post('/api/tracking/validar', {
                     n_track: trackingID
                 });
                 setTrackingData(response.data);
@@ -82,9 +82,9 @@ export default function ResultadoSeg() {
 
     if (isLoading) {
         return (
-            <Box sx={{ width: '100%', py: 10, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <Box sx={{ width: '100%',display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
                 <CircularProgress />
-                <Typography variant="h6" sx={{ color: '#333', ml: 2 }}>
+                <Typography variant="h6" sx={{ color: '#333' }}>
                     Buscando envío...
                 </Typography>
             </Box>
@@ -92,9 +92,9 @@ export default function ResultadoSeg() {
     }
     if (error) {
         return (
-            <Box sx={{ width: '100%', py: 10, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                 <ErrorOutlineIcon color="error" sx={{ fontSize: 60 }} />
-                <Typography variant="h6" sx={{ color: 'red', mt: 2 }}>
+                <Typography variant="h6" sx={{ color: 'red'}}>
                     🚫 {error}
                 </Typography>
             </Box>
@@ -186,7 +186,7 @@ export default function ResultadoSeg() {
                     width: {
                         xs: '80%',
                         sm: '60%',
-                        md: '30%'
+                        md: '40%'
                     },
                     overflow: 'hidden',
                     height: '100%',

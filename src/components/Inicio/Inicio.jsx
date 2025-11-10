@@ -186,247 +186,247 @@ export default function Inicio() {
                     gap: '2rem',
                     width: '100vw'
                 }}>
-                    <Grid spacing={2} size={{ xs: 12, sm: 10, md: 5 }} >
-                        <Stack spacing={2} >
-                            <Box name='paso1'
-                                sx={{
-                                    position: 'relative',
-                                    height: '50vh',
-                                    width: '100%',
-                                    maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <Box name='Imagen' sx={{
-                                    borderTopLeftRadius: '30px ',
-                                    borderBottomLeftRadius: '30px ',
-                                    borderRadius: { xs: '30px' },
-                                    backgroundImage: `url(${img1})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '100%',
-                                    maxWidth: {
-                                        xs: '100%',
-                                        sm: '75%'
-                                    },
-                                    width: '100%',
-                                    zIndex: '1'
-                                }} />
+                    <Grid spacing={2} size={{ xs: 12, sm: 10, md: 9 }} >
+                        <Box name='paso1'
+                            sx={{
+                                position: 'relative',
+                                height: '50vh',
+                                width: '100%',
+                                maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Box name='Imagen' sx={{
+                                borderTopLeftRadius: '30px ',
+                                borderBottomLeftRadius: '30px ',
+                                borderRadius: { xs: '30px' },
+                                backgroundImage: `url(${img1})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '100%',
+                                maxWidth: {
+                                    xs: '100%',
+                                    sm: '75%'
+                                },
+                                width: '100%',
+                                zIndex: '1'
+                            }} />
 
-                                <Box sx={{
-                                    position: 'absolute',
-                                    height: '70%',
-                                    top: { xs: '20%', sm: '15%' },
-                                    left: { xs: '5%', sm: '20%', md: '25%' },
-                                    right: { xs: '5%', sm: '5%' },
-                                    color: '#fff',
-                                    zIndex: '2',
-                                    "&::before": {
-                                        content: '""',
-                                        position: "absolute",
-                                        inset: 0,
-                                        borderRadius: '2rem',
-                                        backgroundColor: "#5ed7ffff",
-                                        opacity: 0.7,
-                                        zIndex: 1
-                                    }
-                                }}>
-                                    <Titulo1 titulo={'Servicios Urgentes'}
-                                        subtitulo={'Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos rápidos.'}
-                                        sxSubtitulo={{
-                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
-                                        }}
-                                        sx={{
-                                            position: 'relative',
-                                            alignItems: 'initial',
-                                            p: 2,
-                                            textAlign: 'right',
-                                            zIndex: 2, // 👈 el texto queda encima
-                                        }} />
-                                </Box>
+                            <Box sx={{
+                                position: 'absolute',
+                                height: '70%',
+                                top: { xs: '20%', sm: '15%' },
+                                left: { xs: '5%', sm: '20%', md: '25%' },
+                                right: { xs: '5%', sm: '5%' },
+                                color: '#fff',
+                                zIndex: '2',
+                                "&::before": {
+                                    content: '""',
+                                    position: "absolute",
+                                    inset: 0,
+                                    borderRadius: '2rem',
+                                    backgroundColor: "#5ed7ffff",
+                                    opacity: 0.7,
+                                    zIndex: 1
+                                }
+                            }}>
+                                <Titulo1 titulo={'Servicios Urgentes'}
+                                    subtitulo={'Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos rápidos.'}
+                                    sxSubtitulo={{
+                                        fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.2rem' },
+                                    }}
+                                    sx={{
+                                        position: 'relative',
+                                        alignItems: 'initial',
+                                        p: 2,
+                                        textAlign: 'right',
+                                        zIndex: 2, // 👈 el texto queda encima
+                                    }} />
                             </Box>
-                            <Box name='paso2'
-                                sx={{
-                                    position: 'relative',
-                                    height: '50vh',
-                                    width: '100%',
-                                    maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <Box name='Imagen' sx={{
-                                    borderTopLeftRadius: '30px ',
-                                    borderBottomLeftRadius: '30px ',
-                                    borderRadius: { xs: '30px' },
-                                    backgroundImage: `url(${img3})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '100%',
-                                    maxWidth: {
-                                        xs: '100%',
-                                        sm: '75%'
-                                    },
-                                    width: '100%',
-                                    zIndex: '1'
-                                }} />
-                                <Box sx={{
-                                    position: 'absolute',
-                                    height: '70%',
-                                    top: { xs: '20%', sm: '15%' },
-                                    left: { xs: '5%', sm: '20%', md: '25%' },
-                                    right: { xs: '5%', sm: '5%' },
-                                    color: '#fff',
-                                    zIndex: '2',
-                                    "&::before": {
-                                        content: '""',
-                                        position: "absolute",
-                                        inset: 0,
-                                        borderRadius: '2rem',
-                                        backgroundColor: "#5ed7ffff",
-                                        opacity: 0.7,
-                                        zIndex: 1
-                                    }
-                                }}>
-                                    <Titulo1 titulo={'Encomiendas'}
-                                        subtitulo={'Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos a bajo costo.'}
-                                        sxSubtitulo={{
-                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
-                                        }}
-                                        sx={{
-                                            position: 'relative',
-                                            alignItems: 'initial',
-                                            p: 2,
-                                            textAlign: 'right',
-                                            zIndex: 2, // 👈 el texto queda encima
-                                        }} />
-                                </Box>
-                            </Box>
-                        </Stack>
+                        </Box>
                     </Grid>
-                    <Grid spacing={2} size={{ xs: 12, sm: 10, md: 5 }} >
-                        <Stack spacing={2} >
-                            <Box name='paso1'
-                                sx={{
-                                    position: 'relative',
-                                    height: '50vh',
-                                    width: '100%',
-                                    maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <Box name='Imagen' sx={{
-                                    borderTopLeftRadius: '30px ',
-                                    borderBottomLeftRadius: '30px ',
-                                    borderRadius: { xs: '30px' },
-                                    backgroundImage: `url(${img2})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '100%',
-                                    maxWidth: {
-                                        xs: '100%',
-                                        sm: '75%'
-                                    },
-                                    width: '100%',
-                                    zIndex: '1'
-                                }} />
 
-                                <Box sx={{
-                                    position: 'absolute',
-                                    height: '70%',
-                                    top: { xs: '20%', sm: '15%' },
-                                    left: { xs: '5%', sm: '20%', md: '25%' },
-                                    right: { xs: '5%', sm: '5%' },
-                                    color: '#fff',
-                                    zIndex: '2',
-                                    "&::before": {
-                                        content: '""',
-                                        position: "absolute",
-                                        inset: 0,
-                                        borderRadius: '2rem',
-                                        backgroundColor: "#5ed7ffff",
-                                        opacity: 0.7,
-                                        zIndex: 1
-                                    }
-                                }}>
-                                    <Titulo1 titulo={'Servicio las 24 Horas'}
-                                        subtitulo={'Servicio de calidad y responsabilidad, brindamos soluciones adecuadas a sus necesidades.'}
-                                        sxSubtitulo={{
-                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
-                                        }}
-                                        sx={{
-                                            position: 'relative',
-                                            alignItems: 'initial',
-                                            p: 2,
-                                            textAlign: 'right',
-                                            zIndex: 2, // 👈 el texto queda encima
-                                        }} />
-                                </Box>
+                    <Grid offset={{ md: 6 }} spacing={2} size={{ xs: 12, sm: 10, md: 10 }}>
+                        <Box name='paso3'
+                            sx={{
+                                position: 'relative',
+                                height: '50vh',
+                                width: '100%',
+                                maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Box name='Imagen' sx={{
+                                borderTopLeftRadius: '30px ',
+                                borderBottomLeftRadius: '30px ',
+                                borderRadius: { xs: '30px' },
+                                backgroundImage: `url(${img2})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '100%',
+                                maxWidth: {
+                                    xs: '100%',
+                                    sm: '75%'
+                                },
+                                width: '100%',
+                                zIndex: '1'
+                            }} />
+                            <Box sx={{
+                                position: 'absolute',
+                                height: '70%',
+                                top: { xs: '20%', sm: '15%' },
+                                left: { xs: '5%', sm: '20%', md: '25%' },
+                                right: { xs: '5%', sm: '5%' },
+                                color: '#fff',
+                                zIndex: '2',
+                                "&::before": {
+                                    content: '""',
+                                    position: "absolute",
+                                    inset: 0,
+                                    borderRadius: '2rem',
+                                    backgroundColor: "#5ed7ffff",
+                                    opacity: 0.7,
+                                    zIndex: 1
+                                }
+                            }}>
+                                <Titulo1 titulo={'Servicio las 24 Horas'}
+                                    subtitulo={'Servicio de calidad y responsabilidad, brindamos soluciones adecuadas a sus necesidades.'}
+                                    sxSubtitulo={{
+                                        fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.2rem' },
+                                    }}
+                                    sx={{
+                                        position: 'relative',
+                                        alignItems: 'initial',
+                                        p: 2,
+                                        textAlign: 'right',
+                                        zIndex: 2, // 👈 el texto queda encima
+                                    }} />
                             </Box>
-                            <Box name='paso1'
-                                sx={{
-                                    position: 'relative',
-                                    height: '50vh',
-                                    width: '100%',
-                                    maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    alignItems: 'center'
-                                }}
-                            >
-                                <Box name='Imagen' sx={{
-                                    borderTopLeftRadius: '30px ',
-                                    borderBottomLeftRadius: '30px ',
-                                    borderRadius: { xs: '30px' },
-                                    backgroundImage: `url(${img4})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    height: '100%',
-                                    maxWidth: {
-                                        xs: '100%',
-                                        sm: '75%'
-                                    },
-                                    width: '100%',
-                                    zIndex: '1'
-                                }} />
-                                <Box sx={{
-                                    position: 'absolute',
-                                    height: '70%',
-                                    top: { xs: '20%', sm: '15%' },
-                                    left: { xs: '5%', sm: '20%', md: '25%' },
-                                    right: { xs: '5%', sm: '5%' },
-                                    color: '#fff',
-                                    zIndex: '2',
-                                    "&::before": {
-                                        content: '""',
-                                        position: "absolute",
-                                        inset: 0,
-                                        borderRadius: '2rem',
-                                        backgroundColor: "#5ed7ffff",
-                                        opacity: 0.7,
-                                        zIndex: 1
-                                    }
-                                }}>
-                                    <Titulo1 titulo={'Impresion y Distribución'}
-                                        subtitulo={'Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos'}
-                                        sxSubtitulo={{
-                                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
-                                        }}
-                                        sx={{
-                                            position: 'relative',
-                                            alignItems: 'initial',
-                                            p: 2,
-                                            textAlign: 'right',
-                                            zIndex: 2, // 👈 el texto queda encima
-                                        }} />
-                                </Box>
+                        </Box>
+                    </Grid>
+                    <Grid spacing={2} size={{ xs: 12, sm: 10, md: 9 }}>
+                        <Box name='paso3'
+                            sx={{
+                                position: 'relative',
+                                height: '50vh',
+                                width: '100%',
+                                maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Box name='Imagen' sx={{
+                                borderTopLeftRadius: '30px ',
+                                borderBottomLeftRadius: '30px ',
+                                borderRadius: { xs: '30px' },
+                                backgroundImage: `url(${img3})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '100%',
+                                maxWidth: {
+                                    xs: '100%',
+                                    sm: '75%'
+                                },
+                                width: '100%',
+                                zIndex: '1'
+                            }} />
+                            <Box sx={{
+                                position: 'absolute',
+                                height: '70%',
+                                top: { xs: '20%', sm: '15%' },
+                                left: { xs: '5%', sm: '20%', md: '25%' },
+                                right: { xs: '5%', sm: '5%' },
+                                color: '#fff',
+                                zIndex: '2',
+                                "&::before": {
+                                    content: '""',
+                                    position: "absolute",
+                                    inset: 0,
+                                    borderRadius: '2rem',
+                                    backgroundColor: "#5ed7ffff",
+                                    opacity: 0.7,
+                                    zIndex: 1
+                                }
+                            }}>
+                                <Titulo1 titulo={'Encomiendas'}
+                                    subtitulo={'Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos a bajo costo.'}
+                                    sxSubtitulo={{
+                                        fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.2rem' },
+                                    }}
+                                    sx={{
+                                        position: 'relative',
+                                        alignItems: 'initial',
+                                        p: 2,
+                                        textAlign: 'right',
+                                        zIndex: 2, // 👈 el texto queda encima
+                                    }} />
                             </Box>
-                        </Stack>
+                        </Box>
+                    </Grid>
+                    <Grid offset={{ md: 6 }} spacing={2} size={{ xs: 12, sm: 10, md: 10 }} >
+                        <Box name='paso4'
+                            sx={{
+                                position: 'relative',
+                                height: '50vh',
+                                width: '100%',
+                                maxWidth: { xs: '100vw', sm: '80vw', md: '40vw' },
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Box name='Imagen' sx={{
+                                borderTopLeftRadius: '30px ',
+                                borderBottomLeftRadius: '30px ',
+                                borderRadius: { xs: '30px' },
+                                backgroundImage: `url(${img4})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                height: '100%',
+                                maxWidth: {
+                                    xs: '100%',
+                                    sm: '75%'
+                                },
+                                width: '100%',
+                                zIndex: '1'
+                            }} />
+                            <Box sx={{
+                                position: 'absolute',
+                                height: '70%',
+                                top: { xs: '20%', sm: '15%' },
+                                left: { xs: '5%', sm: '20%', md: '25%' },
+                                right: { xs: '5%', sm: '5%' },
+                                color: '#fff',
+                                zIndex: '2',
+                                "&::before": {
+                                    content: '""',
+                                    position: "absolute",
+                                    inset: 0,
+                                    borderRadius: '2rem',
+                                    backgroundColor: "#5ed7ffff",
+                                    opacity: 0.7,
+                                    zIndex: 1
+                                }
+                            }}>
+                                <Titulo1 titulo={'Impresion y Distribución'}
+                                    subtitulo={'Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos'}
+                                    sxSubtitulo={{
+                                        fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.2rem' },
+                                    }}
+                                    sx={{
+                                        position: 'relative',
+                                        alignItems: 'initial',
+                                        p: 2,
+                                        textAlign: 'right',
+                                        zIndex: 2, // 👈 el texto queda encima
+                                    }} />
+                            </Box>
+                        </Box>
                     </Grid>
                 </Grid>
             </Grid>

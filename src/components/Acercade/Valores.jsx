@@ -64,7 +64,7 @@ export default function Valores() {
                                 wordBreak: 'break-word',
                             }}
                             sxSubtitulo={{
-                                fontSize: { xs: '0.6rem', sm: '0.8rem' },
+                                fontSize: { xs: '0.6rem', sm: '0.7rem', md: '1rem' },
                                 textAlign: 'justify',
                             }} />
                     </Box>
@@ -91,7 +91,7 @@ export default function Valores() {
                                 wordBreak: 'break-word',
                             }}
                             sxSubtitulo={{
-                                fontSize: { xs: '0.6rem', sm: '0.8rem' },
+                                fontSize: { xs: '0.6rem', sm: '0.7rem', md: '1rem' },
                                 textAlign: 'justify',
                             }} />
                     </Box>
