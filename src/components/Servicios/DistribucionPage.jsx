@@ -122,11 +122,12 @@ export default function DistribucionPage() {
                             Impresión y Distribución
                         </Typography>
                         <Typography sx={{
-                            width: '80%',
+                            width: { xs: '90%', sm: '80%', md: '95%' },
                             height: '100%',
                             p: 2,
-                            fontSize: { xs: '0.7rem', sm: '0.9rem', md: '1rem' },
-                            textAlign: 'center',
+                            fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.2rem' },
+                            textAlign: { xs: 'justify', md: 'center' },
+
                         }} variant='body'>
                             Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos, trabajando este proceso
                             integral con un solo proveedor, nosotros nos encargamos de la impresión y distribución ya sea empaquetada o
@@ -138,6 +139,7 @@ export default function DistribucionPage() {
                 </Box>
                 <Grid container sx={{
                     borderRadius: '2rem',
+                    alignItems: 'center',
                     backgroundColor: "#54f9ff41",
                     width: '100%',
                     height: '100%',
@@ -146,6 +148,7 @@ export default function DistribucionPage() {
                     <Grid name='Distribución de volantes' size={{ xs: 12, md: 8 }} >
                         <Stack spacing={2} sx={{
                             p: '1rem',
+                            alignItems: 'center',
                         }}>
                             <Typography sx={{
                                 fontWeight: 'bold',
@@ -156,8 +159,9 @@ export default function DistribucionPage() {
                             </Typography>
                             <Typography sx={{
                                 height: '100%',
-                                fontSize: { xs: '0.7rem', sm: '0.9rem', md: '1rem' },
-                                textAlign: 'justify'
+                                width: { xs: '90%', sm: '80%', md: '95%' },
+                                fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.2rem' },
+                                textAlign: { xs: 'justify', md: 'center' },
                             }} variant='body'>
                                 Este tipo de publicidad es utilizado por importantes empresas nacionales e internacionales de servicios,
                                 de artículos del hogar u oficina, farmacéuticas, automotrices, productos de consumo masivo, restaurantes,
@@ -170,14 +174,14 @@ export default function DistribucionPage() {
                                     <Stack spacing={2}>
                                         <Typography sx={{
                                             fontWeight: 'bold',
-                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            fontSize: { xs: '0.8rem', sm: '1.2rem' }
                                         }}
                                             variant='subtitle1'>
                                             Volanteo Personalizado
                                         </Typography>
                                         {!isMobile && (
                                             <Typography sx={{
-                                                fontSize: { xs: '0.7rem', sm: '0.8rem' },
+                                                fontSize: { sm: '1rem' },
                                             }}
                                                 variant='body'>
                                                 Cuenta con base de datos proporcionada por el cliente a nivel Local, no tiene cargo ni del cliente ni de JER COURIER.
@@ -189,14 +193,14 @@ export default function DistribucionPage() {
                                     <Stack spacing={2}>
                                         <Typography sx={{
                                             fontWeight: 'bold',
-                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            fontSize: { xs: '0.8rem', sm: '1.2rem' }
                                         }}
                                             variant='subtitle1'>
                                             Volanteo Simple
                                         </Typography>
                                         {!isMobile && (
                                             <Typography sx={{
-                                                fontSize: { xs: '0.7rem', sm: '0.8rem' },
+                                                fontSize: { sm: '1rem' },
                                             }}
                                                 variant='body'>
                                                 Cuenta con base de datos proporcionada por el cliente a nivel Local, no tiene cargo ni del cliente ni de JER COURIER.
@@ -208,14 +212,14 @@ export default function DistribucionPage() {
                                     <Stack spacing={2}>
                                         <Typography sx={{
                                             fontWeight: 'bold',
-                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            fontSize: { xs: '0.8rem', sm: '1.2rem' }
                                         }}
                                             variant='subtitle1'>
                                             Modalidades de entrega volanteo
                                         </Typography>
                                         {!isMobile && (
                                             <Typography sx={{
-                                                fontSize: { xs: '0.7rem', sm: '0.8rem' },
+                                                fontSize: { sm: '1rem' },
                                             }}
                                                 variant='body'>
                                                 Establecido por el cliente, público objetivo a quien va dirigido dicha publicidad,
@@ -231,12 +235,12 @@ export default function DistribucionPage() {
                     {!isMobile && (
                         <Box sx={{
                             backgroundImage: `url(${img2})`,
-                            backgroundSize: 'contain',
+                            backgroundSize: 'cover',
                             backgroundRepeat: 'no-repeat',
                             backgroundPosition: 'center',
                             width: "33%",
-                            minHeight: '25.5vh',
-                            maxHeight: '100vh',
+                            height: "100%",
+                            minHeight: '30vh',
                         }} />
                     )}
                 </Grid>

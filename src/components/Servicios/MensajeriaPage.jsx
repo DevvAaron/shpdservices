@@ -107,14 +107,14 @@ export default function MensajeriaPage() {
                         }}>
                             <Typography sx={{
                                 fontWeight: 'bold',
-                                fontSize: { xs: '1rem', sm: '1.6rem' }
+                                fontSize: { xs: '1.2rem', sm: '1.6rem', md:'2rem' }
                             }}
                                 variant='h5'>
                                 Mensajeria Masivos
                             </Typography>
                             <Typography sx={{
                                 height: '100%',
-                                fontSize: { xs: '0.7rem', sm: '0.9rem', md: '1rem' },
+                                fontSize: { xs: '1rem', sm: '1.2rem', md: '1.4rem' },
                                 textAlign: 'justify'
                             }} variant='body'>
                                 Servicio especializado en entrega de grandes volúmenes de envíos con peso entre 20 a 500 grs.
@@ -127,7 +127,7 @@ export default function MensajeriaPage() {
                                     <Stack spacing={2}>
                                         <Typography sx={{
                                             fontWeight: 'bold',
-                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            fontSize: { xs: '1.1rem', sm: '1.5rem' }
                                         }}
                                             variant='subtitle1'>
                                             Tipos de Servicio:
@@ -138,7 +138,7 @@ export default function MensajeriaPage() {
                                             <Grid size={{ xs: 6, md: 4 }}>
                                                 <Typography sx={{
                                                     fontWeight: 'bold',
-                                                    fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                    fontSize: { xs: '1rem', sm: '1.1rem' }
                                                 }}
                                                     variant='subtitle2'>
                                                     - Servicio de 1, 2, 3 y 4 días.
@@ -147,7 +147,7 @@ export default function MensajeriaPage() {
                                             <Grid size={{ xs: 6, md: 4 }}>
                                                 <Typography sx={{
                                                     fontWeight: 'bold',
-                                                    fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                    fontSize: { xs: '1rem', sm: '1.1rem' }
                                                 }}
                                                     variant='subtitle2'>
                                                     - Volanteo personalizado
@@ -156,7 +156,7 @@ export default function MensajeriaPage() {
                                             <Grid size={{ xs: 8, md: 4 }}>
                                                 <Typography sx={{
                                                     fontWeight: 'bold',
-                                                    fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                    fontSize: { xs: '1rem', sm: '1.1rem' }
                                                 }}
                                                     variant='subtitle2'>
                                                     - Volanteo Simple
@@ -174,6 +174,7 @@ export default function MensajeriaPage() {
                 <Grid container sx={{
                     borderRadius: '2rem',
                     backgroundColor: "#54f9ff41",
+                    justifyContent: 'center',
                     width: '100%',
                     height: '100%',
                     maxHeight: { xs: '60vh', md: '85vh' }
@@ -185,14 +186,14 @@ export default function MensajeriaPage() {
                             }}>
                                 <Typography sx={{
                                     fontWeight: 'bold',
-                                    fontSize: { xs: '1rem', sm: '1.6rem' }
+                                    fontSize: { xs: '1rem', sm: '1.6rem',md:'2rem' }
                                 }}
                                     variant='h5'>
                                     Mensajeria Express
                                 </Typography>
                                 <Typography sx={{
                                     height: '100%',
-                                    fontSize: { xs: '0.7rem', sm: '0.9rem', md: '1rem' },
+                                    fontSize: { xs: '1rem', sm: '1.2rem', md: '1.5rem' },
                                     textAlign: 'justify'
                                 }} variant='body'>
                                     Distribución Urgente de sus documentos y/o paquetes, a nivel Local en tiempos reales de tránsito, con la confirmación de entrega vía teléfono para su tranquilidad y satisfacción.
@@ -209,16 +210,16 @@ export default function MensajeriaPage() {
                                     <Grid size={{ xs: 6, }}>
                                         <Typography sx={{
                                             fontWeight: 'bold',
-                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            fontSize: { xs: '1.1rem', sm: '1.4rem' }
                                         }}
                                             variant='subtitle1'>
-                                            Tiempos de Distribución:
+                                            Tiempos de Distribución
                                         </Typography>
                                     </Grid>
                                     <Grid size={{ xs: 6, }}>
                                         <Typography sx={{
                                             fontWeight: 'bold',
-                                            fontSize: { xs: '0.8rem', sm: '1rem' }
+                                            fontSize: { xs: '1.1rem', sm: '1.5rem' }
                                         }}
                                             variant='subtitle1'>
                                             Zonas de Distribución
@@ -228,14 +229,14 @@ export default function MensajeriaPage() {
                                         <Stack spacing={1}>
                                             <Typography sx={{
                                                 fontWeight: 'bold',
-                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                fontSize: { xs: '1rem', sm: '1.1rem' }
                                             }}
                                                 variant='subtitle2'>
                                                 - Servicio Express (04 a 06 hrs)
                                             </Typography>
                                             <Typography sx={{
                                                 fontWeight: 'bold',
-                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                fontSize: { xs: '1rem', sm: '1.1rem' }
                                             }}
                                                 variant='subtitle2'>
                                                 - Servicio Express (05 a 07 hrs)
@@ -246,21 +247,21 @@ export default function MensajeriaPage() {
                                         <Stack spacing={1}>
                                             <Typography sx={{
                                                 fontWeight: 'bold',
-                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                fontSize: { xs: '1rem', sm: '1.1rem' }
                                             }}
                                                 variant='subtitle2'>
                                                 - Urbana
                                             </Typography>
                                             <Typography sx={{
                                                 fontWeight: 'bold',
-                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                fontSize: { xs: '1rem', sm: '1.1rem' }
                                             }}
                                                 variant='subtitle2'>
                                                 - Periférica
                                             </Typography>
                                             <Typography sx={{
                                                 fontWeight: 'bold',
-                                                fontSize: { xs: '0.8rem', sm: '1rem' }
+                                                fontSize: { xs: '1rem', sm: '1.1rem' }
                                             }}
                                                 variant='subtitle2'>
                                                 - Extrema

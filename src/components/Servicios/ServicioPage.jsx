@@ -175,7 +175,7 @@ export default function ServiciosPage() {
                     <Box sx={{
                         position: 'absolute',
                         height: '70%',
-                        top: { xs: '20%', sm: '15%' },
+                        top: '10%',
                         left: { xs: '5%', sm: '20%', md: '25%' },
                         right: { xs: '5%', sm: '5%' },
                         color: '#fff',
@@ -193,7 +193,7 @@ export default function ServiciosPage() {
                         <Titulo1 titulo={'Servicio de Distribucion'}
                             subtitulo={'Nos esforzamos por cumplir los plazos establecidos en nuestras entregas'}
                             sxSubtitulo={{
-                                fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
+                                fontSize: { xs: '1.2rem', sm: '1.4rem', md: '1.2rem' },
                             }}
                             sx={{
                                 position: 'relative',
@@ -270,8 +270,8 @@ export default function ServiciosPage() {
                     </Box>
                     <Box sx={{
                         position: 'absolute',
-                        height: '70%',
-                        top: { xs: '20%', sm: '15%' },
+                        height: '75%',
+                        top: { xs: '10%', sm: '10%' },
                         left: { xs: '5%', sm: '20%', md: '25%' },
                         right: { xs: '5%', sm: '5%' },
                         color: '#fff',
@@ -289,7 +289,7 @@ export default function ServiciosPage() {
                         <Titulo1 titulo={'Servicio de Mensajeria'}
                             subtitulo={'Ofrecemos cobertura total para sus necesidades logísticas, desde la distribución de grandes volúmenes hasta la entrega urgente de documentos críticos.'}
                             sxSubtitulo={{
-                                fontSize: { xs: '0.9rem', sm: '1.1rem', md: '0.9rem' },
+                                fontSize: { xs: '1.2rem', sm: '1.3rem', md: '1.2rem' },
                             }}
                             sx={{
                                 position: 'relative',

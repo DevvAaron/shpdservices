@@ -392,7 +392,7 @@ export default function ContactoPage() {
                                             }}
                                             subtitulo={'De lunes a sabado 9 a.m a 6 p.m'}
                                             sxSubtitulo={{
-                                                fontSize: '0.8rem',
+                                                fontSize: '0.9rem',
                                             }}>
                                             <Horario />
                                         </Titulo1>
@@ -422,7 +422,7 @@ export default function ContactoPage() {
                                             }}
                                             subtitulo={'Avenida Morelos 163 A101 Congreso de la unión y la Viga Jamaica C.P. 15800 VENUSTIANO CARRANZA, CDMX'}
                                             sxSubtitulo={{
-                                                fontSize: '0.8rem',
+                                                fontSize: '0.9rem',
                                             }} />
                                     </Box>
                                     <Box sx={{
@@ -450,7 +450,7 @@ export default function ContactoPage() {
                                             }}
                                             subtitulo={'767-53322 // 767-53323'}
                                             sxSubtitulo={{
-                                                fontSize: '0.8rem',
+                                                fontSize: '0.9rem',
                                             }} />
                                     </Box>
                                     <Box sx={{
@@ -479,7 +479,7 @@ export default function ContactoPage() {
                                             }}
                                             subtitulo={'informes@sphdservices.com // ventas@sphdservices.com'}
                                             sxSubtitulo={{
-                                                fontSize: '0.8rem',
+                                                fontSize: '0.9rem',
                                             }} />
                                     </Box>
 
