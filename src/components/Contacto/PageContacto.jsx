@@ -1,5 +1,5 @@
 import { Box, TextField, Button } from "@mui/material";
-import Navbar from "../Header/Navbar";
+import Navbar from "../ComponenteNavbar";
 import Footer from "../ComponenteFooter";
 import { Subtitulo, Titulo1 } from '../Hoocks/Titulos';
 import LocationOnIcon from '@mui/icons-material/LocationOn';

@@ -1,8 +1,7 @@
 import { Box } from '@mui/material'
-import { Titulo1 } from '../Hoocks/Titulos'
+import { Titulo1 } from '../hoocks/Titulos'
 import AssistantPhotoOutlinedIcon from '@mui/icons-material/AssistantPhotoOutlined';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 export default function Valores() {
     return (
         <Box name='Contenedor Valores'
@@ -33,9 +32,7 @@ export default function Valores() {
                 alignItems: 'center',
                 flexDirection: { xs: 'column', md: 'row' },
             }}>
-
                 <Box sx={{
-
                     position: 'relative',
                     alignItems: 'center',
                     backgroundColor: '#54f9ff41',

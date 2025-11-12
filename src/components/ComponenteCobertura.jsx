@@ -1,5 +1,5 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material';
-import { Titulo1 } from './Hoocks/Titulos';
+import { Titulo1 } from '../hoocks/Titulos';
 import flecha from '../assets/flecha.png';
 import mundo from '../assets/mundo.png';
 import blackEmail from '../assets/emailwhite.png';
@@ -57,7 +57,7 @@ export const Cobertura1 = () => {
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: 'contain',
                     height: '100vh',
-                    maxHeight: { md: '80vh' }
+                    maxHeight: { xs: '20vh', md: '80vh' }
 
                 }}
             />

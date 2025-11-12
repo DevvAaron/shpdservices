@@ -1,21 +1,19 @@
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import ScrollToTop from './components/Hoocks/ScrollToTop';
+import ScrollToTop from './hoocks/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 import Programacion from './components/ProgramarEnvio/Programacion';
 import Inicio from './pages/PageInicio';
 import Seguimiento from './components/Seguimiento/Seguimiento';
-import Ayuda from './components/Ayuda/PageAyuda';
-import Contacto from './components/Contacto/PageContacto';
-import ZonaClientes from './components/ZonaClientes/ZonaClientes';
+import ZonaClientes from './pages/PageZonaClientes';
 
-import AcercaDe from './components/Acercade/Acerca';
-import ServiciosPage from './components/Servicios/ServicioPage';
+import AcercaDe from './pages/PageAcercaDe';
+import ServiciosPage from './pages/PageServicio';
 import 'animate.css';
 import ContactoPage from './components/Contacto/ContactoPage';
 import ResultadoSeg from './components/Seguimiento/ResultadoSeg';
-import DistribucionPage from './components/Servicios/DistribucionPage';
-import MensajeriaPage from './components/Servicios/MensajeriaPage';
+import DistribucionPage from './pages/PageDistribucion';
+import MensajeriaPage from './pages/PageMensajeria';
 function AnimatedRoutes() {
   const location = useLocation();
 
@@ -24,21 +22,17 @@ function AnimatedRoutes() {
       <ScrollToTop />
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Inicio />} />
+        <Route path="/acercaDe" element={<AcercaDe />} />
         <Route path="/programacion" element={<Programacion />} />
         <Route path="/seguimiento" element={<Seguimiento />} />
-        <Route path="/ayuda" element={<Ayuda />} />
         <Route path="/contacto" element={<ContactoPage />} />
-        <Route path="/acercaDe" element={<AcercaDe />} />
         <Route path='/servicios' element={<ServiciosPage />} />
         <Route path='/servicios/distribucion' element={<DistribucionPage />} />
         <Route path='/servicios/mensajeria' element={<MensajeriaPage />} />
         <Route path="/zonaClientes" element={<ZonaClientes />} />
-        <Route path='/nosotros' element={<Programacion />} />
-        <Route path='/contacto' element={<Programacion />} />
         <Route path='/terminos' element={<Programacion />} />
         <Route path='/brouchers' element={<Programacion />} />
         <Route path='/politica' element={<Programacion />} />
-        <Route path='/programacion' element={<Programacion />} />
         <Route path="/seguimiento/:trackingID" element={<ResultadoSeg />} />
       </Routes>
     </AnimatePresence>

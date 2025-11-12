@@ -1,5 +1,4 @@
 import { Box, Typography } from '@mui/material'
-
 export const Titulo1 = ({ titulo, subtitulo, style = {}, sx = {}, sxSubtitulo = {}, children }) => {
     return (
         <Box sx={{ textAlign: 'center', ...sx }}>
@@ -35,7 +34,6 @@ export const Titulo2 = ({ titulo, sx = {} }) => {
         </Box>
     );
 };
-
 export const Titulo3 = ({ titulo, subtitulo, style, mostrarLink = false }) => {
     return (
         <div className="titulo-animado" style={{

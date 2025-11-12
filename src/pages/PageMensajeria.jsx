@@ -1,16 +1,19 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import Navbar from "../Header/Navbar";
-import { Titulo1 } from "../Hoocks/Titulos";
+import { useEffect, useState } from "react";
+import { Titulo1 } from "../hoocks/Titulos";
 import FondoInicio from "../hoocks/FondoInicio";
-import { Box, Typography, Stack, Grid } from "@mui/material";
-import Footer from "../ComponenteFooter";
+import Footer from "../components/ComponenteFooter";
+import Navbar from "../components/ComponenteNavbar";
 
 
-import img3 from '../../assets/mensajeriaMasiva.png'
-import img4 from '../../assets/mensajeriaExpress.png'
+import img3 from '../assets/mensajeriaMasiva.png'
+import img4 from '../assets/mensajeriaExpress.png'
+
+import { motion } from 'framer-motion';
+import { Box, Typography, Stack, Grid, Container } from "@mui/material";
+
 export default function MensajeriaPage() {
 
+    const MotionGrid = motion.create(Grid);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
 
     useEffect(() => {
@@ -20,8 +23,9 @@ export default function MensajeriaPage() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
     return (
-        <main>
+        <Container disableGutters maxWidth={false}>
             <Navbar sx={{
                 position: 'fixed',
                 justifyContent: 'center',
@@ -39,23 +43,7 @@ export default function MensajeriaPage() {
                     height: '100vh',
                     width: '100%'
                 }}>
-                {/* {!isMobile && (<Box
-                    name='TrianguloIzquierda'
-                    sx={{
-                        position: 'absolute',
-                        zIndex: 2,
-                        top: '10%',
-                        left: '2%',
-                        backgroundImage: `url(${tri1})`,
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                        height: '35rem',
-                        width: '35rem'
-                    }}
-                />)} */}
                 <FondoInicio>
-
                     <Titulo1 titulo={'Mensajeria'} sx={{
                         position: 'relative',
                         fontSize: '3rem',
@@ -69,27 +57,33 @@ export default function MensajeriaPage() {
                 </FondoInicio>
             </Box>
 
-            <Box name='Servicio Box'
+            <Box
                 sx={{
                     display: 'flex',
                     backgroundColor: '#fff',
-                    flexDirection: 'row',
                     flexWrap: 'wrap',
                     height: '100%',
-                    boxSizing: 'border-box',
                     justifyContent: 'center',
-                    p: { xs: '1rem', sm: '2rem' },
+                    py: 4,
                     gap: '2rem',
                     width: '100%'
                 }}
             >
-                <Grid container sx={{
-                    borderRadius: '2rem',
-                    backgroundColor: "#54f9ff41",
-                    width: '100%',
-                    height: '100%',
-                    maxHeight: { xs: '60vh', md: '85vh' }
-                }}>
+                <MotionGrid container
+                    initial={{ opacity: 0, y: -100, x: -50 }}
+                    animate={{ opacity: 1, y: 0, x: 0 }}
+                    transition={{
+                        duration: 1,
+                        type: "spring",
+                        stiffness: 120,
+                        damping: 100,
+                    }} sx={{
+                        width: '90%',
+                        borderRadius: '2rem',
+                        backgroundColor: "#54f9ff41",
+                        height: '100%',
+                        maxHeight: { xs: '60vh', md: '85vh' }
+                    }}>
                     {!isMobile && (
                         <Box sx={{
                             backgroundImage: `url(${img3})`,
@@ -107,7 +101,7 @@ export default function MensajeriaPage() {
                         }}>
                             <Typography sx={{
                                 fontWeight: 'bold',
-                                fontSize: { xs: '1.2rem', sm: '1.6rem', md:'2rem' }
+                                fontSize: { xs: '1.2rem', sm: '1.6rem', md: '2rem' }
                             }}
                                 variant='h5'>
                                 Mensajeria Masivos
@@ -169,16 +163,25 @@ export default function MensajeriaPage() {
                             </Grid>
                         </Stack>
                     </Grid>
-                </Grid>
+                </MotionGrid>
 
-                <Grid container sx={{
-                    borderRadius: '2rem',
-                    backgroundColor: "#54f9ff41",
-                    justifyContent: 'center',
-                    width: '100%',
-                    height: '100%',
-                    maxHeight: { xs: '60vh', md: '85vh' }
-                }}>
+
+                <MotionGrid container
+                    initial={{ opacity: 0, y: 100, x: 50 }}
+                    animate={{ opacity: 1, y: 0, x: 0 }}
+                    transition={{
+                        duration: 1,
+                        type: "spring",
+                        stiffness: 120,
+                        damping: 100,
+                    }} sx={{
+                        width: '90%',
+                        borderRadius: '2rem',
+                        backgroundColor: "#54f9ff41",
+                        justifyContent: 'center',
+                        height: '100%',
+                        maxHeight: { xs: '60vh', md: '85vh' }
+                    }}>
                     <Stack direction={'row'}>
                         <Grid name='Mensajeria Express' size={{ xs: 12, md: 8 }} >
                             <Stack spacing={2} sx={{
@@ -186,7 +189,7 @@ export default function MensajeriaPage() {
                             }}>
                                 <Typography sx={{
                                     fontWeight: 'bold',
-                                    fontSize: { xs: '1rem', sm: '1.6rem',md:'2rem' }
+                                    fontSize: { xs: '1rem', sm: '1.6rem', md: '2rem' }
                                 }}
                                     variant='h5'>
                                     Mensajeria Express
@@ -283,11 +286,11 @@ export default function MensajeriaPage() {
                             }} />
                         )}
                     </Stack>
-                </Grid>
+                </MotionGrid>
 
             </Box>
             {/*Footer */}
             <Footer />
-        </main>
+        </Container>
     )
 }

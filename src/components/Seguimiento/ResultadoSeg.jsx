@@ -9,11 +9,11 @@ import axios from 'axios';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
-import ImageViewerModal from '../hoocks/ImageViewerModel';
+import ImageViewerModal from '../../hoocks/ImageViewerModel';
 import { InfoEnvio } from '../../data/envios'; // ajusta la ruta si es necesario
-import { Titulo1 } from '../Hoocks/Titulos';
-import FondoInicio from '../hoocks/FondoInicio';
-import Navbar from '../Header/Navbar';
+import { Titulo1 } from '../../hoocks/Titulos';
+import FondoInicio from '../../hoocks/FondoInicio';
+import Navbar from '../ComponenteNavbar';
 import { useEffect } from 'react';
 
 const getIconComponent = (iconName) => {

@@ -1,20 +1,27 @@
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Box, Button } from '@mui/material';
-import Navbar from "../Header/Navbar";
-import Footer from "../ComponenteFooter";
-import { Cobertura1 } from '../ComponenteCobertura';
-import { Titulo1 } from "../Hoocks/Titulos";
+
+import Navbar from "../components/ComponenteNavbar";
+import Footer from "../components/ComponenteFooter";
+import { Cobertura1 } from '../components/ComponenteCobertura';
+
+import form1 from '../assets/form1.jpg'
+import form2 from '../assets/form2.jpg'
+import formfond from '../assets/formfond.png'
+
+
+import { Titulo1 } from "../hoocks/Titulos";
 import BarraProgresiva from '../hoocks/BarraProgresiva';
 import FondoInicio from '../hoocks/FondoInicio';
-import img1 from '../../assets/fondo.png'
-import form1 from '../../assets/form1.jpg'
-import form2 from '../../assets/form2.jpg'
-import formfond from '../../assets/formfond.png'
+
+import { motion } from 'framer-motion';
+
+import { Box, Button, Container } from '@mui/material';
+
 export default function ZonaClientes() {
+
+    const MotionBox = motion.create(Box);
     //Estados
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
     const stepsMap = {
         "/": 1,
         "/acercaDe": 2,
@@ -22,16 +29,8 @@ export default function ZonaClientes() {
         "/zonaClientes": 4
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
     return (
-        <Box
+        <Container disableGutters maxWidth={false}
             sx={{
                 flex: 1,
                 display: "flex",
@@ -55,17 +54,13 @@ export default function ZonaClientes() {
                     height: '100vh',
                     width: '100%'
                 }}>
-                <>
-                    <BarraProgresiva steps={4} activeStep={stepsMap[location.pathname] || 1} sx={{
-                        position: 'absolute',
-                        top: '92.5%',
-                        left: { xs: '0%', sm: '0%', md: '-40%' },
-                        zIndex: '2',
-                        width: '100%'
-                    }} />
-                </>
-
-
+                <BarraProgresiva steps={4} activeStep={stepsMap[location.pathname] || 1} sx={{
+                    position: 'absolute',
+                    top: '92.5%',
+                    left: { xs: '0%', sm: '0%', md: '-40%' },
+                    zIndex: '2',
+                    width: '100%'
+                }} />
                 <FondoInicio>
                     <Box
                         sx={{
@@ -86,9 +81,7 @@ export default function ZonaClientes() {
                             left: '0.5rem',
                             color: '#0000009f',
                             transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
-                            display: 'inline-block'
                         }} />
-
                     </Box>
                 </FondoInicio>
             </Box>
@@ -124,14 +117,23 @@ export default function ZonaClientes() {
                             backgroundPosition: 'center',
                         }}
                     />
-                    <Box sx={{
-                        position: 'relative',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        gap: '2rem',
-                        zIndex: 5
-                    }}>
+                    <MotionBox
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                            duration: 1,
+                            type: "spring",
+                            stiffness: 120,
+                            damping: 100,
+                        }}
+                        sx={{
+                            position: 'relative',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: '2rem',
+                            zIndex: 5
+                        }}>
                         <Box sx={{
                             borderRadius: '3rem',
                             border: '0.5rem solid #13B5EA',
@@ -165,14 +167,23 @@ export default function ZonaClientes() {
                         </a>
 
 
-                    </Box>
+                    </MotionBox>
 
-                    <Box sx={{
-                        display: 'flex', flexDirection: 'column',
-                        alignItems: 'center',
-                        gap: { xs: '1rem', sm: '2rem' },
-                        zIndex: 5
-                    }}>
+                    <MotionBox
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                            duration: 1,
+                            type: "spring",
+                            stiffness: 120,
+                            damping: 100,
+                        }}
+                        sx={{
+                            display: 'flex', flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: { xs: '1rem', sm: '2rem' },
+                            zIndex: 5
+                        }}>
 
                         <Box sx={{
                             borderRadius: '3rem',
@@ -204,7 +215,7 @@ export default function ZonaClientes() {
                                 Agentes
                             </Button>
                         </a>
-                    </Box>
+                    </MotionBox>
                 </Box>
             </Box>
             {/*Tercer Box*/}
@@ -241,6 +252,6 @@ export default function ZonaClientes() {
             </Box >
 
             <Footer />
-        </Box>
+        </Container>
     )
 }

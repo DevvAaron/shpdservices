@@ -2,9 +2,11 @@ import { Box } from '@mui/material'
 
 import { motion } from 'framer-motion';
 
-import fondo1 from '../../assets/fondo.png';
+import fondo1 from '../assets/fondo.png';
 
 export default function FondoInicio({ children }, nombre = {}) {
+    const MotionBox = motion.create(Box)
+
     return (
         <Box
             name={nombre}
@@ -18,8 +20,7 @@ export default function FondoInicio({ children }, nombre = {}) {
         >
 
             {/* Primer Box (Imagen Actual) */}
-            <motion.div
-                name='hola'
+            <MotionBox
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.9 }}
                 transition={{ duration: 0.8 }}
@@ -48,7 +49,7 @@ export default function FondoInicio({ children }, nombre = {}) {
                         },
                     }}
                 />
-            </motion.div>
+            </MotionBox>
 
             {/* Mitad blanca con opacidad */}
             <Box

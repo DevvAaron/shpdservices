@@ -4,15 +4,15 @@ import {
     Box,
 } from '@mui/material'
 import { useEffect, useState } from 'react';
-import Navbar from "../Header/Navbar"
+import Navbar from "../ComponenteNavbar"
 import fondo from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
 import Footer from '../ComponenteFooter';
 import Ayuda from '../ComponenteAyuda';
 import ResultadoSeg from './ResultadoSeg';
-import { Titulo1 } from '../Hoocks/Titulos';
-import BarraProgresiva from '../hoocks/BarraProgresiva';
-import FondoInicio from '../hoocks/FondoInicio';
+import { Titulo1 } from '../../hoocks/Titulos';
+import BarraProgresiva from '../../hoocks/BarraProgresiva';
+import FondoInicio from '../../hoocks/FondoInicio';
 import tri2 from '../../assets/triangulo-2.png'
 const InfoEnvio = [
     {

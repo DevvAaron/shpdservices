@@ -1,6 +1,6 @@
 
 import { Box, Typography, Divider } from "@mui/material";
-import { Titulo2 } from "./Hoocks/Titulos";
+import { Titulo2 } from "../hoocks/Titulos";
 import { Link } from "react-router-dom";
 const Footer = () => {
 

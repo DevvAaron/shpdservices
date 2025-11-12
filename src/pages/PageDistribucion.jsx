@@ -1,20 +1,19 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import Navbar from "../Header/Navbar";
-import { Titulo1 } from "../Hoocks/Titulos";
+import { useEffect, useState } from "react";
+import { Titulo1 } from "../hoocks/Titulos";
 import FondoInicio from "../hoocks/FondoInicio";
-import { Box, Typography, Stack, Grid } from "@mui/material";
-import Footer from "../ComponenteFooter";
+import Footer from "../components/ComponenteFooter";
+import Navbar from "../components/ComponenteNavbar";
 
-import img1 from '../../assets/impresionDistribucion.png'
-import img2 from '../../assets/volantesDistribucion.png'
+import img1 from '../assets/impresionDistribucion.png'
+import img2 from '../assets/volantesDistribucion.png'
 
-import { useNavigate } from "react-router-dom";
+import { Box, Container, Typography, Stack, Grid } from "@mui/material";
+import { motion } from 'framer-motion';
 export default function DistribucionPage() {
 
-    const router = useNavigate();
+    const MotionGrid = motion.create(Grid);
+    const MotionBox = motion.create(Box);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
-
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
@@ -22,11 +21,11 @@ export default function DistribucionPage() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
     return (
-        <main>
+        <Container disableGutters maxWidth={false}>
             <Navbar sx={{
                 position: 'fixed',
-                justifyContent: 'center',
                 top: 0,
                 left: 0,
                 width: '100%',
@@ -41,23 +40,7 @@ export default function DistribucionPage() {
                     height: '100vh',
                     width: '100%'
                 }}>
-                {/* {!isMobile && (<Box
-                    name='TrianguloIzquierda'
-                    sx={{
-                        position: 'absolute',
-                        zIndex: 2,
-                        top: '10%',
-                        left: '2%',
-                        backgroundImage: `url(${tri1})`,
-                        backgroundSize: 'contain',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                        height: '35rem',
-                        width: '35rem'
-                    }}
-                />)} */}
                 <FondoInicio>
-
                     <Titulo1 titulo={'Distribucion'} sx={{
                         position: 'relative',
                         fontSize: '3rem',
@@ -66,7 +49,6 @@ export default function DistribucionPage() {
                         left: '0.5rem',
                         color: '#0000009f',
                         transform: { md: 'rotate(-24.5deg)' }, // 👈 gira 25° hacia la izquierda
-                        display: 'inline-block'
                     }} />
                 </FondoInicio>
             </Box>
@@ -81,11 +63,18 @@ export default function DistribucionPage() {
                     justifyContent: 'center',
                     p: { xs: '1rem', sm: '2rem' },
                     gap: '2rem',
-                    width: '100%'
                 }}
             >
 
-                <Box
+                <MotionBox
+                    initial={{ opacity: 0, y: -100, x: 50 }}
+                    animate={{ opacity: 1, y: 0, x: 0 }}
+                    transition={{
+                        duration: 1,
+                        type: "spring",
+                        stiffness: 120,
+                        damping: 100,
+                    }}
                     sx={{
                         display: 'flex',
                         width: '100%',
@@ -136,15 +125,22 @@ export default function DistribucionPage() {
                             nos permiten atenderlo con costos altamente competitivos.
                         </Typography>
                     </Box>
-                </Box>
-                <Grid container sx={{
-                    borderRadius: '2rem',
-                    alignItems: 'center',
-                    backgroundColor: "#54f9ff41",
-                    width: '100%',
-                    height: '100%',
-                    maxHeight: { xs: '60vh', md: '85vh' }
-                }}>
+                </MotionBox>
+                <MotionGrid container
+                    initial={{ opacity: 0, y: 100, x: -50 }}
+                    animate={{ opacity: 1, y: 0, x: 0 }}
+                    transition={{
+                        duration: 1,
+                        type: "spring",
+                        stiffness: 120,
+                        damping: 100,
+                    }} sx={{
+                        borderRadius: '2rem',
+                        alignItems: 'center',
+                        backgroundColor: "#54f9ff41",
+                        height: '100%',
+                        maxHeight: { xs: '60vh', md: '85vh' }
+                    }}>
                     <Grid name='Distribución de volantes' size={{ xs: 12, md: 8 }} >
                         <Stack spacing={2} sx={{
                             p: '1rem',
@@ -243,11 +239,11 @@ export default function DistribucionPage() {
                             minHeight: '30vh',
                         }} />
                     )}
-                </Grid>
+                </MotionGrid>
             </Box>
 
             {/*Footer */}
             <Footer />
-        </main>
+        </Container >
     )
 }

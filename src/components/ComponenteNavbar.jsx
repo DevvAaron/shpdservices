@@ -1,16 +1,18 @@
-// src/components/Header/Navbar.jsx
+
 import React, { useState, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import logo from '../../assets/logo.png';
-import logo2 from '../../assets/logo2.png';
 import { Box, IconButton, Tooltip, TextField } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import contactoIcon from '../../assets/wspblack.png';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/logo.png';
+import logo2 from '../assets/logo2.png';
+import contactoIcon from '../assets/wspblack.png';
+import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import SearchIcon from '@mui/icons-material/Search';
+
+
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -20,7 +22,20 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null); // móvil
   const [openDesktopSubmenu, setOpenDesktopSubmenu] = useState(null); // desktop
-
+  const navbarHeight = scrolled ? 60 : 80;
+  const navigationLinks = [
+    { to: '/', label: 'Principal' },
+    { to: '/acercaDe', label: 'Acerca de' },
+    {
+      label: 'Servicios',
+      to: '/servicios',
+      subItems: [
+        { to: '/servicios/distribucion', label: 'Distribución' },
+        { to: '/servicios/mensajeria', label: 'Mensajeria' }
+      ]
+    },
+    { to: '/zonaClientes', label: 'Zona de Clientes' }
+  ];
 
   const handleBuscar = () => {
     if (trackingID.trim() !== "") {
@@ -28,17 +43,9 @@ const Navbar = () => {
       setTrackingID(""); // limpiar después de buscar
     }
   };
-  const handleMobileMenuClick = (to, label, hasSubItems) => {
-    if (hasSubItems) {
-      setOpenSubmenu(prev => (prev === label ? null : label));
-    } else if (to) {
-      navigate(to);
-      setMenuOpen(false); // Cierra el menú móvil al navegar
-    }
-  };
 
   useEffect(() => {
-    // Detecta contenedor con scroll (soporta body / document.scrollingElement / window)
+
     const getScrollContainer = () => {
       const body = document.body;
       const bodyStyle = getComputedStyle(body);
@@ -88,23 +95,9 @@ const Navbar = () => {
         scrollEl.removeEventListener('scroll', handleScroll);
       }
     };
+
   }, []);
 
-  const navbarHeight = scrolled ? 60 : 80;
-
-  const navigationLinks = [
-    { to: '/', label: 'Principal' },
-    { to: '/acercaDe', label: 'Acerca de' },
-    {
-      label: 'Servicios',
-      to: '/servicios',
-      subItems: [
-        { to: '/servicios/distribucion', label: 'Distribución' },
-        { to: '/servicios/mensajeria', label: 'Mensajeria' }
-      ]
-    },
-    { to: '/zonaClientes', label: 'Zona de Clientes' }
-  ];
 
   return (
     <Box
@@ -115,15 +108,12 @@ const Navbar = () => {
         color: '#fff',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',
         transition: 'background-color 0.25s ease, height 0.2s ease, box-shadow 0.2s ease',
         position: 'fixed',
-        top: 0,
-        left: 0,
         zIndex: 1200,
         height: `${navbarHeight}px`,
         px: { xs: 1.5, sm: 3 },
-        boxShadow: scrolled ? '0 6px 18px rgba(0,0,0,0.12)' : 'none'
+        boxShadow: scrolled ? '2px 1px 10px rgba(0, 0, 0, 0.5)' : 'none'
       }}
     >
       {/* Logo */}
@@ -132,8 +122,7 @@ const Navbar = () => {
           src={scrolled ? logo2 : logo}
           alt="Logo"
           style={{
-            marginLeft: '1rem',
-            height: scrolled ? 40 : 56,
+            height: scrolled ? 40 : 50,
             transition: 'height 0.2s ease, transform 0.2s ease'
           }}
         />
@@ -141,22 +130,20 @@ const Navbar = () => {
 
       {/* Desktop links */}
       {!isMobile && (
-        <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', paddingRight: '2rem' }}>
+        <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-evenly', alignItems: 'center', }}>
           {navigationLinks.map(({ to, label, subItems }) => (
             <Box
               key={to || label}
-              sx={{ position: 'relative' }}
+              sx={{ position: 'relative', }}
               onMouseEnter={() => subItems && setOpenDesktopSubmenu(label)}
               onMouseLeave={() => subItems && setOpenDesktopSubmenu(null)}
             >
-              {/* main label */}
               <Box
                 component={NavLink}
                 to={to}
-                // Si tiene subItems, prevenimos que el hover de NavLink añada la línea azul
-                sx={ {cursor: 'pointer', padding: '0.3rem 0.6rem', color: '#fff', textDecoration: 'none' 
-                  
-               } }
+                sx={{
+                  cursor: 'pointer', padding: '0.3rem 0.6rem', color: '#fff', textDecoration: 'none'
+                }}
               >
                 {label}
               </Box>
@@ -166,7 +153,7 @@ const Navbar = () => {
                 <AnimatePresence>
                   {openDesktopSubmenu === label && (
                     <motion.div
-                      initial={{ opacity: 0, y: -6 }}
+                      initial={{ opacity: 0, y: -6, translateX: '-20%' }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.18 }}
@@ -174,14 +161,12 @@ const Navbar = () => {
                         position: 'absolute',
                         top: '100%',
                         left: 0,
-                        minWidth: 180,
-                        borderRadius: 6, background: "#13B5EA",
+                        minWidth: 100,
+                        background: "#13b4ea82",
                         boxShadow: '0 8px 20px rgba(0,0,0,0.15)',
                         zIndex: 1300,
-                        padding: '6px 8px',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: 6
                       }}
                     >
                       {subItems.map(sub => (

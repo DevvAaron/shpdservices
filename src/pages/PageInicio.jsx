@@ -5,8 +5,8 @@ import {
 import { Cobertura1 } from '../components/ComponenteCobertura';
 import Footer from '../components/ComponenteFooter';
 import Ayuda from '../components/ComponenteAyuda';
-import Navbar from '../components/Header/Navbar';
-import { Contenido, Subtitulo, Titulo1 } from '../components/Hoocks/Titulos';
+import Navbar from '../components/ComponenteNavbar';
+import { Contenido, Subtitulo, Titulo1 } from '../hoocks/Titulos';
 import 'animate.css';
 
 
@@ -18,8 +18,8 @@ import img4 from '../assets/img4.jpg';
 import img8 from '../assets/img8.png';
 
 
-import FondoInicio from '../components/hoocks/FondoInicio';
-import BarraProgresiva from '../components/hoocks/BarraProgresiva';
+import FondoInicio from '../hoocks/FondoInicio';
+import BarraProgresiva from '../hoocks/BarraProgresiva';
 
 export default function Inicio() {
 

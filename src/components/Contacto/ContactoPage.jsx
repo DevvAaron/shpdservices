@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Box, TextField, Button } from '@mui/material'
-import Navbar from '../Header/Navbar'
+import Navbar from '../ComponenteNavbar'
 import Footer from '../ComponenteFooter'
-import FondoInicio from '../hoocks/FondoInicio'
-import { Titulo1 } from '../Hoocks/Titulos'
-import Horario from '../hoocks/Horario'
+import FondoInicio from '../../hoocks/FondoInicio'
+import { Titulo1 } from '../../hoocks/Titulos'
+import Horario from '../../hoocks/Horario'
 import fondo1 from '../../assets/contactimg.png';
 
 export default function ContactoPage() {

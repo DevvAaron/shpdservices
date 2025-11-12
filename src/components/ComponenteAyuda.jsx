@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Titulo3 } from "./Hoocks/Titulos";
+import { Titulo3 } from "../hoocks/Titulos";
 import wspblack from '../assets/wspblack.png';
 import emailblack from '../assets/emailblack.png';
 

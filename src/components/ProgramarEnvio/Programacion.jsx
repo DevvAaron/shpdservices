@@ -7,13 +7,13 @@ import {
 import { motion } from 'framer-motion';
 
 import Footer from '../ComponenteFooter';
-import Navbar from "../Header/Navbar"
+import Navbar from "../ComponenteNavbar"
 import Ayuda from '../ComponenteAyuda';
 
 import fondo1 from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
 import fondo3 from '../../assets/fondo3.jpg'
-import { Titulo1 } from '../Hoocks/Titulos';
+import { Titulo1 } from '../../hoocks/Titulos';
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
