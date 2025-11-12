@@ -1,46 +1,28 @@
 
-import { useState, useEffect } from 'react';
 import {
-    Button, Stack,
-    Box, Grid
+    Button, Box, Grid, Container
 } from '@mui/material'
-import { Cobertura1 } from '../Cobertura/PageCobertura';
-import Footer from '../Footer/Footer';
-import Ayuda from '../Footer/Ayuda';
-import Navbar from '../Header/Navbar';
-import AnimatedBox from '../Hoocks/AnimatedBox';
-import { Contenido, Subtitulo, Titulo1 } from '../Hoocks/Titulos';
+import { Cobertura1 } from '../components/ComponenteCobertura';
+import Footer from '../components/ComponenteFooter';
+import Ayuda from '../components/ComponenteAyuda';
+import Navbar from '../components/Header/Navbar';
+import { Contenido, Subtitulo, Titulo1 } from '../components/Hoocks/Titulos';
 import 'animate.css';
 
 
 
-import img1 from '../../assets/img1.jpg';
-import img2 from '../../assets/img2.jpg';
-import img3 from '../../assets/img3.jpg';
-import img4 from '../../assets/img4.jpg';
-import img8 from '../../assets/img8.png';
+import img1 from '../assets/img1.jpg';
+import img2 from '../assets/img2.jpg';
+import img3 from '../assets/img3.jpg';
+import img4 from '../assets/img4.jpg';
+import img8 from '../assets/img8.png';
 
-import tri3 from '../../assets/triangulo-3.png'
 
-import FondoInicio from '../hoocks/FondoInicio';
-import BarraProgresiva from '../hoocks/BarraProgresiva';
-import MuiImageCarousel from '../hoocks/Carrusel';
+import FondoInicio from '../components/hoocks/FondoInicio';
+import BarraProgresiva from '../components/hoocks/BarraProgresiva';
 
 export default function Inicio() {
 
-    //Colecciones
-    const fondoImages = [img1, img2, img3, img4, img8]
-    const boxImg = [0, 3, 4, 7];
-    const titulot = [
-        "Servicios urgentes",
-        "Servicio las 24 Horas",
-        "Encomiendas",
-        "Impresión y Distribución"];
-    const desc = [
-        "Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos rápidos.",
-        "Servicio de calidad y responsabilidad, brindamos soluciones adecuadas a sus necesidades.",
-        "Servicio orientado a personas naturales o pequeños empresarios que quieren realizar envíos a bajo costo.",
-        "Deje su proceso de impresión y distribución en nuestras manos y optimice sus tiempos."];
     const stepsMap = {
         "/": 1,
         "/acercaDe": 2,
@@ -48,80 +30,8 @@ export default function Inicio() {
         "/contacto": 4,
     };
 
-
-    //Estados
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
-
-    let tituloIndex = 0;
-    let descIndex = 0;
-    let imagenIndex = 0;
-
-
-
-
-
-    // En el componente, antes del return:
-
-    // Separar items
-    const items = [...Array(8)].map((_, index) => {
-        const tieneImagen = boxImg.includes(index);
-        if (!tieneImagen) {
-            const fondoTexto = `${imagenIndex + 1}`;
-            const fondoActual = fondoImages[imagenIndex % fondoImages.length];
-            imagenIndex++;
-            return {
-                type: 'imagen',
-                index,
-                fondoTexto,
-                fondoActual,
-            };
-        } else {
-            const titulo = titulot[tituloIndex++];
-            const descripcion = desc[descIndex++];
-            return {
-                type: 'texto',
-                index,
-                titulo,
-                descripcion,
-            };
-        }
-    });
-
-    // Función para intercalar imagen-texto en móvil
-    const intercalarMobile = (items) => {
-        const imagenes = items.filter(i => i.type === 'imagen');
-        const textos = items.filter(i => i.type === 'texto');
-        const result = [];
-
-        const maxLen = Math.max(imagenes.length, textos.length);
-        for (let i = 0; i < maxLen; i++) {
-            if (i < imagenes.length) result.push(imagenes[i]);
-            if (i < textos.length) result.push(textos[i]);
-        }
-        return result;
-    };
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    // En el render:
-    const itemsToRender = isMobile ? intercalarMobile(items) : items;
-
     return (
-        <main
-            style={{
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                width: '100%',
-                backgroundColor: '#ff000000',
-            }}
-        >
+        <Container disableGutters maxWidth={false}>
             <Navbar />
 
             <Box
@@ -139,29 +49,9 @@ export default function Inicio() {
                     zIndex: 4,
                     width: '100%'
                 }} />
-                {/* {!isMobile && (
-                    <Box
-                        name='TrianguloArriba'
-                        sx={{
-                            position: 'absolute',
-                            zIndex: 1,
-                            top: '10%',
-                            left: '5%',
-                            backgroundImage: `url(${tri3})`,
-                            backgroundSize: 'contain',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'center',
-                            height: '35rem',
-                            width: '35rem'
-                        }}
-                    />
-                )} */}
-
-
 
                 {/* Primer Box (Imagen Actual) */}
                 <FondoInicio>
-
                     <Titulo1 titulo={'SERVICIO COURIRER'} sx={{
                         position: 'relative',
                         fontSize: '3rem',
@@ -459,19 +349,7 @@ export default function Inicio() {
                         zIndex: 1, background: 'linear-gradient(to top, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
                     }}
                 />
-                <Box
-                    sx={{
-                        position: 'relative',
-                        zIndex: 2,
-                        width: '100%',
-                        maxWidth: '1200px',
-                        margin: '0 auto',
-                        boxSizing: 'border-box',
-                        px: { xs: 2, sm: 4 }
-                    }}
-                >
-                    <Cobertura1 />
-                </Box>
+                <Cobertura1 />
             </Box>
 
 
@@ -483,7 +361,6 @@ export default function Inicio() {
                     justifyContent: "space-around",
                     padding: "0.55rem",
                     flexWrap: "wrap",
-
                     backdropFilter: 'blur(0.5px)',
                     WebkitBackdropFilter: 'blur(0.5px)',
                     zIndex: 1, background: 'linear-gradient(180deg, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
@@ -522,7 +399,7 @@ export default function Inicio() {
                         borderBottomRightRadius: '15px',
                     }}>
                         <Titulo1 titulo={"¡BIENVENIDOS!"}
-                            sx={{ fontSize: '3rem' }}
+                            sx={{ fontSize: { xs: '2rem', sm: '3rem' } }}
                             style={{
                                 textAlign: "center",
                             }} />
@@ -530,7 +407,7 @@ export default function Inicio() {
                         />
                         <Contenido contenido={"Somos una empresa, con un staff de profesionales altamente calificados, comprometidos con tu gestión, marcando una ventaja comparativa diferencial positiva."} />
                     </Box>
-                    <Box name='hola' sx={{
+                    <Box sx={{
                         display: "flex",
                         justifyContent: "flex-end",
                         p: 1
@@ -557,31 +434,13 @@ export default function Inicio() {
                 <Box
                     sx={{
                         backgroundImage: `url(${img8})`,
-                        backgroundSize: 'cover',
+                        backgroundSize: 'contain',
+                        backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center',
-                        borderRadius: '1rem',
-                        minHeight: {
-                            xs: '15rem',
-                            sm: '20rem',
-                            md: '25rem'
-                        },
-                        width: {
-                            xs: '15rem',   // móviles
-                            sm: '20rem',    // tablets
-                            md: '20rem',  // escritorios
-                        },
-                        p: {
-                            xs: 2,
-                            sm: 3,
-                            md: 4,
-                        },
-                        m: {
-                            xs: 1,
-                            sm: 2,
-                            md: 2,
-                        }
-                    }}>
-                </Box>
+                        width: '100%',
+                        maxWidth: { xs: '50%', sm: '40%', md: '30%' },
+                        height: { xs: '15rem', sm: '20rem', md: '25rem' },
+                    }} />
             </Box>
 
             {/*Quinto Box*/}
@@ -589,6 +448,6 @@ export default function Inicio() {
 
             {/*Sexto Box*/}
             <Footer />
-        </main >
+        </Container >
     );
 };

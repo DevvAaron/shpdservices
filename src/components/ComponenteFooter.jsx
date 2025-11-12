@@ -1,8 +1,9 @@
 
-import { Box, Typography } from "@mui/material";
-import { Titulo2 } from "../Hoocks/Titulos";
+import { Box, Typography, Divider } from "@mui/material";
+import { Titulo2 } from "./Hoocks/Titulos";
 import { Link } from "react-router-dom";
 const Footer = () => {
+
   const sections = [
     {
       titulo: "Contacto",
@@ -33,24 +34,20 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        width: "100%",
         backgroundColor: "#13B5EA",
         color: "#fff",
-        padding: 1
+        paddingY: 1
       }}
     >
       {/* Secciones principales */}
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          justifyContent: "space-between",
-          alignItems: {
-            xs: 'center',
-            sm: 'center',
-            md: 'center',
-          },
-          maxWidth: 1200,
+          flexDirection: { xs: "column", sm: "row" },
+          justifyContent: "space-evenly",
+          alignItems: { xs: 'center', md: 'flex-start' },
+          width: "100%",
+          maxWidth: { xs: '80%', sm: '90%' },
           mx: "auto",
         }}
       >
@@ -61,7 +58,7 @@ const Footer = () => {
               flex: 1,
               display: 'flex',
               flexDirection: 'column',
-              minWidth: { xs: "100%", sm: "250px" },
+              maxWidth: { xs: "100%", sm: "25%" },
             }}
           >
             <Titulo2 titulo={section.titulo} />
@@ -119,12 +116,9 @@ const Footer = () => {
       </Box>
 
       {/* Línea divisoria */}
-      <Box
-        sx={{
-          borderTop: "1px solid rgba(255, 255, 255, 0.3)",
-          my: 3,
-        }}
-      />
+      <Divider aria-hidden="true" sx={{
+        my: 2,
+      }} />
 
       {/* Footer Bottom */}
       <Box

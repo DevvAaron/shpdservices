@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import * as Accordion from '@radix-ui/react-accordion'
 import { Box, Typography } from '@mui/material'
 import { styled } from '@mui/system'
-import ComponentAyuda from '../Footer/Ayuda'
-import ComponentFooter from '../Footer/Footer'
+import ComponentAyuda from '../ComponenteAyuda'
+import ComponentFooter from '../ComponenteFooter'
 import Navbar from '../Header/Navbar'
-import { Cobertura2 } from '../Cobertura/PageCobertura'
+import { Cobertura2 } from '../ComponenteCobertura';
 
 //Iconos
 import helpicon from '../../assets/ayuda.png';

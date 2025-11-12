@@ -1,8 +1,8 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material';
-import { Titulo1 } from '../Hoocks/Titulos';
-import flecha from '../../assets/flecha.png';
-import mundo from '../../assets/mundo.png';
-import blackEmail from '../../assets/emailwhite.png';
+import { Titulo1 } from './Hoocks/Titulos';
+import flecha from '../assets/flecha.png';
+import mundo from '../assets/mundo.png';
+import blackEmail from '../assets/emailwhite.png';
 
 const tituloTexto = "Llegamos a todas las ciudades";
 const ciudades = [
@@ -30,12 +30,19 @@ export const Cobertura1 = () => {
     return (
         <Box name="Cobertura"
             sx={{
+                position: 'relative',
+                zIndex: 2,
+                width: '100%',
+                maxWidth: '1200px',
+                margin: '0 auto',
+                px: { xs: 2, sm: 4 },
                 minHeight: '350px',
                 display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row', md: 'row' },
                 justifyContent: 'center',
                 alignItems: 'center',
-                padding: '0.5rem', gap: '2rem',
+                padding: '0.5rem',
+                gap: '2rem',
                 opacity: 0.9,
                 width: "100%"
             }}
@@ -48,7 +55,7 @@ export const Cobertura1 = () => {
                     backgroundImage: `url(${mundo})`,
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize:'contain',
+                    backgroundSize: 'contain',
                     height: '100vh',
                     maxHeight: { md: '80vh' }
 

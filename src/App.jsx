@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import ScrollToTop from './components/Hoocks/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 import Programacion from './components/ProgramarEnvio/Programacion';
-import Inicio from './components/Inicio/Inicio';
+import Inicio from './pages/PageInicio';
 import Seguimiento from './components/Seguimiento/Seguimiento';
 import Ayuda from './components/Ayuda/PageAyuda';
-import Calculadora from './components/Calculadora/PageCalculadora';
 import Contacto from './components/Contacto/PageContacto';
 import ZonaClientes from './components/ZonaClientes/ZonaClientes';
 
@@ -28,7 +27,6 @@ function AnimatedRoutes() {
         <Route path="/programacion" element={<Programacion />} />
         <Route path="/seguimiento" element={<Seguimiento />} />
         <Route path="/ayuda" element={<Ayuda />} />
-        <Route path="/calculadora" element={<Calculadora />} />
         <Route path="/contacto" element={<ContactoPage />} />
         <Route path="/acercaDe" element={<AcercaDe />} />
         <Route path='/servicios' element={<ServiciosPage />} />

@@ -6,9 +6,9 @@ import {
 } from '@mui/material'
 import { motion } from 'framer-motion';
 
-import Footer from '../Footer/Footer';
+import Footer from '../ComponenteFooter';
 import Navbar from "../Header/Navbar"
-import Ayuda from '../Footer/Ayuda';
+import Ayuda from '../ComponenteAyuda';
 
 import fondo1 from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';

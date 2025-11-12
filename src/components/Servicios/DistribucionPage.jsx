@@ -4,7 +4,7 @@ import Navbar from "../Header/Navbar";
 import { Titulo1 } from "../Hoocks/Titulos";
 import FondoInicio from "../hoocks/FondoInicio";
 import { Box, Typography, Stack, Grid } from "@mui/material";
-import Footer from "../Footer/Footer";
+import Footer from "../ComponenteFooter";
 
 import img1 from '../../assets/impresionDistribucion.png'
 import img2 from '../../assets/volantesDistribucion.png'

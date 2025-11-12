@@ -11,7 +11,7 @@ import BarraProgresiva from '../hoocks/BarraProgresiva';
 
 //Componentes
 import Navbar from "../Header/Navbar"
-import Footer from '../Footer/Footer';
+import Footer from '../ComponenteFooter';
 import Valores from './Valores';
 
 //Imagenes

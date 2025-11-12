@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Box, TextField, Button } from '@mui/material'
 import Navbar from '../Header/Navbar'
-import Footer from '../Footer/Footer'
+import Footer from '../ComponenteFooter'
 import FondoInicio from '../hoocks/FondoInicio'
 import { Titulo1 } from '../Hoocks/Titulos'
 import Horario from '../hoocks/Horario'

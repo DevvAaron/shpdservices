@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 import Navbar from "../Header/Navbar"
 import fondo from '../../assets/fondo.jpg';
 import fondo2 from '../../assets/fondo2.jpg';
-import Footer from '../Footer/Footer';
-import Ayuda from '../Footer/Ayuda';
+import Footer from '../ComponenteFooter';
+import Ayuda from '../ComponenteAyuda';
 import ResultadoSeg from './ResultadoSeg';
 import { Titulo1 } from '../Hoocks/Titulos';
 import BarraProgresiva from '../hoocks/BarraProgresiva';

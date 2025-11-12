@@ -1,7 +1,7 @@
 import { Box, Button, Typography, Stack, Grid } from '@mui/material'
 import { Titulo1 } from '../Hoocks/Titulos'
 import Navbar from '../Header/Navbar'
-import Footer from '../Footer/Footer'
+import Footer from '../ComponenteFooter'
 
 import icon1 from '../../assets/icon1.png'
 import icon2 from '../../assets/icon2.png'

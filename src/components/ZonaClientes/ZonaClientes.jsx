@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Box, Button } from '@mui/material';
 import Navbar from "../Header/Navbar";
-import Footer from "../Footer/Footer";
-import { Cobertura1 } from '../Cobertura/PageCobertura'
+import Footer from "../ComponenteFooter";
+import { Cobertura1 } from '../ComponenteCobertura';
 import { Titulo1 } from "../Hoocks/Titulos";
 import BarraProgresiva from '../hoocks/BarraProgresiva';
 import FondoInicio from '../hoocks/FondoInicio';
@@ -31,8 +31,8 @@ export default function ZonaClientes() {
     }, []);
 
     return (
-        <motion.div
-            style={{
+        <Box
+            sx={{
                 flex: 1,
                 display: "flex",
                 flexDirection: "column",
@@ -237,23 +237,10 @@ export default function ZonaClientes() {
                         zIndex: 1, background: 'linear-gradient(to top, rgba(255,255,255), rgba(255,255,255,0.3), rgba(255,255,255,0))',
                     }}
                 />
-                < Box
-                    sx={{
-                        position: 'relative',
-                        zIndex: 2,
-                        width: '100%',
-                        maxWidth: '1200px',
-                        margin: '0 auto',
-                        boxSizing: 'border-box',
-                        px: { xs: 2, sm: 4 }
-                    }}
-                >
-                    <Cobertura1 />
-                </Box >
+                <Cobertura1 />
             </Box >
 
-            {/* Espacio para compensar el Navbar fijo */}
             <Footer />
-        </motion.div>
+        </Box>
     )
 }
