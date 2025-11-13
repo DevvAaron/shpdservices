@@ -44,7 +44,6 @@ export const Cobertura1 = () => {
                 padding: '0.5rem',
                 gap: '2rem',
                 opacity: 0.9,
-                width: "100%"
             }}
         >
             <Box
@@ -68,7 +67,7 @@ export const Cobertura1 = () => {
                     width: '100%',
                     alignItems: 'center'
                 }}>
-                <img src={blackEmail}
+                <img loading="lazy" src={blackEmail}
                     width='200px'
                     height="200px" alt="" />
 
@@ -112,7 +111,7 @@ export const Cobertura1 = () => {
                                 },
                             }}
                         >
-                            <img src={flecha} alt="" />
+                            <img loading="lazy" src={flecha} alt="" />
                             {ciudad}
                         </Box>
                     ))}

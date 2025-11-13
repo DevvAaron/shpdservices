@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { Modal, Box, Fade, ButtonGroup, Button } from '@mui/material';
-import { Backdrop } from '@mui/material';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';

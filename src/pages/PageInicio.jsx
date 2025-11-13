@@ -88,21 +88,23 @@ export default function Inicio() {
                                 alignItems: 'center'
                             }}
                         >
-                            <Box name='Imagen' sx={{
-                                borderTopLeftRadius: '30px ',
-                                borderBottomLeftRadius: '30px ',
-                                borderRadius: { xs: '30px' },
-                                backgroundImage: `url(${img1})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '100%',
-                                maxWidth: {
-                                    xs: '100%',
-                                    sm: '75%'
-                                },
-                                width: '100%',
-                                zIndex: '1'
-                            }} />
+                            <Box
+                                loading="lazy"
+                                name='Imagen' sx={{
+                                    borderTopLeftRadius: '30px ',
+                                    borderBottomLeftRadius: '30px ',
+                                    borderRadius: { xs: '30px' },
+                                    backgroundImage: `url(${img1})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '100%',
+                                    maxWidth: {
+                                        xs: '100%',
+                                        sm: '75%'
+                                    },
+                                    width: '100%',
+                                    zIndex: '1'
+                                }} />
 
                             <Box sx={{
                                 position: 'absolute',
@@ -139,7 +141,7 @@ export default function Inicio() {
                     </Grid>
 
                     <Grid offset={{ md: 6 }} spacing={2} size={{ xs: 12, sm: 10, md: 10 }}>
-                        <Box name='paso3'
+                        <Box
                             sx={{
                                 position: 'relative',
                                 height: '50vh',
@@ -150,21 +152,23 @@ export default function Inicio() {
                                 alignItems: 'center'
                             }}
                         >
-                            <Box name='Imagen' sx={{
-                                borderTopLeftRadius: '30px ',
-                                borderBottomLeftRadius: '30px ',
-                                borderRadius: { xs: '30px' },
-                                backgroundImage: `url(${img2})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '100%',
-                                maxWidth: {
-                                    xs: '100%',
-                                    sm: '75%'
-                                },
-                                width: '100%',
-                                zIndex: '1'
-                            }} />
+                            <Box
+                                loading="lazy"
+                                sx={{
+                                    borderTopLeftRadius: '30px ',
+                                    borderBottomLeftRadius: '30px ',
+                                    borderRadius: { xs: '30px' },
+                                    backgroundImage: `url(${img2})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '100%',
+                                    maxWidth: {
+                                        xs: '100%',
+                                        sm: '75%'
+                                    },
+                                    width: '100%',
+                                    zIndex: '1'
+                                }} />
                             <Box sx={{
                                 position: 'absolute',
                                 height: '70%',
@@ -210,21 +214,22 @@ export default function Inicio() {
                                 alignItems: 'center'
                             }}
                         >
-                            <Box name='Imagen' sx={{
-                                borderTopLeftRadius: '30px ',
-                                borderBottomLeftRadius: '30px ',
-                                borderRadius: { xs: '30px' },
-                                backgroundImage: `url(${img3})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '100%',
-                                maxWidth: {
-                                    xs: '100%',
-                                    sm: '75%'
-                                },
-                                width: '100%',
-                                zIndex: '1'
-                            }} />
+                            <Box loading="lazy"
+                                sx={{
+                                    borderTopLeftRadius: '30px ',
+                                    borderBottomLeftRadius: '30px ',
+                                    borderRadius: { xs: '30px' },
+                                    backgroundImage: `url(${img3})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '100%',
+                                    maxWidth: {
+                                        xs: '100%',
+                                        sm: '75%'
+                                    },
+                                    width: '100%',
+                                    zIndex: '1'
+                                }} />
                             <Box sx={{
                                 position: 'absolute',
                                 height: '70%',
@@ -270,21 +275,22 @@ export default function Inicio() {
                                 alignItems: 'center'
                             }}
                         >
-                            <Box name='Imagen' sx={{
-                                borderTopLeftRadius: '30px ',
-                                borderBottomLeftRadius: '30px ',
-                                borderRadius: { xs: '30px' },
-                                backgroundImage: `url(${img4})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                height: '100%',
-                                maxWidth: {
-                                    xs: '100%',
-                                    sm: '75%'
-                                },
-                                width: '100%',
-                                zIndex: '1'
-                            }} />
+                            <Box loading="lazy"
+                                sx={{
+                                    borderTopLeftRadius: '30px ',
+                                    borderBottomLeftRadius: '30px ',
+                                    borderRadius: { xs: '30px' },
+                                    backgroundImage: `url(${img4})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    height: '100%',
+                                    maxWidth: {
+                                        xs: '100%',
+                                        sm: '75%'
+                                    },
+                                    width: '100%',
+                                    zIndex: '1'
+                                }} />
                             <Box sx={{
                                 position: 'absolute',
                                 height: '70%',
@@ -432,6 +438,7 @@ export default function Inicio() {
                     </Box>
                 </Box>
                 <Box
+                    loading="lazy"
                     sx={{
                         backgroundImage: `url(${img8})`,
                         backgroundSize: 'contain',

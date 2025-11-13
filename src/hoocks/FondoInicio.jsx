@@ -1,8 +1,6 @@
 import { Box } from '@mui/material'
-
 import { motion } from 'framer-motion';
-
-import fondo1 from '../assets/fondo.png';
+import fondo1 from '../assets/fondo.webp';
 
 export default function FondoInicio({ children }, nombre = {}) {
     const MotionBox = motion.create(Box)

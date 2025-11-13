@@ -11,6 +11,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 a {
   font-weight: 500;
   color: #13b4ea;
@@ -24,10 +25,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: column;
   min-height: 100vh;
-  flex-direction: column;
   font-family: "Barlow", sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -97,7 +95,6 @@ button:hover {
 
 html,
 body {
-  height: 100%;
   margin: 0;
   padding: 0;
   overflow-x: hidden;

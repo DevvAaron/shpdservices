@@ -45,26 +45,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-
-    const getScrollContainer = () => {
-      const body = document.body;
-      const bodyStyle = getComputedStyle(body);
-      if ((bodyStyle.overflowY === 'auto' || bodyStyle.overflowY === 'scroll') && body.scrollHeight > body.clientHeight) {
-        return body;
-      }
-      if (document.scrollingElement && document.scrollingElement.scrollHeight > document.scrollingElement.clientHeight) {
-        return document.scrollingElement;
-      }
-      const possible = [...document.querySelectorAll('#root, main, .app-container, div')]
-        .find(el => {
-          const s = getComputedStyle(el);
-          return (s.overflowY === 'auto' || s.overflowY === 'scroll') && el.scrollHeight > el.clientHeight;
-        });
-      return possible || window;
-    };
-
-    const scrollEl = getScrollContainer();
-
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
       if (window.innerWidth > 768) {
@@ -72,31 +52,22 @@ const Navbar = () => {
       }
       setOpenSubmenu(null);
     };
-
-    const getY = () => (scrollEl === window ? window.scrollY : scrollEl.scrollTop);
-    const handleScroll = () => setScrolled(getY() > 50);
-
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    // 1. Evento de Resize
     window.addEventListener('resize', handleResize);
-    if (scrollEl === window) {
-      window.addEventListener('scroll', handleScroll, { passive: true });
-    } else {
-      scrollEl.addEventListener('scroll', handleScroll, { passive: true });
-    }
-
-    // inicializa
+    // 2. Evento de Scroll (escuchamos directamente a window)
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Inicializa
     handleResize();
     handleScroll();
-
+    // Limpieza
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (scrollEl === window) {
-        window.removeEventListener('scroll', handleScroll);
-      } else {
-        scrollEl.removeEventListener('scroll', handleScroll);
-      }
+      window.removeEventListener('scroll', handleScroll);
     };
-
-  }, []);
+  }, []); // 👈 Dependencias vacías
 
 
   return (
@@ -322,7 +293,7 @@ const Navbar = () => {
           }}
         >
           {/* Si tu icono es una img */}
-          <Box component="img" src={contactoIcon} alt="Contacto" sx={{ width: '70%', height: '70%' }} />
+          <Box component="img" loading="lazy" src={contactoIcon} alt="Contacto" sx={{ width: '70%', height: '70%' }} />
 
           {/* O si prefieres usar un ícono de MUI, comenta la línea anterior y usa: */}
           {/* <MailOutlineIcon /> */}

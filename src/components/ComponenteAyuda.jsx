@@ -23,7 +23,7 @@ export const Ayuda = () => {
                 alignItems: 'center',
                 width: '100%',
                 height: '100vh',
-                maxHeight: { xs: '100vh', sm: '80vh',md: '35vh' },
+                maxHeight: { xs: '100vh', sm: '80vh', md: '35vh' },
             }}
         >
             {/* Bloque 1 - Atención al cliente */}
@@ -45,7 +45,7 @@ export const Ayuda = () => {
             <Box sx={{
                 px: 2,
             }}>
-                <img src={wspblack} alt="wsp" style={{ maxWidth: '6rem', height: 'auto' }} />
+                <img loading="lazy" src={wspblack} alt="wsp" style={{ maxWidth: '6rem', height: 'auto' }} />
                 <Titulo3 titulo={tituloTexto[1]} />
             </Box>
 
@@ -55,7 +55,7 @@ export const Ayuda = () => {
                 maxWidth: '25rem',
                 px: 2,
             }}>
-                <img src={emailblack} alt="email" style={{ maxWidth: '6rem', height: 'auto' }} />
+                <img loading="lazy" src={emailblack} alt="email" style={{ maxWidth: '6rem', height: 'auto' }} />
                 <a href="mailto:informes@sphdservices.com">{tituloTexto[2]}</a>
                 <a href="mailto:ventas@sphdservices.com">{tituloTexto[3]}</a>
             </Box>

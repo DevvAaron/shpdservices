@@ -2,50 +2,46 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import ScrollToTop from './hoocks/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
-import Programacion from './components/ProgramarEnvio/Programacion';
-import Inicio from './pages/PageInicio';
-import Seguimiento from './components/Seguimiento/Seguimiento';
-import ZonaClientes from './pages/PageZonaClientes';
-
-import AcercaDe from './pages/PageAcercaDe';
-import ServiciosPage from './pages/PageServicio';
+import React, { lazy, Suspense } from 'react';
 import 'animate.css';
-import ContactoPage from './components/Contacto/ContactoPage';
-import ResultadoSeg from './components/Seguimiento/ResultadoSeg';
-import DistribucionPage from './pages/PageDistribucion';
-import MensajeriaPage from './pages/PageMensajeria';
+const ContactoPage = lazy(() => import('./pages/PageContacto'));
+const InicioPage = lazy(() => import('./pages/PageInicio'));
+const SeguimientoPage = lazy(() => import('./pages/PageSeguimiento'));
+const ZonaClientesPage = lazy(() => import('./pages/PageZonaClientes'));
+const AcercaDePage = lazy(() => import('./pages/PageAcercaDe'));
+const ServicioPage = lazy(() => import('./pages/PageServicio'));
+const ResultadoSegPage = lazy(() => import('./pages/PageResultadoSeg'));
+const DistribucionPage = lazy(() => import('./pages/PageDistribucion'));
+const MensajeriaPage = lazy(() => import('./pages/PageMensajeria'));
 function AnimatedRoutes() {
   const location = useLocation();
-
   return (
-    <AnimatePresence mode="sync" >
-      <ScrollToTop />
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/acercaDe" element={<AcercaDe />} />
-        <Route path="/programacion" element={<Programacion />} />
-        <Route path="/seguimiento" element={<Seguimiento />} />
-        <Route path="/contacto" element={<ContactoPage />} />
-        <Route path='/servicios' element={<ServiciosPage />} />
-        <Route path='/servicios/distribucion' element={<DistribucionPage />} />
-        <Route path='/servicios/mensajeria' element={<MensajeriaPage />} />
-        <Route path="/zonaClientes" element={<ZonaClientes />} />
-        <Route path='/terminos' element={<Programacion />} />
-        <Route path='/brouchers' element={<Programacion />} />
-        <Route path='/politica' element={<Programacion />} />
-        <Route path="/seguimiento/:trackingID" element={<ResultadoSeg />} />
-      </Routes>
-    </AnimatePresence>
+    <Suspense fallback={<div>Cargando...</div>}>
+      <AnimatePresence mode="sync">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<InicioPage />} />
+          <Route path="/acercaDe" element={<AcercaDePage />} />
+          <Route path="/seguimiento" element={<SeguimientoPage />} />
+          <Route path="/contacto" element={<ContactoPage />} />
+          <Route path='/servicios' element={<ServicioPage />} />
+          <Route path='/servicios/distribucion' element={<DistribucionPage />} />
+          <Route path='/servicios/mensajeria' element={<MensajeriaPage />} />
+          <Route path="/zonaClientes" element={<ZonaClientesPage />} />
+          <Route path="/seguimiento/:trackingID" element={<ResultadoSegPage />} />
+        </Routes>
+      </AnimatePresence>
+    </Suspense>
   );
 }
 
 function App() {
   return (
-    <div className="app-container" style={{
+    <div className="app-container" id="main-scroll-container" style={{
       width: '100%', minHeight: '100vh',
       backgroundColor: "#ffffff00"
     }}>
       <Router basename="/">
+        <ScrollToTop />
         <AnimatedRoutes />
       </Router>
     </div >

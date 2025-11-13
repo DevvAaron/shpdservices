@@ -8,7 +8,7 @@ import icon1 from '../assets/icon1.png'
 import icon2 from '../assets/icon2.png'
 
 import serv1 from '../assets/servAlmace.jpg'
-import serv2 from '../assets/servMudanza.jpg'
+import serv2 from '../assets/servMudanza.webp'
 
 
 import { motion } from 'framer-motion';

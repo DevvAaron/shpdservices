@@ -85,15 +85,17 @@ export default function MensajeriaPage() {
                         maxHeight: { xs: '60vh', md: '85vh' }
                     }}>
                     {!isMobile && (
-                        <Box sx={{
-                            backgroundImage: `url(${img3})`,
-                            backgroundSize: 'contain',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'center',
-                            width: "30%",
-                            minHeight: '25.5vh',
-                            maxHeight: '100vh',
-                        }} />
+                        <Box
+                            loading="lazy"
+                            sx={{
+                                backgroundImage: `url(${img3})`,
+                                backgroundSize: 'contain',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: 'center',
+                                width: "30%",
+                                minHeight: '25.5vh',
+                                maxHeight: '100vh',
+                            }} />
                     )}
                     <Grid name='MensajeriaMasivos' size={{ xs: 12, md: 8 }} >
                         <Stack spacing={2} sx={{
@@ -275,7 +277,9 @@ export default function MensajeriaPage() {
                             </Stack>
                         </Grid>
                         {!isMobile && (
-                            <Box sx={{
+                            <Box 
+                            loading="lazy"
+                                sx={{
                                 backgroundImage: `url(${img4})`,
                                 backgroundSize: 'contain',
                                 backgroundRepeat: 'no-repeat',

@@ -84,14 +84,16 @@ export default function DistribucionPage() {
                         maxHeight: { xs: '45vh', sm: '50vh', md: '60vh' }
                     }}
                 >{!isMobile && (
-                    <Box sx={{
-                        backgroundImage: `url(${img1})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        width: "30%",
-                        minHeight: '25.5vh',
-                        maxHeight: '100vh',
-                    }} />
+                    <Box
+                        loading="lazy"
+                        sx={{
+                            backgroundImage: `url(${img1})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            width: "30%",
+                            minHeight: '25.5vh',
+                            maxHeight: '100vh',
+                        }} />
                 )}
                     <Box sx={{
                         width: '100%',
@@ -229,15 +231,17 @@ export default function DistribucionPage() {
                         </Stack>
                     </Grid>
                     {!isMobile && (
-                        <Box sx={{
-                            backgroundImage: `url(${img2})`,
-                            backgroundSize: 'cover',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: 'center',
-                            width: "33%",
-                            height: "100%",
-                            minHeight: '30vh',
-                        }} />
+                        <Box
+                            loading="lazy"
+                            sx={{
+                                backgroundImage: `url(${img2})`,
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: 'center',
+                                width: "33%",
+                                height: "100%",
+                                minHeight: '30vh',
+                            }} />
                     )}
                 </MotionGrid>
             </Box>
