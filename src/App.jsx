@@ -40,7 +40,7 @@ function App() {
       width: '100%', minHeight: '100vh',
       backgroundColor: "#ffffff00"
     }}>
-      <Router basename="/">
+      <Router basename="/shpdservices/">
         <ScrollToTop />
         <AnimatedRoutes />
       </Router>
