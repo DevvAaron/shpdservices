@@ -1,15 +1,32 @@
-# React + Vite
+# JER Courier México - Landing Page 📦🇲🇽
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto de maquetación profesional desarrollado en **React + Vite** para la sede en México de JER Courier. Enfocado en la conversión de usuarios y la claridad en servicios logísticos.
 
-Currently, two official plugins are available:
+## 🔗 [DEMO EN VIVO AQUÍ](https://devvaaron.github.io/shpdservices/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+### 🚀 Desafíos Técnicos Resueltos
+Para este proyecto de logística, me enfoqué en tres pilares fundamentales que impactan directamente en el negocio:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# shpdservices
-# shpdservices
-# shpdservices
+1.  **Arquitectura de Componentes:** Estructura modular en React para facilitar la escalabilidad del sitio.
+2.  **Mobile First Design:** Optimización total para dispositivos móviles, entendiendo que la mayoría de usuarios consultan servicios de courier desde su smartphone.
+3.  **Despliegue Automatizado (CI/CD):** Configuración de GitHub Actions para asegurar que cada mejora en el código se refleje inmediatamente en producción.
+
+---
+
+### 🛠️ Stack Tecnológico
+* **React 18:** Manejo de interfaces dinámicas.
+* **Vite:** Herramienta de construcción de alto rendimiento.
+* **CSS3 Moderno:** Implementación de Layouts complejos con Flexbox y Grid.
+* **JavaScript (ES6+):** Lógica funcional y manipulación eficiente del DOM.
+
+---
+
+### 📈 Relevancia
+Este proyecto demuestra mi capacidad para:
+* Mantener un código limpio y profesional.
+* Resolver problemas reales de **Deployment** en entornos Linux/Cloud.
+
+---
+**Desarrollado por Aaron - Front-End Developer en formación.**
